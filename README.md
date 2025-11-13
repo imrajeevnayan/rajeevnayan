@@ -2,11 +2,11 @@
 <h1 align="center">🌐 Rajeev Nayan - Developer Portfolio 🚀</h1>
 
 <p align="center">
-  <a href="https://imrajeevnayan.github.io/rajeev-portfolio/" target="_blank">
+  <a href="https://imrajeevnayan.github.io/rajeevnayan/" target="_blank">
     <img src="https://img.shields.io/badge/Live%20Site-View%20Now-blue?style=for-the-badge&logo=github" alt="Live Site" />
   </a>
-  <a href="https://github.com/imrajeevnayan/rajeev-portfolio">
-    <img src="https://img.shields.io/github/license/imrajeevnayan/rajeev-portfolio?style=for-the-badge" alt="License" />
+  <a href="https://github.com/imrajeevnayan/rajeevnayan">
+    <img src="https://img.shields.io/github/license/imrajeevnayan/rajeevnayan?style=for-the-badge" alt="License" />
   </a>
   <a href="https://www.linkedin.com/in/imrajeevnayan/">
     <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
@@ -25,16 +25,23 @@
 
 ---
 
+## 🌍 Live Demo
+
+👉 **[Visit Portfolio](https://imrajeevnayan.github.io/rajeevnayan/)**  
+🔗 Alternate Link: [https://imrajeevnayan.github.io/rajeevnayan/](https://imrajeevnayan.github.io/rajeevnayan/)
+
+---
+
 ## 🎥 Live Preview GIF
 
 > 🎞️ Add a short recording (5–8 seconds) of your portfolio here.
 
 ```markdown
-![Portfolio Demo](https://github.com/imrajeevnayan/rajeev-portfolio/blob/main/assets/demo.gif)
+![Portfolio Demo](https://github.com/imrajeevnayan/rajeevnayan/blob/main/assets/demo.gif)
 ````
 
 Example display 👇
-![Rajeev Portfolio Demo](https://github.com/imrajeevnayan/rajeev-portfolio/blob/main/assets/demo.gif)
+![Rajeev Portfolio Demo](https://github.com/imrajeevnayan/rajeevnayan/blob/main/assets/demo.gif)
 
 *(Make sure to upload your GIF inside `/assets/demo.gif` in your repo.)*
 
@@ -77,10 +84,10 @@ Example display 👇
 
 ```bash
 # Clone the repository
-git clone https://github.com/imrajeevnayan/rajeev-portfolio.git
+git clone https://github.com/imrajeevnayan/rajeevnayan.git
 
 # Navigate to the project
-cd rajeev-portfolio
+cd rajeevnayan
 
 # Install dependencies
 npm install
@@ -101,7 +108,7 @@ npm run build
 npm run deploy
 ```
 
-*(Ensure your `package.json` has `"homepage": "https://imrajeevnayan.github.io/rajeev-portfolio"`)*
+*(Ensure your `package.json` has `"homepage": "https://imrajeevnayan.github.io/rajeevnayan"`)*
 
 ---
 
@@ -130,7 +137,7 @@ npm run deploy
 📧 **Email:** [imrajeevnayan@gmail.com](mailto:imrajeevnayan@gmail.com)
 💼 **LinkedIn:** [linkedin.com/in/imrajeevnayan](https://www.linkedin.com/in/imrajeevnayan/)
 📸 **Instagram:** [@imrajeevnayan](https://www.instagram.com/imrajeevnayan/)
-💻 **Portfolio:** [imrajeevnayan.github.io/rajeev-portfolio](https://imrajeevnayan.github.io/rajeev-portfolio/)
+💻 **Portfolio:** [imrajeevnayan.github.io/rajeevnayan](https://imrajeevnayan.github.io/rajeevnayan/)
 
 ---
 
@@ -146,7 +153,7 @@ npm run deploy
 
 <p align="center">
   Made with ❤️ by <strong>Rajeev Nayan</strong> <br/>
-  <img src="https://raw.githubusercontent.com/imrajeevnayan/rajeev-portfolio/main/assets/wave.gif" width="60" />
+  <img src="https://raw.githubusercontent.com/imrajeevnayan/rajeevnayan/main/assets/wave.gif" width="60" />
 </p>
 
 ---
@@ -155,8 +162,11 @@ npm run deploy
 
 * Add **Visitor Counter Badge**
   ![Visitors](https://komarev.com/ghpvc/?username=imrajeevnayan&color=brightgreen)
-* Add **Dark/Light mode GIF** demo
+
+* Add **Dark/Light Mode GIF** demo
 * Add **Contributing / License** section if open-sourced
 * Include **SEO badges** or **Lighthouse score** screenshot
 
+
+Would you like me to help you **record & compress the GIF** for GitHub (so it looks smooth and loads fast)?
 ```
