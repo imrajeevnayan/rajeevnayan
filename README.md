@@ -16,7 +16,7 @@
 > ✨ A modern, fully responsive personal portfolio website built with **React + Vite + TailwindCSS**.  
 > ✅ Deployed with GitHub Pages for seamless hosting.
 
-🌍 **Live Demo** → [imrajeevnayan.github.io/rajeev-portfolio](https://imrajeevnayan.github.io/rajeev-portfolio)
+🌍 **Live Demo** → [imrajeevnayan.github.io/rajeev-portfolio](https://imrajeevnayan.github.io/rajeevnayan)
 
 ---
 
