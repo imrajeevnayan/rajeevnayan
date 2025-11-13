@@ -154,10 +154,7 @@ npm run deploy
 ## 🌟 Bonus Add-ons (Optional)
 
 * Add **Visitor Counter Badge**
-
-  ```markdown
   ![Visitors](https://komarev.com/ghpvc/?username=imrajeevnayan&color=brightgreen)
-  ```
 * Add **Dark/Light mode GIF** demo
 * Add **Contributing / License** section if open-sourced
 * Include **SEO badges** or **Lighthouse score** screenshot
