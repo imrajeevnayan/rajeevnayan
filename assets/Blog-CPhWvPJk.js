@@ -1,4 +1,4 @@
-import{r as i,j as e,m as c}from"./index-D7PuAmgF.js";const m="8fd805a4-a4e2-417e-8d1a-a004aa665f45",b=["imrajeevnayan.hashnode.dev","solving-array-ques.hashnode.dev"],y=()=>{const[u,g]=i.useState([]),[n,d]=i.useState(!0),[o,r]=i.useState(null),h=async t=>(await(await fetch("https://gql.hashnode.com/",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${m}`},body:JSON.stringify({query:`
+import{r as i,j as e,m as c}from"./index-CNjjRAFE.js";const m="8fd805a4-a4e2-417e-8d1a-a004aa665f45",b=["imrajeevnayan.hashnode.dev","solving-array-ques.hashnode.dev"],y=()=>{const[u,g]=i.useState([]),[n,d]=i.useState(!0),[o,r]=i.useState(null),h=async t=>(await(await fetch("https://gql.hashnode.com/",{method:"POST",headers:{"Content-Type":"application/json",Authorization:`Bearer ${m}`},body:JSON.stringify({query:`
           {
             publication(host: "${t}") {
               posts(first: 10) {
