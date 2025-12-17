@@ -1,172 +1,160 @@
 
-<h1 align="center">🌐 Rajeev Nayan - Developer Portfolio 🚀</h1>
+<div align="center">
+  <h1 align="center">Rajeev Nayan | Software Developer Portfolio</h1>
+  <p align="center">
+     Creating interactive, scalable, and performance-optimized web experiences.
+  </p>
 
-<p align="center">
-  <a href="https://imrajeevnayan.github.io/rajeevnayan/" target="_blank">
-    <img src="https://img.shields.io/badge/Live%20Site-View%20Now-blue?style=for-the-badge&logo=github" alt="Live Site" />
-  </a>
-  <a href="https://github.com/imrajeevnayan/rajeevnayan">
-    <img src="https://img.shields.io/github/license/imrajeevnayan/rajeevnayan?style=for-the-badge" alt="License" />
-  </a>
-  <a href="https://www.linkedin.com/in/imrajeevnayan/">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
-  </a>
-</p>
-
----
-
-## ✨ Overview
-
-> A sleek, **modern, fully responsive portfolio** showcasing my projects, skills, and experience — built with **React + Vite + TailwindCSS + Framer Motion**.
-
-- 💼 **Purpose:** Showcase my developer journey, skills, and live projects.  
-- 🧠 **Focus:** Clean design, fast load, mobile-first approach.  
-- 🚀 **Hosting:** Deployed using **GitHub Pages** for seamless deployment.  
+  <p align="center">
+    <a href="https://imrajeevnayan01.netlify.app/" target="_blank">
+      <img src="https://img.shields.io/badge/Live%20Site-Visit%20Now-2ea44f?style=for-the-badge&logo=vercel" alt="Live Site" />
+    </a>
+    <a href="https://github.com/imrajeevnayan">
+      <img src="https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github" alt="GitHub" />
+    </a>
+    <a href="https://www.linkedin.com/in/imrajeevnayan/">
+      <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
+    </a>
+    <a href="mailto:imrajeevnayan@gmail.com">
+      <img src="https://img.shields.io/badge/Email-Contact%20Me-D14836?style=for-the-badge&logo=gmail" alt="Email" />
+    </a>
+  </p>
+</div>
 
 ---
 
-## 🌍 Live Demo
+## 🚀 Overview
 
-👉 **[Visit Portfolio](https://imrajeevnayan.github.io/rajeevnayan/)**  
-🔗 Alternate Link: [https://imrajeevnayan.github.io/rajeevnayan/](https://imrajeevnayan.github.io/rajeevnayan/)
+Welcome to my personal portfolio repository! This project is a representation of my skills, experience, and projects as a **Full Stack Developer**. It is built with a focus on **performance**, **responsiveness**, and **modern design principles**.
 
----
+The portfolio features a clean UI, dark mode support, smooth animations, and a modular architecture that makes it easy to maintain and scale.
 
-## 🎥 Live Preview GIF
+## ✨ Key Features
 
-> 🎞️ Add a short recording (5–8 seconds) of your portfolio here.
-
-```markdown
-![Portfolio Demo](https://github.com/imrajeevnayan/rajeevnayan/blob/main/assets/demo.gif)
-````
-
-Example display 👇
-![Rajeev Portfolio Demo](https://github.com/imrajeevnayan/rajeevnayan/blob/main/assets/demo.gif)
-
-*(Make sure to upload your GIF inside `/assets/demo.gif` in your repo.)*
+- **🎨 Modern UI/UX**: Built with **React** and **Tailwind CSS** for a sleek, glass-morphic, and responsive design.
+- **🌗 Dark Mode**: Fully integrated dark mode with a toggle switch, persisting user preference.
+- **⚡ High Performance**: Optimized with **Code Splitting (React.lazy)** and **Lazy Loading** for images to ensure fast load times.
+- **📱 Fully Responsive**: Mobile-first approach ensuring a seamless experience across all devices (Mobile, Tablet, Desktop).
+- **🎞️ Smooth Animations**: Interactive elements powered by **Framer Motion** for an engaging user experience.
+- **📄 Comprehensive Sections**:
+  - **Hero**: Professional introduction and social links.
+  - **About**: Personal background and education.
+  - **Experience**: detailed professional timeline.
+  - **Skills**: Categorized technical skills (Frontend, Backend, Tools).
+  - **Projects**: Showcase of key projects with GitHub and Live demo links.
+  - **Certifications**: Professional achievements and badges.
+  - **Contact**: Functional contact form and details.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Frontend       | Styling         | Animation         | Deployment            |
-| -------------- | --------------- | ----------------- | --------------------- |
-| ⚛️ React (18+) | 🎨 Tailwind CSS | 🎞️ Framer Motion | 🚀 GitHub Pages       |
-| ⚡ Vite         | 🧩 TypeScript   | 🧠 Custom Hooks   | 🌈 Netlify (optional) |
+This project leverages the latest web technologies to deliver a top-tier experience:
+
+| Category | Technologies |
+|----------|-------------|
+| **Frontend** | [React 18](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/) |
+| **Build Tool** | [Vite](https://vitejs.dev/) (Super fast build times) |
+| **Styling** | [Tailwind CSS](https://tailwindcss.com/) (Utility-first framework) |
+| **Icons** | [Lucide React](https://lucide.dev/) (Beautiful & consistent icons) |
+| **Animations** | [Framer Motion](https://www.framer.com/motion/) (Production-ready animations) |
+| **Deployment** | [Netlify](https://netlify.com/) / [GitHub Pages](https://pages.github.com/) |
 
 ---
 
-## 📁 Folder Structure
+## � Project Structure
+
+A quick look at the top-level files and directories you'll see in this project.
 
 ```
-├── public/
+rajeevnayan/
+├── public/              # Static assets (favicons, robots.txt, etc.)
 ├── src/
-│   ├── assets/
-│   ├── components/
+│   ├── components/      # Reusable React components
 │   │   ├── About.tsx
+│   │   ├── Certifications.tsx
 │   │   ├── Contact.tsx
+│   │   ├── Experience.tsx
 │   │   ├── Footer.tsx
 │   │   ├── Header.tsx
 │   │   ├── Hero.tsx
 │   │   ├── Projects.tsx
 │   │   └── Skills.tsx
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
-├── vite.config.ts
-├── tailwind.config.js
-└── package.json
+│   ├── App.tsx          # Main application component with Suspense & Routing
+│   ├── index.css        # Global styles & Tailwind directives
+│   └── main.tsx         # Entry point
+├── .gitignore           # Git ignore rules
+├── index.html           # HTML template
+├── package.json         # Project dependencies and scripts
+├── postcss.config.js    # PostCSS configuration
+├── tailwind.config.js   # Tailwind CSS configuration
+├── tsconfig.json        # TypeScript configuration
+└── vite.config.ts       # Vite configuration
 ```
 
 ---
 
-## ⚙️ Setup Locally
+## ⚙️ Getting Started
 
-```bash
-# Clone the repository
-git clone https://github.com/imrajeevnayan/rajeevnayan.git
+Follow these instructions to get a copy of the project up and running on your local machine.
 
-# Navigate to the project
-cd rajeevnayan
+### Prerequisites
 
-# Install dependencies
-npm install
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-# Start the development server
-npm run dev
-```
+### Installation
 
----
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/imrajeevnayan/rajeevnayan.git
+   cd rajeevnayan
+   ```
 
-## 🚀 Deploy to GitHub Pages
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-```bash
-# Build your project
-npm run build
-
-# Deploy to GitHub Pages
-npm run deploy
-```
-
-*(Ensure your `package.json` has `"homepage": "https://imrajeevnayan.github.io/rajeevnayan"`)*
-
----
-
-## 🧩 Features
-
-* 🎨 **Fully Responsive Design**
-* ⚡ **Optimized Performance (Vite)**
-* 🎬 **Smooth Animations** (Framer Motion)
-* 💡 **Reusable React Components**
-* 📬 **Contact Form Integration (EmailJS / Netlify)**
-* 🌐 **Social Media Links and Footer**
+3. **Start the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+   Open [http://localhost:5173](http://localhost:5173) in your browser to see the app.
 
 ---
 
-## 📊 GitHub Stats
+## 🚀 Deployment
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=imrajeevnayan&show_icons=true&theme=radical" height="170" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=imrajeevnayan&layout=compact&theme=radical" height="170" />
-</p>
+To deploy this project to production:
 
----
+1. **Build the project**
+   ```bash
+   npm run build
+   ```
+   This will create a `dist` folder with optimized static assets.
 
-## 💬 Contact Me
-
-📧 **Email:** [imrajeevnayan@gmail.com](mailto:imrajeevnayan@gmail.com)
-💼 **LinkedIn:** [linkedin.com/in/imrajeevnayan](https://www.linkedin.com/in/imrajeevnayan/)
-📸 **Instagram:** [@imrajeevnayan](https://www.instagram.com/imrajeevnayan/)
-💻 **Portfolio:** [imrajeevnayan.github.io/rajeevnayan](https://imrajeevnayan.github.io/rajeevnayan/)
+2. **Deploy**
+   You can deploy the contents of the `dist` folder to any static hosting provider like Netlify, Vercel, or GitHub Pages.
 
 ---
 
-## 🧡 Acknowledgements
+## � Contact
 
-* ⚛️ [React](https://reactjs.org/)
-* 💨 [TailwindCSS](https://tailwindcss.com/)
-* 🎞️ [Framer Motion](https://www.framer.com/motion/)
-* 🚀 [Vite](https://vitejs.dev/)
-* 💻 [GitHub Pages](https://pages.github.com/)
+I am currently open to **Full Stack Development** roles. Feel free to reach out!
+
+- **Email**: [imrajeevnayan@gmail.com](mailto:imrajeevnayan@gmail.com)
+- **LinkedIn**: [linkedin.com/in/imrajeevnayan](https://www.linkedin.com/in/imrajeevnayan/)
+- **GitHub**: [github.com/imrajeevnayan](https://github.com/imrajeevnayan)
+- **Phone**: +91-9155028525
 
 ---
 
 <p align="center">
-  Made with ❤️ by <strong>Rajeev Nayan</strong> <br/>
-  <img src="https://raw.githubusercontent.com/imrajeevnayan/rajeevnayan/main/assets/wave.gif" width="60" />
+  Made with ❤️ by <strong>Rajeev Nayan</strong>
 </p>
-
----
-
-## 🌟 Bonus Add-ons (Optional)
-
-* Add **Visitor Counter Badge**
-  ![Visitors](https://komarev.com/ghpvc/?username=imrajeevnayan&color=brightgreen)
-
-* Add **Dark/Light Mode GIF** demo
-* Add **Contributing / License** section if open-sourced
-* Include **SEO badges** or **Lighthouse score** screenshot
-
-
-Would you like me to help you **record & compress the GIF** for GitHub (so it looks smooth and loads fast)?
-```

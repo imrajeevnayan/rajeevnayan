@@ -4,7 +4,7 @@ import { Github, Linkedin, Code2, FileText } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center py-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden">
       {/* Animated floating shapes - enhanced */}
       <motion.div
         className="absolute top-10 left-10 w-24 h-24 bg-blue-400 bg-opacity-30 rounded-full z-0 shadow-2xl shadow-blue-300"
@@ -24,15 +24,15 @@ const Hero = () => {
       />
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
-      
+
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
           className="md:w-1/2 text-center md:text-left"
         >
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
             Hi, I'm{' '}
             <motion.span
               className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-400 bg-clip-text text-transparent relative"
@@ -49,8 +49,7 @@ const Hero = () => {
             Full Stack Developer
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
-            Passionate about building scalable, dynamic, and user-friendly web applications. 
-            Specializing in modern web technologies and clean code practices.
+            Java Full Stack Developer with 6 months of professional internship experience building scalable web applications using Java, Spring Boot, React.js, and cloud technologies. Proficient in RESTful APIs, microservices architecture, and AWS deployment.
           </p>
           <div className="flex justify-center md:justify-start space-x-4 mb-8">
             <a
@@ -105,7 +104,7 @@ const Hero = () => {
             </a>
           </div>
         </motion.div>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}

@@ -18,7 +18,7 @@ const Contact = () => {
           <p className="mt-4 text-gray-600 dark:text-gray-400">Let's connect and discuss how we can work together!</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -47,7 +47,7 @@ const Contact = () => {
                   href="tel:+919155028525"
                   className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
                 >
-                  +91 915 502 8525
+                  +91-9155028525
                 </a>
               </div>
             </div>

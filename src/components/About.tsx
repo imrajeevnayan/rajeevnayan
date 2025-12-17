@@ -17,7 +17,7 @@ const About = () => {
           <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -26,16 +26,16 @@ const About = () => {
             className="space-y-6"
           >
             <p className="text-lg leading-relaxed">
-              Motivated Full Stack Developer based in Bangalore's vibrant tech ecosystem. With expertise in Java, JavaScript, and SQL, I bring a fresh perspective to software development. Recently completed MCA with hands-on experience in building scalable applications. Quick learner, adaptable, and eager to contribute to dynamic, data-driven projects in Bangalore's innovative tech landscape.
+              Motivated Full Stack Developer with professional internship experience in building scalable web applications. Proficient in Java, Spring Boot, and React.js, I have a proven track record of delivering production-ready features in Agile environments. I combine strong problem-solving abilities with a commitment to writing clean, maintainable code.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center space-x-4">
                 <GraduationCap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                 <div>
                   <h3 className="font-semibold">Education</h3>
-                  <p>Master of Computer Application (MCA)</p>
-                  <p className="text-gray-600 dark:text-gray-400">Dr. Abdul Kalam Technical University (2022-2024)</p>
+                  <p>Master of Computer Applications (MCA)</p>
+                  <p className="text-gray-600 dark:text-gray-400">Dr. A.P.J. Abdul Kalam Technical University (2022-2024)</p>
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ const About = () => {
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
                   <h4 className="font-semibold">Experience</h4>
-                  <p className="text-gray-600 dark:text-gray-400">Full Stack Development</p>
+                  <p className="text-gray-600 dark:text-gray-400">6 Months Internship</p>
                 </div>
                 <div className="p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
                   <h4 className="font-semibold">Location</h4>

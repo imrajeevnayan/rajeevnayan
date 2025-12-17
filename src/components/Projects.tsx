@@ -1,9 +1,76 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github } from 'lucide-react';
-import { desc } from 'framer-motion/client';
+import { desc, title } from 'framer-motion/client';
 
-const projects = [
+
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  links: {
+    github: string;
+    live?: string;
+  };
+}
+
+const projects: Project[] = [
+  {
+    title: 'Hospital Management System',
+    description: 'Developed a comprehensive hospital management system featuring patient onboarding, doctor scheduling, and role-based access control. Implemented JWT authentication and optimized database operations using Spring Data JPA and Hibernate, reducing query execution time by 40%.',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
+    tech: ['Java', 'Spring Boot', 'Hibernate', 'MySQL', 'JWT'],
+    links: {
+      github: 'https://github.com/imrajeevnayan/hospital-management-springboot',
+    },
+  },
+  {
+    title: 'Real-Time Chat Application',
+    description: 'Built a real-time messaging platform with chat rooms, instant messaging, and typing indicators using WebSocket and STOMP protocol. Features JWT-based WebSocket authentication and a responsive React.js frontend handling 500+ concurrent users.',
+    image: 'https://images.unsplash.com/photo-1611606063065-ee7946f0787a?auto=format&fit=crop&w=800&q=80',
+    tech: ['Spring Boot', 'WebSocket', 'STOMP', 'MongoDB', 'React.js'],
+    links: {
+      github: 'https://github.com/imrajeevnayan/real-time-chat',
+    },
+  },
+  {
+    title: 'E-Commerce Food Ordering System',
+    description: 'Full-stack food ordering application with menu browsing, cart management, and payment integration. Implemented REST APIs with input validation, dynamic pricing engine, and Redux state management for a seamless user experience.',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80',
+    tech: ['Spring Boot', 'React.js', 'MySQL', 'Redux', 'Spring Data JPA'],
+    links: {
+      github: 'https://github.com/imrajeevnayan',
+    },
+  },
+  {
+    title: 'Fitness Tracker Application',
+    description: 'Developed a fitness tracking platform with workout logging, calorie tracking, and progress monitoring features. Implemented analytics APIs for dashboard insights and secure authentication/authorization using JWT tokens.',
+    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80',
+    tech: ['Spring Boot', 'React.js', 'PostgreSQL', 'JWT'],
+    links: {
+      github: 'https://github.com/imrajeevnayan',
+    },
+  },
+  {
+    title: 'Ziaka',
+    description: 'Ziaka is a modern food delivery platform that brings the authentic taste of India right to your doorstep. It offers a seamless food ordering experience with real-time updates and secure authentication.',
+    image: 'https://media.istockphoto.com/id/1829241109/photo/enjoying-a-brunch-together.jpg?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=',
+    tech: ['React.js', 'Firebase', 'CSS'],
+    links: {
+      github: 'https://github.com/imrajeevnayan/ziaka',
+      live: 'https://imrajeevnayan.github.io/ziaka/',
+    },
+  },
+  {
+    title: 'Hotel Booking Application',
+    description: 'A comprehensive hotel booking application featuring room reservation, user management, and admin dashboard. Built with Spring Boot backend and React frontend.',
+    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80',
+    tech: ['Java', 'Spring Boot', 'MySQL', 'React.js'],
+    links: {
+      github: 'https://github.com/imrajeevnayan/hotel-booking',
+    },
+  },
   {
     title: 'FoodHub Website',
     description: 'A full-stack food delivery platform built with React.js, Node.js, and Express.js. Features user authentication and secure payment gateway integration.',
@@ -35,35 +102,25 @@ const projects = [
     },
   },
   {
-    title: 'ziaka ',
-    description: 'Zaika is a modern food delivery platform that brings the authentic taste of India right to your doorstep.it offers a seamless food ordering experience with real-time updates and secure authentication.',
-    image: 'https://media.istockphoto.com/id/1829241109/photo/enjoying-a-brunch-together.jpg?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=',
-    tech: ['React.js', 'Firebase', 'CSS'],
-    links: {
-      github: 'https://github.com/imrajeevnayan/ziaka/',
-      live: 'https://imrajeevnayan.github.io/ziaka/',
-    },
-  },
-  {
-    title:'Rento',
+    title: 'Rento',
     description: 'Rento is a modern rental platform that connects users with a wide range of rental services, from apartments to vehicles. It features user-friendly navigation and secure payment options.',
-    image: 'https://i.ibb.co/8D1Mgj0y/Screenshot-2025-08-06-185159.png?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=', 
+    image: 'https://i.ibb.co/8D1Mgj0y/Screenshot-2025-08-06-185159.png?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=',
     tech: ['React.js', 'Firebase', 'CSS'],
     links: {
       github: 'https://github.com/imrajeevnayan/Rento',
       live: 'https://imrajeevnayan.github.io/Rento/',
+    },
   },
-},
-{
-  title:'readmify',
-  description: 'readmify is an AI-powered README generator designed to help developers create polished and informative README.md files for their GitHub projects. It uses advanced AI algorithms to analyze project details and generate comprehensive documentation.',
-  image: 'https://i.ibb.co/JFkMMdQp/Screenshot-2025-08-05-233237.png?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=',
-  tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
-  links: {
-    github: 'https://github.com/imrajeevnayan/readmify',
-    live: 'https://imrajeevnayan.github.io/readmify/',
+  {
+    title: 'readmify',
+    description: 'readmify is an AI-powered README generator designed to help developers create polished and informative README.md files for their GitHub projects. It uses advanced AI algorithms to analyze project details and generate comprehensive documentation.',
+    image: 'https://i.ibb.co/JFkMMdQp/Screenshot-2025-08-05-233237.png?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=',
+    tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
+    links: {
+      github: 'https://github.com/imrajeevnayan/readmify',
+      live: 'https://imrajeevnayan.github.io/readmify/',
+    },
   },
-},
 ];
 
 const Projects = () => {
@@ -81,7 +138,7 @@ const Projects = () => {
           <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
@@ -96,6 +153,9 @@ const Projects = () => {
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="800"
+                  height="600"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
               </div>
@@ -124,15 +184,17 @@ const Projects = () => {
                     <Github className="w-5 h-5 mr-1" />
                     Code
                   </a>
-                  <a
-                    href={project.links.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
-                  >
-                    <ExternalLink className="w-5 h-5 mr-1" />
-                    Live Demo
-                  </a>
+                  {project.links.live && (
+                    <a
+                      href={project.links.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400"
+                    >
+                      <ExternalLink className="w-5 h-5 mr-1" />
+                      Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>

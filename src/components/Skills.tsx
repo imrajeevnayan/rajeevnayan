@@ -4,24 +4,24 @@ import { Code, Database, Terminal, Wrench } from 'lucide-react';
 
 const skillCategories = [
   {
-    title: 'Programming Languages',
+    title: 'Languages',
     icon: <Code className="w-6 h-6" />,
-    skills: ['Java', 'Python', 'C', 'SQL', 'JavaScript'],
+    skills: ['Java', 'JavaScript', 'SQL', 'Python', 'C'],
   },
   {
     title: 'Frontend',
     icon: <Terminal className="w-6 h-6" />,
-    skills: ['HTML', 'CSS', 'Tailwind CSS', 'Bootstrap', 'React.js'],
+    skills: ['HTML5', 'CSS3', 'React.js', 'Redux', 'Tailwind CSS', 'Bootstrap'],
   },
   {
-    title: 'Backend',
+    title: 'Backend & Databases',
     icon: <Database className="w-6 h-6" />,
-    skills: ['Spring', 'SpringBoot', 'MySQL', 'Oracle', 'Jdbc', 'MongoDB'],
+    skills: ['Spring Boot', 'Spring MVC', 'Spring Security', 'Hibernate', 'MySQL', 'PostgreSQL', 'MongoDB', 'Oracle', 'JDBC'],
   },
   {
-    title: 'Tools & Others',
+    title: 'Tools & Cloud',
     icon: <Wrench className="w-6 h-6" />,
-    skills: ['Git', 'GitHub', 'Problem Solving', 'Clean Code'],
+    skills: ['AWS', 'Docker', 'Git', 'Jenkins', 'Postman', 'REST API', 'Microservices'],
   },
 ];
 
@@ -63,7 +63,7 @@ const Skills = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {skillCategories.map((category, index) => (
             <motion.div
@@ -97,6 +97,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
+
           <p className="text-lg text-gray-600 dark:text-gray-400">
             Always learning and expanding my skill set with new technologies and best practices.
           </p>

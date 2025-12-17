@@ -17,24 +17,25 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
   const menuItems = [
     { name: 'Home', to: 'home' },
     { name: 'About', to: 'about' },
+    { name: 'Experience', to: 'experience' },
     { name: 'Skills', to: 'skills' },
     { name: 'Projects', to: 'projects' },
+    { name: 'Certifications', to: 'certifications' },
     { name: 'Contact', to: 'contact' },
   ];
 
   return (
-    <header 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg' 
-          : 'bg-transparent'
-      }`}
+    <header
+      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg'
+        : 'bg-transparent'
+        }`}
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link 
-            to="home" 
-            smooth={true} 
+          <Link
+            to="home"
+            smooth={true}
             className="text-2xl font-bold cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             RAJEEV NAYAN
@@ -85,8 +86,8 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-lg border-t dark:border-gray-800">
-            <div className="flex flex-col space-y-4 px-6 py-4">
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-lg border-t dark:border-gray-800">
+            <div className="flex flex-col space-y-4 px-6 py-6 h-screen sm:h-auto">
               {menuItems.map((item) => (
                 <Link
                   key={item.to}

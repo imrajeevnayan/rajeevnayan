@@ -1,12 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Blog from './components/Blog';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+
+// Lazy load components for performance
+const Experience = lazy(() => import('./components/Experience'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const Certifications = lazy(() => import('./components/Certifications'));
+const Blog = lazy(() => import('./components/Blog'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
+
+const LoadingFallback = () => (
+  <div className="flex items-center justify-center min-h-[200px]">
+    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -28,11 +38,15 @@ function App() {
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
       <About />
-      <Skills />
-      <Projects />
-      <Blog />
-      <Contact />
-      <Footer />
+      <Suspense fallback={<LoadingFallback />}>
+        <Experience />
+        <Skills />
+        <Projects />
+        <Certifications />
+        <Blog />
+        <Contact />
+        <Footer />
+      </Suspense>
     </div>
   );
 }
