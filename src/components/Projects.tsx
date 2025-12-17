@@ -148,7 +148,7 @@ const Projects = () => {
               viewport={{ once: true }}
               className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg transform hover:scale-105 transition-transform duration-300"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-64 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
