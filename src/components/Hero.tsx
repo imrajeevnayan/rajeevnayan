@@ -133,7 +133,7 @@ const Hero = () => {
             <motion.img
               src="https://i.ibb.co/Y4stRcGk/1752515067277.jpg?fit=crop&w=800&q=80"
               alt="Rajeev Nayan"
-              className="rounded-full w-72 h-72 md:w-96 md:h-96 object-cover mx-auto shadow-2xl ring-4 ring-white dark:ring-gray-800"
+              className="rounded-full w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 object-cover mx-auto shadow-2xl ring-4 ring-white dark:ring-gray-800"
               animate={{ y: [0, -10, 0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
             />
