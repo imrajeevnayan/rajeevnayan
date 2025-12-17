@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { motion } from 'framer-motion';
 import { GraduationCap, Languages, Brain } from 'lucide-react';
 
