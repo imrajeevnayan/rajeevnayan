@@ -104,7 +104,7 @@ const projects: Project[] = [
   {
     title: 'Rento',
     description: 'Rento is a modern rental platform that connects users with a wide range of rental services, from apartments to vehicles. It features user-friendly navigation and secure payment options.',
-    image: 'https://i.ibb.co/8D1Mgj0y/Screenshot-2025-08-06-185159.png?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=',
+    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80',
     tech: ['React.js', 'Firebase', 'CSS'],
     links: {
       github: 'https://github.com/imrajeevnayan/Rento',
@@ -114,7 +114,7 @@ const projects: Project[] = [
   {
     title: 'readmify',
     description: 'readmify is an AI-powered README generator designed to help developers create polished and informative README.md files for their GitHub projects. It uses advanced AI algorithms to analyze project details and generate comprehensive documentation.',
-    image: 'https://i.ibb.co/JFkMMdQp/Screenshot-2025-08-05-233237.png?s=1024x1024&w=is&k=20&c=QPHFTWoscwMSXOEGKoAKOjlCnMGszppFBrqQHdy4EGc=',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80',
     tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB'],
     links: {
       github: 'https://github.com/imrajeevnayan/readmify',
