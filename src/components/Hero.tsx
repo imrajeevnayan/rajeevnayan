@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Code2, FileText } from 'lucide-react';
 
+import Magnetic from './common/Magnetic';
+
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden">
@@ -52,56 +54,68 @@ const Hero = () => {
             Java Full Stack Developer with 6 months of professional internship experience building scalable web applications using Java, Spring Boot, React.js, and cloud technologies. Proficient in RESTful APIs, microservices architecture, and AWS deployment.
           </p>
           <div className="flex justify-center md:justify-start space-x-4 mb-8">
-            <a
-              href="https://github.com/imrajeevnayan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-              aria-label="GitHub Profile"
-            >
-              <Github size={24} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/imrajeevnayan/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-              aria-label="LinkedIn Profile"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href="https://leetcode.com/u/imrajeevnayan/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-              aria-label="LeetCode Profile"
-            >
-              <Code2 size={24} />
-            </a>
-            <a
-              href="https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-              aria-label="Resume"
-            >
-              <FileText size={24} />
-            </a>
+            <Magnetic>
+              <a
+                href="https://github.com/imrajeevnayan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
+                aria-label="GitHub Profile"
+              >
+                <Github size={24} />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="https://www.linkedin.com/in/imrajeevnayan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
+                aria-label="LinkedIn Profile"
+              >
+                <Linkedin size={24} />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="https://leetcode.com/u/imrajeevnayan/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
+                aria-label="LeetCode Profile"
+              >
+                <Code2 size={24} />
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
+                aria-label="Resume"
+              >
+                <FileText size={24} />
+              </a>
+            </Magnetic>
           </div>
           <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
-            <a
-              href="#projects"
-              className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-            >
-              View My Work
-            </a>
-            <a
-              href="#contact"
-              className="px-8 py-3 border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-            >
-              Contact Me
-            </a>
+            <Magnetic>
+              <a
+                href="#projects"
+                className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-block"
+              >
+                View My Work
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="#contact"
+                className="px-8 py-3 border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-block"
+              >
+                Contact Me
+              </a>
+            </Magnetic>
           </div>
         </motion.div>
         <motion.div
