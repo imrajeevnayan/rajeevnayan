@@ -80,7 +80,7 @@ const Hero = () => {
               <Code2 size={24} />
             </a>
             <a
-              href="https://drive.google.com/file/d/1ItYtHfse5BYgsyMF7Teboj5zF3tK3aei/view?usp=sharing"
+              href="https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
