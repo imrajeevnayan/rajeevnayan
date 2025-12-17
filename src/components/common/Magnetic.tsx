@@ -26,7 +26,7 @@ const Magnetic: React.FC<MagneticProps> = ({ children }) => {
             yTo(0);
         };
 
-        if (magnetic.current) {
+        if (magnetic.current && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
             magnetic.current.addEventListener('mousemove', mouseMove);
             magnetic.current.addEventListener('mouseleave', mouseLeave);
         }
