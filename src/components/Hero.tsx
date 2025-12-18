@@ -39,11 +39,11 @@ const Hero = () => {
           <div className="inline-block px-3 py-1 mb-4 text-sm font-medium text-blue-600 bg-blue-100 rounded-full dark:bg-blue-900/30 dark:text-blue-400">
             Available for opportunities
           </div>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight dark:text-white">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight dark:text-white leading-tight">
             Hi, I'm{' '}
             <br className="hidden md:block" />
             <motion.span
-              className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent inline-block"
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent inline-block pb-1"
               animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
               transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
               style={{ backgroundSize: '200% auto' }}
@@ -54,7 +54,7 @@ const Hero = () => {
           <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 font-light">
             Full Stack Developer & <span className="font-medium text-gray-800 dark:text-white">Problem Solver</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed">
             Crafting scalable web applications with <span className="text-blue-600 dark:text-blue-400 font-medium">Java Spring Boot</span> and <span className="text-blue-600 dark:text-blue-400 font-medium">React.js</span>.
             Turning complex problems into elegant, user-centric solutions.
           </p>

@@ -58,6 +58,7 @@ const Skills = () => {
                   <img
                     src={`https://skillicons.dev/icons?i=${category.skills}&perline=5`}
                     alt={`${category.title} Skills`}
+                    loading="lazy"
                     className="hover:scale-105 transition-transform duration-300 cursor-pointer"
                   />
                 </div>

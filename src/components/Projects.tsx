@@ -163,7 +163,8 @@ const Projects = () => {
                     href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors"
+                    className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                    aria-label="View Code"
                   >
                     <Github size={20} />
                   </a>
@@ -172,7 +173,8 @@ const Projects = () => {
                       href={project.links.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors"
+                      className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                      aria-label="View Live Demo"
                     >
                       <ExternalLink size={20} />
                     </a>
