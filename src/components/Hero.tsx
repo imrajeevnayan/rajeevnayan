@@ -1,109 +1,69 @@
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Code2, FileText } from 'lucide-react';
+import { Github, Linkedin, Code2, FileText, ArrowDown } from 'lucide-react';
+import { Link } from 'react-scroll';
 
 import Magnetic from './common/Magnetic';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden bg-white dark:bg-gray-900">
       {/* Animated floating shapes - enhanced */}
       <motion.div
-        className="absolute top-10 left-10 w-24 h-24 bg-blue-400 bg-opacity-30 rounded-full z-0 shadow-2xl shadow-blue-300"
-        animate={{ y: [0, 30, 0], x: [0, 20, 0], rotate: [0, 15, -15, 0] }}
-        transition={{ repeat: Infinity, duration: 7, ease: 'easeInOut' }}
+        className="absolute top-10 left-10 w-32 h-32 bg-purple-400/30 rounded-full blur-3xl"
+        animate={{ y: [0, 40, 0], x: [0, 30, 0], scale: [1, 1.2, 1] }}
+        transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute bottom-20 right-20 w-32 h-32 bg-indigo-400 bg-opacity-20 rounded-full z-0 shadow-2xl shadow-indigo-300"
-        animate={{ y: [0, -40, 0], x: [0, -30, 0], scale: [1, 1.1, 1] }}
-        transition={{ repeat: Infinity, duration: 9, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 w-16 h-16 bg-pink-400 bg-opacity-20 rounded-full z-0 shadow-2xl shadow-pink-200"
-        animate={{ y: [0, 20, -20, 0], x: [0, -20, 20, 0], scale: [1, 1.2, 1] }}
+        className="absolute bottom-20 right-20 w-48 h-48 bg-blue-400/20 rounded-full blur-3xl"
+        animate={{ y: [0, -50, 0], x: [0, -40, 0], scale: [1, 1.1, 1] }}
         transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute top-1/2 left-1/2 w-40 h-40 bg-pink-400/20 rounded-full blur-3xl"
+        animate={{ y: [0, 30, -30, 0], x: [0, -30, 30, 0] }}
+        transition={{ repeat: Infinity, duration: 12, ease: 'easeInOut' }}
         style={{ translate: '-50% -50%' }}
       />
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 -z-10" />
 
-      <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center">
+      {/* Background mesh/grid pattern overlay */}
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
+
+      <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center relative z-10">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="md:w-1/2 text-center md:text-left"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="md:w-1/2 text-center md:text-left pt-8 md:pt-0"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">
+          <div className="inline-block px-3 py-1 mb-4 text-sm font-medium text-blue-600 bg-blue-100 rounded-full dark:bg-blue-900/30 dark:text-blue-400">
+            Available for opportunities
+          </div>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight dark:text-white">
             Hi, I'm{' '}
+            <br className="hidden md:block" />
             <motion.span
-              className="bg-gradient-to-r from-blue-500 via-indigo-500 to-pink-400 bg-clip-text text-transparent relative"
-              initial={{ backgroundPosition: '0% 50%' }}
+              className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent inline-block"
               animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
-              style={{ backgroundSize: '200% 200%' }}
+              transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
+              style={{ backgroundSize: '200% auto' }}
             >
               Rajeev Nayan
-              <span className="absolute bottom-0 left-0 w-full h-2 bg-blue-200 dark:bg-blue-800 -z-10 transform -skew-x-12"></span>
             </motion.span>
           </h1>
-          <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6">
-            Full Stack Developer
+          <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 font-light">
+            Full Stack Developer & <span className="font-medium text-gray-800 dark:text-white">Problem Solver</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl">
-            Java Full Stack Developer with 6 months of professional internship experience building scalable web applications using Java, Spring Boot, React.js, and cloud technologies. Proficient in RESTful APIs, microservices architecture, and AWS deployment.
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed">
+            Crafting scalable web applications with <span className="text-blue-600 dark:text-blue-400 font-medium">Java Spring Boot</span> and <span className="text-blue-600 dark:text-blue-400 font-medium">React.js</span>.
+            Turning complex problems into elegant, user-centric solutions.
           </p>
-          <div className="flex justify-center md:justify-start space-x-4 mb-8">
-            <Magnetic>
-              <a
-                href="https://github.com/imrajeevnayan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-                aria-label="GitHub Profile"
-              >
-                <Github size={24} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="https://www.linkedin.com/in/imrajeevnayan/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-                aria-label="LinkedIn Profile"
-              >
-                <Linkedin size={24} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="https://leetcode.com/u/imrajeevnayan/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-                aria-label="LeetCode Profile"
-              >
-                <Code2 size={24} />
-              </a>
-            </Magnetic>
-            <Magnetic>
-              <a
-                href="https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 rounded-full border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-                aria-label="Resume"
-              >
-                <FileText size={24} />
-              </a>
-            </Magnetic>
-          </div>
-          <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
+
+          <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-10">
             <Magnetic>
               <a
                 href="#projects"
-                className="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-block"
+                className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 flex items-center gap-2"
               >
                 View My Work
               </a>
@@ -111,35 +71,91 @@ const Hero = () => {
             <Magnetic>
               <a
                 href="#contact"
-                className="px-8 py-3 border-2 border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400 rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-400 dark:hover:text-gray-900 transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-block"
+                className="px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-500 transition-all duration-300 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm"
               >
                 Contact Me
               </a>
             </Magnetic>
           </div>
+
+          <div className="flex justify-center md:justify-start space-x-6">
+            {[
+              { Icon: Github, href: "https://github.com/imrajeevnayan", label: "GitHub" },
+              { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/", label: "LinkedIn" },
+              { Icon: Code2, href: "https://leetcode.com/u/imrajeevnayan/", label: "LeetCode" },
+              { Icon: FileText, href: "https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing", label: "Resume" }
+            ].map(({ Icon, href, label }, index) => (
+              <Magnetic key={index}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-colors duration-300"
+                  aria-label={label}
+                >
+                  <Icon size={24} />
+                </a>
+              </Magnetic>
+            ))}
+          </div>
         </motion.div>
+
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          className="md:w-1/2 mb-8 md:mb-0"
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          className="md:w-1/2 mb-12 md:mb-0 relative"
         >
-          <div className="relative flex items-center justify-center">
+          <div className="relative">
             <motion.div
-              className="absolute inset-0 bg-blue-200 dark:bg-blue-800 rounded-full blur-3xl opacity-20 animate-pulse"
-              animate={{ scale: [1, 1.1, 1], opacity: [0.2, 0.4, 0.2] }}
-              transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+              className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur-[100px] opacity-20"
+              animate={{ opacity: [0.2, 0.4, 0.2] }}
+              transition={{ repeat: Infinity, duration: 5 }}
             />
-            <motion.img
-              src="https://i.ibb.co/Y4stRcGk/1752515067277.jpg?fit=crop&w=800&q=80"
-              alt="Rajeev Nayan"
-              className="rounded-full w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 object-cover mx-auto shadow-2xl ring-4 ring-white dark:ring-gray-800"
-              animate={{ y: [0, -10, 0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }}
-            />
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto">
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-gray-300 dark:border-gray-700 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
+              <motion.img
+                src="https://i.ibb.co/Y4stRcGk/1752515067277.jpg?fit=crop&w=800&q=80"
+                alt="Rajeev Nayan"
+                className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              />
+
+              {/* Floating badges */}
+              <motion.div
+                className="absolute -right-4 top-10 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg flex items-center gap-2"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 5, delay: 1 }}
+              >
+                <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400">
+                  <Code2 size={20} />
+                </div>
+                <div className="text-sm font-bold dark:text-white">Full Stack</div>
+              </motion.div>
+
+              <motion.div
+                className="absolute -left-4 bottom-20 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg flex items-center gap-2"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ repeat: Infinity, duration: 6, delay: 2 }}
+              >
+                <div className="text-2xl">🚀</div>
+                <div className="text-sm font-bold dark:text-white">Problem Solver</div>
+              </motion.div>
+            </div>
           </div>
         </motion.div>
       </div>
+
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.5 }}
+      >
+        <Link to="about" smooth={true} offset={-80}>
+          <ArrowDown size={32} />
+        </Link>
+      </motion.div>
     </section>
   );
 };
