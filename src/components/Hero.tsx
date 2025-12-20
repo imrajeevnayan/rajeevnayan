@@ -4,6 +4,7 @@ import { Github, Linkedin, Code2, FileText, ArrowDown } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 import Magnetic from './common/Magnetic';
+import Tilt3D from './common/Tilt3D';
 
 const Hero = () => {
   return (
@@ -113,35 +114,42 @@ const Hero = () => {
               transition={{ repeat: Infinity, duration: 5 }}
             />
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto">
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-gray-300 dark:border-gray-700 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
-              <motion.img
-                src="https://i.ibb.co/Y4stRcGk/1752515067277.jpg?fit=crop&w=800&q=80"
-                alt="Rajeev Nayan"
-                className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              />
+              <Tilt3D className="w-full h-full">
+                <>
+                  <div className="absolute inset-0 rounded-full border-2 border-dashed border-gray-300 dark:border-gray-700 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
+                  <motion.img
+                    src="https://i.ibb.co/Y4stRcGk/1752515067277.jpg?fit=crop&w=800&q=80"
+                    alt="Rajeev Nayan"
+                    className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ transform: "translateZ(30px)" }}
+                  />
 
-              {/* Floating badges */}
-              <motion.div
-                className="absolute -right-4 top-10 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg flex items-center gap-2"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 5, delay: 1 }}
-              >
-                <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400">
-                  <Code2 size={20} />
-                </div>
-                <div className="text-sm font-bold dark:text-white">Full Stack</div>
-              </motion.div>
+                  {/* Floating badges */}
+                  <motion.div
+                    className="absolute -right-4 top-10 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg flex items-center gap-2"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ repeat: Infinity, duration: 5, delay: 1 }}
+                    style={{ transform: "translateZ(60px)" }}
+                  >
+                    <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400">
+                      <Code2 size={20} />
+                    </div>
+                    <div className="text-sm font-bold dark:text-white">Full Stack</div>
+                  </motion.div>
 
-              <motion.div
-                className="absolute -left-4 bottom-20 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg flex items-center gap-2"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ repeat: Infinity, duration: 6, delay: 2 }}
-              >
-                <div className="text-2xl">🚀</div>
-                <div className="text-sm font-bold dark:text-white">Problem Solver</div>
-              </motion.div>
+                  <motion.div
+                    className="absolute -left-4 bottom-20 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-lg flex items-center gap-2"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ repeat: Infinity, duration: 6, delay: 2 }}
+                    style={{ transform: "translateZ(50px)" }}
+                  >
+                    <div className="text-2xl">🚀</div>
+                    <div className="text-sm font-bold dark:text-white">Problem Solver</div>
+                  </motion.div>
+                </>
+              </Tilt3D>
             </div>
           </div>
         </motion.div>

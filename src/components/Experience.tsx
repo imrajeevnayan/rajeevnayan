@@ -45,13 +45,14 @@ const Experience = () => {
                             <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 dark:bg-blue-400" />
                             <div className="mb-4">
                                 <h3 className="text-2xl font-bold">{exp.position}</h3>
-                                <div className="flex items-center text-gray-600 dark:text-gray-400 mt-2 space-x-4">
+                                <div className="flex flex-col sm:flex-row sm:items-center text-gray-600 dark:text-gray-400 mt-2 gap-2 sm:gap-4 sm:space-x-0">
                                     <span className="font-semibold">{exp.company}</span>
-                                    <span className="flex items-center">
+                                    <span className="hidden sm:inline">•</span>
+                                    <span className="flex items-center text-sm sm:text-base">
                                         <Calendar className="w-4 h-4 mr-1" />
                                         {exp.period}
                                     </span>
-                                    <span className="px-2 py-1 text-xs rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400">
+                                    <span className="self-start sm:self-auto px-2 py-1 text-xs rounded-full bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400">
                                         {exp.type}
                                     </span>
                                 </div>

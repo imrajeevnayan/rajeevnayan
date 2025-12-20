@@ -13,7 +13,7 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">About Me</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -71,7 +71,7 @@ const About = () => {
             className="relative"
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg transform rotate-6 scale-105 opacity-10"></div>
-            <div className="relative bg-white dark:bg-gray-700 p-8 rounded-lg shadow-xl">
+            <div className="relative bg-white dark:bg-gray-700 p-6 md:p-8 rounded-lg shadow-xl">
               <h3 className="text-2xl font-bold mb-6">Quick Facts</h3>
               <div className="space-y-4">
                 <div className="p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
