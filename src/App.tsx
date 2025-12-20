@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import Header from './components/Header';
+import CustomCursor from './components/common/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 
@@ -36,6 +37,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+      <CustomCursor />
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
       <About />

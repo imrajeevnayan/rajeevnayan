@@ -5,6 +5,7 @@ import { Link } from 'react-scroll';
 
 import Magnetic from './common/Magnetic';
 import Tilt3D from './common/Tilt3D';
+import GlitchText from './common/GlitchText';
 
 const Hero = () => {
   return (
@@ -43,14 +44,10 @@ const Hero = () => {
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight dark:text-white leading-tight">
             Hi, I'm{' '}
             <br className="hidden md:block" />
-            <motion.span
+            <GlitchText
+              text="Rajeev Nayan"
               className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent inline-block pb-1"
-              animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-              transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-              style={{ backgroundSize: '200% auto' }}
-            >
-              Rajeev Nayan
-            </motion.span>
+            />
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 font-light">
             Full Stack Developer & <span className="font-medium text-gray-800 dark:text-white">Problem Solver</span>

@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Folder } from 'lucide-react';
+import Tilt3D from './common/Tilt3D';
 
 interface Project {
   title: string;
@@ -149,61 +150,65 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="group bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full"
+              className="h-full"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                  <a
-                    href={project.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
-                    aria-label="View Code"
-                  >
-                    <Github size={20} />
-                  </a>
-                  {project.links.live && (
-                    <a
-                      href={project.links.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
-                      aria-label="View Live Demo"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-                  )}
+              <Tilt3D className="h-full" intensity={5}>
+                <div className="group bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full transform-style-3d">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                      <a
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                        aria-label="View Code"
+                      >
+                        <Github size={20} />
+                      </a>
+                      {project.links.live && (
+                        <a
+                          href={project.links.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                          aria-label="View Live Demo"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                  <div className="p-6 flex flex-col flex-grow text-left">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <a href={project.links.github} target="_blank" rel="noopener noreferrer">
+                        <Folder size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
+                      </a>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mt-auto">
+                      {project.tech.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-2.5 py-1 bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-300 rounded text-xs font-medium border border-blue-100 dark:border-gray-600"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="p-6 flex flex-col flex-grow">
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {project.title}
-                  </h3>
-                  <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                    <Folder size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
-                  </a>
-                </div>
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.tech.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2.5 py-1 bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-300 rounded text-xs font-medium border border-blue-100 dark:border-gray-600"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              </Tilt3D>
             </motion.div>
           ))}
         </div>
