@@ -6,6 +6,7 @@ import { Link } from 'react-scroll';
 import Magnetic from './common/Magnetic';
 import Tilt3D from './common/Tilt3D';
 import GlitchText from './common/GlitchText';
+import profileImage from '../assets/profile.jpg';
 
 const Hero = () => {
   return (
@@ -115,7 +116,7 @@ const Hero = () => {
                 <>
                   <div className="absolute inset-0 rounded-full border-2 border-dashed border-gray-300 dark:border-gray-700 animate-spin-slow" style={{ animationDuration: '20s' }}></div>
                   <motion.img
-                    src="https://i.ibb.co/Y4stRcGk/1752515067277.jpg?fit=crop&w=800&q=80"
+                    src={profileImage}
                     alt="Rajeev Nayan"
                     className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
                     whileHover={{ scale: 1.02 }}
