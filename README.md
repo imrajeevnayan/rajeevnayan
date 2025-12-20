@@ -19,6 +19,9 @@
       <img src="https://img.shields.io/badge/Email-Contact%20Me-D14836?style=for-the-badge&logo=gmail" alt="Email" />
     </a>
   </p>
+
+  <br />
+  <img src="assets/preview.png" alt="Project Preview" width="100%" />
 </div>
 
 ---
@@ -151,7 +154,6 @@ I am currently open to **Full Stack Development** roles. Feel free to reach out!
 - **Email**: [imrajeevnayan@gmail.com](mailto:imrajeevnayan@gmail.com)
 - **LinkedIn**: [linkedin.com/in/imrajeevnayan](https://www.linkedin.com/in/imrajeevnayan/)
 - **GitHub**: [github.com/imrajeevnayan](https://github.com/imrajeevnayan)
-- **Phone**: +91-9155028525
 
 ---
 
