@@ -1,11 +1,14 @@
-
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Folder } from 'lucide-react';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, Folder, ChevronDown, ChevronUp } from 'lucide-react';
 import Tilt3D from './common/Tilt3D';
 
 interface Project {
   title: string;
   description: string;
+  challenge?: string;
+  solution?: string;
+  outcome?: string;
   image: string;
   tech: string[];
   links: {
@@ -17,7 +20,10 @@ interface Project {
 const projects: Project[] = [
   {
     title: 'Hospital Management System',
-    description: 'Comprehensive system featuring patient onboarding, doctor scheduling, and role-based access control. Implemented JWT authentication and optimized database query execution time by 40%.',
+    description: 'Comprehensive system featuring patient onboarding, doctor scheduling, and role-based access control.',
+    challenge: 'Managing concurrent appointments and ensuring data privacy for sensitive patient records was a critical hurdle. The legacy system suffered from race conditions during booking.',
+    solution: 'Implemented pessimistic locking in the database for bookings and integrated Spring Security with JWT for robust role-based access control. Used Hibernate Envers for auditing changes.',
+    outcome: 'Optimized database query execution time by 40% and eliminated booking conflicts entirely, supporting 50+ concurrent users seamlessly.',
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
     tech: ['Java', 'Spring Boot', 'Hibernate', 'MySQL', 'JWT'],
     links: {
@@ -26,7 +32,10 @@ const projects: Project[] = [
   },
   {
     title: 'Real-Time Chat Application',
-    description: 'Real-time messaging platform with chat rooms, instant messaging, and typing indicators using WebSocket/STOMP. Handles 500+ concurrent users with MongoDB persistence.',
+    description: 'Real-time messaging platform with chat rooms, instant messaging, and typing indicators.',
+    challenge: 'Achieving low-latency message delivery and maintaining connection stability for hundreds of users simultaneously.',
+    solution: 'Leveraged WebSocket with STOMP protocol for bi-directional communication. Implemented message buffering and reconnection logic in React to handle network instability.',
+    outcome: 'Successfully handled 500+ concurrent users with <100ms latency. The reliable persistence layer with MongoDB ensured no message loss.',
     image: 'https://images.unsplash.com/photo-1611606063065-ee7946f0787a?auto=format&fit=crop&w=800&q=80',
     tech: ['Spring Boot', 'WebSocket', 'STOMP', 'MongoDB', 'React.js'],
     links: {
@@ -122,6 +131,134 @@ const projects: Project[] = [
   },
 ];
 
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="h-full"
+    >
+      <div className="h-full">
+        {/* Disable Tilt when expanded to allow text selection and easier reading */}
+        <Tilt3D className="h-full" intensity={isExpanded ? 0 : 5}>
+          <div className={`group bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full ${!isExpanded ? 'transform-style-3d' : ''}`}>
+            <div className="relative h-48 overflow-hidden flex-shrink-0">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                  aria-label="View Code"
+                >
+                  <Github size={20} />
+                </a>
+                {project.links.live && (
+                  <a
+                    href={project.links.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                    aria-label="View Live Demo"
+                  >
+                    <ExternalLink size={20} />
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <div className="p-6 flex flex-col flex-grow text-left">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-display">
+                  {project.title}
+                </h3>
+                <a href={project.links.github} target="_blank" rel="noopener noreferrer">
+                  <Folder size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
+                </a>
+              </div>
+
+              <div className="flex-grow">
+                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
+                  {project.description}
+                </p>
+
+                {/* Storytelling Expansion */}
+                <AnimatePresence>
+                  {isExpanded && (project.challenge || project.solution || project.outcome) && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-2 pb-4 space-y-3 border-t border-gray-100 dark:border-gray-600 mt-2">
+                        {project.challenge && (
+                          <div>
+                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">The Challenge</h4>
+                            <p className="text-sm text-gray-700 dark:text-gray-300">{project.challenge}</p>
+                          </div>
+                        )}
+                        {project.solution && (
+                          <div>
+                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1"> The Solution</h4>
+                            <p className="text-sm text-gray-700 dark:text-gray-300">{project.solution}</p>
+                          </div>
+                        )}
+                        {project.outcome && (
+                          <div>
+                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">The Outcome</h4>
+                            <p className="text-sm text-gray-700 dark:text-gray-300">{project.outcome}</p>
+                          </div>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Toggle Button for Details */}
+              {(project.challenge || project.solution || project.outcome) && (
+                <button
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="flex items-center text-xs font-medium text-blue-600 dark:text-blue-400 mb-4 hover:underline focus:outline-none"
+                >
+                  {isExpanded ? (
+                    <>Show Less <ChevronUp size={14} className="ml-1" /></>
+                  ) : (
+                    <>View Case Study <ChevronDown size={14} className="ml-1" /></>
+                  )}
+                </button>
+              )}
+
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {project.tech.map((tech, techIndex) => (
+                  <span
+                    key={techIndex}
+                    className="px-2.5 py-1 bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-300 rounded text-xs font-medium border border-blue-100 dark:border-gray-600"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Tilt3D>
+      </div>
+    </motion.div>
+  );
+};
+
 const Projects = () => {
   return (
     <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -133,7 +270,7 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-display">
             Featured Projects
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-6"></div>
@@ -144,72 +281,7 @@ const Projects = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="h-full"
-            >
-              <Tilt3D className="h-full" intensity={5}>
-                <div className="group bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full transform-style-3d">
-                  <div className="relative h-48 overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                      <a
-                        href={project.links.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
-                        aria-label="View Code"
-                      >
-                        <Github size={20} />
-                      </a>
-                      {project.links.live && (
-                        <a
-                          href={project.links.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
-                          aria-label="View Live Demo"
-                        >
-                          <ExternalLink size={20} />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                  <div className="p-6 flex flex-col flex-grow text-left">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {project.title}
-                      </h3>
-                      <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                        <Folder size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
-                      </a>
-                    </div>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-3 flex-grow">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mt-auto">
-                      {project.tech.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-2.5 py-1 bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-300 rounded text-xs font-medium border border-blue-100 dark:border-gray-600"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Tilt3D>
-            </motion.div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
       </div>

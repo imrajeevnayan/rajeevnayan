@@ -6,28 +6,15 @@ import { Link } from 'react-scroll';
 import Magnetic from './common/Magnetic';
 import Tilt3D from './common/Tilt3D';
 import GlitchText from './common/GlitchText';
+import GeometricShapes from './common/GeometricShapes';
 import profileImage from '../assets/profile.jpg';
 
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden bg-white dark:bg-gray-900">
       {/* Animated floating shapes - enhanced */}
-      <motion.div
-        className="absolute top-10 left-10 w-32 h-32 bg-purple-400/30 rounded-full blur-3xl"
-        animate={{ y: [0, 40, 0], x: [0, 30, 0], scale: [1, 1.2, 1] }}
-        transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-20 w-48 h-48 bg-blue-400/20 rounded-full blur-3xl"
-        animate={{ y: [0, -50, 0], x: [0, -40, 0], scale: [1, 1.1, 1] }}
-        transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute top-1/2 left-1/2 w-40 h-40 bg-pink-400/20 rounded-full blur-3xl"
-        animate={{ y: [0, 30, -30, 0], x: [0, -30, 30, 0] }}
-        transition={{ repeat: Infinity, duration: 12, ease: 'easeInOut' }}
-        style={{ translate: '-50% -50%' }}
-      />
+      {/* 3D Moving Shapes */}
+      <GeometricShapes />
 
       {/* Background mesh/grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
