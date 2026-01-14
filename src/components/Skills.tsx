@@ -17,7 +17,7 @@ const Skills = () => {
     },
     {
       title: 'Tools',
-      skills: 'aws,docker,git,github,jenkins,postman,linux,vscode',
+      skills: 'aws,docker,git,github,githubactions,jenkins,postman,linux,vscode',
     },
   ];
 
