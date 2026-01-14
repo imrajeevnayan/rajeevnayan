@@ -3,6 +3,8 @@ import { useState, useRef, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Github, Code2, Send, Loader2 } from 'lucide-react';
 
+import emailjs from '@emailjs/browser';
+
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -10,22 +12,25 @@ const Contact = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    if (!formRef.current) return;
 
-    // Simulate form submission
-    // TODO: Integrate EmailJS or similar service here
-    /*
-      emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formRef.current, 'YOUR_PUBLIC_KEY')
-        .then(() => setSubmitStatus('success'))
-        .catch(() => setSubmitStatus('error'));
-    */
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // NOTE: Make sure to create a .env file with your EmailJS credentials
+      await emailjs.sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
       setSubmitStatus('success');
-      if (formRef.current) formRef.current.reset();
+      formRef.current.reset();
       setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
+      console.error('EmailJS Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

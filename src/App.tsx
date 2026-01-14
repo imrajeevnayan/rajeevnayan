@@ -20,6 +20,8 @@ const LoadingFallback = () => (
   </div>
 );
 
+import ScrollToTop from './components/common/ScrollToTop';
+
 function App() {
   const [isDark, setIsDark] = useState(false);
 
@@ -38,6 +40,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       <CustomCursor />
+      <ScrollToTop />
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
       <About />
