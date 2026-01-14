@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
-import { Sun, Moon, Menu, X } from 'lucide-react';
+import { Sun, Moon, Menu, X, FileDown } from 'lucide-react';
 
 const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -56,6 +56,17 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all group-hover:w-full"></span>
               </Link>
             ))}
+
+            <a
+              href="https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all text-sm font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            >
+              <FileDown size={16} />
+              Resume
+            </a>
+
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300 transform hover:scale-110"
@@ -99,6 +110,16 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                   {item.name}
                 </Link>
               ))}
+              <a
+                href="https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium hover:underline"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <FileDown size={18} />
+                Download Resume
+              </a>
             </div>
           </div>
         )}
