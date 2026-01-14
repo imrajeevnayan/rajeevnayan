@@ -19,6 +19,18 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: 'Digital Library - LibStack',
+    description: 'Modern Digital Library application featuring book management, loan tracking, and OAuth2 authentication with GitHub and Google.',
+    challenge: 'Implementing secure OAuth2 authentication flow and managing complex database relationships for book loans and user roles.',
+    solution: 'Built a robust backend with Spring Boot Security and OAuth2. Used PostgreSQL for relational data and Docker for consistent deployment.',
+    outcome: 'A scalable, secure library management system with role-based access control and a responsive React frontend.',
+    image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80',
+    tech: ['Spring Boot', 'React', 'PostgreSQL', 'Docker', 'OAuth2'],
+    links: {
+      github: 'https://github.com/imrajeevnayan/digital-library-app',
+    },
+  },
+  {
     title: 'Hospital Management System',
     description: 'Comprehensive system featuring patient onboarding, doctor scheduling, and role-based access control.',
     challenge: 'Managing concurrent appointments and ensuring data privacy for sensitive patient records was a critical hurdle. The legacy system suffered from race conditions during booking.',
