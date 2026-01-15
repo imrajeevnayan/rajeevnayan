@@ -8,7 +8,7 @@ import About from './components/About';
 const Experience = lazy(() => import('./components/Experience'));
 const Skills = lazy(() => import('./components/Skills'));
 // Add GithubStats
-const GithubStats = lazy(() => import('./components/common/GithubStats'));
+// const GithubStats = lazy(() => import('./components/common/GithubStats'));
 const Projects = lazy(() => import('./components/Projects'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Blog = lazy(() => import('./components/Blog'));
@@ -49,7 +49,7 @@ function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Experience />
         <Skills />
-        <GithubStats isDark={isDark} />
+        {/* <GithubStats isDark={isDark} /> */}
         <Projects />
         <Certifications />
         <Testimonials />
