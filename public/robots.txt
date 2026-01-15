@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /private/
 
-Sitemap: https://imrajeevnayan.github.io/rajeevnayan/sitemap.xml
+Sitemap: https://rajeevnayan.vercel.app/sitemap.xml
