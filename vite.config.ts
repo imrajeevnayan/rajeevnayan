@@ -2,12 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: './', // ✅ Relative path works for both Vercel and GitHub Pages
+  base: '/', 
   plugins: [react()],
-  optimizeDeps: {
-    exclude: ['lucide-react'],
-    include: ['react', 'react-dom'],
-  },
   server: {
     port: 5173,
     watch: {
