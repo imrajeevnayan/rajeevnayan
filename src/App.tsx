@@ -8,7 +8,6 @@ import ScrollToTop from './components/common/ScrollToTop';
 // Lazy load components for performance
 const Experience = lazy(() => import('./components/Experience'));
 const Skills = lazy(() => import('./components/Skills'));
-const GithubStats = lazy(() => import('./components/common/GithubStats'));
 const Projects = lazy(() => import('./components/Projects'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Blog = lazy(() => import('./components/Blog'));
@@ -47,7 +46,7 @@ function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Experience />
         <Skills />
-        <GithubStats isDark={isDark} />
+
         <Projects />
         <Certifications />
         <Testimonials />
