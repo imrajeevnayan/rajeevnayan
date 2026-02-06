@@ -3,12 +3,12 @@ import Header from './components/Header';
 import CustomCursor from './components/common/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy load components for performance
 const Experience = lazy(() => import('./components/Experience'));
 const Skills = lazy(() => import('./components/Skills'));
-// Add GithubStats
-// const GithubStats = lazy(() => import('./components/common/GithubStats'));
+const GithubStats = lazy(() => import('./components/common/GithubStats'));
 const Projects = lazy(() => import('./components/Projects'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Blog = lazy(() => import('./components/Blog'));
@@ -21,8 +21,6 @@ const LoadingFallback = () => (
     <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
-
-import ScrollToTop from './components/common/ScrollToTop';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -49,7 +47,7 @@ function App() {
       <Suspense fallback={<LoadingFallback />}>
         <Experience />
         <Skills />
-        {/* <GithubStats isDark={isDark} /> */}
+        <GithubStats isDark={isDark} />
         <Projects />
         <Certifications />
         <Testimonials />
