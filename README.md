@@ -6,7 +6,7 @@
   </p>
 
   <p align="center">
-    <a href="https://rajeevnayan.vercel.app/" target="_blank">
+    <a href="https://rajeevnayan.in/" target="_blank">
       <img src="https://img.shields.io/badge/Live%20Site-Visit%20Now-2ea44f?style=for-the-badge&logo=vercel" alt="Live Site" />
     </a>
     <a href="https://github.com/imrajeevnayan">
