@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Code2 } from 'lucide-react';
+import { Github, Linkedin, Code2, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -27,6 +27,14 @@ const Footer = () => {
               className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               <Linkedin size={20} />
+            </a>
+            <a
+              href="https://www.instagram.com/imrajeevnayan/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+            >
+              <Instagram size={20} />
             </a>
             <a
               href="https://leetcode.com/u/imrajeevnayan/"

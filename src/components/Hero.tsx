@@ -1,6 +1,6 @@
 
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Code2, FileText, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Code2, FileText, ArrowDown, Instagram } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 import Magnetic from './common/Magnetic';
@@ -68,6 +68,7 @@ const Hero = () => {
             {[
               { Icon: Github, href: "https://github.com/imrajeevnayan", label: "GitHub" },
               { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/", label: "LinkedIn" },
+              { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/", label: "Instagram" },
               { Icon: Code2, href: "https://leetcode.com/u/imrajeevnayan/", label: "LeetCode" },
               { Icon: FileText, href: "https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing", label: "Resume" }
             ].map(({ Icon, href, label }, index) => (

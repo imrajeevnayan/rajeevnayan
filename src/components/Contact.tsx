@@ -1,7 +1,7 @@
 
 import { useState, useRef, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Github, Code2, Send, Loader2 } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, Code2, Send, Loader2, Instagram } from 'lucide-react';
 
 import emailjs from '@emailjs/browser';
 
@@ -107,6 +107,7 @@ const Contact = () => {
                 {[
                   { Icon: Github, href: "https://github.com/imrajeevnayan" },
                   { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/" },
+                  { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/" },
                   { Icon: Code2, href: "https://leetcode.com/u/imrajeevnayan/" }
                 ].map(({ Icon, href }, index) => (
                   <a
