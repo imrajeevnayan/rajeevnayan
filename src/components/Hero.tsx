@@ -47,26 +47,30 @@ const Hero = () => {
 
           <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-10">
             <Magnetic>
-              <Link
-                to="projects"
-                smooth={true}
-                duration={500}
-                offset={-70}
-                className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 flex items-center gap-2 cursor-pointer"
-              >
-                View My Work
-              </Link>
+              <div className="inline-block">
+                <Link
+                  to="projects"
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                  className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-blue-500/30 flex items-center gap-2 cursor-pointer"
+                >
+                  View My Work
+                </Link>
+              </div>
             </Magnetic>
             <Magnetic>
-              <Link
-                to="contact"
-                smooth={true}
-                duration={500}
-                offset={-70}
-                className="px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-500 transition-all duration-300 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm cursor-pointer"
-              >
-                Contact Me
-              </Link>
+              <div className="inline-block">
+                <Link
+                  to="contact"
+                  smooth={true}
+                  duration={500}
+                  offset={-70}
+                  className="px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-full font-medium hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-500 transition-all duration-300 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm cursor-pointer"
+                >
+                  Contact Me
+                </Link>
+              </div>
             </Magnetic>
           </div>
 
