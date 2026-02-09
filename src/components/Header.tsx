@@ -36,6 +36,9 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
           <Link
             to="home"
             smooth={true}
+            duration={500}
+            offset={-70}
+            spy={true}
             className="text-2xl font-bold cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
             RAJEEV NAYAN
@@ -48,6 +51,9 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                 key={item.to}
                 to={item.to}
                 smooth={true}
+                duration={500}
+                offset={-70}
+                spy={true}
                 className="relative group cursor-pointer"
               >
                 <span className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -104,6 +110,9 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                   key={item.to}
                   to={item.to}
                   smooth={true}
+                  duration={500}
+                  offset={-70}
+                  spy={true}
                   className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
