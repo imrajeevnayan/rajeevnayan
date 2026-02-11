@@ -6,7 +6,7 @@ const experiences = [
     {
         company: 'CodeForSuccess Pvt. Ltd.',
         position: 'Software Development Intern',
-        period: 'Feb 2024 – Aug 2024',
+        period: 'Feb 2025 – Aug 2025',
         type: 'Remote',
         description: [
             'Contributed to full-stack development projects using Java, Spring Boot, and React.js, delivering production-ready features and improving application performance',
