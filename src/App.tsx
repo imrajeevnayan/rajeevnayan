@@ -4,6 +4,7 @@ import CustomCursor from './components/common/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import ScrollToTop from './components/common/ScrollToTop';
+import ErrorBoundary from './components/common/ErrorBoundary';
 
 // Lazy load components for performance
 const Experience = lazy(() => import('./components/Experience'));
@@ -44,16 +45,18 @@ function App() {
       <Hero />
       <About />
 
-      <Suspense fallback={<LoadingSpinner />}>
-        <Experience />
-        <Skills />
-        <Projects />
-        <Certifications />
-        <Testimonials />
-        <Blog />
-        <Contact />
-        <Footer />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Experience />
+          <Skills />
+          <Projects />
+          <Certifications />
+          <Testimonials />
+          <Blog />
+          <Contact />
+          <Footer />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }
