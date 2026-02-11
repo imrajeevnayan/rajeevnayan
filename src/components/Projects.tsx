@@ -194,9 +194,16 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 <h3 className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-display">
                   {project.title}
                 </h3>
-                <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                  <Folder size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
-                </a>
+                <div className="flex gap-3">
+                  {project.links.live && (
+                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
+                      <ExternalLink size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
+                    </a>
+                  )}
+                  <a href={project.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repo">
+                    <Folder size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
+                  </a>
+                </div>
               </div>
 
               <div className="flex-grow">

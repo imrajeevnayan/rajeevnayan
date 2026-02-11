@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import Header from './components/Header';
 import CustomCursor from './components/common/CustomCursor';
 import Hero from './components/Hero';
@@ -6,16 +6,20 @@ import About from './components/About';
 import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy load components for performance
-import Experience from './components/Experience';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Certifications from './components/Certifications';
-import Blog from './components/Blog';
-import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+const Experience = lazy(() => import('./components/Experience'));
+const Skills = lazy(() => import('./components/Skills'));
+const Projects = lazy(() => import('./components/Projects'));
+const Certifications = lazy(() => import('./components/Certifications'));
+const Blog = lazy(() => import('./components/Blog'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
-
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center min-h-[200px]">
+    <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+  </div>
+);
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -39,14 +43,17 @@ function App() {
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
       <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Certifications />
-      <Testimonials />
-      <Blog />
-      <Contact />
-      <Footer />
+
+      <Suspense fallback={<LoadingSpinner />}>
+        <Experience />
+        <Skills />
+        <Projects />
+        <Certifications />
+        <Testimonials />
+        <Blog />
+        <Contact />
+        <Footer />
+      </Suspense>
     </div>
   );
 }
