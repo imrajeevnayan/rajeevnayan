@@ -7,19 +7,19 @@ const testimonials = [
         name: "Priya Sharma",
         role: "Senior Developer at CodeForSuccess Pvt. Ltd.",
         content: "Rajeev is an exceptional developer who quickly adapted to our tech stack. His contributions to our backend services using Spring Boot were significant and highly reliable.",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80"
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80"
     },
     {
         name: "Dr. Rajesh Kumar",
         role: "Healthcare Administrator",
         content: "The Hospital Management System Rajeev built simplified our operations immensely. The appointment scheduling and patient record security are top-notch.",
-        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80"
+        image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80"
     },
     {
         name: "Amit Patel",
         role: "Tech Lead at StartUp Inc.",
         content: "Rajeev's work on the Real-Time Chat Application was impressive. He handled WebSocket complexities with ease, delivering a scalable and responsive solution.",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+        image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80"
     }
 ];
 
