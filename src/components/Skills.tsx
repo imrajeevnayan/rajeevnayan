@@ -31,17 +31,17 @@ const skillCategories = [
 ];
 
 const ProgressBar = ({ name, level }: { name: string; level: number }) => (
-  <div className="mb-4">
-    <div className="flex justify-between mb-1">
-      <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{name}</span>
-      <span className="text-sm font-medium text-blue-600 dark:text-blue-400">{level}%</span>
+  <div className="mb-5">
+    <div className="flex justify-between mb-2">
+      <span className="text-sm font-semibold text-gray-800 dark:text-gray-100">{name}</span>
+      <span className="text-sm font-bold text-blue-600 dark:text-blue-300">{level}%</span>
     </div>
-    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
+    <div className="w-full bg-gray-200/70 dark:bg-gray-800/80 rounded-full h-3 overflow-hidden">
       <motion.div
-        className="bg-gradient-to-r from-blue-500 to-purple-500 h-2.5 rounded-full"
+        className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 h-3 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.7)]"
         initial={{ width: 0 }}
         whileInView={{ width: `${level}%` }}
-        transition={{ duration: 1, ease: 'easeOut' }}
+        transition={{ duration: 1.2, ease: 'easeOut' }}
         viewport={{ once: true }}
       />
     </div>
@@ -51,8 +51,8 @@ const ProgressBar = ({ name, level }: { name: string; level: number }) => (
 const Skills = () => {
   return (
     <section id="skills" className="py-20 bg-transparent transition-colors duration-300 overflow-hidden relative">
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-purple-500/10 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-80 h-80 bg-blue-500/10 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[40rem] h-[40rem] bg-purple-500/40 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-0 left-10 w-[35rem] h-[35rem] bg-blue-500/40 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
       
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -96,11 +96,11 @@ const Skills = () => {
                 viewport={{ once: true }}
                 className="group relative"
               >
-                {/* Gradient glow border effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-30 transition duration-500"></div>
+                {/* Neon glow border on hover */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl blur-md opacity-0 group-hover:opacity-70 transition-all duration-500"></div>
                 
-                <div className="glass-panel rounded-2xl p-6 relative h-full w-full transform transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-[0_0_30px_rgba(0,100,255,0.15)] bg-white/70 dark:bg-black/40">
-                  <h3 className="text-xl font-bold mb-6 text-gray-800 dark:text-white">
+                <div className="relative rounded-2xl p-6 h-full w-full transform transition-all duration-500 group-hover:scale-[1.04] group-hover:-translate-y-2 group-hover:shadow-[0_25px_60px_rgba(99,102,241,0.4)] bg-white/80 dark:bg-gray-900/70 backdrop-blur-2xl border border-white/50 dark:border-white/10">
+                  <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-300 bg-clip-text text-transparent">
                     {category.title}
                   </h3>
                   <div className="flex flex-col">

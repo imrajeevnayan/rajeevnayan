@@ -148,9 +148,9 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.7, delay: index * 0.15 }}
       viewport={{ once: true }}
       className="h-full"
     >
@@ -158,22 +158,22 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         {/* Disable Tilt when expanded to allow text selection and easier reading */}
         <Tilt3D className="h-full" intensity={isExpanded ? 0 : 5}>
           <div className={`group glass-panel text-gray-800 dark:text-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full ${!isExpanded ? 'transform-style-3d' : ''}`}>
-            <div className="relative h-48 overflow-hidden flex-shrink-0">
+            <div className="relative h-56 overflow-hidden flex-shrink-0">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:blur-sm"
+                className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-125 group-hover:blur-md"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 backdrop-blur-sm">
-                <h3 className="text-xl font-bold text-white font-display mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/10 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 backdrop-blur-sm">
+                <h3 className="text-xl font-bold text-white font-display mb-2 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
                   {project.title}
                 </h3>
-                <div className="flex flex-wrap gap-2 mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                <div className="flex flex-wrap gap-2 mb-4 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 delay-75">
                   {project.tech.slice(0, 3).map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-2 py-0.5 bg-white/20 text-white rounded text-[10px] font-medium border border-white/20"
+                      className="px-2.5 py-1 bg-blue-600/80 text-white rounded-full text-[10px] font-bold border border-blue-400/60 shadow-[0_0_8px_rgba(59,130,246,0.5)]"
                     >
                       {tech}
                     </span>
@@ -184,7 +184,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                     </span>
                   )}
                 </div>
-                <div className="flex items-center space-x-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+                <div className="flex items-center space-x-4 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                   <a
                     href={project.links.github}
                     target="_blank"

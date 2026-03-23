@@ -49,7 +49,7 @@
   }
 
   .glass-panel {
-    @apply bg-white/70 dark:bg-black/30 backdrop-blur-xl border-transparent shadow-lg relative;
+    @apply bg-white/70 dark:bg-black/40 backdrop-blur-3xl border-transparent shadow-2xl relative transition-all duration-500 hover:shadow-[0_0_80px_rgba(59,130,246,0.2)] dark:hover:shadow-[0_0_120px_rgba(168,85,247,0.3)] hover:-translate-y-2 hover:scale-[1.02];
   }
   
   .glass-panel::before {
@@ -58,10 +58,16 @@
     inset: 0;
     pointer-events: none;
     border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, rgba(99,102,241,0.5), rgba(168,85,247,0.1), rgba(59,130,246,0.5));
+    padding: 2px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.8), rgba(168,85,247,0.3), rgba(59,130,246,0.8));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+    transition: all 0.5s ease;
+  }
+  
+  .glass-panel:hover::before {
+    background: linear-gradient(135deg, rgba(99,102,241,1), rgba(168,85,247,0.8), rgba(59,130,246,1));
+    padding: 3px;
   }
 }

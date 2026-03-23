@@ -36,7 +36,7 @@ const Hero = () => {
          <GeometricShapes />
       </Suspense>
 
-      {/* Ultra-Premium Ambient Deep Space Glows */}
+      {/* Ultra-Premium Ambient Deep Space Glows (Maximized Intensity) */}
       <motion.div 
         animate={{ 
           y: [0, -30, 0],
@@ -44,7 +44,7 @@ const Hero = () => {
           rotate: [0, 45, 0]
         }}
         transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-gradient-to-b from-indigo-600/40 to-purple-600/40 blur-[130px] rounded-full pointer-events-none mix-blend-screen"
+        className="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-gradient-to-b from-indigo-500/80 to-purple-500/80 blur-[150px] rounded-full pointer-events-none mix-blend-screen"
       />
       <motion.div 
         animate={{ 
@@ -53,7 +53,7 @@ const Hero = () => {
           rotate: [0, -45, 0]
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-10 left-1/4 w-[45rem] h-[45rem] bg-gradient-to-tr from-fuchsia-600/30 to-blue-600/30 blur-[140px] rounded-[100%] pointer-events-none mix-blend-screen"
+        className="absolute bottom-10 left-1/4 w-[45rem] h-[45rem] bg-gradient-to-tr from-fuchsia-500/70 to-blue-500/70 blur-[160px] rounded-[100%] pointer-events-none mix-blend-screen"
       />
 
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center relative z-10 w-full">
@@ -67,15 +67,15 @@ const Hero = () => {
           className="md:w-[55%] text-center md:text-left pt-8 md:pt-0 relative"
         >
           {/* Intense focused spotlight immediately behind the glass card */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none hidden md:block" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-blue-400/50 blur-[120px] rounded-full pointer-events-none hidden md:block" />
           
           <motion.div 
-            className="glass-panel p-8 sm:p-12 md:p-14 rounded-[40px] relative z-10 border-t border-l border-white/40 dark:border-white/20 shadow-[0_0_50px_rgba(59,130,246,0.15)] dark:shadow-[0_0_80px_rgba(168,85,247,0.15)] flex flex-col justify-center"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+            className="glass-panel p-8 sm:p-12 md:p-14 rounded-[40px] relative z-10 border-t-2 border-l-2 border-white/60 dark:border-white/40 shadow-[0_0_80px_rgba(59,130,246,0.3)] dark:shadow-[0_0_120px_rgba(168,85,247,0.3)] flex flex-col justify-center"
+            animate={{ y: [0, -12, 0] }}
+            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
           >
-            <div className="inline-block self-center md:self-start px-5 py-2 mb-8 text-sm font-bold text-blue-700 bg-blue-100/90 rounded-full dark:bg-blue-900/50 dark:text-blue-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-blue-300/50 dark:border-blue-500/50 backdrop-blur-md uppercase tracking-wider">
-              Available for opportunities <span className="ml-2 animate-pulse inline-block">🚀</span>
+            <div className="inline-block self-center md:self-start px-6 py-2.5 mb-8 text-sm font-bold text-blue-800 bg-blue-100/90 rounded-full dark:bg-blue-900/60 dark:text-blue-200 shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-blue-300/80 dark:border-blue-400/60 backdrop-blur-xl uppercase tracking-wider">
+              Available for opportunities <span className="ml-2 animate-pulse inline-block text-lg">🚀</span>
             </div>
           
           {/* 3D FLOATING HERO TEXT WITH MOUSE PERSPECTIVE */}
