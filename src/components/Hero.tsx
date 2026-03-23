@@ -6,8 +6,10 @@ import { Link } from 'react-scroll';
 import Magnetic from './common/Magnetic';
 import Tilt3D from './common/Tilt3D';
 import GlitchText from './common/GlitchText';
-import GeometricShapes from './common/GeometricShapes';
 import profileImage from '../assets/profile.jpg';
+import { lazy, Suspense } from 'react';
+
+const GeometricShapes = lazy(() => import('./common/GeometricShapes'));
 
 const Hero = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -29,8 +31,10 @@ const Hero = () => {
        id="home" 
        className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden bg-white dark:bg-gray-900"
     >
-      {/* 3D Moving Shapes / Background Canvas */}
-      <GeometricShapes />
+      {/* 3D Moving Shapes / Background Canvas (Lazy Loaded for Perf) */}
+      <Suspense fallback={null}>
+         <GeometricShapes />
+      </Suspense>
 
       {/* Background mesh/grid pattern overlay */}
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>

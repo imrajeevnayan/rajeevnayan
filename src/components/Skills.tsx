@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import SkillCloud3D from './common/SkillCloud3D';
+import { lazy, Suspense } from 'react';
+
+const SkillCloud3D = lazy(() => import('./common/SkillCloud3D'));
 
 const Skills = () => {
   const skillCategories = [
@@ -41,14 +43,17 @@ const Skills = () => {
         </motion.div>
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
-          {/* 3D Global Tag Cloud */}
+          {/* 3D Global Tag Cloud (Lazy Loaded) */}
           <motion.div 
-             className="w-full lg:w-1/2 flex items-center justify-center pointer-events-auto"
+             className="w-full lg:w-1/2 flex items-center justify-center pointer-events-auto min-h-[400px]"
              initial={{ opacity: 0, scale: 0.8 }}
              whileInView={{ opacity: 1, scale: 1 }}
              transition={{ duration: 0.8 }}
+             viewport={{ once: true }}
           >
-             <SkillCloud3D />
+             <Suspense fallback={<div className="animate-pulse w-32 h-32 rounded-full bg-blue-100 dark:bg-gray-800"></div>}>
+                 <SkillCloud3D />
+             </Suspense>
           </motion.div>
 
           {/* Categorized detailed breakdown */}
