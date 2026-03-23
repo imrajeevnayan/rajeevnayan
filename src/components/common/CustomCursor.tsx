@@ -40,12 +40,28 @@ const CustomCursor = () => {
 
     return (
         <>
+            {/* Massive Ambient Spotlight that tracks mouse */}
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-blue-500 pointer-events-none z-[9999] hidden md:block mix-blend-difference"
+                className="fixed top-0 left-0 w-[40rem] h-[40rem] rounded-full bg-blue-600/10 dark:bg-purple-600/10 pointer-events-none z-[-1] hidden md:block blur-[120px] mix-blend-screen"
+                animate={{
+                    x: mousePosition.x - 320,
+                    y: mousePosition.y - 320,
+                }}
+                transition={{
+                    type: "tween",
+                    ease: "backOut",
+                    duration: 0.5
+                }}
+            />
+
+            {/* Existing Interactive Custom Cursor */}
+            <motion.div
+                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-blue-400/80 pointer-events-none z-[100] hidden md:block mix-blend-difference"
                 animate={{
                     x: mousePosition.x - 16,
                     y: mousePosition.y - 16,
-                    scale: isHovering ? 1.5 : 1,
+                    scale: isHovering ? 2.5 : 1,
+                    backgroundColor: isHovering ? "rgba(59,130,246,0.2)" : "transparent"
                 }}
                 transition={{
                     type: "spring",
@@ -55,10 +71,11 @@ const CustomCursor = () => {
                 }}
             />
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 bg-blue-500 rounded-full pointer-events-none z-[9999] hidden md:block"
+                className="fixed top-0 left-0 w-2 h-2 bg-blue-500 rounded-full pointer-events-none z-[100] hidden md:block shadow-[0_0_10px_rgba(59,130,246,1)]"
                 animate={{
                     x: mousePosition.x - 4,
                     y: mousePosition.y - 4,
+                    opacity: isHovering ? 0 : 1
                 }}
                 transition={{
                     type: "spring",
