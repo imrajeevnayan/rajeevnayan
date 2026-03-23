@@ -162,34 +162,55 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:blur-[2px]"
+                className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:blur-sm"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-blue-900/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center space-x-6 backdrop-blur-md">
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-white/10 border border-white/20 rounded-full text-white hover:bg-white hover:text-blue-900 hover:scale-110 transition-all touch-manipulation shadow-[0_0_15px_rgba(255,255,255,0.2)]"
-                  aria-label="View Code"
-                >
-                  <Github size={22} />
-                </a>
-                {project.links.live && (
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 backdrop-blur-sm">
+                <h3 className="text-xl font-bold text-white font-display mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  {project.title}
+                </h3>
+                <div className="flex flex-wrap gap-2 mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
+                  {project.tech.slice(0, 3).map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-0.5 bg-white/20 text-white rounded text-[10px] font-medium border border-white/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.tech.length > 3 && (
+                    <span className="px-2 py-0.5 bg-white/10 text-white/80 rounded text-[10px] font-medium border border-white/10">
+                      +{project.tech.length - 3}
+                    </span>
+                  )}
+                </div>
+                <div className="flex items-center space-x-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-150">
                   <a
-                    href={project.links.live}
+                    href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-blue-600 rounded-full text-white hover:bg-white hover:text-blue-600 hover:scale-110 transition-all touch-manipulation shadow-[0_0_15px_rgba(37,99,235,0.5)]"
-                    aria-label="View Live Demo"
+                    className="p-2.5 bg-white/10 border border-white/20 rounded-full text-white hover:bg-white hover:text-gray-900 hover:scale-110 transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                    aria-label="View Code"
                   >
-                    <ExternalLink size={22} />
+                    <Github size={18} />
                   </a>
-                )}
+                  {project.links.live && (
+                    <a
+                      href={project.links.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2.5 bg-blue-600 border border-blue-500 rounded-full text-white hover:bg-blue-500 hover:scale-110 transition-all shadow-[0_0_15px_rgba(37,99,235,0.5)]"
+                      aria-label="View Live Demo"
+                    >
+                      <ExternalLink size={18} />
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
 
             <div className="p-6 flex flex-col flex-grow text-left">
+              <div className="flex-grow pt-2">
               <div className="flex justify-between items-start mb-2">
                 <h3 className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-display">
                   {project.title}
@@ -260,6 +281,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
                 </button>
               )}
 
+              </div>
+              
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tech.map((tech, techIndex) => (
                   <span

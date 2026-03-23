@@ -36,8 +36,25 @@ const Hero = () => {
          <GeometricShapes />
       </Suspense>
 
-      {/* Background mesh/grid pattern overlay */}
-      <div className="absolute inset-0 bg-transparent opacity-20 pointer-events-none"></div>
+      {/* Animated Deep Background Ambient Orbs */}
+      <motion.div 
+        animate={{ 
+          y: [0, -40, 0],
+          x: [0, 30, 0],
+          scale: [1, 1.1, 1] 
+        }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-[30rem] md:w-[45rem] h-[30rem] md:h-[45rem] bg-purple-500/20 dark:bg-purple-600/20 blur-[130px] rounded-full pointer-events-none mix-blend-multiply dark:mix-blend-screen" 
+      />
+      <motion.div 
+        animate={{ 
+          y: [0, 50, 0],
+          x: [0, -40, 0],
+          scale: [1, 1.2, 1] 
+        }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-1/4 right-1/4 w-[35rem] md:w-[50rem] h-[35rem] md:h-[50rem] bg-blue-500/20 dark:bg-blue-600/20 blur-[140px] rounded-full pointer-events-none mix-blend-multiply dark:mix-blend-screen" 
+      />
 
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center relative z-10 w-full">
         
@@ -49,8 +66,6 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="md:w-1/2 text-center md:text-left pt-8 md:pt-0 relative"
         >
-          {/* Glass Card for Intro with Glow & Floating Animation */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/10 dark:bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
           
           <motion.div 
             className="glass-panel p-8 sm:p-10 rounded-[32px] relative z-10 border border-white/40 dark:border-white/10 shadow-2xl"
