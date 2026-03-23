@@ -157,33 +157,33 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       <div className="h-full">
         {/* Disable Tilt when expanded to allow text selection and easier reading */}
         <Tilt3D className="h-full" intensity={isExpanded ? 0 : 5}>
-          <div className={`group bg-white dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full ${!isExpanded ? 'transform-style-3d' : ''}`}>
+          <div className={`group glass-panel text-gray-800 dark:text-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full ${!isExpanded ? 'transform-style-3d' : ''}`}>
             <div className="relative h-48 overflow-hidden flex-shrink-0">
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-110 group-hover:blur-[2px]"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+              <div className="absolute inset-0 bg-blue-900/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center space-x-6 backdrop-blur-md">
                 <a
                   href={project.links.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                  className="p-3 bg-white/10 border border-white/20 rounded-full text-white hover:bg-white hover:text-blue-900 hover:scale-110 transition-all touch-manipulation shadow-[0_0_15px_rgba(255,255,255,0.2)]"
                   aria-label="View Code"
                 >
-                  <Github size={20} />
+                  <Github size={22} />
                 </a>
                 {project.links.live && (
                   <a
                     href={project.links.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-white rounded-full text-gray-900 hover:text-blue-600 transition-colors touch-manipulation"
+                    className="p-3 bg-blue-600 rounded-full text-white hover:bg-white hover:text-blue-600 hover:scale-110 transition-all touch-manipulation shadow-[0_0_15px_rgba(37,99,235,0.5)]"
                     aria-label="View Live Demo"
                   >
-                    <ExternalLink size={20} />
+                    <ExternalLink size={22} />
                   </a>
                 )}
               </div>
@@ -282,7 +282,7 @@ import ProjectCarousel3D from './common/ProjectCarousel3D';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden">
+    <section id="projects" className="py-20 bg-transparent overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -291,7 +291,7 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-display">
+          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-display">
             Featured Projects
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-6"></div>

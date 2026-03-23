@@ -38,7 +38,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-gray-900">
+    <section id="contact" className="py-20 bg-transparent">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +47,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold mb-4">Contact Me</h2>
+          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4">Contact Me</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
           <p className="mt-4 text-gray-600 dark:text-gray-400">Let's connect and discuss how we can work together!</p>
         </motion.div>
@@ -129,7 +129,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700"
+            className="glass-panel p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700"
           >
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -141,7 +141,7 @@ const Contact = () => {
                   id="name"
                   name="name"
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 outline-none transition-all duration-300"
+                  className="w-full px-5 py-3.5 rounded-xl border border-gray-300/50 dark:border-gray-600/50 glass-panel text-gray-800 dark:text-gray-100 focus:ring-4 focus:ring-blue-500/30 outline-none transition-all duration-300"
                   placeholder="Your Name"
                 />
               </div>
@@ -154,7 +154,7 @@ const Contact = () => {
                   id="email"
                   name="email"
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 outline-none transition-all duration-300"
+                  className="w-full px-5 py-3.5 rounded-xl border border-gray-300/50 dark:border-gray-600/50 glass-panel text-gray-800 dark:text-gray-100 focus:ring-4 focus:ring-blue-500/30 outline-none transition-all duration-300"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -167,7 +167,7 @@ const Contact = () => {
                   name="message"
                   rows={4}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 focus:ring-2 focus:ring-blue-600 dark:focus:ring-blue-400 outline-none transition-all duration-300 resize-none"
+                  className="w-full px-5 py-3.5 rounded-xl border border-gray-300/50 dark:border-gray-600/50 glass-panel text-gray-800 dark:text-gray-100 focus:ring-4 focus:ring-blue-500/30 outline-none transition-all duration-300 resize-none"
                   placeholder="How can I help you?"
                 ></textarea>
               </div>
@@ -175,7 +175,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100 flex items-center justify-center space-x-2 shadow-lg hover:shadow-blue-500/30"
+                className="w-full bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] disabled:opacity-70 disabled:hover:translate-y-0 flex items-center justify-center space-x-2 font-bold"
               >
                 {isSubmitting ? (
                   <>

@@ -32,7 +32,7 @@ const certifications = [
 
 const Certifications = () => {
     return (
-        <section id="certifications" className="py-20 bg-gray-50 dark:bg-gray-800">
+        <section id="certifications" className="py-20 bg-transparent">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ const Certifications = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12"
                 >
-                    <h2 className="text-4xl font-bold mb-4">Certifications</h2>
+                    <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4">Certifications</h2>
                     <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
                 </motion.div>
 
@@ -56,7 +56,7 @@ const Certifications = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow transform hover:scale-105 duration-300 block cursor-pointer"
+                            className="glass-panel text-gray-800 dark:text-gray-100 p-6 rounded-lg shadow-lg flex items-center space-x-4 hover:shadow-xl transition-shadow transform hover:scale-105 duration-300 block cursor-pointer"
                         >
                             <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-full text-blue-600 dark:text-blue-400">
                                 <Award size={24} />

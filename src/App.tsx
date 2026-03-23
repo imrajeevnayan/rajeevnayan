@@ -38,25 +38,30 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <div className="app-wrapper text-gray-900 dark:text-gray-100 transition-colors duration-300">
       <CustomCursor />
       <ScrollToTop />
-      <Header isDark={isDark} toggleTheme={toggleTheme} />
-      <Hero />
-      <About />
+      
+      <div className="card-container">
+        <div className="noise-bg"></div>
+        
+        <Header isDark={isDark} toggleTheme={toggleTheme} />
+        <Hero />
+        <About />
 
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Experience />
-          <Skills />
-          <Projects />
-          <Certifications />
-          <Testimonials />
-          <Blog />
-          <Contact />
-          <Footer />
-        </Suspense>
-      </ErrorBoundary>
+        <ErrorBoundary>
+          <Suspense fallback={<LoadingSpinner />}>
+            <Experience />
+            <Skills />
+            <Projects />
+            <Certifications />
+            <Testimonials />
+            <Blog />
+            <Contact />
+            <Footer />
+          </Suspense>
+        </ErrorBoundary>
+      </div>
     </div>
   );
 }

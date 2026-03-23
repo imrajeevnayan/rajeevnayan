@@ -112,7 +112,7 @@ export default function SkillCloud3D() {
               }}
             >
               <div
-                 className="w-full h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-2 flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] dark:hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] hover:border-blue-400 dark:hover:border-blue-500 transition-all cursor-pointer overflow-hidden backdrop-blur-sm bg-opacity-90 pointer-events-auto"
+                 className="w-full h-full glass-panel rounded-2xl shadow-lg p-2 flex items-center justify-center border border-gray-100 dark:border-gray-700 hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] dark:hover:shadow-[0_0_20px_rgba(96,165,250,0.6)] hover:border-blue-400 dark:hover:border-blue-500 transition-all cursor-pointer overflow-hidden backdrop-blur-sm bg-opacity-90 pointer-events-auto"
               >
                   <img src={`https://skillicons.dev/icons?i=${item.icon}`} alt={item.icon} className="w-full h-full object-contain pointer-events-none" />
               </div>

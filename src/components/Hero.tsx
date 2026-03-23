@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Github, Linkedin, Code2, FileText, ArrowDown, Instagram } from 'lucide-react';
+import { Github, Linkedin, Code2, FileText, ArrowDown, Instagram, ArrowRight } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 import Magnetic from './common/Magnetic';
@@ -29,7 +29,7 @@ const Hero = () => {
     <section 
        ref={containerRef}
        id="home" 
-       className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden bg-white dark:bg-gray-900"
+       className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden bg-transparent"
     >
       {/* 3D Moving Shapes / Background Canvas (Lazy Loaded for Perf) */}
       <Suspense fallback={null}>
@@ -37,7 +37,7 @@ const Hero = () => {
       </Suspense>
 
       {/* Background mesh/grid pattern overlay */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none"></div>
+      <div className="absolute inset-0 bg-transparent opacity-20 pointer-events-none"></div>
 
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center relative z-10 w-full">
         
@@ -47,9 +47,17 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="md:w-1/2 text-center md:text-left pt-8 md:pt-0"
+          className="md:w-1/2 text-center md:text-left pt-8 md:pt-0 relative"
         >
-          <div className="inline-block px-3 py-1 mb-4 text-sm font-medium text-blue-600 bg-blue-100 rounded-full dark:bg-blue-900/30 dark:text-blue-400 shadow-lg">
+          {/* Glass Card for Intro with Glow & Floating Animation */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/10 dark:bg-blue-500/20 blur-[120px] rounded-full pointer-events-none" />
+          
+          <motion.div 
+            className="glass-panel p-8 sm:p-10 rounded-[32px] relative z-10 border border-white/40 dark:border-white/10 shadow-2xl"
+            animate={{ y: [0, -8, 0] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+          >
+            <div className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-blue-700 bg-blue-100/80 rounded-full dark:bg-blue-900/40 dark:text-blue-300 shadow-sm border border-blue-200/50 dark:border-blue-700/50 backdrop-blur-md">
             Available for opportunities
           </div>
           
@@ -57,7 +65,7 @@ const Hero = () => {
           <Tilt3D intensity={15} className="mb-6 cursor-default">
             <div className="transform-style-3d py-4 px-2 -mx-2 bg-transparent" style={{ transformStyle: "preserve-3d" }}>
                 <h1 
-                   className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight dark:text-white leading-tight drop-shadow-2xl translate-z-10"
+                   className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter dark:text-white leading-tight drop-shadow-2xl translate-z-10"
                    style={{ transform: "translateZ(80px)" }}
                 >
                   Hi, I'm{' '}
@@ -90,9 +98,9 @@ const Hero = () => {
                   smooth={true}
                   duration={500}
                   offset={-70}
-                  className="px-8 py-4 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-all duration-300 shadow-xl hover:shadow-blue-500/40 flex items-center gap-2 cursor-pointer border border-transparent"
+                  className="px-8 py-4 bg-white dark:bg-white text-black dark:text-black rounded-full font-bold hover:scale-105 transition-all duration-300 shadow-xl shadow-blue-500/10 flex items-center gap-2 cursor-pointer border border-transparent"
                 >
-                  View My Work
+                  View My Work <ArrowRight className="w-5 h-5 ml-1 inline-block" />
                 </Link>
               </div>
             </Magnetic>
@@ -103,7 +111,7 @@ const Hero = () => {
                   smooth={true}
                   duration={500}
                   offset={-70}
-                  className="px-8 py-4 border-2 border-gray-200 dark:border-gray-700 text-gray-800 dark:text-gray-200 rounded-full font-medium hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-500 dark:hover:text-blue-500 transition-all duration-300 bg-white/50 dark:bg-gray-800/50 backdrop-blur-md cursor-pointer shadow-lg"
+                  className="px-8 py-4 glass-panel text-gray-800 dark:text-gray-200 rounded-full font-medium transition-all duration-300 backdrop-blur-md cursor-pointer border border-gray-300/50 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10"
                 >
                   Contact Me
                 </Link>
@@ -132,6 +140,7 @@ const Hero = () => {
               </Magnetic>
             ))}
           </div>
+          </motion.div>
         </motion.div>
 
         {/* IMAGE LAYER WITH PARALLAX */}
@@ -163,7 +172,7 @@ const Hero = () => {
 
                   {/* Floating badges */}
                   <motion.div
-                    className="absolute -right-4 top-10 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] flex items-center gap-2"
+                    className="absolute -right-4 top-10 glass-panel p-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] flex items-center gap-2"
                     animate={{ y: [0, -15, 0] }}
                     transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
                     style={{ transform: "translateZ(80px)" }}
@@ -175,7 +184,7 @@ const Hero = () => {
                   </motion.div>
 
                   <motion.div
-                    className="absolute -left-4 bottom-20 bg-white dark:bg-gray-800 p-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] flex items-center gap-2"
+                    className="absolute -left-4 bottom-20 glass-panel p-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] flex items-center gap-2"
                     animate={{ y: [0, -10, 0] }}
                     transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 }}
                     style={{ transform: "translateZ(60px)" }}

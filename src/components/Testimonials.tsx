@@ -25,7 +25,7 @@ const testimonials = [
 
 const Testimonials = () => {
     return (
-        <section id="testimonials" className="py-20 bg-white dark:bg-gray-900 overflow-hidden">
+        <section id="testimonials" className="py-20 bg-transparent overflow-hidden">
             <div className="container mx-auto px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -34,7 +34,7 @@ const Testimonials = () => {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+                    <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
                         Testimonials
                     </h2>
                     <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-6"></div>
@@ -51,7 +51,7 @@ const Testimonials = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="bg-gray-50 dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-lg relative border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300"
+                            className="glass-panel p-6 md:p-8 rounded-2xl shadow-lg relative border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300"
                         >
                             <Quote className="absolute top-8 right-8 text-blue-100 dark:text-blue-900/30 w-12 h-12" />
 

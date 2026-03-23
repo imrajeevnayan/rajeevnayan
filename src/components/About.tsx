@@ -1,10 +1,11 @@
 
 import { motion } from 'framer-motion';
 import { GraduationCap, Languages, Brain } from 'lucide-react';
+import profileImage from '../assets/profile.jpg';
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="about" className="py-20 bg-transparent">
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -13,7 +14,7 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">About Me</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
         </motion.div>
 
@@ -68,21 +69,30 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="relative"
+            className="relative flex flex-col items-center space-y-8"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg transform rotate-6 scale-105 opacity-10"></div>
-            <div className="relative bg-white dark:bg-gray-700 p-6 md:p-8 rounded-lg shadow-xl">
+            <div className="relative w-64 h-64 overflow-hidden rounded-3xl border-4 border-white/20 dark:border-white/10 shadow-2xl group mx-auto">
+               <img 
+                 src={profileImage} 
+                 alt="Rajeev Nayan" 
+                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+               />
+               <div className="absolute inset-0 bg-blue-600/10 group-hover:bg-transparent transition-colors duration-500"></div>
+            </div>
+
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl transform rotate-6 scale-105 opacity-10 blur-md pointer-events-none"></div>
+            <div className="relative glass-panel text-gray-800 dark:text-gray-100 p-6 md:p-8 rounded-2xl shadow-xl w-full">
               <h3 className="text-2xl font-bold mb-6">Quick Facts</h3>
               <div className="space-y-4">
-                <div className="p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
+                <div className="p-4 glass-panel rounded-2xl">
                   <h4 className="font-semibold">Experience</h4>
                   <p className="text-gray-600 dark:text-gray-400">6 Months Internship</p>
                 </div>
-                <div className="p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
+                <div className="p-4 glass-panel rounded-2xl">
                   <h4 className="font-semibold">Location</h4>
                   <p className="text-gray-600 dark:text-gray-400">Bangalore, India</p>
                 </div>
-                <div className="p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
+                <div className="p-4 glass-panel rounded-2xl">
                   <h4 className="font-semibold">Interests</h4>
                   <p className="text-gray-600 dark:text-gray-400">Web Development, Cloud Computing, AI/ML</p>
                 </div>
