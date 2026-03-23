@@ -36,24 +36,24 @@ const Hero = () => {
          <GeometricShapes />
       </Suspense>
 
-      {/* Animated Deep Background Ambient Orbs */}
+      {/* Ultra-Premium Ambient Deep Space Glows */}
       <motion.div 
         animate={{ 
-          y: [0, -40, 0],
-          x: [0, 30, 0],
-          scale: [1, 1.1, 1] 
+          y: [0, -30, 0],
+          scale: [1, 1.05, 1],
+          rotate: [0, 45, 0]
         }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-[30rem] md:w-[45rem] h-[30rem] md:h-[45rem] bg-purple-500/20 dark:bg-purple-600/20 blur-[130px] rounded-full pointer-events-none mix-blend-multiply dark:mix-blend-screen" 
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-gradient-to-b from-indigo-600/40 to-purple-600/40 blur-[130px] rounded-full pointer-events-none mix-blend-screen"
       />
       <motion.div 
         animate={{ 
-          y: [0, 50, 0],
-          x: [0, -40, 0],
-          scale: [1, 1.2, 1] 
+          y: [0, 40, 0],
+          scale: [1, 1.1, 1],
+          rotate: [0, -45, 0]
         }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-1/4 right-1/4 w-[35rem] md:w-[50rem] h-[35rem] md:h-[50rem] bg-blue-500/20 dark:bg-blue-600/20 blur-[140px] rounded-full pointer-events-none mix-blend-multiply dark:mix-blend-screen" 
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-10 left-1/4 w-[45rem] h-[45rem] bg-gradient-to-tr from-fuchsia-600/30 to-blue-600/30 blur-[140px] rounded-[100%] pointer-events-none mix-blend-screen"
       />
 
       <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center relative z-10 w-full">
@@ -64,17 +64,19 @@ const Hero = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="md:w-1/2 text-center md:text-left pt-8 md:pt-0 relative"
+          className="md:w-[55%] text-center md:text-left pt-8 md:pt-0 relative"
         >
+          {/* Intense focused spotlight immediately behind the glass card */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/20 blur-[100px] rounded-full pointer-events-none hidden md:block" />
           
           <motion.div 
-            className="glass-panel p-8 sm:p-10 rounded-[32px] relative z-10 border border-white/40 dark:border-white/10 shadow-2xl"
+            className="glass-panel p-8 sm:p-12 md:p-14 rounded-[40px] relative z-10 border-t border-l border-white/40 dark:border-white/20 shadow-[0_0_50px_rgba(59,130,246,0.15)] dark:shadow-[0_0_80px_rgba(168,85,247,0.15)] flex flex-col justify-center"
             animate={{ y: [0, -8, 0] }}
             transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
           >
-            <div className="inline-block px-4 py-1.5 mb-6 text-sm font-semibold text-blue-700 bg-blue-100/80 rounded-full dark:bg-blue-900/40 dark:text-blue-300 shadow-sm border border-blue-200/50 dark:border-blue-700/50 backdrop-blur-md">
-            Available for opportunities
-          </div>
+            <div className="inline-block self-center md:self-start px-5 py-2 mb-8 text-sm font-bold text-blue-700 bg-blue-100/90 rounded-full dark:bg-blue-900/50 dark:text-blue-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] border border-blue-300/50 dark:border-blue-500/50 backdrop-blur-md uppercase tracking-wider">
+              Available for opportunities <span className="ml-2 animate-pulse inline-block">🚀</span>
+            </div>
           
           {/* 3D FLOATING HERO TEXT WITH MOUSE PERSPECTIVE */}
           <Tilt3D intensity={15} className="mb-6 cursor-default">
