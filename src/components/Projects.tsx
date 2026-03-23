@@ -278,31 +278,53 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   );
 };
 
+import ProjectCarousel3D from './common/ProjectCarousel3D';
+
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="container mx-auto px-6">
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-display">
             Featured Projects
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-6"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A showcase of my improved technical skills through practical applications.
+            A showcase of my improved technical skills through a deeply immersive 3D experience.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
-          ))}
+        {/* 3D Carousel replacing the standard grid */}
+        <div className="w-full relative">
+          <ProjectCarousel3D 
+            projects={projects}
+            renderCard={(project, index) => (
+              <ProjectCard project={project} index={index} />
+            )}
+          />
         </div>
+        
+        {/* Optional: Add a button to view all on Github */}
+        <motion.div 
+           initial={{ opacity: 0 }}
+           whileInView={{ opacity: 1 }}
+           className="mt-12 text-center"
+        >
+          <a
+             href="https://github.com/imrajeevnayan"
+             target="_blank"
+             rel="noreferrer"
+             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/10 text-blue-600 dark:text-blue-400 rounded-full font-medium hover:bg-blue-600 hover:text-white transition-all shadow-sm"
+          >
+             <Github size={18} /> View All Projects on GitHub
+          </a>
+        </motion.div>
       </div>
     </section>
   );

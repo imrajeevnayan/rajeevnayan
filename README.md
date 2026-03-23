@@ -34,17 +34,21 @@ The portfolio features a clean UI, dark mode support, smooth animations, and a m
 
 ## ✨ Key Features
 
-- **🎨 Modern UI/UX**: Built with **React** and **Tailwind CSS** for a sleek, glass-morphic, and responsive design.
+- **🪄 Stunning 3D Experiences**: 
+  - **Interactive 3D Skill Sphere**: A Fibonacci distribution globe of tech stack icons that dynamically rotates based on mouse velocity.
+  - **3D Coverflow Project Carousel**: Immersive 3D project showcase utilizing deep perspective transforms.
+  - **3D Parallax Scene & Particles**: A scroll-tied React Three Fiber particle instance and true 3D floating Hero text that reacts identically to depth-parallax scrolling.
+- **🎨 Modern UI/UX**: Built with **React** and **Tailwind CSS** for a sleek, glassmorphic, and responsive design.
 - **🌗 Dark Mode**: Fully integrated dark mode with a toggle switch, persisting user preference.
 - **⚡ High Performance**: Optimized with **Code Splitting (React.lazy)** and **Lazy Loading** for images to ensure fast load times.
 - **📱 Fully Responsive**: Mobile-first approach ensuring a seamless experience across all devices (Mobile, Tablet, Desktop).
-- **🎞️ Smooth Animations**: Interactive elements powered by **Framer Motion** for an engaging user experience.
+- **🎞️ Smooth Animations**: Interactive elements powered by **Framer Motion** and **Three.js** for an engaging user experience.
 - **📄 Comprehensive Sections**:
-  - **Hero**: Professional introduction and social links.
+  - **Hero**: Professional introduction with gorgeous WebGL particles.
   - **About**: Personal background and education.
   - **Experience**: detailed professional timeline.
-  - **Skills**: Categorized technical skills (Frontend, Backend, Tools).
-  - **Projects**: Showcase of key projects with GitHub and Live demo links.
+  - **Skills**: Interactive 3D tag cloud of technical skills.
+  - **Projects**: 3D Carousel showcase of key projects with GitHub and Live demo links.
   - **Certifications**: Professional achievements and badges.
   - **Contact**: Functional contact form and details.
 
@@ -52,11 +56,12 @@ The portfolio features a clean UI, dark mode support, smooth animations, and a m
 
 ## 🛠️ Tech Stack
 
-This project leverages the latest web technologies to deliver a top-tier experience:
+This project leverages the latest web technologies to deliver a top-tier 3D experience:
 
 | Category | Technologies |
 |----------|-------------|
 | **Frontend** | [React 18](https://reactjs.org/), [TypeScript](https://www.typescriptlang.org/) |
+| **3D Rendering** | [Three.js](https://threejs.org/), [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/) |
 | **Build Tool** | [Vite](https://vitejs.dev/) (Super fast build times) |
 | **Styling** | [Tailwind CSS](https://tailwindcss.com/) (Utility-first framework) |
 | **Icons** | [Lucide React](https://lucide.dev/) (Beautiful & consistent icons) |

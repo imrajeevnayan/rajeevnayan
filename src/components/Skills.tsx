@@ -1,5 +1,5 @@
-
 import { motion } from 'framer-motion';
+import SkillCloud3D from './common/SkillCloud3D';
 
 const Skills = () => {
   const skillCategories = [
@@ -22,8 +22,8 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div className="container mx-auto px-6">
+    <section id="skills" className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,31 +40,44 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
-          {skillCategories.map((category, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700"
-            >
-              <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white text-center">
-                {category.title}
-              </h3>
-              <div className="flex flex-wrap justify-center gap-4">
-                <div className="flex justify-center w-full">
-                  <img
-                    src={`https://skillicons.dev/icons?i=${category.skills}&perline=5`}
-                    alt={`${category.title} Skills`}
-                    loading="lazy"
-                    className="max-w-full h-auto hover:scale-105 transition-transform duration-300 cursor-pointer"
-                  />
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
+          {/* 3D Global Tag Cloud */}
+          <motion.div 
+             className="w-full lg:w-1/2 flex items-center justify-center pointer-events-auto"
+             initial={{ opacity: 0, scale: 0.8 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             transition={{ duration: 0.8 }}
+          >
+             <SkillCloud3D />
+          </motion.div>
+
+          {/* Categorized detailed breakdown */}
+          <div className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6 relative z-10">
+            {skillCategories.map((category, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:scale-105"
+              >
+                <h3 className="text-xl font-bold mb-4 text-gray-800 dark:text-white text-center sm:text-left">
+                  {category.title}
+                </h3>
+                 <div className="flex flex-wrap justify-center sm:justify-start gap-4">
+                  <div className="flex justify-center sm:justify-start w-full">
+                    <img
+                      src={`https://skillicons.dev/icons?i=${category.skills}&perline=4`}
+                      alt={`${category.title} Skills`}
+                      loading="lazy"
+                      className="max-w-full h-auto cursor-pointer"
+                    />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <motion.div
