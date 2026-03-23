@@ -26,9 +26,9 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg'
-        : 'bg-transparent'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg py-2'
+        : 'bg-transparent py-4'
         }`}
     >
       <nav className="container mx-auto px-6 py-4">

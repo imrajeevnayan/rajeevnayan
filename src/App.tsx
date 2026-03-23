@@ -42,10 +42,11 @@ function App() {
       <CustomCursor />
       <ScrollToTop />
       
+      <Header isDark={isDark} toggleTheme={toggleTheme} />
+      
       <div className="card-container">
         <div className="noise-bg"></div>
         
-        <Header isDark={isDark} toggleTheme={toggleTheme} />
         <Hero />
         <About />
 
