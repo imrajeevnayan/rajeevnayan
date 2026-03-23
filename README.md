@@ -28,9 +28,12 @@
 
 ## 🚀 Overview
 
-Welcome to my personal portfolio repository! This project is a representation of my skills, experience, and projects as a **Full Stack Developer**. It is built with a focus on **performance**, **responsiveness**, and **modern design principles**.
+Welcome to my personal portfolio repository! This project is a state-of-the-art representation of my skills, experience, and projects as a **Full Stack Developer**. It is built with an extreme focus on **performance**, **responsiveness**, and delivering a **jaw-dropping 3D user experience**.
 
-The portfolio features a clean UI, dark mode support, smooth animations, and a modular architecture that makes it easy to maintain and scale.
+### 🌟 Recent Architecture Upgrades (3D Experiences)
+- **High Performance 3D rendering:** Implemented via *React Three Fiber (WebGL)* and hardware-accelerated CSS 3D transforms with *Framer Motion*.
+- **Zero Render Blocking:** Heavy 3D mesh instances are aggressively **Lazy-Loaded** (`<Suspense>`) ensuring the website paints text and critical HTML instantly on mobile or low-end devices.
+- **Accessible & Subtle Elements:** The 3D viewports are assigned `z-index` background positioning and configured as `pointer-events-none` so visitors can effortlessly interact with the textual content, copy elements, and use screen readers.
 
 ## ✨ Key Features
 
