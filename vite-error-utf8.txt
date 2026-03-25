@@ -1,0 +1,307 @@
+﻿node.exe : 
+2026-03-25T07:21:58.090Z 
+vite:config bundled config 
+file loaded in 102.30ms
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" "C:\Use
+rs\Rajeev\AppData\Roaming ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~
+    + CategoryInfo          : 
+    NotSpecified: (2026-03-2  
+  5T07:2...ded in 102.30ms:   
+ String) [], RemoteExcepti    
+on
+    + FullyQualifiedErrorId : 
+    NativeCommandError
+ 
+2026-03-25T07:21:58.115Z 
+vite:config using resolved 
+config: {
+  base: '/',
+  plugins: [
+    'vite:optimized-deps',
+    'vite:watch-package-data',
+    'vite:pre-alias',
+    'alias',
+    'vite:react-babel',
+    'vite:react-refresh',
+    
+'vite:modulepreload-polyfill',
+    'vite:resolve',
+    'vite:html-inline-proxy',
+    'vite:css',
+    'vite:esbuild',
+    'vite:json',
+    'vite:wasm-helper',
+    'vite:worker',
+    'vite:asset',
+    'vite:wasm-fallback',
+    'vite:define',
+    'vite:css-post',
+    
+'vite:worker-import-meta-url',
+    
+'vite:asset-import-meta-url',
+    
+'vite:dynamic-import-vars',
+    'vite:import-glob',
+    'vite:client-inject',
+    'vite:css-analysis',
+    'vite:import-analysis'
+  ],
+  optimizeDeps: {
+    holdUntilCrawlEnd: true,
+    include: [
+      'react-scroll',
+      'framer-motion',
+      'react',
+      'react-dom',
+      'react/jsx-dev-runtime',
+      'react/jsx-runtime'
+    ],
+    esbuildOptions: { 
+preserveSymlinks: false, jsx: 
+'automatic' }
+  },
+  server: {
+    preTransformRequests: 
+true,
+    port: 5174,
+    watch: { ignored: [Array] 
+},
+    strictPort: true,
+    sourcemapIgnoreList: 
+[Function: isInNodeModules$1],
+    middlewareMode: false,
+    fs: {
+      strict: true,
+      allow: [Array],
+      deny: [Array],
+      cachedChecks: undefined
+    }
+  },
+  build: {
+    target: [ 'es2020', 
+'edge88', 'firefox78', 
+'chrome87', 'safari14' ],
+    cssTarget: [ 'es2020', 
+'edge88', 'firefox78', 
+'chrome87', 'safari14' ],
+    outDir: 'dist',
+    assetsDir: 'assets',
+    assetsInlineLimit: 4096,
+    cssCodeSplit: true,
+    sourcemap: false,
+    rollupOptions: { output: 
+[Object], onwarn: [Function: 
+onwarn] },
+    minify: 'esbuild',
+    terserOptions: {},
+    write: true,
+    emptyOutDir: null,
+    copyPublicDir: true,
+    manifest: false,
+    lib: false,
+    ssr: false,
+    ssrManifest: false,
+    ssrEmitAssets: false,
+    reportCompressedSize: 
+true,
+    chunkSizeWarningLimit: 
+1000,
+    watch: null,
+    commonjsOptions: { 
+include: [Array], extensions: 
+[Array] },
+    dynamicImportVarsOptions: 
+{ warnOnError: true, exclude: 
+[Array] },
+    modulePreload: { 
+polyfill: true },
+    cssMinify: true
+  },
+  cacheDir: 'E:/portfolio/raje
+evnayan/node_modules/.vite',
+  esbuild: { jsxDev: true, 
+jsx: 'automatic', 
+jsxImportSource: undefined },
+  resolve: {
+    mainFields: [ 'browser', 
+'module', 'jsnext:main', 
+'jsnext' ],
+    conditions: [],
+    extensions: [
+      '.mjs',  '.js',
+      '.mts',  '.ts',
+      '.jsx',  '.tsx',
+      '.json'
+    ],
+    dedupe: [ 'react', 
+'react-dom' ],
+    preserveSymlinks: false,
+    alias: [ [Object], 
+[Object] ]
+  },
+  configFile: 'E:/portfolio/ra
+jeevnayan/vite.config.ts',
+  configFileDependencies: [ 'E
+:/portfolio/rajeevnayan/vite.c
+onfig.ts' ],
+  inlineConfig: {
+    root: undefined,
+    base: undefined,
+    mode: undefined,
+    configFile: undefined,
+    logLevel: undefined,
+    clearScreen: undefined,
+    optimizeDeps: { force: 
+undefined },
+    server: {}
+  },
+  root: 
+'E:/portfolio/rajeevnayan',
+  decodedBase: '/',
+  rawBase: '/',
+  publicDir: 'E:/portfolio/raj
+eevnayan/public',
+  command: 'serve',
+  mode: 'development',
+  ssr: {
+    target: 'node',
+    optimizeDeps: { 
+noDiscovery: true, 
+esbuildOptions: [Object] }
+  },
+  isWorker: false,
+  mainConfig: null,
+  bundleChain: [],
+  isProduction: false,
+  css: { lightningcss: 
+undefined },
+  preview: {
+    port: undefined,
+    strictPort: true,
+    host: undefined,
+    allowedHosts: undefined,
+    https: undefined,
+    open: undefined,
+    proxy: undefined,
+    cors: undefined,
+    headers: undefined
+  },
+  envDir: 
+'E:/portfolio/rajeevnayan',
+  env: { BASE_URL: '/', MODE: 
+'development', DEV: true, 
+PROD: false },
+  assetsInclude: [Function: 
+assetsInclude],
+  logger: {
+    hasWarned: false,
+    info: [Function: info],
+    warn: [Function: warn],
+    warnOnce: [Function: 
+warnOnce],
+    error: [Function: error],
+    clearScreen: [Function: 
+clearScreen],
+    hasErrorLogged: 
+[Function: hasErrorLogged]
+  },
+  packageCache: Map(1) {
+    'fnpd_E:/portfolio/rajeevn
+ayan' => {
+      dir: 
+'E:/portfolio/rajeevnayan',
+      data: [Object],
+      hasSideEffects: 
+[Function: hasSideEffects],
+      webResolvedImports: {},
+      nodeResolvedImports: {},
+      setResolvedCache: 
+[Function: setResolvedCache],
+      getResolvedCache: 
+[Function: getResolvedCache]
+    },
+    set: [Function 
+(anonymous)]
+  },
+  createResolver: [Function: 
+createResolver],
+  worker: { format: 'iife', 
+plugins: '() => plugins', 
+rollupOptions: {} },
+  appType: 'spa',
+  experimental: { 
+importGlobRestoreExtension: 
+false, hmrPartialAccept: 
+false },
+  webSocketToken: 
+'kOSKw7icp93P',
+  additionalAllowedHosts: [],
+  getSortedPlugins: 
+[Function: getSortedPlugins],
+  getSortedPluginHooks: 
+[Function: 
+getSortedPluginHooks]
+}
+2026-03-25T07:21:58.194Z 
+vite:deps [32mremoving old 
+cache dir E:/portfolio/rajeevn
+ayan/node_modules/.vite/deps[
+39m
+2026-03-25T07:21:58.248Z 
+vite:resolve [32m6.44ms[39m 
+[36mreact-scroll[39m -> [2m
+E:/portfolio/rajeevnayan/node_
+modules/react-scroll/modules/i
+ndex.js[22m
+2026-03-25T07:21:58.252Z 
+vite:resolve [32m2.66ms[39m 
+[36mframer-motion[39m -> [2
+mE:/portfolio/rajeevnayan/node
+_modules/framer-motion/dist/es
+/index.mjs[22m
+2026-03-25T07:21:58.256Z 
+vite:resolve [32m3.22ms[39m 
+[36mreact[39m -> [2mE:/port
+folio/rajeevnayan/node_modules
+/react/index.js[22m
+2026-03-25T07:21:58.259Z 
+vite:resolve [32m2.75ms[39m 
+[36mreact-dom[39m -> [2mE:/
+portfolio/rajeevnayan/node_mod
+ules/react-dom/index.js[22m
+2026-03-25T07:21:58.261Z 
+vite:resolve [32m1.80ms[39m 
+[36mreact/jsx-dev-runtime[39
+m -> [2mE:/portfolio/rajeevna
+yan/node_modules/react/jsx-dev
+-runtime.js[22m
+2026-03-25T07:21:58.263Z 
+vite:resolve [32m1.05ms[39m 
+[36mreact/jsx-runtime[39m 
+-> [2mE:/portfolio/rajeevnaya
+n/node_modules/react/jsx-runti
+me.js[22m
+2026-03-25T07:21:58.268Z 
+vite:deps [32mscanning for 
+dependencies...[39m
+[31merror when starting dev 
+server:
+Error: Port 5174 is already 
+in use
+    at Server.onError (file://
+/E:/portfolio/rajeevnayan/node
+_modules/vite/dist/node/chunks
+/dep-BK3b2jBa.js:45596:18)
+    at Server.emit 
+(node:events:519:28)
+    at emitErrorNT 
+(node:net:1976:8)
+    at process.processTicksAnd
+Rejections (node:internal/proc
+ess/task_queues:90:21)[39m
