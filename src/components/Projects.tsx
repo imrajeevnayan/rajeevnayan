@@ -301,56 +301,68 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   );
 };
 
-import ProjectCarousel3D from './common/ProjectCarousel3D';
 
 const Projects = () => {
-  return (
-    <section id="projects" className="py-20 bg-transparent overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-10"
-        >
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 font-display">
-            Featured Projects
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A showcase of my improved technical skills through a deeply immersive 3D experience.
-          </p>
-        </motion.div>
+  const [visibleProjects, setVisibleProjects] = useState(6);
 
-        {/* 3D Carousel replacing the standard grid */}
-        <div className="w-full relative">
-          <ProjectCarousel3D 
-            projects={projects}
-            renderCard={(project, index) => (
-              <ProjectCard project={project} index={index} />
-            )}
-          />
+  const showMore = () => {
+    setVisibleProjects(prev => Math.min(prev + 3, projects.length));
+  };
+
+  return (
+    <section id="projects" className="py-24 bg-transparent overflow-hidden relative">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-4xl mx-auto text-center mb-20">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-6 uppercase"
+          >
+            Engineering <span className="text-blue-600 dark:text-blue-400">Portfolio</span>
+          </motion.h2>
+          <div className="w-16 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-8"></div>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-medium">
+            Explore a selection of my latest builds, from scalable backends to immersive 3D interfaces. 
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {projects.slice(0, visibleProjects).map((project, idx) => (
+            <ProjectCard key={idx} project={project} index={idx} />
+          ))}
         </div>
         
-        {/* Optional: Add a button to view all on Github */}
-        <motion.div 
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           className="mt-12 text-center"
-        >
-          <a
-             href="https://github.com/imrajeevnayan"
-             target="_blank"
-             rel="noreferrer"
-             className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/10 text-blue-600 dark:text-blue-400 rounded-full font-medium hover:bg-blue-600 hover:text-white transition-all shadow-sm"
+        <div className="mt-20 flex flex-col items-center gap-8">
+          {visibleProjects < projects.length && (
+            <motion.button
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={showMore}
+              className="px-12 py-5 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-widest shadow-[0_20px_40px_rgba(37,99,235,0.3)] hover:bg-blue-700 transition-all flex items-center gap-3 group"
+            >
+              Expand Build History <ChevronDown className="group-hover:translate-y-1 transition-transform" />
+            </motion.button>
+          )}
+
+          <motion.div 
+             initial={{ opacity: 0 }}
+             whileInView={{ opacity: 1 }}
+             className="text-center"
           >
-             <Github size={18} /> View All Projects on GitHub
-          </a>
-        </motion.div>
+            <a
+               href="https://github.com/imrajeevnayan"
+               target="_blank"
+               rel="noreferrer"
+               className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600/5 text-blue-600 dark:text-blue-400 rounded-full font-bold hover:bg-blue-600/10 transition-all"
+            >
+               <Github size={18} /> Deep Dive on GitHub
+            </a>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default Projects;
+export default Projects;

@@ -1,22 +1,33 @@
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Optimized motion values (bypasses React state/re-render loop)
+    const cursorX = useMotionValue(-100);
+    const cursorY = useMotionValue(-100);
+
+    // Smooth spring configuration
+    const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
+    const springX = useSpring(cursorX, springConfig);
+    const springY = useSpring(cursorY, springConfig);
 
     useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches || 'ontouchstart' in window);
+        };
+        checkMobile();
+
         const mouseMove = (e: MouseEvent) => {
-            setMousePosition({
-                x: e.clientX,
-                y: e.clientY
-            });
+            cursorX.set(e.clientX);
+            cursorY.set(e.clientY);
         };
 
         const handleMouseOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
             if (
-
                 target.tagName === 'A' ||
                 target.tagName === 'BUTTON' ||
                 target.closest('a') ||
@@ -29,62 +40,59 @@ const CustomCursor = () => {
             }
         };
 
-        window.addEventListener('mousemove', mouseMove);
+        window.addEventListener('mousemove', mouseMove, { passive: true });
         window.addEventListener('mouseover', handleMouseOver);
 
         return () => {
             window.removeEventListener('mousemove', mouseMove);
             window.removeEventListener('mouseover', handleMouseOver);
         };
-    }, []);
+    }, [cursorX, cursorY]);
+
+    if (isMobile) return null;
 
     return (
-        <>
-            {/* Massive Ambient Spotlight that tracks mouse */}
+        <div className="pointer-events-none fixed inset-0 z-[9999]">
+            {/* Massive Ambient Spotlight */}
             <motion.div
-                className="fixed top-0 left-0 w-[40rem] h-[40rem] rounded-full bg-blue-600/10 dark:bg-purple-600/10 pointer-events-none z-[-1] hidden md:block blur-[120px] mix-blend-screen"
-                animate={{
-                    x: mousePosition.x - 320,
-                    y: mousePosition.y - 320,
-                }}
-                transition={{
-                    type: "tween",
-                    ease: "backOut",
-                    duration: 0.5
+                className="absolute top-0 left-0 w-[40rem] h-[40rem] rounded-full bg-blue-600/5 dark:bg-purple-600/5 blur-[120px] mix-blend-screen"
+                style={{
+                   x: springX,
+                   y: springY,
+                   translateX: '-50%',
+                   translateY: '-50%'
                 }}
             />
 
-            {/* Existing Interactive Custom Cursor */}
+            {/* Main Interactive Ring */}
             <motion.div
-                className="fixed top-0 left-0 w-8 h-8 rounded-full border border-blue-400/80 pointer-events-none z-[100] hidden md:block mix-blend-difference"
+                className="absolute top-0 left-0 w-8 h-8 rounded-full border border-blue-400/80 mix-blend-difference"
                 animate={{
-                    x: mousePosition.x - 16,
-                    y: mousePosition.y - 16,
                     scale: isHovering ? 2.5 : 1,
-                    backgroundColor: isHovering ? "rgba(59,130,246,0.2)" : "rgba(59,130,246,0)"
+                    backgroundColor: isHovering ? "rgba(59,130,246,0.15)" : "rgba(59,130,246,0)"
                 }}
-                transition={{
-                    type: "spring",
-                    stiffness: 150,
-                    damping: 15,
-                    mass: 0.1
+                style={{
+                  x: springX,
+                  y: springY,
+                  translateX: '-50%',
+                  translateY: '-50%'
                 }}
             />
+
+            {/* Inner Dot */}
             <motion.div
-                className="fixed top-0 left-0 w-2 h-2 bg-blue-500 rounded-full pointer-events-none z-[100] hidden md:block shadow-[0_0_10px_rgba(59,130,246,1)]"
+                className="absolute top-0 left-0 w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(59,130,246,1)]"
                 animate={{
-                    x: mousePosition.x - 4,
-                    y: mousePosition.y - 4,
                     opacity: isHovering ? 0 : 1
                 }}
-                transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 28,
-                    mass: 0.01
+                style={{
+                  x: springX,
+                  y: springY,
+                  translateX: '-50%',
+                  translateY: '-50%'
                 }}
             />
-        </>
+        </div>
     );
 };
 

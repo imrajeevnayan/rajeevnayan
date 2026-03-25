@@ -187,28 +187,7 @@ const Hero = () => {
                     style={{ transform: "translateZ(40px)" }}
                   />
 
-                  {/* Floating badges */}
-                  <motion.div
-                    className="absolute -right-4 top-10 glass-panel p-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] flex items-center gap-2"
-                    animate={{ y: [0, -15, 0] }}
-                    transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
-                    style={{ transform: "translateZ(80px)" }}
-                  >
-                    <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
-                      <Code2 size={24} />
-                    </div>
-                    <div className="text-sm font-extrabold dark:text-white">Full Stack</div>
-                  </motion.div>
-
-                  <motion.div
-                    className="absolute -left-4 bottom-20 glass-panel p-3 rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.15)] flex items-center gap-2"
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 }}
-                    style={{ transform: "translateZ(60px)" }}
-                  >
-                    <div className="text-3xl drop-shadow-md">🚀</div>
-                    <div className="text-sm font-extrabold dark:text-white">Problem Solver</div>
-                  </motion.div>
+                  {/* Floating badges removed as requested */}
                 </>
               </Tilt3D>
             </div>

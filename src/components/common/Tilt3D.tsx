@@ -19,10 +19,17 @@ const Tilt3D: React.FC<Tilt3DProps> = ({ children, className = '', intensity = 1
     const rotateX = useTransform(mouseY, [-0.5, 0.5], [intensity, -intensity]);
     const rotateY = useTransform(mouseX, [-0.5, 0.5], [-intensity, intensity]);
 
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!ref.current) return;
+    const rectRef = useRef<DOMRect | null>(null);
 
-        const rect = ref.current.getBoundingClientRect();
+    const handleMouseEnter = () => {
+        if (!ref.current) return;
+        rectRef.current = ref.current.getBoundingClientRect();
+    };
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!rectRef.current) return;
+
+        const rect = rectRef.current;
         const width = rect.width;
         const height = rect.height;
 
@@ -39,12 +46,14 @@ const Tilt3D: React.FC<Tilt3DProps> = ({ children, className = '', intensity = 1
     const handleMouseLeave = () => {
         x.set(0);
         y.set(0);
+        rectRef.current = null;
     };
 
     return (
         <motion.div
             ref={ref}
             className={`relative preserve-3d cursor-pointer ${className}`}
+            onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{
