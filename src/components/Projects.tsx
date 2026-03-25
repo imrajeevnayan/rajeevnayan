@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Folder, ChevronDown, ChevronUp } from 'lucide-react';
+import { ExternalLink, Github, ChevronDown, ChevronUp } from 'lucide-react';
 import Tilt3D from './common/Tilt3D';
 
 interface Project {
@@ -148,155 +148,99 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: index * 0.15 }}
+      transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true }}
-      className="h-full"
+      className="h-full group"
     >
-      <div className="h-full">
-        {/* Disable Tilt when expanded to allow text selection and easier reading */}
-        <Tilt3D className="h-full" intensity={isExpanded ? 0 : 5}>
-          <div className={`group glass-panel text-gray-800 dark:text-gray-100 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col h-full ${!isExpanded ? 'transform-style-3d' : ''}`}>
-            <div className="relative h-56 overflow-hidden flex-shrink-0">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transform transition-all duration-700 group-hover:scale-125 group-hover:blur-md"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/10 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 backdrop-blur-sm">
-                <h3 className="text-xl font-bold text-white font-display mb-2 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
-                  {project.title}
-                </h3>
-                <div className="flex flex-wrap gap-2 mb-4 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 delay-75">
-                  {project.tech.slice(0, 3).map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2.5 py-1 bg-blue-600/80 text-white rounded-full text-[10px] font-bold border border-blue-400/60 shadow-[0_0_8px_rgba(59,130,246,0.5)]"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                  {project.tech.length > 3 && (
-                    <span className="px-2 py-0.5 bg-white/10 text-white/80 rounded text-[10px] font-medium border border-white/10">
-                      +{project.tech.length - 3}
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-center space-x-4 translate-y-6 group-hover:translate-y-0 transition-transform duration-500 delay-150">
+      <Tilt3D className="h-full" intensity={isExpanded ? 0 : 10}>
+        <div className="glass-panel h-full rounded-[2.5rem] overflow-hidden group-hover:shadow-[0_0_100px_rgba(37,99,235,0.2)] dark:group-hover:shadow-[0_0_150px_rgba(99,102,241,0.3)] border-white/20 dark:border-white/5 transition-all duration-700">
+          
+          {/* IMAGE Showcase */}
+          <div className="relative h-64 overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:rotate-1"
+              loading="lazy"
+            />
+            
+            {/* Dark Blur Overlay on Hover */}
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center p-8 space-y-6">
+               <div className="flex gap-4">
                   <a
                     href={project.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 bg-white/10 border border-white/20 rounded-full text-white hover:bg-white hover:text-gray-900 hover:scale-110 transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                    aria-label="View Code"
+                    className="p-4 bg-white/10 hover:bg-white text-white hover:text-black rounded-2xl transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-white/20 hover:scale-110"
                   >
-                    <Github size={18} />
+                    <Github size={24} />
                   </a>
                   {project.links.live && (
                     <a
                       href={project.links.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2.5 bg-blue-600 border border-blue-500 rounded-full text-white hover:bg-blue-500 hover:scale-110 transition-all shadow-[0_0_15px_rgba(37,99,235,0.5)]"
-                      aria-label="View Live Demo"
+                      className="p-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:shadow-blue-500/60 hover:scale-110"
                     >
-                      <ExternalLink size={18} />
+                      <ExternalLink size={24} />
                     </a>
                   )}
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 flex flex-col flex-grow text-left">
-              <div className="flex-grow pt-2">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-xl font-bold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors font-display">
-                  {project.title}
-                </h3>
-                <div className="flex gap-3">
-                  {project.links.live && (
-                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" aria-label="Live Demo">
-                      <ExternalLink size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
-                    </a>
-                  )}
-                  <a href={project.links.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub Repo">
-                    <Folder size={18} className="text-gray-400 hover:text-blue-600 transition-colors" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex-grow">
-                <p className="text-gray-600 dark:text-gray-300 text-sm mb-4">
-                  {project.description}
-                </p>
-
-                {/* Storytelling Expansion */}
-                <AnimatePresence>
-                  {isExpanded && (project.challenge || project.solution || project.outcome) && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="pt-2 pb-4 space-y-3 border-t border-gray-100 dark:border-gray-600 mt-2">
-                        {project.challenge && (
-                          <div>
-                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">The Challenge</h4>
-                            <p className="text-sm text-gray-700 dark:text-gray-300">{project.challenge}</p>
-                          </div>
-                        )}
-                        {project.solution && (
-                          <div>
-                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1"> The Solution</h4>
-                            <p className="text-sm text-gray-700 dark:text-gray-300">{project.solution}</p>
-                          </div>
-                        )}
-                        {project.outcome && (
-                          <div>
-                            <h4 className="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">The Outcome</h4>
-                            <p className="text-sm text-gray-700 dark:text-gray-300">{project.outcome}</p>
-                          </div>
-                        )}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Toggle Button for Details */}
-              {(project.challenge || project.solution || project.outcome) && (
-                <button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="flex items-center text-xs font-medium text-blue-600 dark:text-blue-400 mb-4 hover:underline focus:outline-none"
-                >
-                  {isExpanded ? (
-                    <>Show Less <ChevronUp size={14} className="ml-1" /></>
-                  ) : (
-                    <>View Case Study <ChevronDown size={14} className="ml-1" /></>
-                  )}
-                </button>
-              )}
-
-              </div>
-              
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-2.5 py-1 bg-blue-50 dark:bg-gray-800 text-blue-600 dark:text-blue-300 rounded text-xs font-medium border border-blue-100 dark:border-gray-600"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
+               </div>
+               <p className="text-white text-sm font-bold uppercase tracking-widest bg-blue-600/20 py-1 px-3 rounded-full border border-white/10">Case Study Ready</p>
             </div>
           </div>
-        </Tilt3D>
-      </div>
+
+          <div className="p-8 flex flex-col h-full">
+            <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors uppercase tracking-tight">
+              {project.title}
+            </h3>
+            
+            <p className="text-gray-500 dark:text-gray-400 text-sm font-medium leading-relaxed mb-6">
+              {project.description}
+            </p>
+
+            <div className="mt-auto pt-6 border-t border-gray-100 dark:border-white/5 flex flex-wrap gap-2">
+              {project.tech.map((tech, i) => (
+                <span key={i} className="text-[10px] font-black uppercase tracking-widest text-blue-600/70 dark:text-blue-400/70 bg-blue-50 dark:bg-blue-500/5 px-2 py-1 rounded">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Expanded Detailed View toggle if needed */}
+            {(project.challenge) && (
+              <button 
+                onClick={() => setIsExpanded(!isExpanded)}
+                className="mt-4 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 dark:text-gray-500 hover:text-blue-500 transition-colors flex items-center gap-2"
+              >
+                {isExpanded ? 'Collapse' : 'Architecture Details'} {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+              </button>
+            )}
+
+            <AnimatePresence>
+              {isExpanded && (
+                 <motion.div
+                   initial={{ height: 0, opacity: 0 }}
+                   animate={{ height: 'auto', opacity: 1 }}
+                   exit={{ height: 0, opacity: 0 }}
+                   className="overflow-hidden mt-4 space-y-4 pt-4 border-t border-dashed border-gray-200 dark:border-white/10"
+                 >
+                    <div>
+                       <h4 className="text-[10px] font-black uppercase text-blue-600 mb-1">Challenge</h4>
+                       <p className="text-xs text-gray-600 dark:text-gray-400">{project.challenge}</p>
+                    </div>
+                    <div>
+                       <h4 className="text-[10px] font-black uppercase text-blue-600 mb-1">Solution</h4>
+                       <p className="text-xs text-gray-600 dark:text-gray-400">{project.solution}</p>
+                    </div>
+                 </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </Tilt3D>
     </motion.div>
   );
 };

@@ -5,7 +5,6 @@ import { Link } from 'react-scroll';
 
 import Magnetic from './common/Magnetic';
 import Tilt3D from './common/Tilt3D';
-import GlitchText from './common/GlitchText';
 import profileImage from '../assets/profile.jpg';
 import { lazy, Suspense } from 'react';
 
@@ -14,198 +13,181 @@ const GeometricShapes = lazy(() => import('./common/GeometricShapes'));
 const Hero = () => {
   const containerRef = useRef<HTMLElement>(null);
   
-  // Scroll Parallax logic
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  // Layered 3D elements moving at different parallax speeds
-  const yTextLayer = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const yImageLayer = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacityLayer = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const yTextLayer = useTransform(scrollYProgress, [0, 1], ["0%", "40%"]);
+  const yImageLayer = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+  const opacityLayer = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
     <section 
        ref={containerRef}
        id="home" 
-       className="min-h-screen flex items-center justify-center py-12 md:py-20 relative overflow-hidden bg-transparent"
+       className="min-h-screen flex items-center justify-center py-20 relative overflow-hidden bg-transparent"
     >
-      {/* 3D Moving Shapes / Background Canvas (Lazy Loaded for Perf) */}
       <Suspense fallback={null}>
          <GeometricShapes />
       </Suspense>
 
-      {/* Ultra-Premium Ambient Deep Space Glows (Maximized Intensity) */}
+      {/* MASSIVE AMBIENT GLOWS - 800px+ with higher opacity */}
       <motion.div 
         animate={{ 
-          y: [0, -30, 0],
-          scale: [1, 1.05, 1],
-          rotate: [0, 45, 0]
+          x: [-20, 20, -20],
+          y: [-20, 20, -20],
+          scale: [1, 1.1, 1],
         }}
-        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 right-1/4 w-[40rem] h-[40rem] bg-gradient-to-b from-indigo-500/80 to-purple-500/80 blur-[150px] rounded-full pointer-events-none mix-blend-screen"
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-40 -left-40 w-[50rem] h-[50rem] bg-indigo-600/20 blur-[180px] rounded-full mix-blend-screen pointer-events-none"
       />
       <motion.div 
         animate={{ 
-          y: [0, 40, 0],
+          x: [20, -20, 20],
+          y: [20, -20, 20],
           scale: [1, 1.1, 1],
-          rotate: [0, -45, 0]
         }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className="absolute bottom-10 left-1/4 w-[45rem] h-[45rem] bg-gradient-to-tr from-fuchsia-500/70 to-blue-500/70 blur-[160px] rounded-[100%] pointer-events-none mix-blend-screen"
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute -bottom-40 -right-20 w-[60rem] h-[60rem] bg-fuchsia-600/15 blur-[200px] rounded-full mix-blend-screen pointer-events-none"
+      />
+      <motion.div 
+        animate={{ 
+          y: [-50, 50, -50],
+          scale: [0.8, 1.2, 0.8],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-blue-600/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none"
       />
 
-      <div className="container mx-auto px-6 flex flex-col-reverse md:flex-row items-center relative z-10 w-full">
+      <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
         
-        {/* TEXT LAYER WITH PARALLAX */}
+        {/* TEXT CONTENT */}
         <motion.div
           style={{ y: yTextLayer, opacity: opacityLayer }}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="md:w-[55%] text-center md:text-left pt-8 md:pt-0 relative"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center lg:text-left space-y-8"
         >
-          {/* Intense focused spotlight immediately behind the glass card */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[130%] bg-blue-400/50 blur-[120px] rounded-full pointer-events-none hidden md:block" />
-          
           <motion.div 
-            className="glass-panel p-8 sm:p-12 md:p-14 rounded-[40px] relative z-10 border-t-2 border-l-2 border-white/60 dark:border-white/40 shadow-[0_0_80px_rgba(59,130,246,0.3)] dark:shadow-[0_0_120px_rgba(168,85,247,0.3)] flex flex-col justify-center"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+             initial={{ opacity: 0, x: -20 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ delay: 0.2 }}
+             className="inline-flex items-center gap-3 px-6 py-3 glass-panel rounded-full bg-blue-500/10 border-blue-500/20 text-blue-600 dark:text-blue-400 font-black uppercase text-xs tracking-widest shadow-xl shadow-blue-500/5 hover:bg-blue-500/20 transition-all cursor-default"
           >
-            <div className="inline-block self-center md:self-start px-6 py-2.5 mb-8 text-sm font-bold text-blue-800 bg-blue-100/90 rounded-full dark:bg-blue-900/60 dark:text-blue-200 shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-blue-300/80 dark:border-blue-400/60 backdrop-blur-xl uppercase tracking-wider">
-              Available for opportunities <span className="ml-2 animate-pulse inline-block text-lg">🚀</span>
-            </div>
+             <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+             Available for Global Projects
+          </motion.div>
           
-          {/* 3D FLOATING HERO TEXT WITH MOUSE PERSPECTIVE */}
-          <Tilt3D intensity={15} className="mb-6 cursor-default">
-            <div className="transform-style-3d py-4 px-2 -mx-2 bg-transparent" style={{ transformStyle: "preserve-3d" }}>
-                <h1 
-                   className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter dark:text-white leading-tight drop-shadow-2xl translate-z-10"
-                   style={{ transform: "translateZ(80px)" }}
-                >
-                  Hi, I'm{' '}
-                  <br className="hidden md:block" />
-                  <GlitchText
-                    text="Rajeev Nayan"
-                    className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent inline-block pb-1 drop-shadow-[0_0_15px_rgba(99,102,241,0.5)]"
-                  />
-                </h1>
-                
-                <h2 
-                   className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mt-4 font-light drop-shadow-lg translate-z-10"
-                   style={{ transform: "translateZ(40px)" }}
-                >
-                  Full Stack Developer & <span className="font-medium text-gray-800 dark:text-white shadow-sm">Problem Solver</span>
-                </h2>
-            </div>
-          </Tilt3D>
-          
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto md:mx-0 leading-relaxed font-medium">
-            Crafting scalable web applications with <span className="text-blue-600 dark:text-blue-400 font-bold">Java Spring Boot</span> and <span className="text-blue-600 dark:text-blue-400 font-bold">React.js</span>.
-            Turning complex problems into elegant, user-centric solutions.
+          <div className="space-y-4">
+             <h1 className="text-6xl sm:text-7xl lg:text-9xl font-black tracking-tighter dark:text-white leading-[0.9] drop-shadow-2xl">
+               HELLO,<br />
+               <span className="text-gradient drop-shadow-[0_0_30px_rgba(217,70,239,0.3)]">RAJEEV</span>
+             </h1>
+             <h2 className="text-xl md:text-3xl text-slate-600 dark:text-slate-300 font-bold uppercase tracking-widest flex items-center justify-center lg:justify-start gap-4">
+                <span className="w-12 h-1 bg-gradient-to-r from-blue-500 to-transparent rounded-full hidden lg:block"></span>
+                Software Architect
+             </h2>
+          </div>
+
+          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-xl font-medium leading-relaxed pt-2">
+            Engineering sub-second performance and modular data flows. Specialized in <span className="text-blue-500 font-bold">Java Spring Boot</span> and <span className="text-fuchsia-500 font-bold">React Architecture</span>.
           </p>
 
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-10 relative z-20 pointer-events-auto">
+          <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-4">
             <Magnetic>
-              <div className="inline-block">
-                <Link
-                  to="projects"
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                  className="px-8 py-4 bg-white dark:bg-white text-black dark:text-black rounded-full font-bold hover:scale-105 transition-all duration-300 shadow-xl shadow-blue-500/10 flex items-center gap-2 cursor-pointer border border-transparent"
-                >
-                  View My Work <ArrowRight className="w-5 h-5 ml-1 inline-block" />
-                </Link>
-              </div>
+              <Link
+                to="projects"
+                smooth={true}
+                className="px-12 py-6 bg-blue-600 text-white rounded-2xl font-black uppercase tracking-[0.2em] shadow-2xl shadow-blue-600/40 hover:bg-blue-700 hover:shadow-blue-600/60 transition-all flex items-center gap-3 group cursor-pointer"
+              >
+                View Builds <ArrowRight className="group-hover:translate-x-2 transition-transform" />
+              </Link>
             </Magnetic>
             <Magnetic>
-              <div className="inline-block">
-                <Link
-                  to="contact"
-                  smooth={true}
-                  duration={500}
-                  offset={-70}
-                  className="px-8 py-4 glass-panel text-gray-800 dark:text-gray-200 rounded-full font-medium transition-all duration-300 backdrop-blur-md cursor-pointer border border-gray-300/50 dark:border-white/10 hover:bg-black/5 dark:hover:bg-white/10"
-                >
-                  Contact Me
-                </Link>
-              </div>
+              <Link
+                to="contact"
+                smooth={true}
+                className="px-12 py-6 glass-panel rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-white/10 transition-all cursor-pointer"
+              >
+                Hire Me
+              </Link>
             </Magnetic>
           </div>
 
-          <div className="flex justify-center md:justify-start space-x-6 relative z-20">
-            {[
-              { Icon: Github, href: "https://github.com/imrajeevnayan", label: "GitHub" },
-              { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/", label: "LinkedIn" },
-              { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/", label: "Instagram" },
-              { Icon: Code2, href: "https://leetcode.com/u/imrajeevnayan/", label: "LeetCode" },
-              { Icon: FileText, href: "https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing", label: "Resume" }
-            ].map(({ Icon, href, label }, index) => (
-              <Magnetic key={index}>
-                <a
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 transition-all duration-300 hover:scale-110"
-                  aria-label={label}
+          <div className="flex justify-center lg:justify-start gap-6 pt-8">
+            {[Github, Linkedin, Instagram, FileText].map((Icon, i) => (
+              <Magnetic key={i}>
+                <a 
+                   href="#" 
+                   className="p-5 glass-panel rounded-2xl text-slate-500 dark:text-slate-400 hover:text-blue-500 dark:hover:text-fuchsia-400 transition-all shadow-xl"
                 >
-                  <Icon size={26} />
+                   <Icon size={24} />
                 </a>
               </Magnetic>
             ))}
           </div>
-          </motion.div>
         </motion.div>
 
-        {/* IMAGE LAYER WITH PARALLAX */}
+        {/* IMAGE / VISUAL LAYER */}
         <motion.div
           style={{ y: yImageLayer, opacity: opacityLayer }}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          className="md:w-1/2 mb-12 md:mb-0 relative"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="relative"
         >
-          <div className="relative">
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur-[100px] opacity-30 dark:opacity-40"
-              animate={{ opacity: [0.3, 0.5, 0.3], scale: [1, 1.1, 1] }}
-              transition={{ repeat: Infinity, duration: 6 }}
-            />
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 mx-auto">
-              <Tilt3D className="w-full h-full">
-                <>
-                  <div className="absolute inset-0 rounded-full border-2 border-dashed border-gray-300 dark:border-gray-600 animate-spin-slow" style={{ animationDuration: '25s', transform: 'translateZ(10px)' }}></div>
-                  <motion.img
-                    src={profileImage}
-                    alt="Rajeev Nayan"
-                    className="absolute inset-2 w-[calc(100%-16px)] h-[calc(100%-16px)] rounded-full object-cover shadow-2xl border-4 border-white dark:border-gray-800"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
-                    style={{ transform: "translateZ(40px)" }}
-                  />
+           <Tilt3D intensity={20}>
+             <div className="relative z-10 p-4 glass-panel rounded-[4rem] border-white/20 shadow-[0_0_100px_rgba(99,102,241,0.2)] dark:shadow-[0_0_150px_rgba(168,85,247,0.2)]">
+                <div className="relative rounded-[3.5rem] overflow-hidden bg-slate-900 border border-white/5 aspect-square">
+                   <img 
+                     src={profileImage} 
+                     alt="Rajeev Nayan" 
+                     className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                   />
+                   {/* Gradient Overlay */}
+                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-40" />
+                </div>
 
-                  {/* Floating badges removed as requested */}
-                </>
-              </Tilt3D>
-            </div>
-          </div>
+                {/* Overlapping Floating Status Badges */}
+                <motion.div 
+                   animate={{ y: [0, -20, 0] }}
+                   transition={{ duration: 4, repeat: Infinity }}
+                   className="absolute -top-10 -right-10 p-6 glass-panel rounded-3xl bg-white/20 dark:bg-black/40 shadow-2xl border-white/40"
+                >
+                   <div className="text-3xl font-black text-blue-500 leading-none mb-1">6+</div>
+                   <div className="text-[9px] font-black uppercase tracking-widest text-gray-500">Exp Months</div>
+                </motion.div>
+
+                <motion.div 
+                   animate={{ y: [0, 20, 0] }}
+                   transition={{ duration: 5, repeat: Infinity, delay: 0.5 }}
+                   className="absolute -bottom-10 -left-10 p-6 glass-panel rounded-3xl bg-white/20 dark:bg-black/40 shadow-2xl border-white/40"
+                >
+                   <Code2 size={24} className="text-fuchsia-500 mb-2" />
+                   <div className="text-[10px] font-black uppercase tracking-widest text-gray-500 leading-none">High Perf Code</div>
+                </motion.div>
+             </div>
+           </Tilt3D>
+
+           {/* Decorative Rings around Profile */}
+           <div className="absolute inset-0 -z-10 border border-blue-500/10 rounded-full scale-125 animate-pulse" />
+           <div className="absolute inset-0 -z-10 border border-fuchsia-500/10 rounded-full scale-150 animate-pulse delay-1000" />
         </motion.div>
       </div>
 
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors z-20 pointer-events-auto"
-        animate={{ y: [0, 15, 0] }}
-        transition={{ repeat: Infinity, duration: 1.8 }}
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer text-slate-400 hover:text-blue-500 transition-colors"
       >
-        <Link to="about" smooth={true} duration={500} offset={-80}>
-          <ArrowDown size={36} className="drop-shadow-lg" />
+        <Link to="about" smooth={true}>
+          <ArrowDown size={32} />
         </Link>
       </motion.div>
     </section>
   );
 };
 
-export default Hero;
+export default Hero;

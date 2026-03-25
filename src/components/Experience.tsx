@@ -19,68 +19,66 @@ const experiences = [
 
 const Experience = () => {
     return (
-        <section id="experience" className="py-20 bg-transparent">
-            <div className="container mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="text-center mb-12"
-                >
-                    <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4">Professional Experience</h2>
-                    <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
-                </motion.div>
+    <section id="experience" className="py-24 bg-transparent relative overflow-hidden">
+        {/* Deep Glow backgrounds */}
+        <div className="absolute top-1/2 left-0 w-[50rem] h-[50rem] bg-indigo-600/10 blur-[180px] rounded-full mix-blend-screen pointer-events-none" />
+        
+        <div className="container mx-auto px-6 relative z-10">
+            <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                viewport={{ once: true }}
+                className="text-center mb-20"
+            >
+                <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-gray-900 dark:text-white mb-6 uppercase">Professional <span className="text-gradient">Journey</span></h2>
+                <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full mb-8"></div>
+            </motion.div>
 
-                <div className="max-w-3xl mx-auto">
-                    {experiences.map((exp, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            viewport={{ once: true }}
-                            className="relative pl-8 md:pl-0 pb-12 last:pb-0"
-                        >
-                            {/* Hide timeline on very small screens, keep on desktop/tablet */}
-                            <div className="md:hidden absolute left-0 top-0 bottom-0 w-0.5 bg-blue-600/30 dark:bg-blue-400/30" />
-                            <div className="md:hidden absolute -left-[7px] top-6 w-4 h-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
-
-                            <div className="group relative">
-                                {/* Gradient hover effect */}
-                                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-[28px] blur opacity-0 group-hover:opacity-20 transition duration-500"></div>
-                                
-                                <div className="glass-panel p-6 md:p-8 rounded-3xl relative h-full w-full transform transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-2xl bg-white/60 dark:bg-black/40">
-                                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <div className="max-w-4xl mx-auto space-y-12">
+                {experiences.map((exp, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: index * 0.2, ease: [0.16, 1, 0.3, 1] }}
+                        viewport={{ once: true }}
+                        className="group"
+                    >
+                        <div className="glass-panel p-8 md:p-12 rounded-[3.5rem] bg-white/10 dark:bg-black/50 border-white/20 dark:border-white/5 shadow-2xl transition-all duration-700 hover:scale-[1.05] hover:shadow-[0_0_120px_rgba(99,102,241,0.25)]">
+                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+                                <div>
+                                    <h3 className="text-3xl font-black text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors uppercase tracking-tight">
                                         {exp.position}
                                     </h3>
-                                    <div className="flex flex-col sm:flex-row sm:items-center text-gray-700 dark:text-gray-300 mt-3 gap-2 sm:gap-4 sm:space-x-0 mb-6">
-                                        <span className="font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full text-sm">
-                                            {exp.company}
-                                        </span>
-                                        <span className="flex items-center text-sm font-medium">
-                                            <Calendar className="w-4 h-4 mr-1.5" />
+                                    <div className="flex items-center gap-4 mt-2">
+                                        <span className="text-blue-600 dark:text-blue-400 font-black text-sm uppercase tracking-widest">{exp.company}</span>
+                                        <div className="w-1 h-1 bg-gray-400 rounded-full" />
+                                        <span className="flex items-center text-sm font-bold text-gray-500 uppercase tracking-widest leading-none">
+                                            <Calendar className="w-4 h-4 mr-2" />
                                             {exp.period}
                                         </span>
-                                        <span className="self-start sm:self-auto px-3 py-1 text-xs font-semibold rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400">
-                                            {exp.type}
-                                        </span>
                                     </div>
-                                    <ul className="space-y-3">
-                                        {exp.description.map((item, i) => (
-                                            <li key={i} className="text-gray-600 dark:text-gray-400 flex items-start text-sm md:text-base">
-                                                <span className="mr-3 mt-1.5 w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex-shrink-0" />
-                                                <span className="leading-relaxed">{item}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
                                 </div>
+                                <span className="px-6 py-2 text-xs font-black uppercase tracking-widest rounded-full bg-blue-600/10 text-blue-600 border border-blue-600/20 self-start md:self-center">
+                                    {exp.type}
+                                </span>
                             </div>
-                        </motion.div>
-                    ))}
-                </div>
+                            
+                            <ul className="space-y-6">
+                                {exp.description.map((item, i) => (
+                                    <li key={i} className="text-gray-600 dark:text-gray-400 flex items-start text-sm md:text-lg font-medium leading-relaxed group/li">
+                                        <div className="mr-5 mt-2.5 w-2 h-2 bg-gradient-to-r from-blue-500 to-fuchsia-500 rounded-full flex-shrink-0 group-hover/li:scale-150 transition-transform" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </motion.div>
+                ))}
             </div>
-        </section>
+        </div>
+    </section>
     );
 };
 

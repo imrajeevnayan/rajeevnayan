@@ -49,7 +49,7 @@
   }
 
   .glass-panel {
-    @apply bg-white/70 dark:bg-black/40 backdrop-blur-3xl border-transparent shadow-2xl relative transition-all duration-500 hover:shadow-[0_0_80px_rgba(59,130,246,0.2)] dark:hover:shadow-[0_0_120px_rgba(168,85,247,0.3)] hover:-translate-y-2 hover:scale-[1.02];
+    @apply bg-white/10 dark:bg-black/30 backdrop-blur-[40px] border border-white/20 dark:border-white/10 shadow-2xl relative transition-all duration-700 hover:shadow-[0_0_100px_rgba(99,102,241,0.25)] dark:hover:shadow-[0_0_150px_rgba(168,85,247,0.35)] hover:-translate-y-2 hover:scale-[1.05];
   }
   
   .glass-panel::before {
@@ -58,16 +58,25 @@
     inset: 0;
     pointer-events: none;
     border-radius: inherit;
-    padding: 2px;
-    background: linear-gradient(135deg, rgba(99,102,241,0.8), rgba(168,85,247,0.3), rgba(59,130,246,0.8));
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.4), transparent, rgba(255,255,255,0.1));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
-    transition: all 0.5s ease;
   }
-  
-  .glass-panel:hover::before {
-    background: linear-gradient(135deg, rgba(99,102,241,1), rgba(168,85,247,0.8), rgba(59,130,246,1));
-    padding: 3px;
+
+  .glow-orb {
+    @apply absolute rounded-full blur-[140px] opacity-30 mix-blend-screen pointer-events-none;
+    animation: float 20s infinite ease-in-out;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-500 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent transition-all duration-300;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
   }
 }

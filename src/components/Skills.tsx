@@ -86,21 +86,18 @@ const Skills = () => {
           </motion.div>
 
           {/* Animated Progress Bars */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-6 relative z-10">
+          <div className="w-full lg:w-1/2 flex flex-col gap-10 relative z-10">
             {skillCategories.map((category, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
                 viewport={{ once: true }}
                 className="group relative"
               >
-                {/* Neon glow border on hover */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 rounded-2xl blur-md opacity-0 group-hover:opacity-70 transition-all duration-500"></div>
-                
-                <div className="relative rounded-2xl p-6 h-full w-full transform transition-all duration-500 group-hover:scale-[1.04] group-hover:-translate-y-2 group-hover:shadow-[0_25px_60px_rgba(99,102,241,0.4)] bg-white/80 dark:bg-gray-900/70 backdrop-blur-2xl border border-white/50 dark:border-white/10">
-                  <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-300 dark:to-purple-300 bg-clip-text text-transparent">
+                <div className="glass-panel p-8 rounded-[2.5rem] bg-white/10 dark:bg-black/40 border-white/20 dark:border-white/5 transition-all duration-700 hover:scale-[1.05] hover:shadow-[0_0_80px_rgba(99,102,241,0.3)]">
+                  <h3 className="text-2xl font-black mb-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 bg-clip-text text-transparent uppercase tracking-tighter">
                     {category.title}
                   </h3>
                   <div className="flex flex-col">
