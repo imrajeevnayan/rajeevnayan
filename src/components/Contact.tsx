@@ -2,7 +2,7 @@
 import { useState, useRef, FormEvent } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Linkedin, Github, Code2, Send, Loader2, Instagram } from 'lucide-react';
-
+import Magnetic from './common/Magnetic';
 import emailjs from '@emailjs/browser';
 
 const Contact = () => {
@@ -102,7 +102,7 @@ const Contact = () => {
             </div>
 
             <div className="pt-8">
-              <h3 className="font-semibold text-lg mb-4">Connect on Social</h3>
+              <h3 className="font-semibold text-lg mb-4 uppercase tracking-tighter">Connect on Social</h3>
               <div className="flex space-x-4">
                 {[
                   { Icon: Github, href: "https://github.com/imrajeevnayan" },
@@ -110,15 +110,16 @@ const Contact = () => {
                   { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/" },
                   { Icon: Code2, href: "https://leetcode.com/u/imrajeevnayan/" }
                 ].map(({ Icon, href }, index) => (
-                  <a
-                    key={index}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 rounded-full border-2 border-gray-200 dark:border-gray-700 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300"
-                  >
-                    <Icon size={20} />
-                  </a>
+                  <Magnetic key={index}>
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-4 rounded-2xl glass-panel border-gray-200 dark:border-gray-700 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 shadow-xl"
+                    >
+                      <Icon size={22} />
+                    </a>
+                  </Magnetic>
                 ))}
               </div>
             </div>

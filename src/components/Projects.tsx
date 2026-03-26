@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import gsap from 'gsap';
 import { ExternalLink, Github, ChevronDown, ChevronUp } from 'lucide-react';
 import Tilt3D from './common/Tilt3D';
+import Magnetic from './common/Magnetic';
 
 interface Project {
   title: string;
@@ -145,20 +147,57 @@ const projects: Project[] = [
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const spotlightRef = useRef<HTMLDivElement>(null);
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current || !spotlightRef.current) return;
+    const { left, top } = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - left;
+    const y = e.clientY - top;
+    
+    gsap.to(spotlightRef.current, {
+        opacity: 1,
+        x,
+        y,
+        duration: 0.3,
+        ease: 'power3.out'
+    });
+  };
+
+  const onMouseLeave = () => {
+    gsap.to(spotlightRef.current, {
+        opacity: 0,
+        duration: 0.3
+    });
+  };
 
   return (
     <motion.div
+      ref={cardRef}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       viewport={{ once: true }}
-      className="h-full group"
+      className="h-full group relative"
     >
+      <div 
+        ref={spotlightRef}
+        className="absolute inset-0 pointer-events-none opacity-0 z-30 transition-opacity duration-500 overflow-hidden rounded-[2.5rem]"
+        style={{
+          background: 'radial-gradient(400px circle at var(--x, 0px) var(--y, 0px), rgba(37,99,235,0.1), transparent 100%)',
+          transform: 'translate(-50%, -50%)',
+          left: 0,
+          top: 0
+        }}
+      />
       <Tilt3D className="h-full" intensity={isExpanded ? 0 : 10}>
         <div className="glass-panel h-full rounded-[2.5rem] overflow-hidden group-hover:shadow-[0_0_100px_rgba(37,99,235,0.2)] dark:group-hover:shadow-[0_0_150px_rgba(99,102,241,0.3)] border-white/20 dark:border-white/5 transition-all duration-700">
           
           {/* IMAGE Showcase */}
-          <div className="relative h-64 overflow-hidden">
+          <div className="relative h-72 overflow-hidden pointer-events-auto">
             <img
               src={project.image}
               alt={project.title}
@@ -166,29 +205,51 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               loading="lazy"
             />
             
+            {/* Visual Metrics Overlays (Storytelling) */}
+            <div className="absolute top-4 left-4 flex flex-col gap-2">
+               {project.outcome && (
+                  <div className="px-4 py-2 bg-blue-600/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-2xl border border-white/20 animate-float">
+                      High Impact
+                  </div>
+               )}
+               {project.tech.includes('Spring Boot') && (
+                  <div className="px-4 py-2 bg-slate-900/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-2xl border border-white/10">
+                      Scalability Focused
+                  </div>
+               )}
+            </div>
+
             {/* Dark Blur Overlay on Hover */}
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center p-8 space-y-6">
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center items-center p-8 space-y-8">
+               <div className="text-center space-y-2">
+                  <h4 className="text-white text-xs font-black uppercase tracking-[0.3em] mb-2 text-blue-400">Project Mission</h4>
+                  <p className="text-white text-sm font-medium leading-relaxed max-w-[200px]">{project.description.slice(0, 100)}...</p>
+               </div>
+               
                <div className="flex gap-4">
-                  <a
-                    href={project.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-4 bg-white/10 hover:bg-white text-white hover:text-black rounded-2xl transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-white/20 hover:scale-110"
-                  >
-                    <Github size={24} />
-                  </a>
-                  {project.links.live && (
+                  <Magnetic>
                     <a
-                      href={project.links.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl transition-all duration-300 shadow-[0_0_30px_rgba(37,99,235,0.4)] hover:shadow-blue-500/60 hover:scale-110"
+                        href={project.links.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-5 bg-white/10 hover:bg-white text-white hover:text-black rounded-3xl transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.1)] hover:shadow-white/20 hover:scale-110"
                     >
-                      <ExternalLink size={24} />
+                        <Github size={24} />
                     </a>
+                  </Magnetic>
+                  {project.links.live && (
+                    <Magnetic>
+                        <a
+                        href={project.links.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-5 bg-blue-600 hover:bg-blue-500 text-white rounded-3xl transition-all duration-300 shadow-[0_0_40px_rgba(37,99,235,0.4)] hover:shadow-blue-500/60 hover:scale-110"
+                        >
+                        <ExternalLink size={24} />
+                        </a>
+                    </Magnetic>
                   )}
                </div>
-               <p className="text-white text-sm font-bold uppercase tracking-widest bg-blue-600/20 py-1 px-3 rounded-full border border-white/10">Case Study Ready</p>
             </div>
           </div>
 

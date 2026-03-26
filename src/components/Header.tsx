@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { Sun, Moon, Menu, X, FileDown } from 'lucide-react';
+import Magnetic from './common/Magnetic';
 
 const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -33,16 +34,18 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
     >
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link
-            to="home"
-            smooth={true}
-            duration={500}
-            offset={-70}
-            spy={true}
-            className="text-2xl font-bold cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-          >
-            RAJEEV NAYAN
-          </Link>
+          <Magnetic>
+            <Link
+              to="home"
+              smooth={true}
+              duration={500}
+              offset={-70}
+              spy={true}
+              className="text-2xl font-black cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 transition-colors tracking-tighter"
+            >
+              RAJEEV NAYAN
+            </Link>
+          </Magnetic>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -54,7 +57,8 @@ const Header = ({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                 duration={500}
                 offset={-70}
                 spy={true}
-                className="relative group cursor-pointer"
+                activeClass="text-blue-600 dark:text-blue-400 font-black scale-105"
+                className="relative group cursor-pointer transition-all duration-300"
               >
                 <span className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                   {item.name}
