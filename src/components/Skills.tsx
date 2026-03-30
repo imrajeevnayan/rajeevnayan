@@ -30,85 +30,69 @@ const skillCategories = [
   },
 ];
 
-const ProgressBar = ({ name, level }: { name: string; level: number }) => (
-  <div className="mb-5">
-    <div className="flex justify-between mb-2">
-      <span className="text-sm font-semibold text-gray-800 dark:text-gray-100">{name}</span>
-      <span className="text-sm font-bold text-blue-600 dark:text-blue-300">{level}%</span>
-    </div>
-    <div className="w-full bg-gray-200/70 dark:bg-gray-800/80 rounded-full h-3 overflow-hidden">
-      <motion.div
-        className="bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 h-3 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.7)]"
-        initial={{ width: 0 }}
-        whileInView={{ width: `${level}%` }}
-        transition={{ duration: 1.2, ease: 'easeOut' }}
-        viewport={{ once: true }}
-      />
-    </div>
-  </div>
-);
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-20 bg-transparent transition-colors duration-300 overflow-hidden relative">
-      <div className="absolute top-1/4 right-0 w-[40rem] h-[40rem] bg-purple-500/40 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-0 left-10 w-[35rem] h-[35rem] bg-blue-500/40 blur-[120px] rounded-full pointer-events-none mix-blend-screen" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-            Technical Skills
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            A comprehensive toolset developed through professional experience and personal projects.
-          </p>
-        </motion.div>
-
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 max-w-7xl mx-auto">
-          {/* 3D Global Tag Cloud */}
-          <motion.div 
-             className="w-full lg:w-1/2 flex items-center justify-center pointer-events-auto min-h-[400px]"
-             initial={{ opacity: 0, scale: 0.8 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             transition={{ duration: 0.8 }}
-             viewport={{ once: true }}
+    <section id="skills" className="section-container border-t border-slate-200 dark:border-white/5">
+      <div className="flex flex-col lg:flex-row gap-20">
+        {/* STICKY HEADER */}
+        <div className="lg:w-1/3 lg:sticky lg:top-32 h-fit">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
           >
-             <Suspense fallback={<div className="animate-pulse w-32 h-32 rounded-full bg-blue-100 dark:bg-gray-800"></div>}>
-                 <SkillCloud3D />
-             </Suspense>
+            <div className="text-blue-600 dark:text-blue-400 text-xs font-black uppercase tracking-[0.3em]">Mastery</div>
+            <h2 className="text-6xl md:text-7xl font-black tracking-tighter uppercase leading-none">
+              Technical <br /><span className="text-shimmer">Ecosystem</span>
+            </h2>
+            <p className="text-slate-500 dark:text-slate-400 font-medium max-w-sm">
+              A curated selection of technologies I use to build performant, scalable, and delightful digital experiences.
+            </p>
+            
+            <div className="pt-10 hidden lg:block">
+               <Suspense fallback={null}>
+                  <SkillCloud3D />
+               </Suspense>
+            </div>
           </motion.div>
+        </div>
 
-          {/* Animated Progress Bars */}
-          <div className="w-full lg:w-1/2 flex flex-col gap-10 relative z-10">
-            {skillCategories.map((category, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                viewport={{ once: true }}
-                className="group relative"
-              >
-                <div className="glass-panel p-8 rounded-[2.5rem] bg-white/10 dark:bg-black/40 border-white/20 dark:border-white/5 transition-all duration-700 hover:scale-[1.05] hover:shadow-[0_0_80px_rgba(99,102,241,0.3)]">
-                  <h3 className="text-2xl font-black mb-8 bg-gradient-to-r from-blue-600 via-indigo-600 to-fuchsia-600 bg-clip-text text-transparent uppercase tracking-tighter">
-                    {category.title}
-                  </h3>
-                  <div className="flex flex-col">
-                    {category.skills.map((skill, i) => (
-                      <ProgressBar key={i} name={skill.name} level={skill.level} />
-                    ))}
+        {/* SKILLS GRID */}
+        <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {skillCategories.map((category, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="group p-10 glass-panel rounded-[3rem] border-transparent hover:border-blue-500/10"
+            >
+              <h3 className="text-2xl font-black uppercase tracking-tight mb-8 group-hover:text-blue-600 transition-colors">
+                {category.title}
+              </h3>
+              <div className="space-y-6">
+                {category.skills.map((skill, i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="flex justify-between items-end">
+                       <span className="text-lg font-bold text-slate-800 dark:text-slate-200">{skill.name}</span>
+                       <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Expertise</span>
+                    </div>
+                    <div className="h-1 w-full bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden">
+                       <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.level}%` }}
+                          transition={{ duration: 1.5, ease: "expo.out" }}
+                          className="h-full bg-blue-600 rounded-full"
+                       />
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

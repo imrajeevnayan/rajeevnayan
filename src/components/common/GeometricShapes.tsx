@@ -145,7 +145,7 @@ const GeometricShapes = () => {
                         <ambientLight intensity={0.5} />
                         <directionalLight position={[10, 10, 5]} intensity={1.5} />
                         <pointLight position={[-10, -10, -10]} intensity={1} color="#60a5fa" />
-                        <Environment preset="city" />
+                        <Environment preset="warehouse" />
                         <Shapes isMobile={isMobile} />
                     </Suspense>
                 </Canvas>

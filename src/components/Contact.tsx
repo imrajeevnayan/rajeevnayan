@@ -1,7 +1,7 @@
 
 import { useState, useRef, FormEvent } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Linkedin, Github, Code2, Send, Loader2, Instagram } from 'lucide-react';
+import { Mail, Phone, Send, Loader2 } from 'lucide-react';
 import Magnetic from './common/Magnetic';
 import emailjs from '@emailjs/browser';
 
@@ -13,24 +13,19 @@ const Contact = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
-
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // NOTE: Make sure to create a .env file with your EmailJS credentials
       await emailjs.sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-
       setSubmitStatus('success');
       formRef.current.reset();
-      setTimeout(() => setSubmitStatus('idle'), 5000);
     } catch (error) {
-      console.error('EmailJS Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -38,179 +33,83 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-transparent">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-5xl md:text-6xl font-black tracking-tighter text-gray-900 dark:text-white mb-4">Contact Me</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400">Let's connect and discuss how we can work together!</p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-blue-100 dark:bg-gray-800 rounded-lg text-blue-600 dark:text-blue-400">
-                <Mail className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-1">Email</h3>
-                <a
-                  href="mailto:imrajeevnayan@gmail.com"
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
+    <section id="contact" className="section-container border-t border-slate-200 dark:border-white/5">
+      <div className="flex flex-col lg:flex-row gap-20">
+        
+        {/* STICKY INFO */}
+        <div className="lg:w-1/3 lg:sticky lg:top-32 h-fit">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-8">
+            <div className="text-blue-600 dark:text-blue-400 text-xs font-black uppercase tracking-[0.3em]">Intersection</div>
+            <h2 className="text-6xl md:text-7xl font-black tracking-tighter uppercase leading-none">
+              Get in <br /><span className="text-shimmer">Touch</span>
+            </h2>
+            <p className="text-slate-500 dark:text-slate-400 font-medium max-w-sm">
+              Currently available for high-impact engineering roles and technical collaborations.
+            </p>
+            
+            <div className="space-y-6 pt-10">
+               <a 
+                  href="mailto:imrajeevnayan@gmail.com" 
+                  className="group flex items-center gap-4 text-lg font-bold"
+                  aria-label="Send an email to Rajeev Nayan"
+               >
+                  <div className="p-4 glass-panel rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all">
+                     <Mail size={20} />
+                  </div>
                   imrajeevnayan@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-blue-100 dark:bg-gray-800 rounded-lg text-blue-600 dark:text-blue-400">
-                <Phone className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-1">Phone</h3>
-                <a
-                  href="tel:+919155028525"
-                  className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                >
-                  +91-9155028525
-                </a>
-              </div>
-            </div>
-
-            <div className="flex items-start space-x-4">
-              <div className="p-3 bg-blue-100 dark:bg-gray-800 rounded-lg text-blue-600 dark:text-blue-400">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-1">Location</h3>
-                <p className="text-gray-600 dark:text-gray-400">Bangalore, Karnataka, India</p>
-                <p className="text-sm text-blue-600 dark:text-blue-400 mt-1">Available for remote work & relocation</p>
-              </div>
-            </div>
-
-            <div className="pt-8">
-              <h3 className="font-semibold text-lg mb-4 uppercase tracking-tighter">Connect on Social</h3>
-              <div className="flex space-x-4">
-                {[
-                  { Icon: Github, href: "https://github.com/imrajeevnayan" },
-                  { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/" },
-                  { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/" },
-                  { Icon: Code2, href: "https://leetcode.com/u/imrajeevnayan/" }
-                ].map(({ Icon, href }, index) => (
-                  <Magnetic key={index}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-4 rounded-2xl glass-panel border-gray-200 dark:border-gray-700 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300 shadow-xl"
-                    >
-                      <Icon size={22} />
-                    </a>
-                  </Magnetic>
-                ))}
-              </div>
+               </a>
+               <a 
+                  href="tel:+919155028525" 
+                  className="group flex items-center gap-4 text-lg font-bold"
+                  aria-label="Call Rajeev Nayan"
+               >
+                  <div className="p-4 glass-panel rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all">
+                     <Phone size={20} />
+                  </div>
+                  +91 9155028525
+               </a>
             </div>
           </motion.div>
+        </div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="glass-panel p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700"
-          >
-            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-5 py-3.5 rounded-xl border border-gray-300/50 dark:border-gray-600/50 glass-panel text-gray-800 dark:text-gray-100 focus:ring-4 focus:ring-blue-500/30 outline-none transition-all duration-300"
-                  placeholder="Your Name"
-                />
-              </div>
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-5 py-3.5 rounded-xl border border-gray-300/50 dark:border-gray-600/50 glass-panel text-gray-800 dark:text-gray-100 focus:ring-4 focus:ring-blue-500/30 outline-none transition-all duration-300"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  required
-                  className="w-full px-5 py-3.5 rounded-xl border border-gray-300/50 dark:border-gray-600/50 glass-panel text-gray-800 dark:text-gray-100 focus:ring-4 focus:ring-blue-500/30 outline-none transition-all duration-300 resize-none"
-                  placeholder="How can I help you?"
-                ></textarea>
-              </div>
+        {/* FORM SIDE */}
+        <div className="lg:w-2/3">
+           <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="p-10 md:p-16 glass-panel rounded-[3rem] border-white/10"
+           >
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <label htmlFor="name-input" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Full Name</label>
+                    <input id="name-input" name="name" required className="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500/50 rounded-2xl px-6 py-4 outline-none transition-all font-bold" placeholder="Your Name" />
+                  </div>
+                  <div className="space-y-2">
+                    <label htmlFor="email-input" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Email Address</label>
+                    <input id="email-input" type="email" name="email" required className="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500/50 rounded-2xl px-6 py-4 outline-none transition-all font-bold" placeholder="your@email.com" />
+                  </div>
+                </div>
+                
+                <div className="space-y-2">
+                  <label htmlFor="message-input" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Message</label>
+                  <textarea id="message-input" name="message" rows={5} required className="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500/50 rounded-2xl px-6 py-4 outline-none transition-all font-bold resize-none" placeholder="Your vision..." />
+                </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(59,130,246,0.4)] disabled:opacity-70 disabled:hover:translate-y-0 flex items-center justify-center space-x-2 font-bold"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="animate-spin" size={20} />
-                    <span>Sending...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} />
-                    <span>Send Message</span>
-                  </>
-                )}
-              </button>
+                <Magnetic>
+                  <button 
+                    disabled={isSubmitting}
+                    className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all"
+                  >
+                    {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                    {isSubmitting ? 'Transmitting...' : 'Send Message'}
+                  </button>
+                </Magnetic>
 
-              {submitStatus === 'success' && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-green-600 dark:text-green-400 text-center text-sm font-medium"
-                >
-                  Message sent successfully! I'll get back to you soon.
-                </motion.p>
-              )}
-              {submitStatus === 'error' && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-red-600 dark:text-red-400 text-center text-sm font-medium"
-                >
-                  Something went wrong. Please try again or email me directly.
-                </motion.p>
-              )}
-            </form>
-          </motion.div>
+                {submitStatus === 'success' && <p className="text-center text-xs font-bold text-green-500">Transmission successful. Talk soon.</p>}
+              </form>
+           </motion.div>
         </div>
       </div>
     </section>

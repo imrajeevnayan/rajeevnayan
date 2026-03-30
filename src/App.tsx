@@ -28,7 +28,7 @@ const LoadingSpinner = () => (
 );
 
 function App() {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true); // Default to dark for premium feel
 
   useEffect(() => {
     if (isDark) {
@@ -42,54 +42,36 @@ function App() {
     setIsDark(!isDark);
   };
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Global reveal for headings
-      const headings = document.querySelectorAll('h2');
-      headings.forEach((heading) => {
-        gsap.from(heading, {
-          scrollTrigger: {
-            trigger: heading,
-            start: 'top 90%',
-            toggleActions: 'play none none reverse'
-          },
-          y: 40,
-          opacity: 0,
-          duration: 1,
-          ease: 'power3.out'
-        });
-      });
-    });
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div className="app-wrapper text-gray-900 dark:text-gray-100 transition-colors duration-300 relative">
-      <div className="noise-bg fixed inset-0 z-[9999] pointer-events-none opacity-[0.03] dark:opacity-[0.05] bg-repeat"></div>
+    <div className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100 selection:bg-blue-500/30 selection:text-white transition-colors duration-500">
       <CustomCursor />
       <ScrollProgress />
       <ScrollToTop />
       
       <Header isDark={isDark} toggleTheme={toggleTheme} />
       
-      <div className="card-container relative z-10">
-        
+      <main className="relative">
         <Hero />
-        <About />
+        
+        <div className="space-y-0">
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingSpinner />}>
+              <About />
+              <Experience />
+              <Skills />
+              <Projects />
+              <Certifications />
+              <Testimonials />
+              <Blog />
+              <Contact />
+            </Suspense>
+          </ErrorBoundary>
+        </div>
 
-        <ErrorBoundary>
-          <Suspense fallback={<LoadingSpinner />}>
-            <Experience />
-            <Skills />
-            <Projects />
-            <Certifications />
-            <Testimonials />
-            <Blog />
-            <Contact />
-            <Footer />
-          </Suspense>
-        </ErrorBoundary>
-      </div>
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
+      </main>
     </div>
   );
 }
