@@ -5,7 +5,7 @@ export default defineConfig({
   base: '/',
   plugins: [react()],
   optimizeDeps: {
-    include: ['react-scroll', 'framer-motion'],
+    include: ['react', 'react-dom', '@react-three/fiber', '@react-three/drei', 'three', 'react-scroll', 'framer-motion'],
   },
   server: {
     port: 5173,
@@ -17,27 +17,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (id.includes('node_modules')) {
-            if (id.includes('three') || id.includes('@react-three')) {
-              return 'threejs-vendor';
-            }
-            if (id.includes('framer-motion') || id.includes('gsap')) {
-              return 'animation-vendor';
-            }
-            if (id.includes('lucide-react')) {
-              return 'icons-vendor';
-            }
-            return 'vendor';
-          }
-        },
+        // Remove manualChunks to let Vite handle it automatically
       },
     },
     minify: 'esbuild',
     chunkSizeWarningLimit: 600,
   },
   esbuild: {
-    drop: ['console', 'debugger'],
+    // drop: ['console', 'debugger'],
   },
   cacheDir: 'node_modules/.vite',
 });

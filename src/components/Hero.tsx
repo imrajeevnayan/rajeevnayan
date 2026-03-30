@@ -110,7 +110,7 @@ const Hero = () => {
            <div className="hero-visual relative group">
               <div className="relative z-10 w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000 border border-white/10 shadow-2xl">
                   <img 
-                    src="/rajeev-hero.jpg" 
+                    src="rajeev-hero.jpg" 
                     alt="Rajeev Nayan" 
                     className="w-full h-full object-cover transition-transform duration-[3s] group-hover:scale-110"
                     fetchpriority="high"

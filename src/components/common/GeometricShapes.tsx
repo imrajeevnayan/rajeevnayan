@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode, Suspense, useRef, useState, useEffect } from 'react';
+import React, { Component, ErrorInfo, ReactNode, Suspense, useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Sparkles, PerspectiveCamera, Environment, MeshTransmissionMaterial } from '@react-three/drei';
 import * as THREE from 'three';
@@ -124,6 +124,11 @@ const GeometricShapes = () => {
         handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    // Ensure useLayoutEffect is available and referenced in the component
+    React.useLayoutEffect(() => {
+        // No-op to ensure bundling
     }, []);
 
     return (
