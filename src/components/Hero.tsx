@@ -215,9 +215,11 @@ const Hero = () => {
              <div className="relative z-10 p-4 glass-panel rounded-[4rem] border-white/20 shadow-[0_0_100px_rgba(99,102,241,0.2)] dark:shadow-[0_0_150px_rgba(168,85,247,0.2)] transition-transform duration-700">
                 <div className="relative rounded-[3.5rem] overflow-hidden bg-slate-900 border border-white/5 aspect-square">
                    <img 
-                     src={profileImage} 
+                     src="/rajeev-hero.jpg" 
                      alt="Rajeev Nayan" 
                      className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                     fetchPriority="high"
+                     loading="eager"
                    />
                    {/* Gradient Overlay */}
                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-40" />

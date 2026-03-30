@@ -43,21 +43,24 @@ function App() {
   };
 
   useEffect(() => {
-    // Global reveal for headings
-    const headings = document.querySelectorAll('h2');
-    headings.forEach((heading) => {
-      gsap.from(heading, {
-        scrollTrigger: {
-          trigger: heading,
-          start: 'top 90%',
-          toggleActions: 'play none none reverse'
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: 'power3.out'
+    const ctx = gsap.context(() => {
+      // Global reveal for headings
+      const headings = document.querySelectorAll('h2');
+      headings.forEach((heading) => {
+        gsap.from(heading, {
+          scrollTrigger: {
+            trigger: heading,
+            start: 'top 90%',
+            toggleActions: 'play none none reverse'
+          },
+          y: 40,
+          opacity: 0,
+          duration: 1,
+          ease: 'power3.out'
+        });
       });
     });
+    return () => ctx.revert();
   }, []);
 
   return (

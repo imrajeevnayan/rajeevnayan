@@ -11,18 +11,19 @@ const CustomCursor = () => {
 
         if (!cursor || !follower) return;
 
+        const xSetCursor = gsap.quickSetter(cursor, "x", "px");
+        const ySetCursor = gsap.quickSetter(cursor, "y", "px");
+
         const moveCursor = (e: MouseEvent) => {
-            gsap.to(cursor, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.1,
-                ease: 'power3.out'
-            });
+            xSetCursor(e.clientX);
+            ySetCursor(e.clientY);
+            
             gsap.to(follower, {
                 x: e.clientX,
                 y: e.clientY,
                 duration: 0.3,
-                ease: 'power3.out'
+                ease: 'power3.out',
+                overwrite: 'auto'
             });
         };
 

@@ -129,7 +129,17 @@ const GeometricShapes = () => {
     return (
         <div className="absolute inset-0 z-0 pointer-events-none opacity-80 dark:opacity-60 transition-opacity duration-1000">
             <ErrorBoundary>
-                <Canvas dpr={isMobile ? 1 : [1, 2]}>
+                <Canvas 
+                    dpr={isMobile ? 1 : [1, 1.5]}
+                    gl={{ 
+                        powerPreference: "high-performance",
+                        antialias: !isMobile,
+                        alpha: true,
+                        stencil: false,
+                        depth: true,
+                    }}
+                    performance={{ min: 0.5 }}
+                >
                     <Suspense fallback={null}>
                         <PerspectiveCamera makeDefault position={[0, 0, 5]} fov={75} />
                         <ambientLight intensity={0.5} />
