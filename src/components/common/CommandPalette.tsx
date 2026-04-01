@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Command, Moon, Sun, ArrowRight, X } from 'lucide-react';
-import useTheme from '../hooks/useTheme';
+import useTheme from '../../hooks/useTheme';
+
 
 import { scroller } from 'react-scroll';
 
