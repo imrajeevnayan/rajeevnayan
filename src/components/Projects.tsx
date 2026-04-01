@@ -26,11 +26,13 @@ const projects: Project[] = [
   {
     title: 'event-nexus.kafka',
     description: 'High-throughput real-time event streaming system utilizing Apache Kafka and Spring Cloud Stream. Orchestrated distributed consumers to process 10k+ messages per second with ACID compliance.',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&w=1200&q=80', // Server/Network
+    image: 'https://images.unsplash.com/photo-1510511459019-5dee995ad1ef?q=80&w=1200', // Dynamic data streaming visual
+
     tech: ['Apache Kafka', 'Spring Cloud', 'Java 17', 'Docker'],
     stats: { stars: 32, forks: 12 },
     links: { github: 'https://github.com/imrajeevnayan/event-streaming-system' },
   },
+
   {
     title: 'hms-v1.springboot',
     description: 'Enterprise-grade Hospital Management System focusing on data integrity and security. Integrated Hibernate Envers for thorough auditing and JWT for stateless specialized authentication.',
