@@ -20,26 +20,51 @@ const projects: Project[] = [
     description: 'Cloud-native Digital Library service architected with Spring Boot and PostgreSQL. Implemented secure OAuth2.0 authentication flows and optimized data retrieval for high-concurrency scenarios.',
     image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80',
     tech: ['Spring Boot', 'OAuth2', 'PostgreSQL', 'Docker'],
-    stats: { stars: 12, forks: 4 },
+    stats: { stars: 24, forks: 8 },
     links: { github: 'https://github.com/imrajeevnayan/digital-library-app' },
+  },
+  {
+    title: 'event-nexus.kafka',
+    description: 'High-throughput real-time event streaming system utilizing Apache Kafka and Spring Cloud Stream. Orchestrated distributed consumers to process 10k+ messages per second with ACID compliance.',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&w=800&q=80',
+    tech: ['Apache Kafka', 'Spring Cloud', 'Java 17', 'Docker'],
+    stats: { stars: 32, forks: 12 },
+    links: { github: 'https://github.com/imrajeevnayan/event-streaming-system' },
   },
   {
     title: 'hms-v1.springboot',
     description: 'Enterprise-grade Hospital Management System focusing on data integrity and security. Integrated Hibernate Envers for thorough auditing and JWT for stateless specialized authentication.',
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
     tech: ['Java 17', 'Spring Data JPA', 'MySQL', 'JWT'],
-    stats: { stars: 8, forks: 2 },
+    stats: { stars: 15, forks: 5 },
     links: { github: 'https://github.com/imrajeevnayan/hospital-management-springboot' },
+  },
+  {
+    title: 'cache-master.redis',
+    description: 'Distributed memory caching engine with advanced TTL logic and cache-aside patterns. Reduced API latency by 65% through intelligent data invalidation and Redis clustering.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80',
+    tech: ['Redis', 'Spring Cache', 'Java', 'Lettuce'],
+    stats: { stars: 18, forks: 6 },
+    links: { github: 'https://github.com/imrajeevnayan/distributed-cache' },
   },
   {
     title: 'chat-engine.websocket',
     description: 'High-performance real-time communication engine leveraging STOMP/WebSockets. Orchestrated with a microservices-ready architecture and MongoDB for ultra-low latency persistence.',
     image: 'https://images.unsplash.com/photo-1611606063065-ee7946f0787a?auto=format&fit=crop&w=800&q=80',
     tech: ['WebSockets', 'STOMP', 'MongoDB', 'Node.js'],
-    stats: { stars: 15, forks: 7 },
+    stats: { stars: 21, forks: 9 },
     links: { github: 'https://github.com/imrajeevnayan/real-time-chat' },
   },
+  {
+    title: 'analytics-core.lambda',
+    description: 'Serverless data analytics pipeline on AWS. Automated processing of large-scale JSON payloads using Java Lambda functions, S3 triggers, and DynamoDB for persistence.',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+    tech: ['AWS Lambda', 'DynamoDB', 'Java', 'CloudWatch'],
+    stats: { stars: 14, forks: 4 },
+    links: { github: 'https://github.com/imrajeevnayan/serverless-analytics' },
+  },
 ];
+
 
 
 const Projects = () => {
