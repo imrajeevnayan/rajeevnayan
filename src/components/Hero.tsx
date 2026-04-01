@@ -45,18 +45,19 @@ const Hero = () => {
   }, []);
 
   const codeString = `
-import { Developer } from './portfolio';
+@RestController
+@RequestMapping("/api/v1")
+public class BackendController {
+  
+  @Autowired
+  private JvmService service;
 
-const Rajeev = new Developer({
-  name: 'Rajeev Nayan',
-  role: 'Full Stack Engineer',
-  stack: ['Java', 'React', 'Tailwind', 'Three.js'],
-  mission: 'Building high-performance architectures',
-  location: 'India'
-});
-
-Rajeev.initialize();
+  public List<Architecture> analyze() {
+    return service.getHighPerformance();
+  }
+}
   `.trim();
+
 
   return (
     <section 
@@ -79,13 +80,14 @@ Rajeev.initialize();
 
             <div className="space-y-4">
               <h1 className="hero-text text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-none text-[var(--text-main)]">
-                <span className="block text-[var(--text-dim)]">I AM</span>
-                <span className="text-shimmer block">RAJEEV</span>
+                <span className="block text-[var(--text-dim)]">JVM_SPEC</span>
+                <span className="text-shimmer block text-orange-500">BACKEND</span>
               </h1>
               <p className="hero-text text-lg text-[var(--text-dim)] font-mono max-w-lg">
-                &gt; Full Stack Engineer specializing in <span className="text-orange-500">high-performance architectures</span> and fluid interfaces. 
+                &gt; Java Backend Specialist optimizing <span className="text-orange-500">JVM architectures</span> and high-throughput systems. 
               </p>
             </div>
+
 
             <div className="hero-text space-y-4">
               <div className="flex justify-between items-end mb-2">

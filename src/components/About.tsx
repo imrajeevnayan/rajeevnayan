@@ -48,13 +48,14 @@ const About = () => {
                 <TerminalWindow title="~/README.md" className="w-full">
                     <div className="space-y-6">
                         <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-none text-white">
-                            I build <span className="text-orange-500">scalable architectures</span> that perform under pressure.
+                            I build <span className="text-orange-500">robust backend ecosystems</span> that scale with confidence.
                         </h3>
                         <p className="text-zinc-400 font-mono text-sm leading-relaxed">
-                            &gt; As a performance-driven Software Engineer, I specialize in bridging the gap between heavy-duty Java Spring Boot backends and fluid, interactive React interfaces. My philosophy is simple: resolve the problem at its core before writing a single line of code.
+                            &gt; As a Backend-focused Software Engineer, I specialize in crafting high-performance Java Spring Boot architectures and cloud-native services. My approach prioritizes system stability, JVM optimization, and the uncompromising pursuit of clean, maintainable codebases that solve core business challenges at scale.
                         </p>
                     </div>
                 </TerminalWindow>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {stats.map((item, idx) => (

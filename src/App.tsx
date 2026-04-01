@@ -7,12 +7,18 @@ import About from './components/About';
 import ScrollToTop from './components/common/ScrollToTop';
 import VerticalNav from './components/common/VerticalNav';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import CommandPalette from './components/common/CommandPalette';
+
 
 // Lazy load components for performance
 const Experience = lazy(() => import('./components/Experience'));
+const Architecture = lazy(() => import('./components/Architecture'));
 const Skills = lazy(() => import('./components/Skills'));
+
+const SystemMonitor = lazy(() => import('./components/SystemMonitor'));
 const Projects = lazy(() => import('./components/Projects'));
 const Certifications = lazy(() => import('./components/Certifications'));
+
 const Blog = lazy(() => import('./components/Blog'));
 const Contact = lazy(() => import('./components/Contact'));
 
@@ -30,12 +36,13 @@ const LoadingSpinner = () => (
 function App() {
   return (
     <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)] selection:bg-[var(--accent-color)]/30 transition-colors duration-500 grid-background">
-
+      <CommandPalette />
       <CustomCursor />
       <VerticalNav />
       <ScrollToTop />
       
       <Header />
+
       
       <main className="relative">
         <Hero />
@@ -49,12 +56,20 @@ function App() {
               <section id="experience">
                 <Experience />
               </section>
+              <section id="architecture">
+                <Architecture />
+              </section>
               <section id="skills">
                 <Skills />
+              </section>
+
+              <section id="monitor">
+                <SystemMonitor />
               </section>
               <section id="projects">
                 <Projects />
               </section>
+
               <Suspense fallback={null}>
                 <Certifications />
               </Suspense>

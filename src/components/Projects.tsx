@@ -17,29 +17,30 @@ interface Project {
 const projects: Project[] = [
   {
     title: 'libstack.java',
-    description: 'Digital Library application with OAuth2 and PostgreSQL.',
+    description: 'Cloud-native Digital Library service architected with Spring Boot and PostgreSQL. Implemented secure OAuth2.0 authentication flows and optimized data retrieval for high-concurrency scenarios.',
     image: 'https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=800&q=80',
-    tech: ['Spring Boot', 'React', 'PostgreSQL'],
+    tech: ['Spring Boot', 'OAuth2', 'PostgreSQL', 'Docker'],
     stats: { stars: 12, forks: 4 },
     links: { github: 'https://github.com/imrajeevnayan/digital-library-app' },
   },
   {
     title: 'hms-v1.springboot',
-    description: 'Hospital Management System with JWT and Hibernate Envers.',
+    description: 'Enterprise-grade Hospital Management System focusing on data integrity and security. Integrated Hibernate Envers for thorough auditing and JWT for stateless specialized authentication.',
     image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80',
-    tech: ['Java', 'Spring Boot', 'MySQL'],
+    tech: ['Java 17', 'Spring Data JPA', 'MySQL', 'JWT'],
     stats: { stars: 8, forks: 2 },
     links: { github: 'https://github.com/imrajeevnayan/hospital-management-springboot' },
   },
   {
     title: 'chat-engine.websocket',
-    description: 'Real-time messaging with STOMP protocol and MongoDB.',
+    description: 'High-performance real-time communication engine leveraging STOMP/WebSockets. Orchestrated with a microservices-ready architecture and MongoDB for ultra-low latency persistence.',
     image: 'https://images.unsplash.com/photo-1611606063065-ee7946f0787a?auto=format&fit=crop&w=800&q=80',
-    tech: ['WebSocket', 'MongoDB', 'React'],
+    tech: ['WebSockets', 'STOMP', 'MongoDB', 'Node.js'],
     stats: { stars: 15, forks: 7 },
     links: { github: 'https://github.com/imrajeevnayan/real-time-chat' },
   },
 ];
+
 
 const Projects = () => {
   return (

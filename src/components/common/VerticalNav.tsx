@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-scroll';
-import { Home, User, Briefcase, Code, Terminal, Send } from 'lucide-react';
+import { Home, User, Briefcase, Code, Terminal, Send, Activity, Share2 } from 'lucide-react';
 
 const navItems = [
   { id: 'hero', icon: Home, label: 'Home' },
   { id: 'about', icon: User, label: 'About' },
   { id: 'experience', icon: Briefcase, label: 'Experience' },
+  { id: 'architecture', icon: Share2, label: 'Architecture' },
   { id: 'skills', icon: Code, label: 'Skills' },
+  { id: 'monitor', icon: Activity, label: 'Monitor' },
   { id: 'projects', icon: Terminal, label: 'Projects' },
   { id: 'contact', icon: Send, label: 'Contact' },
 ];
+
 
 const VerticalNav: React.FC = () => {
   return (

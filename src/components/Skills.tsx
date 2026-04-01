@@ -6,22 +6,27 @@ const SkillCloud3D = lazy(() => import('./common/SkillCloud3D'));
 
 const skillCategories = [
   {
-    title: 'Frontend_Core.exe',
+    title: 'Core_Engine.java',
     skills: [
-      { name: 'React.js', level: 90 },
-      { name: 'Tailwind CSS', level: 85 },
-      { name: 'TypeScript', level: 80 },
+      { name: 'JVM Architecture', level: 85 },
+      { name: 'Spring Boot (Microservices)', level: 90 },
+      { name: 'ORM / Hibernate', level: 80 },
+      { name: 'REST / GraphQL', level: 85 },
+      { name: 'Multithreading', level: 75 },
     ],
   },
   {
-    title: 'Backend_Service.sh',
+    title: 'Infrastructure_Stack.sh',
     skills: [
-      { name: 'Java Spring Boot', level: 85 },
-      { name: 'Node.js', level: 75 },
-      { name: 'PostgreSQL', level: 80 },
+      { name: 'Docker / K8s', level: 75 },
+      { name: 'AWS (S3/EC2/RDS)', level: 80 },
+      { name: 'CI/CD (Jenkins)', level: 70 },
+      { name: 'Nginx / Redis', level: 75 },
+      { name: 'System Security', level: 80 },
     ],
   },
 ];
+
 
 
 const Skills = () => {
