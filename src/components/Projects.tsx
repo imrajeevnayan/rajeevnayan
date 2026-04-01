@@ -26,7 +26,8 @@ const projects: Project[] = [
   {
     title: 'event-nexus.kafka',
     description: 'High-throughput real-time event streaming system utilizing Apache Kafka and Spring Cloud Stream. Orchestrated distributed consumers to process 10k+ messages per second with ACID compliance.',
-    image: 'https://images.unsplash.com/photo-1510511459019-5dee995ad1ef?q=80&w=1200', // Dynamic data streaming visual
+    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1200', // High-bandwidth network visual
+
 
     tech: ['Apache Kafka', 'Spring Cloud', 'Java 17', 'Docker'],
     stats: { stars: 32, forks: 12 },
