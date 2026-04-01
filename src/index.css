@@ -1,30 +1,48 @@
-/* Fonts loaded via index.html for performance */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --brand-primary: #3b82f6;
-    --brand-secondary: #8b5cf6;
-    --bg-light: #f8fafc;
-    --bg-dark: #020617;
-    --glass-border: rgba(255, 255, 255, 0.08);
+    --brand-primary: #f97316; /* Orange */
+    --brand-secondary: #0ea5e9; /* Blue/Cyan */
+    --accent-color: var(--brand-primary);
+
+    --bg-main: #050505;
+    --text-main: #ffffff;
+    --text-dim: #a1a1aa;
+    --glass-bg: rgba(9, 9, 11, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --selection-bg: rgba(249, 115, 22, 0.3);
+    --grid-color: rgba(249, 115, 22, 0.03);
+    --font-weight-base: 400;
+    --font-smoothing: antialiased;
+  }
+
+  .light {
+    --bg-main: #ffffff;
+    --text-main: #050505;
+    --text-dim: #52525b;
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --selection-bg: rgba(249, 115, 22, 0.15);
+    --grid-color: rgba(0, 0, 0, 0.03);
+    --font-weight-base: 450;
+    --font-smoothing: initial;
   }
 
   html, body {
     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-light);
-    -webkit-font-smoothing: antialiased;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-weight: var(--font-weight-base);
+    -webkit-font-smoothing: var(--font-smoothing);
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.5s ease, color 0.5s ease, font-weight 0.5s ease;
   }
 
-  .dark body {
-    background-color: var(--bg-dark);
-  }
 
   html {
     font-family: 'Inter', system-ui, sans-serif;
@@ -32,34 +50,66 @@
   }
   
   h1, h2, h3, h4 {
-    font-family: 'Outfit', sans-serif;
     letter-spacing: -0.05em;
     font-weight: 800;
   }
+
+  code, pre {
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--text-main);
+  }
+}
+
+@layer components {
+  .grid-background {
+    background-image: 
+      linear-gradient(var(--grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .glass-window {
+    @apply border transition-all duration-500 overflow-hidden;
+    background-color: var(--glass-bg);
+    border-color: var(--glass-border);
+    backdrop-filter: blur(24px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+  }
+
+  .light .glass-window {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+  }
+
+  .traffic-light {
+    @apply flex gap-2 px-4 py-3 border-b transition-colors duration-500;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-color: var(--glass-border);
+  }
+
+  .light .traffic-light {
+     background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  .dot {
+    @apply w-2.5 h-2.5 rounded-full;
+  }
+
+  .dot-red { @apply bg-[#ff5f57]; }
+  .dot-yellow { @apply bg-[#febc2e]; }
+  .dot-green { @apply bg-[#28c841]; }
 }
 
 @layer utilities {
-  .app-wrapper {
-    @apply min-h-screen selection:bg-blue-500/30;
-  }
-
-  /* REFINED GLASS PANEL - More Minimal, Less Heavy */
-  .glass-panel {
-    @apply bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/20 dark:border-white/5 shadow-sm transition-all duration-500;
-  }
-
-  .glass-panel:hover {
-    @apply shadow-2xl shadow-blue-500/10 -translate-y-1;
-    border-color: rgba(59, 130, 246, 0.2);
-  }
-
-  /* PREMIUM TEXT EFFECTS */
   .text-shimmer {
     background: linear-gradient(
       120deg,
-      rgba(59, 130, 246, 1) 0%,
-      rgba(139, 92, 246, 1) 50%,
-      rgba(59, 130, 246, 1) 100%
+      var(--brand-primary) 0%,
+      var(--brand-secondary) 50%,
+      var(--brand-primary) 100%
     );
     background-size: 200% 100%;
     -webkit-background-clip: text;
@@ -69,7 +119,7 @@
   }
 
   .section-container {
-    @apply max-w-7xl mx-auto px-6 md:px-12 py-32;
+    @apply max-w-7xl mx-auto px-6 md:px-12 py-24;
   }
 }
 
@@ -78,7 +128,22 @@
   100% { background-position: -100% 0%; }
 }
 
-/* CUSTOM CURSOR REFINEMENT */
-#custom-cursor {
-  mix-blend-mode: difference;
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
 }
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--glass-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+

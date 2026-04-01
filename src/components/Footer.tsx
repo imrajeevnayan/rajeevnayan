@@ -1,6 +1,6 @@
-import React from 'react';
-import { Github, Linkedin, Code2, Instagram } from 'lucide-react';
-import Magnetic from './common/Magnetic';
+import { Github, Linkedin, Code2, Instagram, ArrowUp } from 'lucide-react';
+
+import { Link } from 'react-scroll';
 
 const Footer = () => {
     const socialLinks = [
@@ -11,34 +11,45 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-transparent py-12 relative overflow-hidden border-t border-gray-100 dark:border-white/5 mt-20">
+        <footer className="bg-transparent py-16 border-t border-white/5 mt-20">
             <div className="container mx-auto px-6">
-                <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="text-center md:text-left">
-                        <p className="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tighter mb-1">Rajeev Nayan</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                            © {new Date().getFullYear()} Build with Passion.
+                <div className="flex flex-col md:flex-row justify-between items-center gap-12">
+                    <div className="text-center md:text-left space-y-2">
+                        <p className="text-xl font-black text-white uppercase tracking-tighter">rajeev@portfolio:~$ exit</p>
+                        <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                            © {new Date().getFullYear()} System_Log: All Rights Reserved.
                         </p>
                     </div>
                     
-                    <div className="flex items-center gap-6">
+                    <div className="flex items-center gap-4">
                         {socialLinks.map(({ Icon, href }, idx) => (
-                            <Magnetic key={idx}>
-                                <a
-                                    href={href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-3 text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300 transform hover:scale-110"
-                                >
-                                    <Icon size={22} />
-                                </a>
-                            </Magnetic>
+                            <a
+                                key={idx}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 bg-zinc-900 border border-white/5 rounded flex items-center justify-center text-zinc-500 hover:text-orange-500 hover:border-orange-500/50 transition-all"
+                            >
+                                <Icon size={18} />
+                            </a>
                         ))}
                     </div>
 
-                    <div className="text-sm font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest cursor-pointer hover:underline">
-                        Back to top ↑
-                    </div>
+                    <Link
+                        to="hero"
+                        smooth={true}
+                        duration={500}
+                        className="flex items-center gap-2 text-[10px] font-mono font-bold text-orange-500 uppercase tracking-widest cursor-pointer hover:text-white transition-colors group"
+                    >
+                        <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
+                        Run_ScrollTop.sh
+                    </Link>
+                </div>
+                
+                <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[9px] font-mono text-zinc-600 uppercase tracking-[0.2em]">
+                    <div>Latency: 12ms</div>
+                    <div>Status: Deployment_Success</div>
+                    <div>Environment: Production_V1.0.2</div>
                 </div>
             </div>
         </footer>

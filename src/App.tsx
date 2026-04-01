@@ -1,12 +1,11 @@
-import { useState, useEffect, lazy, Suspense } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { lazy, Suspense } from 'react';
+
 import Header from './components/Header';
 import CustomCursor from './components/common/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import ScrollToTop from './components/common/ScrollToTop';
-import ScrollProgress from './components/common/ScrollProgress';
+import VerticalNav from './components/common/VerticalNav';
 import ErrorBoundary from './components/common/ErrorBoundary';
 
 // Lazy load components for performance
@@ -15,40 +14,28 @@ const Skills = lazy(() => import('./components/Skills'));
 const Projects = lazy(() => import('./components/Projects'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Blog = lazy(() => import('./components/Blog'));
-const Testimonials = lazy(() => import('./components/Testimonials'));
 const Contact = lazy(() => import('./components/Contact'));
+
 const Footer = lazy(() => import('./components/Footer'));
 
-gsap.registerPlugin(ScrollTrigger);
+
+
 
 const LoadingSpinner = () => (
   <div className="flex items-center justify-center min-h-[200px]">
-    <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+    <div className="w-10 h-10 border-4 border-[var(--accent-color)] border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 
 function App() {
-  const [isDark, setIsDark] = useState(true); // Default to dark for premium feel
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDark]);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-  };
-
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#020617] text-slate-900 dark:text-slate-100 selection:bg-blue-500/30 selection:text-white transition-colors duration-500">
+    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)] selection:bg-[var(--accent-color)]/30 transition-colors duration-500 grid-background">
+
       <CustomCursor />
-      <ScrollProgress />
+      <VerticalNav />
       <ScrollToTop />
       
-      <Header isDark={isDark} toggleTheme={toggleTheme} />
+      <Header />
       
       <main className="relative">
         <Hero />
@@ -56,14 +43,28 @@ function App() {
         <div className="space-y-0">
           <ErrorBoundary>
             <Suspense fallback={<LoadingSpinner />}>
-              <About />
-              <Experience />
-              <Skills />
-              <Projects />
-              <Certifications />
-              <Testimonials />
-              <Blog />
-              <Contact />
+              <section id="about">
+                <About />
+              </section>
+              <section id="experience">
+                <Experience />
+              </section>
+              <section id="skills">
+                <Skills />
+              </section>
+              <section id="projects">
+                <Projects />
+              </section>
+              <Suspense fallback={null}>
+                <Certifications />
+              </Suspense>
+              <Suspense fallback={null}>
+                <Blog />
+              </Suspense>
+
+              <section id="contact">
+                <Contact />
+              </section>
             </Suspense>
           </ErrorBoundary>
         </div>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Zap, Brain } from 'lucide-react';
+import TerminalWindow from './common/Window';
 
 const experiences = [
     {
@@ -8,17 +9,17 @@ const experiences = [
         period: 'Feb 2025 – Aug 2025',
         type: 'Remote',
         description: [
-            'Contributed to full-stack development projects using Java, Spring Boot, and React.js, delivering production-ready features and improving application performance',
-            'Collaborated with cross-functional teams to design and implement scalable RESTful APIs following Agile methodology and industry best practices',
-            'Developed and integrated frontend components with backend services, enhancing user experience and system functionality',
-            'Demonstrated strong problem-solving skills and commitment to code quality through rigorous code reviews, unit testing, and debugging'
+            'Contributed to full-stack development projects using Java, Spring Boot, and React.js, delivering production-ready features',
+            'Collaborated with cross-functional teams to design and implement scalable RESTful APIs following Agile methodology',
+            'Developed and integrated frontend components with backend services, enhancing user experience',
+            'Committed to code quality through rigorous code reviews, unit testing, and debugging'
         ]
     }
 ];
 
 const Experience = () => {
     return (
-    <section id="experience" className="section-container relative border-t border-slate-200 dark:border-white/5">
+    <section id="experience" className="section-container relative border-t border-[var(--glass-border)]">
         <div className="flex flex-col lg:flex-row gap-20">
             {/* STICKY HEADER */}
             <div className="lg:w-1/3 lg:sticky lg:top-32 h-fit">
@@ -28,80 +29,74 @@ const Experience = () => {
                     viewport={{ once: true }}
                     className="space-y-6"
                 >
-                    <div className="text-blue-600 dark:text-blue-400 text-xs font-black uppercase tracking-[0.3em]">Trajectory</div>
-                    <h2 className="text-6xl md:text-7xl font-black tracking-tighter uppercase leading-none">
+                    <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Trajectory_Log.bin</div>
+                    <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none text-[var(--text-main)]">
                         Work <br /><span className="text-shimmer">History</span>
                     </h2>
-                    <p className="text-slate-500 dark:text-slate-400 font-medium max-w-sm">
-                        Building scalable systems and human-centric interfaces across diverse engineering environments.
+                    <p className="text-[var(--text-dim)] font-mono text-sm leading-relaxed max-w-sm">
+                        &gt; Building scalable systems and human-centric interfaces across diverse engineering environments. 
+                        Tracing professional commits...
                     </p>
                 </motion.div>
             </div>
 
             {/* TIMELINE CONTENT */}
-            <div className="lg:w-2/3 space-y-32">
+            <div className="lg:w-2/3 space-y-12">
                 {experiences.map((exp, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: index * 0.2 }}
-                        viewport={{ once: true }}
-                        className="group"
-                    >
-                        <div className="space-y-8">
+                    <TerminalWindow key={index} title={`Entry: ${exp.company}`} delay={index * 0.1}>
+                        <div className="space-y-6">
                             <div className="flex flex-wrap items-center justify-between gap-4">
                                 <div className="space-y-2">
-                                    <h3 className="text-3xl md:text-4xl font-black uppercase tracking-tight group-hover:text-blue-600 transition-colors">
+                                    <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--text-main)] transition-colors">
                                         {exp.position}
                                     </h3>
-                                    <div className="flex items-center gap-4 text-xs font-bold uppercase tracking-widest text-slate-500">
-                                        <span className="text-blue-600">{exp.company}</span>
-                                        <span className="w-1 h-1 bg-slate-300 rounded-full" />
+                                    <div className="flex items-center gap-4 text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)] opacity-60">
+                                        <span className="text-orange-500">{exp.company}</span>
+                                        <span className="w-1 h-1 bg-[var(--text-dim)] rounded-full" />
                                         <span>{exp.period}</span>
                                     </div>
                                 </div>
-                                <span className="px-5 py-2 bg-slate-100 dark:bg-white/5 rounded-full text-[10px] font-black uppercase tracking-widest">
+                                <span className="px-3 py-1 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">
                                     {exp.type}
                                 </span>
                             </div>
 
-                            <ul className="space-y-4">
+                            <ul className="space-y-3">
                                 {exp.description.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-4 text-slate-600 dark:text-slate-400 text-lg leading-relaxed font-medium">
-                                        <span className="mt-3 w-1.5 h-1.5 bg-blue-600 rounded-full flex-shrink-0" />
+                                    <li key={i} className="flex items-start gap-4 text-[var(--text-dim)] text-sm leading-relaxed font-mono">
+                                        <span className="mt-2 text-orange-500">&gt;</span>
                                         {item}
                                     </li>
                                 ))}
                             </ul>
 
-                            {/* CORE WINS - Storytelling */}
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-10">
-                                <div className="p-8 glass-panel rounded-3xl border-transparent hover:border-blue-500/20">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <Zap size={18} className="text-blue-600" />
-                                        <span className="text-[10px] font-black uppercase tracking-widest">Performance focus</span>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-[var(--glass-border)]">
+                                <div className="p-4 bg-[var(--glass-bg)] rounded-lg border border-[var(--glass-border)]">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <Zap size={14} className="text-orange-500" />
+                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Optimization</span>
                                     </div>
-                                    <p className="text-sm font-bold text-slate-700 dark:text-slate-100">
+                                    <p className="text-[10px] font-mono text-[var(--text-dim)] opacity-80">
                                         Optimized database query execution by 40% through index redesign and caching logic.
                                     </p>
                                 </div>
-                                <div className="p-8 glass-panel rounded-3xl border-transparent hover:border-fuchsia-500/20">
-                                    <div className="flex items-center gap-3 mb-4">
-                                        <Brain size={18} className="text-fuchsia-600" />
-                                        <span className="text-[10px] font-black uppercase tracking-widest">Scalable architecture</span>
+                                <div className="p-4 bg-[var(--glass-bg)] rounded-lg border border-[var(--glass-border)]">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <Brain size={14} className="text-blue-500" />
+                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Architecture</span>
                                     </div>
-                                    <p className="text-sm font-bold text-slate-700 dark:text-slate-100">
+                                    <p className="text-[10px] font-mono text-[var(--text-dim)] opacity-80">
                                         Built scalable backends with Java Spring Boot and reactive React-based interfaces.
                                     </p>
                                 </div>
                             </div>
                         </div>
-                    </motion.div>
+                    </TerminalWindow>
                 ))}
             </div>
         </div>
     </section>
+
     );
 };
 

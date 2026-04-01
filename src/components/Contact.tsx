@@ -1,9 +1,7 @@
-
 import { useState, useRef, FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, Send, Loader2 } from 'lucide-react';
-import Magnetic from './common/Magnetic';
+import { Send, Loader2, Mail, Github, Linkedin } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import TerminalWindow from './common/Window';
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -33,83 +31,127 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-container border-t border-slate-200 dark:border-white/5">
-      <div className="flex flex-col lg:flex-row gap-20">
+    <section id="contact" className="section-container border-t border-[var(--glass-border)]">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
         
-        {/* STICKY INFO */}
-        <div className="lg:w-1/3 lg:sticky lg:top-32 h-fit">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="space-y-8">
-            <div className="text-blue-600 dark:text-blue-400 text-xs font-black uppercase tracking-[0.3em]">Intersection</div>
-            <h2 className="text-6xl md:text-7xl font-black tracking-tighter uppercase leading-none">
-              Get in <br /><span className="text-shimmer">Touch</span>
+        {/* INFO SIDE */}
+        <div className="lg:col-span-4 space-y-10 lg:sticky lg:top-32">
+          <div className="space-y-4">
+            <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Communication_Channel</div>
+            <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none text-[var(--text-main)]">
+              Establish <br /><span className="text-shimmer">Contact</span>
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium max-w-sm">
-              Currently available for high-impact engineering roles and technical collaborations.
+            <p className="text-[var(--text-dim)] font-mono text-sm leading-relaxed max-w-sm">
+              &gt; Currently available for high-impact engineering roles and technical collaborations. 
+              Ping me if you have an interesting challenge!
             </p>
-            
-            <div className="space-y-6 pt-10">
-               <a 
-                  href="mailto:imrajeevnayan@gmail.com" 
-                  className="group flex items-center gap-4 text-lg font-bold"
-                  aria-label="Send an email to Rajeev Nayan"
-               >
-                  <div className="p-4 glass-panel rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all">
-                     <Mail size={20} />
-                  </div>
-                  imrajeevnayan@gmail.com
-               </a>
-               <a 
-                  href="tel:+919155028525" 
-                  className="group flex items-center gap-4 text-lg font-bold"
-                  aria-label="Call Rajeev Nayan"
-               >
-                  <div className="p-4 glass-panel rounded-2xl group-hover:bg-blue-600 group-hover:text-white transition-all">
-                     <Phone size={20} />
-                  </div>
-                  +91 9155028525
-               </a>
-            </div>
-          </motion.div>
+          </div>
+          
+          <div className="space-y-4 pt-4">
+             <div className="flex gap-4">
+                <a href="mailto:imrajeevnayan@gmail.com" className="w-10 h-10 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded flex items-center justify-center text-[var(--text-dim)] hover:text-orange-500 hover:border-orange-500/50 transition-all">
+                   <Mail size={18} />
+                </a>
+                <a href="https://github.com/imrajeevnayan" target="_blank" className="w-10 h-10 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded flex items-center justify-center text-[var(--text-dim)] hover:text-orange-500 hover:border-orange-500/50 transition-all">
+                   <Github size={18} />
+                </a>
+                <a href="https://linkedin.com/in/imrajeevnayan" target="_blank" className="w-10 h-10 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded flex items-center justify-center text-[var(--text-dim)] hover:text-orange-500 hover:border-orange-500/50 transition-all">
+                   <Linkedin size={18} />
+                </a>
+             </div>
+             <p className="text-[10px] font-mono text-[var(--text-dim)] opacity-50 uppercase tracking-widest pt-4">
+                Location: Varanasi, India [IST]
+             </p>
+          </div>
         </div>
 
-        {/* FORM SIDE */}
-        <div className="lg:w-2/3">
-           <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="p-10 md:p-16 glass-panel rounded-[3rem] border-white/10"
-           >
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div className="space-y-2">
-                    <label htmlFor="name-input" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Full Name</label>
-                    <input id="name-input" name="name" required className="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500/50 rounded-2xl px-6 py-4 outline-none transition-all font-bold" placeholder="Your Name" />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="email-input" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Email Address</label>
-                    <input id="email-input" type="email" name="email" required className="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500/50 rounded-2xl px-6 py-4 outline-none transition-all font-bold" placeholder="your@email.com" />
-                  </div>
-                </div>
+        {/* EDITOR SIDE */}
+        <div className="lg:col-span-8">
+           <TerminalWindow title="sendMessage.ts" className="w-full">
+              <form ref={formRef} onSubmit={handleSubmit} className="font-mono text-xs sm:text-sm space-y-2">
+                <div className="text-[var(--text-dim)] opacity-50 mb-4">// Fill the object to transmit message</div>
                 
-                <div className="space-y-2">
-                  <label htmlFor="message-input" className="text-[10px] font-black uppercase tracking-widest text-slate-500">Message</label>
-                  <textarea id="message-input" name="message" rows={5} required className="w-full bg-slate-100 dark:bg-white/5 border border-transparent focus:border-blue-500/50 rounded-2xl px-6 py-4 outline-none transition-all font-bold resize-none" placeholder="Your vision..." />
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-orange-500 text-[10px] hidden sm:inline">01</span>
+                  <span className="text-orange-500">import</span>
+                  <span className="text-[var(--text-main)]">{'{'} TRANSMITTER {'}'}</span>
+                  <span className="text-orange-500">from</span>
+                  <span className="text-green-500">'@core/comms'</span>;
                 </div>
 
-                <Magnetic>
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-orange-500 text-[10px] hidden sm:inline">02</span>
+                  <span className="text-orange-500">const</span>
+                  <span className="text-blue-500">messageData</span> = {'{'}
+                </div>
+
+                {/* INPUT FIELDS */}
+                <div className="pl-8 space-y-4 py-2 border-l border-[var(--glass-border)] ml-2">
+                   <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[var(--text-dim)]">sender:</span>
+                      <input 
+                        name="name" 
+                        required 
+                        className="bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-orange-500/50 rounded px-3 py-1 text-green-500 outline-none w-full sm:w-64" 
+                        placeholder="'Your Name'" 
+                      />
+                   </div>
+                   <div className="flex flex-wrap items-center gap-2">
+                      <span className="text-[var(--text-dim)]">email:</span>
+                      <input 
+                        type="email"
+                        name="email" 
+                        required 
+                        className="bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-orange-500/50 rounded px-3 py-1 text-green-500 outline-none w-full sm:w-64" 
+                        placeholder="'your@email.com'" 
+                      />
+                   </div>
+                   <div className="flex flex-wrap items-start gap-2">
+                      <span className="text-[var(--text-dim)]">body:</span>
+                      <textarea 
+                        name="message" 
+                        required 
+                        rows={3}
+                        className="bg-[var(--glass-bg)] border border-[var(--glass-border)] focus:border-orange-500/50 rounded px-3 py-1 text-green-500 outline-none w-full sm:w-96 resize-none" 
+                        placeholder="'Your vision or inquiry...'" 
+                      />
+                   </div>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2">
+                   <span className="text-orange-500 text-[10px] hidden sm:inline">07</span>
+                   <span className="text-[var(--text-main)]">{'}'};</span>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2 pt-4">
+                   <span className="text-orange-500 text-[10px] hidden sm:inline">08</span>
+                   <span className="text-orange-500">await</span>
+                   <span className="text-blue-500">TRANSMITTER</span>.<span className="text-[var(--text-dim)]">send</span>(messageData);
+                </div>
+
+                <div className="pt-8">
                   <button 
                     disabled={isSubmitting}
-                    className="w-full py-5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-3 hover:scale-[1.02] active:scale-95 transition-all"
+                    className="flex items-center gap-3 px-6 py-2 bg-orange-500 text-black rounded font-bold uppercase text-[10px] tracking-widest hover:bg-[var(--text-main)] transition-colors disabled:opacity-50"
                   >
-                    {isSubmitting ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
-                    {isSubmitting ? 'Transmitting...' : 'Send Message'}
+                    {isSubmitting ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
+                    {isSubmitting ? 'Transmitting...' : 'Run_Send.sh'}
                   </button>
-                </Magnetic>
+                </div>
 
-                {submitStatus === 'success' && <p className="text-center text-xs font-bold text-green-500">Transmission successful. Talk soon.</p>}
+
+                {submitStatus === 'success' && (
+                  <div className="pt-4 text-green-500 text-[10px] animate-pulse">
+                    &gt; [SUCCESS]: Message transmitted successfully through secure channel.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="pt-4 text-red-500 text-[10px]">
+                    &gt; [ERROR]: Transmission failed. Check connection or try direct email.
+                  </div>
+                )}
               </form>
-           </motion.div>
+           </TerminalWindow>
         </div>
       </div>
     </section>
