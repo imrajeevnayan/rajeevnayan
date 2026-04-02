@@ -6,26 +6,27 @@ const SkillCloud3D = lazy(() => import('./common/SkillCloud3D'));
 
 const skillCategories = [
   {
-    title: 'Core_Engine.java',
+    title: 'Core_JVM.java',
     skills: [
-      { name: 'JVM Performance & Tuning', level: 88 },
+      { name: 'JVM Internals & GC Tuning', level: 88 },
       { name: 'Spring Boot (Microservices)', level: 92 },
-      { name: 'Hibernate / JPA / SQL', level: 85 },
-      { name: 'Java Multithreading & Concurrency', level: 82 },
-      { name: 'REST & gRPC Architectures', level: 80 },
+      { name: 'Java Concurrency & Threading', level: 85 },
+      { name: 'Hibernate & Query Optimization', level: 85 },
+      { name: 'Stream API & Lambda Logic', level: 90 },
     ],
   },
   {
-    title: 'Distributed_Systems.sh',
+    title: 'Backend_Infra.sh',
     skills: [
-      { name: 'Apache Kafka / Event Streaming', level: 85 },
-      { name: 'Redis / Distributed Caching', level: 80 },
-      { name: 'Docker / Kubernetes (K8s)', level: 75 },
-      { name: 'AWS Cloud-Native Services', level: 80 },
-      { name: 'System Security (OAuth2/JWT)', level: 85 },
+      { name: 'Apache Kafka streaming', level: 85 },
+      { name: 'PostgreSQL & Redis Cache', level: 85 },
+      { name: 'Elasticsearch / ELK Stack', level: 75 },
+      { name: 'Docker / Kubernetes (K8s)', level: 80 },
+      { name: 'Service Discovery / gRPC', level: 80 },
     ],
   },
 ];
+
 
 
 
