@@ -1,19 +1,43 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
-import { Terminal, Sun, Moon } from 'lucide-react';
+import { Terminal, Sun, Moon, Clock } from 'lucide-react';
 
 import useTheme from '../hooks/useTheme';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [time, setTime] = useState(new Date());
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    const timer = setInterval(() => setTime(new Date()), 1000);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearInterval(timer);
+    };
   }, []);
+
+  const formatTime = (date: Date) => {
+    return date.toLocaleTimeString('en-US', { 
+      hour12: false, 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      second: '2-digit' 
+    });
+  };
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'short', 
+      day: '2-digit' 
+    }).toUpperCase();
+  };
 
   return (
     <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
@@ -27,12 +51,24 @@ const Header = () => {
             <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center text-black group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(249,115,22,0.4)]">
               <Terminal size={18} strokeWidth={3} />
             </div>
-            <span className="text-sm font-mono font-bold tracking-tighter dark:text-white light:text-zinc-900 uppercase sm:block hidden">
-              rajeev@portfolio:~$ <span className="animate-pulse">_</span>
-            </span>
+            <div className="flex flex-col">
+              <span className="text-sm font-mono font-bold tracking-tighter dark:text-white light:text-zinc-900 uppercase sm:block hidden leading-none">
+                rajeev@portfolio:~$ <span className="animate-pulse">_</span>
+              </span>
+              <span className="text-[7px] font-mono text-orange-500 uppercase tracking-[0.2em] sm:block hidden mt-1">
+                Session_Active: {formatTime(time)}
+              </span>
+            </div>
           </Link>
 
           <div className="flex items-center gap-4 sm:gap-6">
+            <div className="hidden md:flex items-center gap-3 px-3 py-1.5 bg-black/20 rounded border border-white/5 font-mono text-[9px] text-zinc-400 uppercase tracking-widest">
+               <Clock size={10} className="text-orange-500" />
+               <span className="text-zinc-200">{formatDate(time)}</span>
+               <span className="text-orange-500/50">|</span>
+               <span className="text-orange-500 font-bold">{formatTime(time)}</span>
+            </div>
+
             <button 
               onClick={toggleTheme}
               className="group relative p-2 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--accent-color)] hover:border-orange-500/50 transition-all duration-300 overflow-hidden"
@@ -85,4 +121,3 @@ const Header = () => {
 };
 
 export default Header;
-
