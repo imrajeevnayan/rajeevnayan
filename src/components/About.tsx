@@ -1,14 +1,14 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, Languages, Brain, Sparkles, Code2, Zap } from 'lucide-react';
+import { GraduationCap, Brain, Sparkles, Server, Zap } from 'lucide-react';
 import TerminalWindow from './common/Window';
 import profileImage from '../assets/profile.jpg';
 
 const About = () => {
     const stats = [
-        { icon: GraduationCap, title: 'Education', text: 'MCA Degree', detail: 'Dr. APJ AKTU' },
-        { icon: Languages, title: 'Linguistics', text: 'Professional', detail: 'Hindi & English' },
-        { icon: Brain, title: 'Philosophy', text: 'Problem First', detail: 'Modular Logic' },
-        { icon: Sparkles, title: 'Focus', text: 'Clean Code', detail: 'Performance Initialization' },
+        { icon: GraduationCap, title: 'Academics', text: 'MCA Systems', detail: 'Focus: Distributed Logic' },
+        { icon: Brain, title: 'Philosophy', text: 'JVM First', detail: 'Clean IPC & Memory' },
+        { icon: Zap, title: 'Focus', text: 'High-Throughput', detail: 'System Stability' },
+        { icon: Sparkles, title: 'Principles', text: 'SOLID Code', detail: 'Design Pattern Master' },
     ];
 
     return (
@@ -24,10 +24,10 @@ const About = () => {
                 >
                     <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Identity_Core.exe</div>
                     <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none">
-                        The <br /><span className="text-shimmer">Mind</span>
+                        The <br /><span className="text-shimmer">Architect</span>
                     </h2>
                     <p className="text-zinc-400 font-mono text-sm leading-relaxed max-w-sm">
-                        &gt; Architecting digital solutions at the intersection of performance and human-centric design. 
+                        &gt; Engineering elite backend ecosystems with a focus on JVM performance and cloud-native resilience. 
                         Decryption of personality module...
                     </p>
                     
@@ -56,7 +56,6 @@ const About = () => {
                     </div>
                 </TerminalWindow>
 
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {stats.map((item, idx) => (
                         <TerminalWindow key={idx} title={`Stat_${idx}.json`} delay={idx * 0.1}>
@@ -72,15 +71,15 @@ const About = () => {
 
                 {/* ETHOS GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <TerminalWindow title="performance.sh" className="bg-zinc-900 border-zinc-800">
+                    <TerminalWindow title="latency_optimization.sh" className="bg-zinc-900 border-zinc-800">
                         <Zap size={24} className="text-orange-500 mb-4" />
-                        <h3 className="text-lg font-mono font-black uppercase tracking-tight mb-2 text-white">Speed First</h3>
-                        <p className="text-zinc-500 font-mono text-xs leading-relaxed">Obsessed with sub-second performance and query optimization. Every millisecond counts.</p>
+                        <h3 className="text-lg font-mono font-black uppercase tracking-tight mb-2 text-white">Execution_Speed</h3>
+                        <p className="text-zinc-500 font-mono text-xs leading-relaxed">Obsessed with sub-millisecond response times. Specializing in JVM garbage collection tuning and high-concurrency threading models.</p>
                     </TerminalWindow>
-                    <TerminalWindow title="architecture.config" className="bg-zinc-900 border-zinc-800">
-                        <Code2 size={24} className="text-blue-500 mb-4" />
-                        <h3 className="text-lg font-mono font-black uppercase tracking-tight mb-2 text-white">Modular DNA</h3>
-                        <p className="text-zinc-500 font-mono text-xs leading-relaxed">Designing systems with reusable, scalable, and atomic structures. Built for growth.</p>
+                    <TerminalWindow title="system_blueprint.dwg" className="bg-zinc-900 border-zinc-800">
+                        <Server size={24} className="text-blue-500 mb-4" />
+                        <h3 className="text-lg font-mono font-black uppercase tracking-tight mb-2 text-white">Distributed_Scale</h3>
+                        <p className="text-zinc-500 font-mono text-xs leading-relaxed">Building cloud-native microservices that handle elastic demand. Engineering stateless security and high-availability persistence layers.</p>
                     </TerminalWindow>
                 </div>
             </div>

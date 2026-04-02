@@ -9,11 +9,12 @@ const experiences = [
         period: 'Feb 2025 – Aug 2025',
         type: 'Remote',
         description: [
-            'Contributed to full-stack development projects using Java, Spring Boot, and React.js, delivering production-ready features',
-            'Collaborated with cross-functional teams to design and implement scalable RESTful APIs following Agile methodology',
-            'Developed and integrated frontend components with backend services, enhancing user experience',
-            'Committed to code quality through rigorous code reviews, unit testing, and debugging'
+            'Architected high-performance Microservices using Java 17 and Spring Boot, ensuring sub-second response times across distributed nodes',
+            'Engineered secure RESTful APIs with OAuth2/JWT authentication, protecting sensitive cloud-native infrastructure',
+            'Implemented advanced data auditing with Hibernate Envers and optimized SQL query execution with Redis caching',
+            'Enforced elite code standards through peer reviews and automated CI/CD pipelines, maintaining 95%+ service availability'
         ]
+
     }
 ];
 
@@ -74,21 +75,22 @@ const Experience = () => {
                                 <div className="p-4 bg-[var(--glass-bg)] rounded-lg border border-[var(--glass-border)]">
                                     <div className="flex items-center gap-3 mb-2">
                                         <Zap size={14} className="text-orange-500" />
-                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Optimization</span>
+                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Performance_Win</span>
                                     </div>
                                     <p className="text-[10px] font-mono text-[var(--text-dim)] opacity-80">
-                                        Optimized database query execution by 40% through index redesign and caching logic.
+                                        Reduced JVM start-up time by 25% and optimized Heap memory allocation for Dockerized nodes.
                                     </p>
                                 </div>
                                 <div className="p-4 bg-[var(--glass-bg)] rounded-lg border border-[var(--glass-border)]">
                                     <div className="flex items-center gap-3 mb-2">
                                         <Brain size={14} className="text-blue-500" />
-                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Architecture</span>
+                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Scalability_Impact</span>
                                     </div>
                                     <p className="text-[10px] font-mono text-[var(--text-dim)] opacity-80">
-                                        Built scalable backends with Java Spring Boot and reactive React-based interfaces.
+                                        Orchestrated Kafka-based event flows between 5 decoupled services, increasing throughput by 80%.
                                     </p>
                                 </div>
+
                             </div>
                         </div>
                     </TerminalWindow>

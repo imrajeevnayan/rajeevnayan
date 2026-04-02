@@ -1,14 +1,26 @@
-import { Github, Linkedin, Code2, Instagram, ArrowUp } from 'lucide-react';
-
+import { Github, Linkedin, Instagram, ArrowUp } from 'lucide-react';
 import { Link } from 'react-scroll';
 
+const LeetCodeIcon = ({ size = 18 }: { size?: number }) => (
+    <svg 
+        width={size} 
+        height={size} 
+        viewBox="0 0 24 24" 
+        fill="currentColor"
+    >
+        <path d="M13.483 0a1.374 1.374 0 0 0-.961.414l-2.636 2.635a1.24 1.24 0 0 0 0 1.756l.004.004a1.24 1.24 0 0 0 1.756 0l2.636-2.636a1.372 1.372 0 0 0 0-1.943l-.004-.004A1.37 1.37 0 0 0 13.483 0zm-3.728 5.76a1.1 1.1 0 0 0-.771.321L2.1 12.965a1.282 1.282 0 0 0 0 1.815l4.936 4.937a1.282 1.282 0 0 0 1.815 0l6.109-6.109a1.1 1.1 0 0 0 0-1.556l-1.414-1.414a1.1 1.1 0 0 0-1.556 0L10.36 12.27l-1.414-1.414L11.756 8a1.102 1.102 0 0 0 0-1.556l-.771-.771a1.1 1.1 0 0 0-.771-.321zM18.8 8.6a1.1 1.1 0 0 0-.771.321l-1.414 1.414a1.1 1.1 0 0 0 0 1.556l1.414 1.414a1.1 1.1 0 0 0 1.556 0l1.414-1.414a1.1 1.1 0 0 0 0-1.556L19.57 8.92a1.1 1.1 0 0 0-.771-.321zM5.937 13.371l1.414 1.414L5.937 16.2l-1.414-1.414 1.414-1.414z"/>
+    </svg>
+);
+
 const Footer = () => {
+
     const socialLinks = [
         { Icon: Github, href: "https://github.com/imrajeevnayan" },
         { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/" },
         { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/" },
-        { Icon: Code2, href: "https://leetcode.com/u/imrajeevnayan/" }
+        { Icon: LeetCodeIcon, href: "https://leetcode.com/u/imrajeevnayan/" }
     ];
+
 
     return (
         <footer className="bg-transparent py-16 border-t border-white/5 mt-20">

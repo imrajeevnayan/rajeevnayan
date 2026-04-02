@@ -81,6 +81,48 @@ const GithubStats = () => {
                             </motion.div>
                         ))}
                     </div>
+
+                    <TerminalWindow title="git_log --stat --oneline" className="w-full">
+                        <div className="p-4 font-mono text-[10px] space-y-4 text-zinc-400">
+                            <div className="space-y-1">
+                                <div className="flex gap-2">
+                                    <span className="text-orange-500">5a053ab</span>
+                                    <span className="text-zinc-200">feat: java backend optimization and premium features</span>
+                                </div>
+                                <div className="pl-4 text-zinc-600">
+                                    9 files changed, 380 insertions(+), 31 deletions(-)
+                                </div>
+                            </div>
+                            <div className="space-y-1">
+                                <div className="flex gap-2">
+                                    <span className="text-orange-500">9a9e890</span>
+                                    <span className="text-zinc-200">feat: expand project section to 6 high-performance systems</span>
+                                </div>
+                                <div className="pl-4 text-zinc-600">
+                                    1 file changed, 28 insertions(+), 3 deletions(-)
+                                </div>
+                            </div>
+                            <div className="space-y-1">
+                                <div className="flex gap-2">
+                                    <span className="text-orange-500">02d3fab</span>
+                                    <span className="text-zinc-200">fix: correct import path for useTheme in CommandPalette</span>
+                                </div>
+                                <div className="pl-4 text-zinc-600">
+                                    1 file changed, 2 insertions(+), 1 deletion(-)
+                                </div>
+                            </div>
+                            <div className="space-y-1 opacity-50">
+                                <div className="flex gap-2">
+                                    <span className="text-orange-500">cc7e2a4</span>
+                                    <span className="text-zinc-200">refactor: optimize JVM memory allocation in cloud cluster</span>
+                                </div>
+                                <div className="pl-4 text-zinc-600">
+                                    4 files changed, 112 insertions(+), 45 deletions(-)
+                                </div>
+                            </div>
+                        </div>
+                    </TerminalWindow>
+
                 </div>
             </div>
         </section>

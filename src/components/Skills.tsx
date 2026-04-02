@@ -8,24 +8,25 @@ const skillCategories = [
   {
     title: 'Core_Engine.java',
     skills: [
-      { name: 'JVM Architecture', level: 85 },
-      { name: 'Spring Boot (Microservices)', level: 90 },
-      { name: 'ORM / Hibernate', level: 80 },
-      { name: 'REST / GraphQL', level: 85 },
-      { name: 'Multithreading', level: 75 },
+      { name: 'JVM Performance & Tuning', level: 88 },
+      { name: 'Spring Boot (Microservices)', level: 92 },
+      { name: 'Hibernate / JPA / SQL', level: 85 },
+      { name: 'Java Multithreading & Concurrency', level: 82 },
+      { name: 'REST & gRPC Architectures', level: 80 },
     ],
   },
   {
-    title: 'Infrastructure_Stack.sh',
+    title: 'Distributed_Systems.sh',
     skills: [
-      { name: 'Docker / K8s', level: 75 },
-      { name: 'AWS (S3/EC2/RDS)', level: 80 },
-      { name: 'CI/CD (Jenkins)', level: 70 },
-      { name: 'Nginx / Redis', level: 75 },
-      { name: 'System Security', level: 80 },
+      { name: 'Apache Kafka / Event Streaming', level: 85 },
+      { name: 'Redis / Distributed Caching', level: 80 },
+      { name: 'Docker / Kubernetes (K8s)', level: 75 },
+      { name: 'AWS Cloud-Native Services', level: 80 },
+      { name: 'System Security (OAuth2/JWT)', level: 85 },
     ],
   },
 ];
+
 
 
 
