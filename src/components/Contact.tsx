@@ -23,7 +23,7 @@ const Contact = () => {
       );
       setSubmitStatus('success');
       formRef.current.reset();
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -85,7 +85,6 @@ const Contact = () => {
                   <span className="text-blue-500">messageData</span> = {'{'}
                 </div>
 
-                {/* INPUT FIELDS */}
                 <div className="pl-8 space-y-4 py-2 border-l border-[var(--glass-border)] ml-2">
                    <div className="flex flex-wrap items-center gap-2">
                       <span className="text-[var(--text-dim)]">sender:</span>

@@ -16,18 +16,10 @@ const certifications = [
         title: 'SQL Data Architecture',
         issuer: 'HackerRank (Intermediate)',
         link: 'https://www.hackerrank.com/certificates/cf9c90c9bd72'
-    },
-    {
-        title: 'Enterprise React Systems',
-        issuer: 'HackerRank (React)',
-        link: 'https://www.hackerrank.com/certificates/cd55b45629f0'
-    },
-    {
-        title: 'JavaScript Core Engineering',
-        issuer: 'HackerRank (Basic)',
-        link: 'https://www.hackerrank.com/certificates/cb47463f1a7b'
     }
 ];
+
+
 
 const Certifications = () => {
     return (

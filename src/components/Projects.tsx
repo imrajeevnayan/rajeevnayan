@@ -54,7 +54,8 @@ const projects: Project[] = [
     title: 'chat-engine.websocket',
     description: 'High-performance real-time communication engine leveraging STOMP/WebSockets. Orchestrated with a microservices-ready architecture and MongoDB for ultra-low latency persistence.',
     image: 'https://images.unsplash.com/photo-1520697830682-bbb6e85e2b0b?auto=format&fit=crop&w=1200&q=80', // Real-time pulse
-    tech: ['WebSockets', 'STOMP', 'MongoDB', 'Node.js'],
+    tech: ['WebSockets', 'STOMP', 'MongoDB', 'Spring WebFlux'],
+
     stats: { stars: 21, forks: 9 },
     links: { github: 'https://github.com/imrajeevnayan/real-time-chat' },
   },

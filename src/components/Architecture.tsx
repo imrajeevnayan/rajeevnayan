@@ -3,7 +3,8 @@ import { Database, Shield, Server, Layout, ChevronRight, Share2 } from 'lucide-r
 import TerminalWindow from './common/Window';
 
 const nodes = [
-  { id: 'client', icon: Layout, label: 'Client (SSR)', sub: 'React/Next.js', x: 0, y: 50 },
+  { id: 'client', icon: Layout, label: 'Client / API Consumer', sub: 'External System Nodes', x: 0, y: 50 },
+
   { id: 'balancer', icon: Share2, label: 'Load Balancer', sub: 'Nginx / AWS ALB', x: 25, y: 50 },
   { id: 'gateway', icon: Shield, label: 'API Gateway', sub: 'Spring Cloud', x: 50, y: 50 },
   { id: 'service', icon: Server, label: 'Microservice Cluster', sub: 'Spring Boot (JVM)', x: 75, y: 30 },

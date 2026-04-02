@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
 
 const iconNames = [
-  'java', 'js', 'python', 'c', 'cpp', 'html', 'css',
-  'react', 'redux', 'tailwind', 'bootstrap', 'vite',
-  'spring', 'hibernate', 'mysql', 'postgres', 'mongodb',
-  'firebase', 'nodejs', 'express', 'aws', 'docker', 'git',
-  'github', 'jenkins', 'postman', 'linux', 'vscode'
+  'java', 'spring', 'hibernate', 'mysql', 'postgres', 'mongodb',
+  'aws', 'docker', 'kubernetes', 'jenkins', 'postman', 'linux',
+  'git', 'github', 'vscode', 'maven', 'gradle', 'kafka', 'redis'
 ];
+
 
 export default function SkillCloud3D() {
   const containerRef = useRef<HTMLDivElement>(null);

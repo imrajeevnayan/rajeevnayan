@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { BookOpen, Calendar, ArrowRight, Terminal as TerminalIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { BookOpen, Calendar, ArrowRight } from 'lucide-react';
 import TerminalWindow from './common/Window';
 
 const PERSONAL_ACCESS_TOKEN = '8fd805a4-a4e2-417e-8d1a-a004aa665f45';
@@ -29,8 +28,6 @@ const STATIC_POSTS = [
 
 const Blog = () => {
   const [posts, setPosts] = useState<any[]>(STATIC_POSTS);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchPostsFromPublication = async (host: string) => {
     try {
@@ -53,12 +50,11 @@ const Blog = () => {
       });
       const json = await res.json();
       return json.data?.publication?.posts?.edges.map((edge: any) => ({ ...edge.node, publicationHost: host })) || [];
-    } catch (e) { return []; }
+    } catch { return []; }
   };
 
   useEffect(() => {
     const fetchAllPosts = async () => {
-      setLoading(true);
       try {
         const allPostsArrays = await Promise.all(PUBLICATION_HOSTS.map(fetchPostsFromPublication));
         const apiPosts = allPostsArrays.flat();
@@ -66,7 +62,9 @@ const Blog = () => {
         const unique = Array.from(new Map(combined.map(p => [p.slug, p])).values());
         unique.sort((a: any, b: any) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
         setPosts(unique);
-      } finally { setLoading(false); }
+      } catch {
+        // Fallback to static posts if API fails
+      }
     };
     fetchAllPosts();
   }, []);
