@@ -57,11 +57,18 @@ const Header = () => {
             </button>
 
 
-            <div className="hidden md:flex items-center gap-6 border-r border-zinc-800 pr-6 mr-0">
-               <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-                 System Version: 2.0.4
+            <div className="hidden lg:flex items-center gap-6 border-r border-[var(--glass-border)] pr-6 mr-0">
+               <div className="flex items-center gap-2">
+                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                 <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest leading-none">
+                   System_Stable
+                 </span>
+               </div>
+               <span className="text-[9px] font-mono text-zinc-600 uppercase tracking-widest leading-none">
+                 v2.4.0-STABLE
                </span>
             </div>
+
             <a 
               href="https://drive.google.com/file/d/14HzK62uI_0YeoVuKIaG28dhbSvVW-7nA/view?usp=sharing" 
               target="_blank"

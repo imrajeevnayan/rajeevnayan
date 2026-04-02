@@ -45,18 +45,19 @@
 
 
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     scroll-behavior: smooth;
   }
   
   h1, h2, h3, h4 {
-    letter-spacing: -0.05em;
+    letter-spacing: -0.04em;
     font-weight: 800;
   }
 
-  code, pre {
-    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace !important;
   }
+
 
   ::selection {
     background-color: var(--selection-bg);
