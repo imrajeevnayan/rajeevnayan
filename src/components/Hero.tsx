@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Code2, Cpu } from 'lucide-react';
 import { Link } from 'react-scroll';
 import TerminalWindow from './common/Window';
+import Typewriter from './common/Typewriter';
 
 const Hero = () => {
   const [progress, setProgress] = useState(0);
@@ -58,6 +59,19 @@ public class BackendController {
 }
   `.trim();
 
+  const [displayedCode, setDisplayedCode] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (currentIndex < codeString.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedCode(prev => prev + codeString[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, 20); // Typing speed in ms
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, codeString]);
+
 
   return (
     <section 
@@ -84,8 +98,9 @@ public class BackendController {
                 <span className="text-shimmer block text-orange-500">BACKEND</span>
               </h1>
               <p className="hero-text text-lg text-[var(--text-dim)] font-mono max-w-lg">
-                &gt; Java Backend Specialist optimizing <span className="text-orange-500">JVM architectures</span> and high-throughput systems. 
+                &gt; <Typewriter text="Java Backend Specialist optimizing JVM architectures and high-throughput systems." delay={1000} speed={30} />
               </p>
+
             </div>
 
 
@@ -129,22 +144,26 @@ public class BackendController {
                   <span>UTF-8</span>
                   <span>TypeScript React</span>
                 </div>
-                {codeString.split('\n').map((line, i) => (
+                {displayedCode.split('\n').map((line, i) => (
                   <div key={i} className="flex gap-4">
                     <span className="text-[var(--text-dim)] opacity-20 w-4 select-none">{i + 1}</span>
                     <pre className="whitespace-pre-wrap">
-                      {line.split(/(const|import|from|new|return|export)/).map((part, j) => {
-                        if (['const', 'import', 'from', 'new', 'return', 'export'].includes(part)) {
+                      {line.split(/([@A-Z][a-zA-Z]+|public|class|private|return|List|analyze|service)/).map((part, j) => {
+                        if (['public', 'class', 'private', 'return'].includes(part)) {
                           return <span key={j} className="text-orange-500">{part}</span>;
                         }
-                        if (part.includes("'") || part.includes('"')) {
+                        if (part.startsWith('@')) {
                           return <span key={j} className="text-green-500">{part}</span>;
+                        }
+                        if (['List', 'Architecture', 'analyze', 'getHighPerformance', 'service'].includes(part)) {
+                          return <span key={j} className="text-blue-400">{part}</span>;
                         }
                         return part;
                       })}
                     </pre>
                   </div>
                 ))}
+
                 <motion.div 
                   initial={{ opacity: 0 }}
                   animate={{ opacity: [0, 1, 0] }}

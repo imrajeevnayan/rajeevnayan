@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { GraduationCap, Brain, Sparkles, Server, Zap } from 'lucide-react';
 import TerminalWindow from './common/Window';
 import profileImage from '../assets/profile.jpg';
+import Typewriter from './common/Typewriter';
+
 
 const About = () => {
     const stats = [
@@ -27,7 +29,8 @@ const About = () => {
                         The <br /><span className="text-shimmer">Architect</span>
                     </h2>
                     <p className="text-zinc-400 font-mono text-sm leading-relaxed max-w-sm">
-                        &gt; Engineering elite backend ecosystems with a focus on JVM performance and cloud-native resilience. 
+                        &gt; <Typewriter text="Engineering elite backend ecosystems with a focus on JVM performance and cloud-native resilience." delay={300} speed={25} />
+                        <br />
                         Decryption of personality module...
                     </p>
                     
@@ -51,10 +54,11 @@ const About = () => {
                             I build <span className="text-orange-500">robust backend ecosystems</span> that scale with confidence.
                         </h3>
                         <p className="text-zinc-400 font-mono text-sm leading-relaxed">
-                            &gt; As a Backend-focused Software Engineer, I specialize in crafting high-performance Java Spring Boot architectures and cloud-native services. My approach prioritizes system stability, JVM optimization, and the uncompromising pursuit of clean, maintainable codebases that solve core business challenges at scale.
+                            &gt; <Typewriter text="As a Backend-focused Software Engineer, I specialize in crafting high-performance Java Spring Boot architectures and cloud-native services. My approach prioritizes system stability, JVM optimization, and the uncompromising pursuit of clean, maintainable codebases that solve core business challenges at scale." delay={600} speed={20} />
                         </p>
                     </div>
                 </TerminalWindow>
+
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {stats.map((item, idx) => (
