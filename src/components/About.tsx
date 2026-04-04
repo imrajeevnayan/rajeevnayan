@@ -36,8 +36,9 @@ const About = () => {
                     
                     <div className="relative group pt-10">
                        <div className="p-3 bg-zinc-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden aspect-square max-w-[280px]">
-                          <img src={profileImage} alt="Profile" className="w-full h-full object-cover rounded-xl grayscale group-hover:grayscale-0 transition-all duration-1000" />
+                          <img src={profileImage} alt="Rajeev Nayan - Java Backend Specialist" className="w-full h-full object-cover rounded-xl grayscale group-hover:grayscale-0 transition-all duration-1000" />
                        </div>
+
                        <div className="absolute -top-4 -right-4 p-3 bg-zinc-900 border border-orange-500/50 rounded flex items-center gap-2 shadow-xl">
                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                             <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-zinc-100">Status: Active</span>
