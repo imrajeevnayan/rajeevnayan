@@ -17,7 +17,7 @@ interface Project {
 const projects: Project[] = [
   {
     title: 'libstack.java',
-    description: 'Cloud-native Digital Library service architected with Spring Boot and PostgreSQL. Implemented secure OAuth2.0 authentication flows and optimized data retrieval for high-concurrency scenarios.',
+    description: 'Cloud-native Digital Library service architected with Spring Boot and PostgreSQL.\n• Engineered secure OAuth2.0 authentication flows for enterprise-grade security.\n• Optimized PostgreSQL query performance for high-concurrency multi-tenant scenarios.\n• Automated deployment pipelines using Docker and GitHub Actions.',
     image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80', // High-quality code/architecture
     tech: ['Spring Boot', 'OAuth2', 'PostgreSQL', 'Docker'],
     stats: { stars: 24, forks: 8 },
@@ -25,18 +25,15 @@ const projects: Project[] = [
   },
   {
     title: 'event-nexus.kafka',
-    description: 'High-throughput real-time event streaming system utilizing Apache Kafka and Spring Cloud Stream. Orchestrated distributed consumers to process 10k+ messages per second with ACID compliance.',
+    description: 'High-throughput real-time event streaming system utilizing Apache Kafka and Spring Cloud Stream.\n• Orchestrated distributed consumers to process 10k+ messages per second with ACID compliance.\n• Implemented dead-letter queues and retry mechanisms for fault-tolerant event processing.\n• Integrated Schema Registry to ensure data contract consistency across microservices.',
     image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1200', // High-bandwidth network visual
-
-
     tech: ['Apache Kafka', 'Spring Cloud', 'Java 17', 'Docker'],
     stats: { stars: 32, forks: 12 },
     links: { github: 'https://github.com/imrajeevnayan/event-streaming-system' },
   },
-
   {
     title: 'hms-v1.springboot',
-    description: 'Enterprise-grade Hospital Management System focusing on data integrity and security. Integrated Hibernate Envers for thorough auditing and JWT for stateless specialized authentication.',
+    description: 'Enterprise-grade Hospital Management System focusing on data integrity and security.\n• Integrated Hibernate Envers for thorough auditing and version control of patient records.\n• Developed stateless JWT authentication with role-based access control (RBAC).\n• Optimized database schema for complex relational healthcare data structures.',
     image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80', // Tech/Medical feel
     tech: ['Java 17', 'Spring Data JPA', 'MySQL', 'JWT'],
     stats: { stars: 15, forks: 5 },
@@ -44,7 +41,7 @@ const projects: Project[] = [
   },
   {
     title: 'cache-master.redis',
-    description: 'Distributed memory caching engine with advanced TTL logic and cache-aside patterns. Reduced API latency by 65% through intelligent data invalidation and Redis clustering.',
+    description: 'Distributed memory caching engine with advanced TTL logic and cache-aside patterns.\n• Reduced API latency by 65% through intelligent data invalidation and Redis clustering.\n• Implemented cache-aside and write-through patterns for consistent state management.\n• Engineered custom Redis serialization for high-speed binary payload handling.',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80', // Circuits/Speed
     tech: ['Redis', 'Spring Cache', 'Java', 'Lettuce'],
     stats: { stars: 18, forks: 6 },
@@ -52,25 +49,21 @@ const projects: Project[] = [
   },
   {
     title: 'chat-engine.websocket',
-    description: 'High-performance real-time communication engine leveraging STOMP/WebSockets. Orchestrated with a microservices-ready architecture and MongoDB for ultra-low latency persistence.',
+    description: 'High-performance real-time communication engine leveraging STOMP/WebSockets.\n• Built an async microservices-ready architecture using Spring WebFlux and Netty.\n• Implemented ultra-low latency persistence using MongoDB and Reactive Streams.\n• Secured WebSocket handshakes using customized interceptors and JWT validation.',
     image: 'https://images.unsplash.com/photo-1520697830682-bbb6e85e2b0b?auto=format&fit=crop&w=1200&q=80', // Real-time pulse
     tech: ['WebSockets', 'STOMP', 'MongoDB', 'Spring WebFlux'],
-
     stats: { stars: 21, forks: 9 },
     links: { github: 'https://github.com/imrajeevnayan/real-time-chat' },
   },
   {
     title: 'analytics-core.lambda',
-    description: 'Serverless data analytics pipeline on AWS. Automated processing of large-scale JSON payloads using Java Lambda functions, S3 triggers, and DynamoDB for persistence.',
+    description: 'Serverless data analytics pipeline on AWS. Automated processing of large-scale JSON payloads.\n• Optimized Java Lambda execution time and memory footprint for cost-efficiency.\n• Engineered S3-triggered event flows for real-time automated data ingestion.\n• Integrated DynamoDB with global secondary indexes for low-latency querying.',
     image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80', // Big Data/Cloud
     tech: ['AWS Lambda', 'DynamoDB', 'Java', 'CloudWatch'],
     stats: { stars: 14, forks: 4 },
     links: { github: 'https://github.com/imrajeevnayan/serverless-analytics' },
   },
 ];
-
-
-
 
 const Projects = () => {
   return (

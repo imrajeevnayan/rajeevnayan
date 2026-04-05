@@ -74,6 +74,24 @@ const About = () => {
                     ))}
                 </div>
 
+                <TerminalWindow title="engineering_principles.md" className="w-full">
+                    <ul className="space-y-4 font-mono text-xs text-zinc-400 p-2">
+                        <li className="flex gap-3">
+                            <span className="text-orange-500 font-bold">01_RESILIENCE:</span>
+                            <span>Implementing Circuit Breakers and Retry patterns to ensure backend stability under high-load failure scenarios.</span>
+                        </li>
+                        <li className="flex gap-3">
+                            <span className="text-orange-500 font-bold">02_SCALABILITY:</span>
+                            <span>Architecting stateless microservices that scale horizontally across elastic cloud environments without data inconsistency.</span>
+                        </li>
+                        <li className="flex gap-3">
+                            <span className="text-orange-500 font-bold">03_OBSERVABILITY:</span>
+                            <span>Leveraging distributed tracing and JVM metrics monitoring for proactive system optimization and sub-millisecond tuning.</span>
+                        </li>
+                    </ul>
+                </TerminalWindow>
+
+
                 {/* ETHOS GRID */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <TerminalWindow title="latency_optimization.sh" className="bg-zinc-900 border-zinc-800">
