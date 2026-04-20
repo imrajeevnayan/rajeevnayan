@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Terminal as TerminalIcon } from 'lucide-react';
+import { Terminal as TerminalIcon } from 'lucide-react';
 import TerminalWindow from './common/Window';
 
 interface Project {
@@ -67,33 +67,31 @@ const projects: Project[] = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="section-container border-t border-[var(--glass-border)]">
+    <section id="projects" className="section-container border-t border-white/5">
 
       <div className="mb-20 space-y-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded flex items-center justify-center text-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+          <div className="w-10 h-10 bg-white/5 border border-white/10 rounded flex items-center justify-center text-[#7c3aed] shadow-[0_0_15px_rgba(124,58,237,0.2)]">
             <TerminalIcon size={20} />
           </div>
           <div>
-            <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Execution_Log.log</div>
+            <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Project_Archives.log</div>
             <h2 className="text-4xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-[var(--text-main)] font-outfit">
-              Featured <span className="text-shimmer">Architectures</span>
+              Expertise <span className="text-[#7c3aed]">Portfolios.</span>
             </h2>
           </div>
         </div>
-
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Terminal List View */}
-        <div className="lg:col-span-5 h-fit lg:sticky lg:top-32">
+        <div className="lg:col-span-4 h-fit lg:sticky lg:top-32">
           <TerminalWindow title="~/repositories" className="h-full">
-            <div className="space-y-6 font-mono text-xs">
+            <div className="space-y-6 font-mono text-xs p-4">
               <div className="flex items-center justify-between text-zinc-500 pb-2 border-b border-white/5">
                 <span>Name</span>
                 <div className="flex gap-8">
                   <span>Stack</span>
-                  <span>Stats</span>
                 </div>
               </div>
               
@@ -104,70 +102,71 @@ const Projects = () => {
                   className="flex items-center justify-between group cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-orange-500">&gt;</span>
+                    <span className="text-[#7c3aed]">&gt;</span>
                     <span className="text-zinc-300 group-hover:text-white transition-colors">{project.title}</span>
                   </div>
                   <div className="flex items-center gap-8">
                     <span className="text-zinc-500 text-[10px] hidden sm:block">{project.tech[0]}</span>
-                    <div className="flex gap-3 text-zinc-500 group-hover:text-orange-500 transition-colors">
-                      <div className="px-2 py-0.5 bg-zinc-800 rounded text-[8px]">{project.stats.stars} ★</div>
-                    </div>
                   </div>
                 </motion.div>
               ))}
-              
-              <div className="pt-4 text-zinc-600 italic">
-                // Total repositories found: {projects.length + 12}
-                <br />
-                // Fetching more from GitHub API...
-              </div>
             </div>
           </TerminalWindow>
         </div>
 
         {/* Visual Cards View */}
-        <div className="lg:col-span-7 space-y-12">
+        <div className="lg:col-span-8 space-y-20">
           {projects.map((project, idx) => (
-            <TerminalWindow key={idx} title={`Project_Detail: ${project.title}`} delay={idx * 0.1}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="relative aspect-video rounded-lg overflow-hidden group">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-zinc-950/20 group-hover:bg-transparent transition-colors" />
+            <motion.div 
+              key={idx}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="group"
+            >
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
+                <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border border-white/5 group-hover:border-[#7c3aed]/30 transition-all duration-500">
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-zinc-950/40 group-hover:bg-transparent transition-colors duration-500" />
                 </div>
-                <div className="flex flex-col justify-between space-y-4">
+                
+                <div className="space-y-6">
                   <div className="space-y-4">
-                    <h3 className="text-2xl font-black text-white uppercase tracking-tight">{project.title}</h3>
-                    <p className="text-zinc-400 font-mono text-xs leading-relaxed">{project.description}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex items-center gap-2">
+                       <div className="w-8 h-px bg-[#7c3aed]/50" />
+                       <span className="text-[10px] font-mono text-[#7c3aed] font-bold uppercase tracking-widest">{project.tech[0]}</span>
+                    </div>
+                    <h3 className="text-3xl font-bold text-white font-outfit uppercase tracking-tight">{project.title}</h3>
+                    <p className="text-[#94a3b8] text-sm leading-relaxed font-medium">{project.description.split('\n')[0]}</p>
+                    <div className="flex flex-wrap gap-3 mt-4">
                        {project.tech.map(t => (
-                         <span key={t} className="px-2 py-0.5 bg-zinc-900 border border-white/5 rounded text-[8px] font-mono text-zinc-500 uppercase tracking-widest">{t}</span>
+                         <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-zinc-400 font-outfit">{t}</span>
                        ))}
                     </div>
                   </div>
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex gap-4 pt-6">
                     <a 
                       href={project.links.github} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="px-4 py-2 bg-[var(--text-main)] text-[var(--bg-main)] text-[10px] font-mono font-bold uppercase tracking-widest rounded hover:bg-orange-500 transition-colors flex items-center gap-2"
+                      className="px-6 py-2 bg-[#7c3aed] text-white text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-white hover:text-[#7c3aed] transition-all shadow-[0_0_20px_rgba(124,58,237,0.2)]"
                     >
-                      <Github size={12} /> Source
+                      Source Code
                     </a>
                     {project.links.live && (
                       <a 
                         href={project.links.live} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="px-4 py-2 bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[var(--text-main)] text-[10px] font-mono font-bold uppercase tracking-widest rounded hover:border-orange-500 transition-all flex items-center gap-2"
+                        className="px-6 py-2 bg-white/5 border border-white/10 text-white text-[10px] font-bold uppercase tracking-widest rounded-full hover:bg-white/10 transition-all"
                       >
-                        <ExternalLink size={12} /> Live
+                        Live Demo
                       </a>
                     )}
                   </div>
-
                 </div>
               </div>
-            </TerminalWindow>
+            </motion.div>
           ))}
         </div>
       </div>

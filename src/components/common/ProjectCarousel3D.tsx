@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface ProjectCarousel3DProps {
-  projects: any[];
-  renderCard: (project: any, index: number, isActive: boolean) => React.ReactNode;
+interface ProjectCarousel3DProps<T> {
+  projects: T[];
+  renderCard: (project: T, index: number, isActive: boolean) => React.ReactNode;
 }
 
-const ProjectCarousel3D = ({ projects, renderCard }: ProjectCarousel3DProps) => {
+const ProjectCarousel3D = <T extends { id?: string | number }>({ projects, renderCard }: ProjectCarousel3DProps<T>) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
@@ -21,15 +21,14 @@ const ProjectCarousel3D = ({ projects, renderCard }: ProjectCarousel3DProps) => 
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'ArrowRight') handleNext();
-    if (e.key === 'ArrowLeft') handlePrev();
-  };
-
   useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowRight') handleNext();
+      if (e.key === 'ArrowLeft') handlePrev();
+    };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [handleNext, handlePrev]);
 
   return (
     <div className="relative w-full h-[600px] md:h-[700px] flex items-center justify-center perspective-[1200px] overflow-hidden py-10">

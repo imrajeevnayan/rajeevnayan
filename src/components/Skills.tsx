@@ -43,31 +43,30 @@ const Skills = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Skill_System_Info</div>
-            <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none text-[var(--text-main)]">
-              Technical <br /><span className="text-shimmer">Ecosystem</span>
+            <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Knowledge_Base.sh</div>
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-[var(--text-main)] font-outfit">
+              Technical <br /><span className="text-[#7c3aed]">Ecosystem.</span>
             </h2>
-            <p className="text-[var(--text-dim)] font-mono text-sm max-w-sm leading-relaxed">
+            <p className="text-[#94a3b8] font-medium text-sm max-w-sm leading-relaxed mt-6">
               &gt; Comprehensive tech stack for building high-performance architectures and fluid interfaces. 
-              Initializing skill visualization module...
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8">
               {skillCategories.map((category, index) => (
                 <TerminalWindow key={index} title={category.title} delay={index * 0.1}>
                   <div className="space-y-6">
                     {category.skills.map((skill, i) => (
-                      <div key={i} className="space-y-2">
+                      <div key={i} className="space-y-3">
                         <div className="flex justify-between items-end">
-                           <span className="text-[10px] font-mono font-bold text-[var(--text-dim)] uppercase tracking-widest">{skill.name}</span>
-                           <span className="text-[10px] font-mono text-orange-500">{skill.level}%</span>
+                           <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest">{skill.name}</span>
+                           <span className="text-[10px] font-mono text-[#7c3aed]">{skill.level}%</span>
                         </div>
-                        <div className="h-1 w-full bg-[var(--glass-bg)] rounded-full overflow-hidden border border-[var(--glass-border)]">
+                        <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
                            <motion.div 
-                              initial={{ width: 0 }}
-                              whileInView={{ width: `${skill.level}%` }}
-                              transition={{ duration: 1.5, ease: "expo.out" }}
-                              className="h-full bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.4)]"
+                               initial={{ width: 0 }}
+                               whileInView={{ width: `${skill.level}%` }}
+                               transition={{ duration: 1.5, ease: "expo.out" }}
+                               className="h-full bg-[#7c3aed] shadow-[0_0_15px_rgba(124,58,237,0.5)]"
                            />
                         </div>
                       </div>

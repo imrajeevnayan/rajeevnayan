@@ -47,7 +47,15 @@ const CommandPalette = () => {
     a.label.toLowerCase().includes(search.toLowerCase())
   );
 
-  const handleAction = (a: any) => {
+  interface Action {
+    id: string;
+    label: string;
+    icon: React.ElementType;
+    section?: string;
+    action?: () => void;
+  }
+
+  const handleAction = (a: Action) => {
     if (a.section) {
       scroller.scrollTo(a.section, { smooth: true, duration: 800, offset: -50 });
     }
@@ -71,43 +79,43 @@ const CommandPalette = () => {
             initial={{ opacity: 0, scale: 0.95, y: -20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
-            className="w-full max-w-xl bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-xl shadow-2xl overflow-hidden relative"
+            className="w-full max-w-xl bg-slate-950/80 border border-white/10 rounded-xl shadow-2xl overflow-hidden relative backdrop-blur-2xl"
           >
-            <div className="flex items-center px-4 border-b border-[var(--glass-border)]">
-              <Search size={18} className="text-[var(--text-dim)]" />
+            <div className="flex items-center px-4 border-b border-white/5">
+              <Search size={18} className="text-zinc-500" />
               <input
                 ref={inputRef}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Type a command or search..."
-                className="w-full bg-transparent border-none outline-none py-4 px-3 text-[var(--text-main)] font-mono text-sm"
+                className="w-full bg-transparent border-none outline-none py-4 px-3 text-white font-mono text-sm"
               />
-              <div className="flex items-center gap-1.5 px-2 py-1 bg-[var(--glass-border)] rounded text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-widest leading-none">
+              <div className="flex items-center gap-1.5 px-2 py-1 bg-white/5 rounded text-[10px] font-mono text-zinc-500 uppercase tracking-widest leading-none">
                 <Command size={10} /> k
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="ml-2 p-1 hover:bg-white/5 rounded transition-colors text-[var(--text-dim)]"
+                className="ml-2 p-1 hover:bg-white/5 rounded transition-colors text-zinc-500"
               >
                 <X size={16} />
               </button>
             </div>
 
             <div className="max-h-[350px] overflow-y-auto p-2">
-              <div className="px-3 py-2 text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-widest">
+              <div className="px-3 py-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
                 Available Commands
               </div>
               {filteredActions.length > 0 ? (
-                filteredActions.map((a, idx) => (
+                filteredActions.map((a) => (
                   <button
                     key={a.id}
                     onClick={() => handleAction(a)}
-                    className="w-full flex items-center gap-3 px-3 py-3 hover:bg-[var(--accent-color)]/10 rounded-lg transition-all group group-hover:pl-4 overflow-hidden"
+                    className="w-full flex items-center gap-3 px-3 py-3 hover:bg-white/5 rounded-lg transition-all group group-hover:pl-4 overflow-hidden"
                   >
-                    <div className="w-8 h-8 rounded bg-[var(--glass-border)] flex items-center justify-center text-[var(--text-dim)] group-hover:bg-[var(--accent-color)]/20 group-hover:text-orange-500 transition-all">
+                    <div className="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-zinc-500 group-hover:bg-[#7c3aed]/20 group-hover:text-[#7c3aed] transition-all">
                       <a.icon size={16} />
                     </div>
-                    <span className="flex-1 text-left text-sm font-mono text-[var(--text-dim)] group-hover:text-[var(--text-main)]">
+                    <span className="flex-1 text-left text-sm font-mono text-zinc-400 group-hover:text-white">
                       {a.label}
                     </span>
                     <span className="text-[10px] font-mono text-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity">

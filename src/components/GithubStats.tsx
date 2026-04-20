@@ -30,7 +30,7 @@ const GithubStats = () => {
                             <span className="text-[8px] font-mono text-zinc-500 tracking-widest uppercase">Commits / 2024</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-2xl font-black text-orange-500 uppercase">1.2k</span>
+                            <span className="text-2xl font-black text-[#7c3aed] uppercase">1.2k</span>
                             <span className="text-[8px] font-mono text-zinc-500 tracking-widest uppercase">Total Stars</span>
                         </div>
                     </div>
@@ -45,8 +45,8 @@ const GithubStats = () => {
                                 blockMargin={4} 
                                 fontSize={10} 
                                 theme={{
-                                    light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-                                    dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+                                    light: ['#f1f5f9', '#ddd6fe', '#a78bfa', '#7c3aed', '#5b21b6'],
+                                    dark: ['#0f172a', '#2e1065', '#5b21b6', '#7c3aed', '#c084fc'],
                                 }}
                             />
                         </div>

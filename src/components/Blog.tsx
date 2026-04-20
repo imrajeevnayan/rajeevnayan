@@ -26,10 +26,24 @@ const STATIC_POSTS = [
   }
 ];
 
-const Blog = () => {
-  const [posts, setPosts] = useState<any[]>(STATIC_POSTS);
+interface Tag {
+  name: string;
+}
 
-  const fetchPostsFromPublication = async (host: string) => {
+interface Post {
+  id: string;
+  title: string;
+  brief: string;
+  slug: string;
+  publishedAt: string;
+  publicationHost: string;
+  tags: Tag[];
+}
+
+const Blog = () => {
+  const [posts, setPosts] = useState<Post[]>(STATIC_POSTS as Post[]);
+
+  const fetchPostsFromPublication = async (host: string): Promise<Post[]> => {
     try {
       const res = await fetch('https://gql.hashnode.com/', {
         method: 'POST',
@@ -49,7 +63,7 @@ const Blog = () => {
         })
       });
       const json = await res.json();
-      return json.data?.publication?.posts?.edges.map((edge: any) => ({ ...edge.node, publicationHost: host })) || [];
+      return json.data?.publication?.posts?.edges.map((edge: { node: Post }) => ({ ...edge.node, publicationHost: host })) || [];
     } catch { return []; }
   };
 
@@ -59,8 +73,8 @@ const Blog = () => {
         const allPostsArrays = await Promise.all(PUBLICATION_HOSTS.map(fetchPostsFromPublication));
         const apiPosts = allPostsArrays.flat();
         const combined = [...apiPosts, ...STATIC_POSTS];
-        const unique = Array.from(new Map(combined.map(p => [p.slug, p])).values());
-        unique.sort((a: any, b: any) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+        const unique = Array.from(new Map(combined.map(p => [p.slug, p])).values()) as Post[];
+        unique.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
         setPosts(unique);
       } catch {
         // Fallback to static posts if API fails
@@ -70,16 +84,16 @@ const Blog = () => {
   }, []);
 
   return (
-    <section id="blog" className="section-container border-t border-[var(--glass-border)]">
+    <section id="blog" className="section-container border-t border-white/5">
       <div className="mb-20 space-y-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded flex items-center justify-center text-indigo-500 shadow-[0_0_15px_rgba(99,102,241,0.2)]">
+          <div className="w-10 h-10 bg-white/5 border border-white/10 rounded flex items-center justify-center text-[#7c3aed] shadow-[0_0_15px_rgba(124,58,237,0.2)]">
             <BookOpen size={20} />
           </div>
           <div>
-            <div className="text-indigo-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Knowledge_Base.md</div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none text-[var(--text-main)]">
-              Technical <span className="text-shimmer">Writing</span>
+            <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Knowledge_Base.sh</div>
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-white font-outfit">
+              Technical <span className="text-[#7c3aed]">Writing.</span>
             </h2>
           </div>
         </div>
@@ -91,29 +105,29 @@ const Blog = () => {
             <div className="flex flex-col h-full space-y-6">
               <div className="space-y-4 flex-1">
                 <div className="flex items-center gap-3 text-zinc-500 text-[9px] font-mono">
-                  <Calendar size={12} className="text-indigo-500" />
+                  <Calendar size={12} className="text-[#7c3aed]" />
                   {new Date(post.publishedAt).toLocaleDateString()}
                 </div>
-                <h3 className="text-lg font-bold text-white uppercase tracking-tight leading-tight line-clamp-2">
+                <h3 className="text-lg font-bold text-white uppercase tracking-tight leading-tight line-clamp-2 font-outfit">
                   {post.title}
                 </h3>
-                <p className="text-xs text-zinc-500 font-mono leading-relaxed line-clamp-3">
+                <p className="text-xs text-[#94a3b8] font-medium leading-relaxed line-clamp-3">
                   {post.brief}
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag: any, i: number) => (
-                    <span key={i} className="px-2 py-0.5 bg-[var(--glass-border)] text-[8px] font-mono text-zinc-400 uppercase tracking-widest rounded">
+                  {post.tags.map((tag, i) => (
+                    <span key={i} className="px-2 py-0.5 bg-white/5 border border-white/10 text-[8px] font-mono text-zinc-400 uppercase tracking-widest rounded">
                       {tag.name}
                     </span>
                   ))}
                 </div>
               </div>
-              <div className="pt-4 border-t border-[var(--glass-border)]">
+              <div className="pt-4 border-t border-white/5">
                 <a
                   href={`https://${post.publicationHost}/${post.slug}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-indigo-400 hover:text-white text-[10px] font-mono font-bold uppercase tracking-widest transition-colors group"
+                  className="flex items-center gap-2 text-[#7c3aed] hover:text-white text-[10px] font-mono font-bold uppercase tracking-widest transition-colors group"
                 >
                   Fetch_Article.sh <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </a>

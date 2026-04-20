@@ -23,37 +23,34 @@ const CodingProfiles = () => {
     ];
 
     return (
-        <section id="coding-profiles" className="section-container border-t border-[var(--glass-border)] bg-transparent">
+        <section id="coding-profiles" className="section-container border-t border-white/5 bg-transparent">
             <div className="space-y-16">
                 <div className="flex flex-col lg:flex-row justify-between items-end gap-6">
                     <div className="space-y-4">
-                        <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Competitive_Programming_Module</div>
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tight uppercase leading-none text-[var(--text-main)] font-outfit">
-                            Coding <span className="text-shimmer">Profiles</span>
+                        <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Module_Benchmarks.sh</div>
+                        <h2 className="text-5xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-[var(--text-main)] font-outfit">
+                            Coding <span className="text-[#7c3aed]">Metrics.</span>
                         </h2>
                     </div>
-                    <p className="text-[var(--text-dim)] font-mono text-sm max-w-sm mb-2 opacity-80 backdrop-blur-sm">
-                        &gt; Benchmarking technical problem-solving capabilities across leading platforms.
-                    </p>
                 </div>
 
                 <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
                     {profiles.map((profile, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ delay: i * 0.2, duration: 0.8 }}
                             viewport={{ once: true }}
                             className="group relative"
                         >
                             <TerminalWindow title={`~/profiles/${profile.name.toLowerCase()}.sh`} className="w-full">
-                                <div className="p-2 space-y-6">
+                                <div className="p-4 space-y-6">
                                     <div className="flex items-center justify-between pb-4 border-b border-white/5">
                                         <div className="flex items-center gap-4">
                                             <div 
-                                                className="w-12 h-12 rounded-xl flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform"
-                                                style={{ backgroundColor: `${profile.color}20`, border: `1px solid ${profile.color}40` }}
+                                                className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform"
+                                                style={{ backgroundColor: `${profile.color}15`, border: `1px solid ${profile.color}40` }}
                                             >
                                                 {profile.name === 'LeetCode' ? <Trophy size={24} style={{ color: profile.color }} /> : <Code2 size={24} style={{ color: profile.color }} />}
                                             </div>
@@ -66,7 +63,7 @@ const CodingProfiles = () => {
                                             href={profile.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="p-3 rounded-lg bg-white/5 border border-white/10 hover:bg-orange-500 hover:text-black transition-all group-hover:border-orange-500/50"
+                                            className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#7c3aed] hover:text-white transition-all group-hover:border-[#7c3aed]/50 shadow-lg"
                                         >
                                             <ExternalLink size={16} />
                                         </a>

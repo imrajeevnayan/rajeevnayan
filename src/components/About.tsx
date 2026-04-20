@@ -24,24 +24,22 @@ const About = () => {
                     viewport={{ once: true }}
                     className="space-y-6"
                 >
-                    <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Identity_Core.exe</div>
+                    <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Identity_Base.exe</div>
                     <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9] font-outfit">
-                        The <br /><span className="text-shimmer">Architect</span>
+                        The <br /><span className="text-[#7c3aed]">Architect.</span>
                     </h2>
-                    <p className="text-zinc-400 font-mono text-sm leading-relaxed max-w-sm">
+                    <p className="text-[#94a3b8] font-medium text-sm leading-relaxed max-w-sm mt-6">
                         &gt; <Typewriter text="Engineering elite backend ecosystems with a focus on JVM performance and cloud-native resilience." delay={300} speed={25} />
-                        <br />
-                        Decryption of personality module...
                     </p>
                     
                     <div className="relative group pt-10">
-                       <div className="p-3 bg-zinc-900 border border-white/10 rounded-2xl shadow-2xl overflow-hidden aspect-square max-w-[280px]">
-                          <img src={profileImage} alt="Rajeev Nayan - Java Backend Specialist" className="w-full h-full object-cover rounded-xl grayscale group-hover:grayscale-0 transition-all duration-1000" />
+                       <div className="p-3 bg-white/5 border border-white/10 rounded-3xl shadow-2xl overflow-hidden aspect-square max-w-[280px]">
+                          <img src={profileImage} alt="Rajeev Nayan" className="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-1000" />
                        </div>
 
-                       <div className="absolute -top-4 -right-4 p-3 bg-zinc-900 border border-orange-500/50 rounded flex items-center gap-2 shadow-xl">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                            <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-zinc-100">Status: Active</span>
+                       <div className="absolute -top-4 -right-4 p-3 bg-zinc-900 border border-[#7c3aed]/50 rounded-xl flex items-center gap-2 shadow-xl">
+                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                             <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-[#7c3aed]">Status: Active</span>
                        </div>
                     </div>
                 </motion.div>
@@ -51,11 +49,11 @@ const About = () => {
             <div className="lg:w-2/3 space-y-12">
                 <TerminalWindow title="~/README.md" className="w-full">
                     <div className="space-y-6">
-                        <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight leading-none text-white">
-                            I build <span className="text-orange-500">robust backend ecosystems</span> that scale with confidence.
+                        <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight leading-none text-white font-outfit">
+                            I build <span className="text-[#7c3aed]">robust backend ecosystems</span> that scale with confidence.
                         </h3>
-                        <p className="text-zinc-400 font-mono text-sm leading-relaxed">
-                            &gt; <Typewriter text="As a Backend-focused Software Engineer, I specialize in crafting high-performance Java Spring Boot architectures and cloud-native services. My approach prioritizes system stability, JVM optimization, and the uncompromising pursuit of clean, maintainable codebases that solve core business challenges at scale." delay={600} speed={20} />
+                        <p className="text-[#94a3b8] font-medium text-sm leading-relaxed">
+                            &gt; <Typewriter text="As a Backend-focused Software Engineer, I specialize in crafting high-performance Java Spring Boot architectures and cloud-native services. My approach prioritizes system stability, JVM optimization, and the uncompromising pursuit of clean, maintainable codebases." delay={600} speed={20} />
                         </p>
                     </div>
                 </TerminalWindow>
@@ -63,30 +61,30 @@ const About = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {stats.map((item, idx) => (
-                        <TerminalWindow key={idx} title={`Stat_${idx}.json`} delay={idx * 0.1}>
+                        <TerminalWindow key={idx} title={`stat_${idx}.json`} delay={idx * 0.1}>
                            <div className="flex flex-col h-full">
-                                <item.icon size={20} className="text-orange-500 mb-4" />
-                                <h4 className="text-sm font-mono font-bold uppercase tracking-tight mb-1 text-zinc-200">{item.title}</h4>
-                                <p className="text-[10px] font-mono font-bold text-orange-500 uppercase tracking-widest mb-1">{item.text}</p>
-                                <p className="text-[11px] font-mono text-zinc-500">{item.detail}</p>
+                                <item.icon size={20} className="text-[#7c3aed] mb-4" />
+                                <h4 className="text-sm font-bold uppercase tracking-tight mb-1 text-zinc-200 font-outfit">{item.title}</h4>
+                                <p className="text-[10px] font-mono font-bold text-[#7c3aed] uppercase tracking-widest mb-1">{item.text}</p>
+                                <p className="text-[11px] font-medium text-zinc-500">{item.detail}</p>
                            </div>
                         </TerminalWindow>
                     ))}
                 </div>
 
-                <TerminalWindow title="engineering_principles.md" className="w-full">
-                    <ul className="space-y-4 font-mono text-xs text-zinc-400 p-2">
-                        <li className="flex gap-3">
-                            <span className="text-orange-500 font-bold">01_RESILIENCE:</span>
-                            <span>Implementing Circuit Breakers and Retry patterns to ensure backend stability under high-load failure scenarios.</span>
+                <TerminalWindow title="architecture_principles.md" className="w-full">
+                    <ul className="space-y-4 font-mono text-[11px] text-zinc-500 p-2">
+                        <li className="flex gap-4">
+                            <span className="text-[#7c3aed] font-bold">01_RESILIENCE:</span>
+                            <span>Implementing Circuit Breakers and Retry patterns for high-load stability.</span>
                         </li>
-                        <li className="flex gap-3">
-                            <span className="text-orange-500 font-bold">02_SCALABILITY:</span>
-                            <span>Architecting stateless microservices that scale horizontally across elastic cloud environments without data inconsistency.</span>
+                        <li className="flex gap-4">
+                            <span className="text-[#7c3aed] font-bold">02_SCALABILITY:</span>
+                            <span>Architecting stateless microservices that scale horizontally.</span>
                         </li>
-                        <li className="flex gap-3">
-                            <span className="text-orange-500 font-bold">03_OBSERVABILITY:</span>
-                            <span>Leveraging distributed tracing and JVM metrics monitoring for proactive system optimization and sub-millisecond tuning.</span>
+                        <li className="flex gap-4">
+                            <span className="text-[#7c3aed] font-bold">03_OBSERVABILITY:</span>
+                            <span>Leveraging distributed tracing and JVM metrics for sub-millisecond tuning.</span>
                         </li>
                     </ul>
                 </TerminalWindow>

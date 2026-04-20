@@ -43,7 +43,7 @@ const Footer = () => {
                                 href={href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-10 h-10 bg-zinc-900 border border-white/5 rounded flex items-center justify-center text-zinc-500 hover:text-orange-500 hover:border-orange-500/50 transition-all"
+                                className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center text-zinc-500 hover:text-[#7c3aed] hover:border-[#7c3aed]/50 transition-all"
                             >
                                 <Icon size={18} />
                             </a>
@@ -54,7 +54,7 @@ const Footer = () => {
                         to="hero"
                         smooth={true}
                         duration={500}
-                        className="flex items-center gap-2 text-[10px] font-mono font-bold text-orange-500 uppercase tracking-widest cursor-pointer hover:text-white transition-colors group"
+                        className="flex items-center gap-2 text-[10px] font-mono font-bold text-[#7c3aed] uppercase tracking-widest cursor-pointer hover:text-white transition-colors group"
                     >
                         <ArrowUp size={14} className="group-hover:-translate-y-1 transition-transform" />
                         Run_ScrollTop.sh

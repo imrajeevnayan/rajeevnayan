@@ -1,13 +1,13 @@
-import { useRef, useMemo } from 'react';
+import { useRef, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Points, PointMaterial, Stars as DreiStars } from '@react-three/drei';
+import { Stars as DreiStars } from '@react-three/drei';
 import * as THREE from 'three';
 
 const StarParticles = () => {
   const ref = useRef<THREE.Points>(null);
 
   // Custom Twinkle Animation
-  useFrame((state) => {
+  useFrame(() => {
     if (ref.current) {
       ref.current.rotation.x -= 0.0001;
       ref.current.rotation.y -= 0.0001;
@@ -40,7 +40,5 @@ const StarsBackground = () => {
     </div>
   );
 };
-
-import { Suspense } from 'react';
 
 export default StarsBackground;
