@@ -1,41 +1,54 @@
 import { useState, useEffect } from 'react';
 
 interface TypewriterProps {
-  text: string;
-  speed?: number;
-  delay?: number;
+  words: string[];
+  typingSpeed?: number;
+  deletingSpeed?: number;
+  pauseTime?: number;
   className?: string;
-  cursor?: boolean;
 }
 
-const Typewriter = ({ text, speed = 50, delay = 0, className = "", cursor = true }: TypewriterProps) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [started, setStarted] = useState(false);
+const Typewriter = ({ 
+  words, 
+  typingSpeed = 100, 
+  deletingSpeed = 50, 
+  pauseTime = 2000, 
+  className = "" 
+}: TypewriterProps) => {
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [reverse, setReverse] = useState(false);
+  const [pause, setPause] = useState(false);
 
   useEffect(() => {
-    const startTimeout = setTimeout(() => {
-      setStarted(true);
-    }, delay);
-    return () => clearTimeout(startTimeout);
-  }, [delay]);
+    if (pause) return;
 
-  useEffect(() => {
-    if (!started) return;
-
-    if (displayedText.length < text.length) {
-      const timeout = setTimeout(() => {
-        setDisplayedText(text.slice(0, displayedText.length + 1));
-      }, speed);
-      return () => clearTimeout(timeout);
+    if (subIndex === words[index].length + 1 && !reverse) {
+      setPause(true);
+      setTimeout(() => {
+        setReverse(true);
+        setPause(false);
+      }, pauseTime);
+      return;
     }
-  }, [displayedText, text, speed, started]);
+
+    if (subIndex === 0 && reverse) {
+      setReverse(false);
+      setIndex((prev) => (prev + 1) % words.length);
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      setSubIndex((prev) => prev + (reverse ? -1 : 1));
+    }, reverse ? deletingSpeed : typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [subIndex, index, reverse, pause, words, typingSpeed, deletingSpeed, pauseTime]);
 
   return (
     <span className={className}>
-      {displayedText}
-      {cursor && started && displayedText.length < text.length && (
-        <span className="animate-pulse border-r-2 border-orange-500 ml-1" />
-      )}
+      {words[index].substring(0, subIndex)}
+      <span className="animate-pulse border-r-2 border-indigo-600 ml-1" />
     </span>
   );
 };
