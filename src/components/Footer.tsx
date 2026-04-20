@@ -55,7 +55,7 @@ const Footer = () => {
                         <div className="space-y-6">
                             <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--text-main)]">Contact</h4>
                             <ul className="space-y-4">
-                                <li className="text-sm font-medium text-[var(--text-dim)]">Varanasi, India</li>
+                                <li className="text-sm font-medium text-[var(--text-dim)]">Bengaluru, India</li>
                                 <li className="text-sm font-medium text-indigo-600 hover:underline cursor-pointer">imrajeevnayan@gmail.com</li>
                             </ul>
                         </div>

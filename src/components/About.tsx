@@ -23,13 +23,13 @@ const About = () => {
                   I am a passionate Software Engineer with a focus on building distributed systems and modern web applications. With a strong foundation in Java and the Spring ecosystem, I enjoy tackling complex backend challenges while ensuring a seamless user experience.
                </p>
                <p>
-                  My approach combines technical rigor with a user-centric mindset, aiming to create software that is not only functional but also scalable and easy to maintain. Based in Varanasi, India, I am always eager to learn new technologies and contribute to innovative projects.
+                  My approach combines technical rigor with a user-centric mindset, aiming to create software that is not only functional but also scalable and easy to maintain. Based in Bengaluru, India, I am always eager to learn new technologies and contribute to innovative projects.
                </p>
             </div>
 
             <div className="flex gap-10 pt-4">
                <div>
-                  <div className="text-2xl font-bold text-[var(--text-main)]">Varanasi</div>
+                  <div className="text-2xl font-bold text-[var(--text-main)]">Bengaluru</div>
                   <div className="text-xs font-semibold text-[var(--text-dim)] uppercase">Location</div>
                </div>
                <div>

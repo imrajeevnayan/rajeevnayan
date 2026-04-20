@@ -17,7 +17,7 @@ const experiences = [
   {
     role: "Backend Intern",
     company: "Tech Solutions Inc.",
-    location: "Varanasi, India",
+    location: "Bengaluru, India",
     period: "2021 - 2022",
     desc: "Contributed to the development of a internal CRM system using Java and Spring ecosystem.",
     points: [
