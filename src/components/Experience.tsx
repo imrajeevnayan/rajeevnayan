@@ -47,7 +47,7 @@ const Experience = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="p-8 md:p-10 card-base bg-[var(--bg-main)]"
+                            className="p-6 md:p-10 card-base bg-[var(--bg-main)]"
                         >
                             <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
                                 <div className="space-y-4">

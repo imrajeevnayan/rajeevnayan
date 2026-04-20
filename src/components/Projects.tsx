@@ -85,7 +85,7 @@ const Projects = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-main)] via-transparent to-transparent opacity-60" />
               </div>
 
-              <div className="p-8 flex flex-col flex-1 space-y-5">
+              <div className="p-6 md:p-8 flex flex-col flex-1 space-y-5">
                  <div className="space-y-2">
                     <span className="text-[10px] font-bold text-indigo-600 uppercase tracking-[0.2em]">{project.category}</span>
                     <h3 className="text-xl font-bold font-outfit uppercase tracking-tight group-hover:text-indigo-600 transition-colors">{project.title}</h3>
