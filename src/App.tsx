@@ -44,7 +44,7 @@ function App() {
       <Header />
 
       
-      <main className="relative">
+      <main className="relative overflow-hidden">
         <Hero />
         
         <div className="space-y-0">
