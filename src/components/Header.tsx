@@ -47,16 +47,17 @@ const Header = () => {
         <div className={`flex items-center justify-between px-6 py-3 rounded-xl transition-all duration-500 ${
           isScrolled ? 'bg-zinc-900/80 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black dark:bg-zinc-900/80 light:bg-white/80' : 'bg-transparent border border-transparent'
         }`}>
-          <Link to="hero" smooth={true} className="flex items-center gap-2 cursor-pointer group">
-            <div className="w-8 h-8 bg-orange-500 rounded flex items-center justify-center text-black group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(249,115,22,0.4)]">
-              <Terminal size={18} strokeWidth={3} />
+          <Link to="hero" smooth={true} className="flex items-center gap-3 cursor-pointer group">
+            <div className="relative w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 overflow-hidden border border-orange-500/20 group-hover:scale-105 transition-all shadow-[0_0_20px_rgba(249,115,22,0.1)]">
+              <div className="absolute inset-0 bg-gradient-to-tr from-orange-500/20 to-transparent animate-pulse" />
+              <Terminal size={22} strokeWidth={2} />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-mono font-bold tracking-tighter dark:text-white light:text-zinc-900 uppercase sm:block hidden leading-none">
-                rajeev@portfolio:~$ <span className="animate-pulse">_</span>
+              <span className="text-lg font-bold tracking-tight dark:text-white light:text-zinc-900 group-hover:text-orange-500 transition-colors leading-none">
+                Rajeev<span className="text-orange-500">.Nayan</span>
               </span>
-              <span className="text-[7px] font-mono text-orange-500 uppercase tracking-[0.2em] sm:block hidden mt-1">
-                Session_Active: {formatTime(time)}
+              <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-[0.2em] mt-1">
+                Full-Stack Developer
               </span>
             </div>
           </Link>

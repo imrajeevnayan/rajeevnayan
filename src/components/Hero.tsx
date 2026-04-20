@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { motion } from 'framer-motion';
-import { Code2, Cpu } from 'lucide-react';
+import { Code2, Cpu, Terminal as TerminalIcon } from 'lucide-react';
 import { Link } from 'react-scroll';
 import TerminalWindow from './common/Window';
 import Typewriter from './common/Typewriter';
+import StarsBackground from './canvas/StarsBackground';
 
 const Hero = () => {
   const [progress, setProgress] = useState(0);
@@ -46,16 +47,12 @@ const Hero = () => {
   }, []);
 
   const codeString = `
-@RestController
-@RequestMapping("/api/v1")
-public class BackendController {
-  
-  @Autowired
-  private JvmService service;
-
-  public List<Architecture> analyze() {
-    return service.getHighPerformance();
-  }
+{
+  "developer": "Rajeev Nayan",
+  "mission": "Architecting Scalable Systems",
+  "vision": "Human-Centric Digital Universe",
+  "stack": ["Java", "Spring Boot", "React", "Three.js"],
+  "status": "Ready to Build"
 }
   `.trim();
 
@@ -77,8 +74,10 @@ public class BackendController {
     <section 
        ref={containerRef}
        id="hero" 
-       className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-transparent"
+       className="min-h-screen flex flex-col justify-center relative overflow-hidden bg-[#020202]"
     >
+      <StarsBackground />
+      
       <div className="section-container relative z-10 w-full pt-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -86,21 +85,21 @@ public class BackendController {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-3 px-3 py-1 rounded bg-[var(--glass-bg)] border border-[var(--glass-border)] text-[10px] font-mono text-[var(--text-dim)] uppercase tracking-widest"
+              className="inline-flex items-center gap-3 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-[10px] font-mono text-orange-500 uppercase tracking-[0.2em]"
             >
-              <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
-              System Status: Online
+              <span className="w-1.5 h-1.5 bg-orange-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(249,115,22,0.6)]"></span>
+              Portfolio_Session: Active
             </motion.div>
 
-            <div className="space-y-4">
-              <h1 className="hero-text text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-none text-[var(--text-main)]">
-                <span className="block text-[var(--text-dim)]">JVM_SPEC</span>
-                <span className="text-shimmer block text-orange-500">BACKEND</span>
+            <div className="space-y-2">
+              <h1 className="hero-text text-5xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-[0.95] text-[var(--text-main)] font-outfit">
+                <span className="block text-zinc-500">ARCHITECTING</span>
+                <span className="text-shimmer block text-orange-500">DIGITAL</span>
+                <span className="block">UNIVERSE.</span>
               </h1>
-              <p className="hero-text text-lg text-[var(--text-dim)] font-mono max-w-lg">
-                &gt; <Typewriter text="Java Backend Specialist optimizing JVM architectures and high-throughput systems." delay={1000} speed={30} />
+              <p className="hero-text text-xl text-zinc-400 font-mono max-w-lg mt-6">
+                &gt; <Typewriter text="Building high-performance backend systems and immersive frontend experiences." delay={1000} speed={30} />
               </p>
-
             </div>
 
 
@@ -148,15 +147,15 @@ public class BackendController {
                   <div key={i} className="flex gap-4">
                     <span className="text-[var(--text-dim)] opacity-20 w-4 select-none">{i + 1}</span>
                     <pre className="whitespace-pre-wrap">
-                      {line.split(/([@A-Z][a-zA-Z]+|public|class|private|return|List|analyze|service)/).map((part, j) => {
-                        if (['public', 'class', 'private', 'return'].includes(part)) {
+                      {line.split(/("(?:[^"\\]|\\.)*"|:|\[|\]|\{|\}|,)/).map((part, j) => {
+                        if (part.startsWith('"') && line.includes(part + ':')) {
                           return <span key={j} className="text-orange-500">{part}</span>;
                         }
-                        if (part.startsWith('@')) {
-                          return <span key={j} className="text-green-500">{part}</span>;
+                        if (part.startsWith('"')) {
+                          return <span key={j} className="text-green-400">{part}</span>;
                         }
-                        if (['List', 'Architecture', 'analyze', 'getHighPerformance', 'service'].includes(part)) {
-                          return <span key={j} className="text-blue-400">{part}</span>;
+                        if (['{', '}', '[', ']', ':', ','].includes(part)) {
+                          return <span key={j} className="text-zinc-500">{part}</span>;
                         }
                         return part;
                       })}

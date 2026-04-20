@@ -13,6 +13,7 @@ import CommandPalette from './components/common/CommandPalette';
 // Lazy load components for performance
 const Experience = lazy(() => import('./components/Experience'));
 const GithubStats = lazy(() => import('./components/GithubStats'));
+const CodingProfiles = lazy(() => import('./components/CodingProfiles'));
 const Architecture = lazy(() => import('./components/Architecture'));
 const Skills = lazy(() => import('./components/Skills'));
 
@@ -60,6 +61,9 @@ function App() {
               </section>
               <section id="github">
                 <GithubStats />
+              </section>
+              <section id="coding-profiles">
+                <CodingProfiles />
               </section>
               <section id="architecture">
                 <Architecture />

@@ -1,4 +1,4 @@
-import { Github, Linkedin, Instagram, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Instagram, ArrowUp, Code2 } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const LeetCodeIcon = ({ size = 18 }: { size?: number }) => (
@@ -17,8 +17,9 @@ const Footer = () => {
     const socialLinks = [
         { Icon: Github, href: "https://github.com/imrajeevnayan" },
         { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/" },
+        { Icon: Code2, href: "https://www.geeksforgeeks.org/profile/imrajeevnayan" },
+        { Icon: LeetCodeIcon, href: "https://leetcode.com/u/imrajeevnayan/" },
         { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/" },
-        { Icon: LeetCodeIcon, href: "https://leetcode.com/u/imrajeevnayan/" }
     ];
 
 
@@ -27,9 +28,11 @@ const Footer = () => {
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-12">
                     <div className="text-center md:text-left space-y-2">
-                        <p className="text-xl font-black text-white uppercase tracking-tighter">rajeev@portfolio:~$ exit</p>
+                        <p className="text-2xl font-bold text-white font-outfit">
+                            Rajeev<span className="text-orange-500">.Nayan</span>
+                        </p>
                         <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-                            © {new Date().getFullYear()} System_Log: All Rights Reserved.
+                            © {new Date().getFullYear()} ARCHITECTING THE DIGITAL UNIVERSE.
                         </p>
                     </div>
                     

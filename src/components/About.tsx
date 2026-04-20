@@ -25,7 +25,7 @@ const About = () => {
                     className="space-y-6"
                 >
                     <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Identity_Core.exe</div>
-                    <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none">
+                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9] font-outfit">
                         The <br /><span className="text-shimmer">Architect</span>
                     </h2>
                     <p className="text-zinc-400 font-mono text-sm leading-relaxed max-w-sm">

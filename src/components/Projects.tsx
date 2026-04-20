@@ -16,52 +16,52 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: 'libstack.java',
-    description: 'Cloud-native Digital Library service architected with Spring Boot and PostgreSQL.\n• Engineered secure OAuth2.0 authentication flows for enterprise-grade security.\n• Optimized PostgreSQL query performance for high-concurrency multi-tenant scenarios.\n• Automated deployment pipelines using Docker and GitHub Actions.',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80', // High-quality code/architecture
-    tech: ['Spring Boot', 'OAuth2', 'PostgreSQL', 'Docker'],
-    stats: { stars: 24, forks: 8 },
-    links: { github: 'https://github.com/imrajeevnayan/digital-library-app' },
+    title: 'hms-secure.backend',
+    description: 'Enterprise-grade Hospital Management System architected with Spring Boot 3.x.\n• Engineered secure role-based access control (RBAC) and OAuth2 integration.\n• Optimized database schema for complex healthcare data using PostgreSQL.\n• Automated deployment pipelines with Docker and GitHub Actions.',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
+    tech: ['Spring Boot 3', 'PostgreSQL', 'Docker', 'Spring Security'],
+    stats: { stars: 0, forks: 0 },
+    links: { github: 'https://github.com/imrajeevnayan/Hospital-Management-System' },
   },
   {
-    title: 'event-nexus.kafka',
-    description: 'High-throughput real-time event streaming system utilizing Apache Kafka and Spring Cloud Stream.\n• Orchestrated distributed consumers to process 10k+ messages per second with ACID compliance.\n• Implemented dead-letter queues and retry mechanisms for fault-tolerant event processing.\n• Integrated Schema Registry to ensure data contract consistency across microservices.',
-    image: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1200', // High-bandwidth network visual
-    tech: ['Apache Kafka', 'Spring Cloud', 'Java 17', 'Docker'],
-    stats: { stars: 32, forks: 12 },
-    links: { github: 'https://github.com/imrajeevnayan/event-streaming-system' },
+    title: 'movie-nexus.react',
+    description: 'High-performance Movie Ticket Booking System featuring a modern dark-mode UI.\n• Integrated interactive seat selection with real-time state management in React.\n• Developed robust REST API endpoints with Spring Boot for seamless booking flows.\n• Implemented responsive glassmorphism design for a premium user experience.',
+    image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80',
+    tech: ['React', 'Spring Boot', 'PostgreSQL', 'Tailwind CSS'],
+    stats: { stars: 0, forks: 0 },
+    links: { github: 'https://github.com/imrajeevnayan/BookMyShow' },
   },
   {
-    title: 'hms-v1.springboot',
-    description: 'Enterprise-grade Hospital Management System focusing on data integrity and security.\n• Integrated Hibernate Envers for thorough auditing and version control of patient records.\n• Developed stateless JWT authentication with role-based access control (RBAC).\n• Optimized database schema for complex relational healthcare data structures.',
-    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80', // Tech/Medical feel
-    tech: ['Java 17', 'Spring Data JPA', 'MySQL', 'JWT'],
-    stats: { stars: 15, forks: 5 },
+    title: 'hms-modern.fullstack',
+    description: 'Modern healthcare solution built with Java 25 and Spring Boot 3.\n• Developed patient and doctor portals with an intuitive Tailwind CSS interface.\n• Leveraged Hibernate and Spring Data JPA for efficient data persistence.\n• Designed a modular architecture for easy scalability and maintenance.',
+    image: 'https://images.unsplash.com/photo-1504868584819-f8e905263543?auto=format&fit=crop&w=1200&q=80',
+    tech: ['Java 25', 'Spring Boot 3', 'PostgreSQL', 'Tailwind CSS'],
+    stats: { stars: 1, forks: 0 },
     links: { github: 'https://github.com/imrajeevnayan/hospital-management-springboot' },
   },
   {
-    title: 'cache-master.redis',
-    description: 'Distributed memory caching engine with advanced TTL logic and cache-aside patterns.\n• Reduced API latency by 65% through intelligent data invalidation and Redis clustering.\n• Implemented cache-aside and write-through patterns for consistent state management.\n• Engineered custom Redis serialization for high-speed binary payload handling.',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80', // Circuits/Speed
-    tech: ['Redis', 'Spring Cache', 'Java', 'Lettuce'],
-    stats: { stars: 18, forks: 6 },
-    links: { github: 'https://github.com/imrajeevnayan/distributed-cache' },
+    title: 'food-fiesta.spring',
+    description: 'Full-stack online food ordering application emphasizing performance and UX.\n• Managed complex cart operations and order processing with Spring MVC.\n• Built an administrative dashboard for real-time menu and order management.\n• Integrated Thymeleaf templates with custom CSS for a cohesive visual style.',
+    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80',
+    tech: ['Java', 'Spring Boot', 'Thymeleaf', 'MySQL'],
+    stats: { stars: 9, forks: 4 },
+    links: { github: 'https://github.com/imrajeevnayan/Food-Fiesta' },
   },
   {
-    title: 'chat-engine.websocket',
-    description: 'High-performance real-time communication engine leveraging STOMP/WebSockets.\n• Built an async microservices-ready architecture using Spring WebFlux and Netty.\n• Implemented ultra-low latency persistence using MongoDB and Reactive Streams.\n• Secured WebSocket handshakes using customized interceptors and JWT validation.',
-    image: 'https://images.unsplash.com/photo-1520697830682-bbb6e85e2b0b?auto=format&fit=crop&w=1200&q=80', // Real-time pulse
-    tech: ['WebSockets', 'STOMP', 'MongoDB', 'Spring WebFlux'],
-    stats: { stars: 21, forks: 9 },
-    links: { github: 'https://github.com/imrajeevnayan/real-time-chat' },
+    title: 'finance-dashboard.glass',
+    description: 'Enterprise Financial Dashboard utilizing React 19 and Glassmorphism design.\n• Secured financial data with JWT-based authentication and secure cookie handling.\n• Optimized dashboard performance using Redis for high-speed data caching.\n• Implemented real-time analytics with interactive charts and visualizations.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+    tech: ['React 19', 'Spring Boot 3', 'Redis', 'PostgreSQL'],
+    stats: { stars: 0, forks: 0 },
+    links: { github: 'https://github.com/imrajeevnayan/Enterprise-Expense-Tracker' },
   },
   {
-    title: 'analytics-core.lambda',
-    description: 'Serverless data analytics pipeline on AWS. Automated processing of large-scale JSON payloads.\n• Optimized Java Lambda execution time and memory footprint for cost-efficiency.\n• Engineered S3-triggered event flows for real-time automated data ingestion.\n• Integrated DynamoDB with global secondary indexes for low-latency querying.',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80', // Big Data/Cloud
-    tech: ['AWS Lambda', 'DynamoDB', 'Java', 'CloudWatch'],
-    stats: { stars: 14, forks: 4 },
-    links: { github: 'https://github.com/imrajeevnayan/serverless-analytics' },
+    title: 'dsa-laboratory.java',
+    description: 'Comprehensive repository of optimized solutions to LeetCode and GFG problems.\n• Organized solutions by data structures and algorithmic complexity.\n• Documented architectural patterns used in solving high-level DSA challenges.\n• Maintained code quality and performance benchmarks for each solution.',
+    image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=1200&q=80',
+    tech: ['Java', 'DSA', 'Algorithms', 'Practice'],
+    stats: { stars: 0, forks: 0 },
+    links: { github: 'https://github.com/imrajeevnayan/leetcode-practice', live: 'https://leetcode.com/u/imrajeevnayan/' },
   },
 ];
 
@@ -76,7 +76,7 @@ const Projects = () => {
           </div>
           <div>
             <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Execution_Log.log</div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none text-[var(--text-main)]">
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-[var(--text-main)] font-outfit">
               Featured <span className="text-shimmer">Architectures</span>
             </h2>
           </div>
