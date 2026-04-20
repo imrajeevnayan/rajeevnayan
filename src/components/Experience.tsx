@@ -1,104 +1,94 @@
 import { motion } from 'framer-motion';
-import { Zap, Brain } from 'lucide-react';
-import TerminalWindow from './common/Window';
+import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
-    {
-        company: 'CodeForSuccess Pvt. Ltd.',
-        position: 'Software Development Intern',
-        period: 'Feb 2025 – Aug 2025',
-        type: 'Remote',
-        description: [
-            'Architected high-performance Microservices using Java 17 and Spring Boot, ensuring sub-second response times across distributed nodes',
-            'Engineered secure RESTful APIs with OAuth2/JWT authentication, protecting sensitive cloud-native infrastructure',
-            'Implemented advanced data auditing with Hibernate Envers and optimized SQL query execution with Redis caching',
-            'Enforced elite code standards through peer reviews and automated CI/CD pipelines, maintaining 95%+ service availability'
-        ]
-
-    }
+  {
+    role: "Software Engineer",
+    company: "Freelance / Independent",
+    location: "Remote",
+    period: "2022 - Present",
+    desc: "Architecting and implementing full-stack solutions for international clients, specializing in Spring Boot backends and React frontends.",
+    points: [
+      "Designed and deployed 10+ scalable microservices handling secure data processing.",
+      "Optimized database queries in PostgreSQL, reducing load times by 40%.",
+      "Collaborated with cross-functional teams to deliver enterprise-grade software products."
+    ]
+  },
+  {
+    role: "Backend Intern",
+    company: "Tech Solutions Inc.",
+    location: "Varanasi, India",
+    period: "2021 - 2022",
+    desc: "Contributed to the development of a internal CRM system using Java and Spring ecosystem.",
+    points: [
+      "Integrated third-party APIs for automated data synchronization.",
+      "Refactored legacy code to improve system performance and maintainability.",
+      "Participated in agile ceremonies and code review processes."
+    ]
+  }
 ];
 
 const Experience = () => {
     return (
-    <section id="experience" className="section-container relative border-t border-[var(--glass-border)]">
-        <div className="flex flex-col lg:flex-row gap-20">
-            {/* STICKY HEADER */}
-            <div className="lg:w-1/3 lg:sticky lg:top-32 h-fit">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="space-y-6"
-                >
-                    <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Trajectory_Log.bin</div>
-                    <h2 className="text-5xl md:text-6xl font-black tracking-tighter uppercase leading-none text-[var(--text-main)]">
-                        Work <br /><span className="text-shimmer">History</span>
-                    </h2>
-                    <p className="text-[var(--text-dim)] font-mono text-sm leading-relaxed max-w-sm">
-                        &gt; Building scalable systems and human-centric interfaces across diverse engineering environments. 
-                        Tracing professional commits...
+        <section id="experience" className="py-24 md:py-32 bg-[var(--surface-main)]">
+            <div className="section-container">
+                <div className="space-y-4 mb-20">
+                    <h2 className="text-3xl md:text-5xl">Work Experience</h2>
+                    <p className="text-[var(--text-dim)] font-medium max-w-2xl text-lg">
+                        My professional journey in software engineering, focused on technical excellence and business impact.
                     </p>
-                </motion.div>
-            </div>
+                </div>
 
-            {/* TIMELINE CONTENT */}
-            <div className="lg:w-2/3 space-y-12">
-                {experiences.map((exp, index) => (
-                    <TerminalWindow key={index} title={`Entry: ${exp.company}`} delay={index * 0.1}>
-                        <div className="space-y-6">
-                            <div className="flex flex-wrap items-center justify-between gap-4">
-                                <div className="space-y-2">
-                                    <h3 className="text-2xl font-black uppercase tracking-tight text-[var(--text-main)] transition-colors">
-                                        {exp.position}
-                                    </h3>
-                                    <div className="flex items-center gap-4 text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)] opacity-60">
-                                        <span className="text-orange-500">{exp.company}</span>
-                                        <span className="w-1 h-1 bg-[var(--text-dim)] rounded-full" />
-                                        <span>{exp.period}</span>
+                <div className="space-y-12">
+                    {experiences.map((exp, i) => (
+                        <motion.div 
+                            key={i}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.1 }}
+                            className="p-8 md:p-10 card-base bg-[var(--bg-main)]"
+                        >
+                            <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
+                                <div className="space-y-4">
+                                    <div className="flex items-center gap-3 text-indigo-600">
+                                        <Briefcase size={22} />
+                                        <h3 className="text-2xl font-bold">{exp.role}</h3>
+                                    </div>
+                                    <div className="flex flex-wrap items-center gap-6 text-sm font-semibold text-[var(--text-dim)]">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-[var(--text-main)] italic">{exp.company}</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <MapPin size={16} />
+                                            {exp.location}
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <Calendar size={16} />
+                                            {exp.period}
+                                        </div>
                                     </div>
                                 </div>
-                                <span className="px-3 py-1 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">
-                                    {exp.type}
-                                </span>
                             </div>
-
-                            <ul className="space-y-3">
-                                {exp.description.map((item, i) => (
-                                    <li key={i} className="flex items-start gap-4 text-[var(--text-dim)] text-sm leading-relaxed font-mono">
-                                        <span className="mt-2 text-orange-500">&gt;</span>
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-[var(--glass-border)]">
-                                <div className="p-4 bg-[var(--glass-bg)] rounded-lg border border-[var(--glass-border)]">
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <Zap size={14} className="text-orange-500" />
-                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Performance_Win</span>
-                                    </div>
-                                    <p className="text-[10px] font-mono text-[var(--text-dim)] opacity-80">
-                                        Reduced JVM start-up time by 25% and optimized Heap memory allocation for Dockerized nodes.
-                                    </p>
-                                </div>
-                                <div className="p-4 bg-[var(--glass-bg)] rounded-lg border border-[var(--glass-border)]">
-                                    <div className="flex items-center gap-3 mb-2">
-                                        <Brain size={14} className="text-blue-500" />
-                                        <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-[var(--text-dim)]">Scalability_Impact</span>
-                                    </div>
-                                    <p className="text-[10px] font-mono text-[var(--text-dim)] opacity-80">
-                                        Orchestrated Kafka-based event flows between 5 decoupled services, increasing throughput by 80%.
-                                    </p>
-                                </div>
-
+                            
+                            <div className="space-y-6">
+                                <p className="text-[var(--text-dim)] font-medium leading-relaxed italic">
+                                    "{exp.desc}"
+                                </p>
+                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {exp.points.map((point, j) => (
+                                        <li key={j} className="flex items-start gap-3 text-sm font-medium text-[var(--text-dim)] leading-relaxed">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-1.5 shrink-0" />
+                                            {point}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
-                        </div>
-                    </TerminalWindow>
-                ))}
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-        </div>
-    </section>
-
+        </section>
     );
 };
 

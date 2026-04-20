@@ -32,22 +32,22 @@ const SystemMonitor = () => {
     }
 
     const MetricCard = ({ icon: Icon, label, value, unit, color }: MetricCardProps) => (
-        <div className="p-4 bg-white/5 border border-white/10 rounded-xl flex flex-col gap-2 relative overflow-hidden group">
+        <div className="p-4 bg-[var(--bg-main)]/50 border border-[var(--glass-border)] rounded-xl flex flex-col gap-2 relative overflow-hidden group shadow-sm dark:shadow-none">
             <div className={`absolute top-0 right-0 w-24 h-24 bg-${color}-500/5 blur-3xl -mr-12 -mt-12 group-hover:bg-${color}-500/10 transition-all`} />
             <div className="flex items-center gap-2 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-                <Icon size={12} className={`text-${color}-500 shadow-[0_0_8px_rgba(var(--${color}-rgb),0.5)]`} />
+                <Icon size={12} className={`text-${color}-500`} />
                 {label}
             </div>
             <div className="flex items-baseline gap-1">
-                <span className="text-2xl font-black text-white font-mono tabular-nums">
+                <span className="text-2xl font-black text-[var(--text-main)] font-mono tabular-nums">
                     {value.toFixed(1)}
                 </span>
                 <span className="text-[10px] font-mono text-zinc-500">{unit}</span>
             </div>
-            <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden mt-2 border border-white/5">
+            <div className="h-1.5 w-full bg-[var(--surface-main)] rounded-full overflow-hidden mt-2 border border-[var(--glass-border)]">
                 <motion.div 
                     animate={{ width: `${(value / (label === 'LATENCY' ? 100 : label === 'THROUGHPUT' ? 500 : 100)) * 100}%` }}
-                    className={`h-full bg-${color}-500/80 shadow-[0_0_10px_rgba(var(--${color}-rgb),0.5)]`}
+                    className={`h-full bg-${color}-500/80 shadow-[0_0_10px_rgba(124,58,237,0.5)]`}
                     transition={{ duration: 1 }}
                 />
             </div>
@@ -55,14 +55,14 @@ const SystemMonitor = () => {
     );
 
     return (
-        <section id="monitor" className="section-container border-t border-white/5">
+        <section id="monitor" className="section-container border-t border-[var(--glass-border)]">
             <div className="flex flex-col lg:flex-row gap-16 items-start">
                 <div className="lg:w-1/3 space-y-8">
-                    <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Runtime_Monitoring.sh</div>
-                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight uppercase leading-[0.9] text-white font-outfit">
-                        System <br /><span className="text-[#7c3aed]">Live Stats.</span>
+                    <div className="text-violet-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Runtime_Monitoring.sh</div>
+                    <h2 className="text-5xl md:text-6xl font-bold tracking-tight uppercase leading-[0.9] text-[var(--text-main)] font-outfit">
+                        System <br /><span className="text-violet-600">Live Stats.</span>
                     </h2>
-                    <p className="text-[#94a3b8] font-medium text-sm leading-relaxed max-w-sm mt-6">
+                    <p className="text-[var(--text-dim)] font-medium text-sm leading-relaxed max-w-sm mt-6">
                         &gt; Real-time simulation of JVM performance metrics and distributed system throughput. Monitoring data stability across active clusters.
                     </p>
                     <div className="pt-4 flex items-center gap-2">
@@ -80,7 +80,7 @@ const SystemMonitor = () => {
                             <MetricCard icon={Activity} label="LATENCY" value={metrics.latency} unit="ms" color="fuchsia" />
                         </div>
                         
-                        <div className="mt-8 p-4 bg-black/40 rounded border border-[var(--glass-border)] font-mono text-[10px] text-green-500/70 space-y-1">
+                        <div className="mt-8 p-4 bg-black/5 dark:bg-black/40 rounded border border-[var(--glass-border)] font-mono text-[10px] text-green-600 dark:text-green-500/70 space-y-1">
                             <div>[INFO] JVM Initialization complete in 452ms</div>
                             <div>[SYSTEM] Connecting to distributed Redis cache... SUCCESS</div>
                             <div>[METRIC] Average GC overhead: 1.2%</div>

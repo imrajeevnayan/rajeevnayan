@@ -1,128 +1,72 @@
 import { GitHubCalendar } from 'react-github-calendar';
-
 import { motion } from 'framer-motion';
-import { Star, GitFork, BookMarked, Terminal as TerminalIcon } from 'lucide-react';
-
-import TerminalWindow from './common/Window';
+import { Star, GitFork, BookMarked } from 'lucide-react';
 
 const pinnedRepos = [
   { name: 'libstack.java', stars: 24, forks: 8, lang: 'Java', desc: 'Secure Cloud-native Library Microservice' },
   { name: 'event-nexus.kafka', stars: 32, forks: 12, lang: 'Java/Kafka', desc: 'High-throughput event streaming architecture' },
-  { name: 'hms-v1.springboot', stars: 15, forks: 5, lang: 'Java', desc: 'Enterprise Health Management System' },
-  { name: 'cache-master.redis', stars: 18, forks: 6, lang: 'Java/Redis', desc: 'Distributed caching engine' },
 ];
 
 const GithubStats = () => {
     return (
-        <section id="github" className="section-container border-t border-[var(--glass-border)]">
-            <div className="flex flex-col lg:flex-row gap-16 items-start">
-                <div className="lg:w-1/3 space-y-6">
-                    <div className="text-orange-500 text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Open_Source_Intelligence</div>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter uppercase leading-none text-[var(--text-main)]">
-                        GitHub <br /><span className="text-shimmer">Contribution</span>
-                    </h2>
-                    <p className="text-[var(--text-dim)] font-mono text-sm leading-relaxed max-w-sm">
-                        &gt; Continuously integrating and deploying across the open-source ecosystem. Tracking engineering commits and repository health in real-time.
-                    </p>
-                    <div className="flex gap-4 pt-6">
-                        <div className="flex flex-col">
-                            <span className="text-2xl font-black text-[var(--text-main)] uppercase">500+</span>
-                            <span className="text-[8px] font-mono text-zinc-500 tracking-widest uppercase">Commits / 2024</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-2xl font-black text-[#7c3aed] uppercase">1.2k</span>
-                            <span className="text-[8px] font-mono text-zinc-500 tracking-widest uppercase">Total Stars</span>
+        <section id="github" className="py-24 md:py-32 bg-[var(--bg-main)]">
+            <div className="section-container">
+                <div className="flex flex-col lg:flex-row gap-20 items-center">
+                    <div className="lg:w-5/12 space-y-6">
+                        <h2 className="text-3xl md:text-5xl">Open Source Contributions</h2>
+                        <p className="text-[var(--text-dim)] font-medium text-lg leading-relaxed">
+                            I am a regular contributor to the open-source community, focusing on building high-performance Java libraries and system utilities.
+                        </p>
+                        <div className="flex gap-10 pt-4">
+                            <div>
+                                <div className="text-3xl font-bold text-[var(--text-main)]">500+</div>
+                                <div className="text-xs font-semibold text-[var(--text-dim)]">Commits in 2024</div>
+                            </div>
+                            <div>
+                                <div className="text-3xl font-bold text-indigo-600">1.2k</div>
+                                <div className="text-xs font-semibold text-[var(--text-dim)]">GitHub Stars</div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="lg:w-2/3 w-full space-y-8">
-                    <TerminalWindow title="~/contributions.graph" className="w-full">
-                        <div className="p-4 flex flex-col items-center justify-center overflow-x-auto min-h-[160px]">
+                    <div className="lg:w-7/12 w-full space-y-12">
+                        <div className="p-8 card-base bg-[var(--surface-main)] flex flex-col items-center justify-center overflow-x-auto shadow-sm">
                             <GitHubCalendar 
                                 username="imrajeevnayan" 
                                 blockSize={12} 
                                 blockMargin={4} 
-                                fontSize={10} 
-                                theme={{
-                                    light: ['#f1f5f9', '#ddd6fe', '#a78bfa', '#7c3aed', '#5b21b6'],
-                                    dark: ['#0f172a', '#2e1065', '#5b21b6', '#7c3aed', '#c084fc'],
-                                }}
+                                fontSize={12} 
+                                colorScheme='dark'
                             />
                         </div>
-                    </TerminalWindow>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {pinnedRepos.map((repo, i) => (
-                            <motion.div 
-                                key={i}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="group p-5 bg-[var(--glass-bg)] border border-[var(--glass-border)] rounded-xl relative overflow-hidden transition-all hover:border-orange-500/30"
-                            >
-                                <div className="flex items-center justify-between mb-4">
-                                    <div className="w-8 h-8 rounded-lg bg-[var(--glass-border)] flex items-center justify-center text-[var(--text-dim)] group-hover:text-orange-500 transition-colors">
-                                        <BookMarked size={16} />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            {pinnedRepos.map((repo, i) => (
+                                <motion.div 
+                                    key={i}
+                                    whileHover={{ borderColor: 'rgba(99, 102, 241, 0.3)' }}
+                                    className="p-8 card-base bg-[var(--surface-main)] space-y-6"
+                                >
+                                    <div className="flex items-center justify-between">
+                                        <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600">
+                                            <BookMarked size={20} />
+                                        </div>
+                                        <div className="flex items-center gap-4 text-xs font-bold text-[var(--text-dim)]/60">
+                                            <div className="flex items-center gap-1.5"><Star size={14} /> {repo.stars}</div>
+                                            <div className="flex items-center gap-1.5"><GitFork size={14} /> {repo.forks}</div>
+                                        </div>
                                     </div>
-                                    <div className="flex items-center gap-3 font-mono text-[9px] text-zinc-500">
-                                        <div className="flex items-center gap-1"><Star size={10} /> {repo.stars}</div>
-                                        <div className="flex items-center gap-1"><GitFork size={10} /> {repo.forks}</div>
+                                    <div className="space-y-2">
+                                        <h4 className="text-lg font-bold">{repo.name}</h4>
+                                        <p className="text-sm text-[var(--text-dim)] leading-relaxed">{repo.desc}</p>
                                     </div>
-                                </div>
-                                <h4 className="text-sm font-bold text-[var(--text-main)] mb-1 uppercase tracking-tight">{repo.name}</h4>
-                                <p className="text-[10px] text-zinc-500 font-mono mb-4 leading-relaxed">{repo.desc}</p>
-                                <div className="flex items-center justify-between pt-4 border-t border-[var(--glass-border)]">
-                                    <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-orange-500">{repo.lang}</span>
-                                    <div className="text-[8px] font-mono text-zinc-600 uppercase flex items-center gap-1">
-                                        <TerminalIcon size={10} /> REPO_ACTIVE
+                                    <div className="pt-4 border-t border-[var(--border-main)]">
+                                        <span className="text-xs font-bold text-indigo-600">{repo.lang}</span>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-
-                    <TerminalWindow title="git_log --stat --oneline" className="w-full">
-                        <div className="p-4 font-mono text-[10px] space-y-4 text-zinc-400">
-                            <div className="space-y-1">
-                                <div className="flex gap-2">
-                                    <span className="text-orange-500">5a053ab</span>
-                                    <span className="text-zinc-200">feat: java backend optimization and premium features</span>
-                                </div>
-                                <div className="pl-4 text-zinc-600">
-                                    9 files changed, 380 insertions(+), 31 deletions(-)
-                                </div>
-                            </div>
-                            <div className="space-y-1">
-                                <div className="flex gap-2">
-                                    <span className="text-orange-500">9a9e890</span>
-                                    <span className="text-zinc-200">feat: expand project section to 6 high-performance systems</span>
-                                </div>
-                                <div className="pl-4 text-zinc-600">
-                                    1 file changed, 28 insertions(+), 3 deletions(-)
-                                </div>
-                            </div>
-                            <div className="space-y-1">
-                                <div className="flex gap-2">
-                                    <span className="text-orange-500">02d3fab</span>
-                                    <span className="text-zinc-200">fix: correct import path for useTheme in CommandPalette</span>
-                                </div>
-                                <div className="pl-4 text-zinc-600">
-                                    1 file changed, 2 insertions(+), 1 deletion(-)
-                                </div>
-                            </div>
-                            <div className="space-y-1 opacity-50">
-                                <div className="flex gap-2">
-                                    <span className="text-orange-500">cc7e2a4</span>
-                                    <span className="text-zinc-200">refactor: optimize JVM memory allocation in cloud cluster</span>
-                                </div>
-                                <div className="pl-4 text-zinc-600">
-                                    4 files changed, 112 insertions(+), 45 deletions(-)
-                                </div>
-                            </div>
+                                </motion.div>
+                            ))}
                         </div>
-                    </TerminalWindow>
-
+                    </div>
                 </div>
             </div>
         </section>

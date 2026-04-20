@@ -1,16 +1,17 @@
 import { motion } from 'framer-motion';
-import TerminalWindow from './common/Window';
 import { ExternalLink, Trophy, Code2 } from 'lucide-react';
+import useTheme from '../hooks/useTheme';
 
 const CodingProfiles = () => {
+    const { theme } = useTheme();
     const profiles = [
         {
             name: 'LeetCode',
             username: 'imrajeevnayan',
             url: 'https://leetcode.com/u/imrajeevnayan/',
             color: '#FFA116',
-            statsUrl: 'https://leetcard.jacoblin.cool/imrajeevnayan?theme=dark&font=Inter&ext=activity',
-            desc: 'Daily problem solver focusing on Data Structures and Algorithms.'
+            statsUrl: `https://leetcard.jacoblin.cool/imrajeevnayan?theme=${theme === 'dark' ? 'dark' : 'light'}&font=Inter&ext=activity`,
+            desc: 'Consistently solving algorithmic challenges to sharpen data structure and problem-solving skills.'
         },
         {
             name: 'GeeksforGeeks',
@@ -18,75 +19,64 @@ const CodingProfiles = () => {
             url: 'https://www.geeksforgeeks.org/profile/imrajeevnayan',
             color: '#2F8D46',
             statsUrl: 'https://gfgstatscard.vercel.app/imrajeevnayan',
-            desc: 'Exploring computer science concepts and competitive programming.'
+            desc: 'Actively participating in coding contests and contributing to computer science discussions.'
         }
     ];
 
     return (
-        <section id="coding-profiles" className="section-container border-t border-white/5 bg-transparent">
-            <div className="space-y-16">
-                <div className="flex flex-col lg:flex-row justify-between items-end gap-6">
-                    <div className="space-y-4">
-                        <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Module_Benchmarks.sh</div>
-                        <h2 className="text-5xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-[var(--text-main)] font-outfit">
-                            Coding <span className="text-[#7c3aed]">Metrics.</span>
-                        </h2>
-                    </div>
+        <section id="coding-profiles" className="py-24 md:py-32 bg-[var(--surface-main)]">
+            <div className="section-container">
+                <div className="space-y-4 mb-20">
+                    <h2 className="text-3xl md:text-5xl">Competitive Programming</h2>
+                    <p className="text-[var(--text-dim)] font-medium max-w-2xl text-lg">
+                        I am passionate about problem-solving and algorithmic efficiency. Here are my current rankings and metrics from top competitive platforms.
+                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     {profiles.map((profile, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.2, duration: 0.8 }}
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="group relative"
+                            className="p-8 card-base bg-[var(--bg-main)] group"
                         >
-                            <TerminalWindow title={`~/profiles/${profile.name.toLowerCase()}.sh`} className="w-full">
-                                <div className="p-4 space-y-6">
-                                    <div className="flex items-center justify-between pb-4 border-b border-white/5">
-                                        <div className="flex items-center gap-4">
-                                            <div 
-                                                className="w-12 h-12 rounded-2xl flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform"
-                                                style={{ backgroundColor: `${profile.color}15`, border: `1px solid ${profile.color}40` }}
-                                            >
-                                                {profile.name === 'LeetCode' ? <Trophy size={24} style={{ color: profile.color }} /> : <Code2 size={24} style={{ color: profile.color }} />}
-                                            </div>
-                                            <div>
-                                                <h3 className="text-xl font-bold text-white font-outfit">{profile.name}</h3>
-                                                <span className="text-[10px] font-mono text-zinc-500 tracking-widest uppercase">@{profile.username}</span>
-                                            </div>
-                                        </div>
-                                        <a 
-                                            href={profile.url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-[#7c3aed] hover:text-white transition-all group-hover:border-[#7c3aed]/50 shadow-lg"
-                                        >
-                                            <ExternalLink size={16} />
-                                        </a>
+                            <div className="flex items-center justify-between mb-8">
+                                <div className="flex items-center gap-4">
+                                    <div 
+                                        className="w-12 h-12 rounded-xl flex items-center justify-center text-white"
+                                        style={{ backgroundColor: `${profile.color}10`, border: `1px solid ${profile.color}20` }}
+                                    >
+                                        {profile.name === 'LeetCode' ? <Trophy size={22} style={{ color: profile.color }} /> : <Code2 size={22} style={{ color: profile.color }} />}
                                     </div>
-
-                                    <div className="relative overflow-hidden rounded-lg bg-black/40 border border-white/5 p-2">
-                                        <img 
-                                            src={profile.statsUrl} 
-                                            alt={`${profile.name} Stats`}
-                                            className="w-full h-auto rounded transition-transform duration-700 group-hover:scale-[1.02]"
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent" />
+                                    <div>
+                                        <h3 className="text-xl font-bold">{profile.name}</h3>
+                                        <span className="text-xs font-semibold text-[var(--text-dim)] uppercase tracking-wider">@{profile.username}</span>
                                     </div>
-
-                                    <p className="text-zinc-500 font-mono text-[11px] leading-relaxed px-2 italic">
-                                        // {profile.desc}
-                                    </p>
                                 </div>
-                            </TerminalWindow>
-                            
-                            {/* Decorative background glow */}
-                            <div className="absolute -inset-4 bg-orange-500/5 rounded-3xl blur-3xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                                <a 
+                                    href={profile.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="p-3 rounded-lg bg-[var(--surface-main)] border border-[var(--border-main)] hover:border-indigo-500/50 transition-all shadow-sm"
+                                >
+                                    <ExternalLink size={18} />
+                                </a>
+                            </div>
+
+                            <div className="relative overflow-hidden rounded-xl bg-[var(--surface-main)] border border-[var(--border-main)] p-4">
+                                <img 
+                                    src={profile.statsUrl} 
+                                    alt={`${profile.name} Stats`}
+                                    className="w-full h-auto rounded transition-transform duration-500 group-hover:scale-[1.01]"
+                                    loading="lazy"
+                                />
+                            </div>
+
+                            <p className="mt-8 text-sm text-[var(--text-dim)] leading-relaxed italic font-medium">
+                                {profile.desc}
+                            </p>
                         </motion.div>
                     ))}
                 </div>

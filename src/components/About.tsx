@@ -1,112 +1,65 @@
-import { motion } from 'framer-motion';
-import { GraduationCap, Brain, Sparkles, Server, Zap } from 'lucide-react';
-import TerminalWindow from './common/Window';
-import profileImage from '../assets/profile.jpg';
-import Typewriter from './common/Typewriter';
-
+import { User, Code2, Layers, Cpu } from 'lucide-react';
 
 const About = () => {
-    const stats = [
-        { icon: GraduationCap, title: 'Academics', text: 'MCA Systems', detail: 'Focus: Distributed Logic' },
-        { icon: Brain, title: 'Philosophy', text: 'JVM First', detail: 'Clean IPC & Memory' },
-        { icon: Zap, title: 'Focus', text: 'High-Throughput', detail: 'System Stability' },
-        { icon: Sparkles, title: 'Principles', text: 'SOLID Code', detail: 'Design Pattern Master' },
-    ];
+  const highlights = [
+    { icon: Layers, title: 'Full Stack', desc: 'Developing end-to-end solutions from responsive UIs to scalable APIs.' },
+    { icon: Cpu, title: 'Architecture', desc: 'Designing performance-optimized systems with distributed logic.' },
+    { icon: Code2, title: 'Clean Code', desc: 'Prioritizing maintainability and standard software patterns.' },
+    { icon: User, title: 'Collaborative', desc: 'Working effectively in teams to deliver high-quality products.' }
+  ];
 
-    return (
-    <section id="about" className="section-container relative border-t border-white/5">
-        <div className="flex flex-col lg:flex-row gap-20">
-            {/* STICKY HEADER */}
-            <div className="lg:w-1/3 lg:sticky lg:top-32 h-fit">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="space-y-6"
-                >
-                    <div className="text-[#a78bfa] text-[10px] font-mono font-bold uppercase tracking-[0.3em]">Identity_Base.exe</div>
-                    <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase leading-[0.9] font-outfit">
-                        The <br /><span className="text-[#7c3aed]">Architect.</span>
-                    </h2>
-                    <p className="text-[#94a3b8] font-medium text-sm leading-relaxed max-w-sm mt-6">
-                        &gt; <Typewriter text="Engineering elite backend ecosystems with a focus on JVM performance and cloud-native resilience." delay={300} speed={25} />
-                    </p>
-                    
-                    <div className="relative group pt-10">
-                       <div className="p-3 bg-white/5 border border-white/10 rounded-3xl shadow-2xl overflow-hidden aspect-square max-w-[280px]">
-                          <img src={profileImage} alt="Rajeev Nayan" className="w-full h-full object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-1000" />
-                       </div>
-
-                       <div className="absolute -top-4 -right-4 p-3 bg-zinc-900 border border-[#7c3aed]/50 rounded-xl flex items-center gap-2 shadow-xl">
-                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                             <span className="text-[8px] font-mono font-bold uppercase tracking-widest text-[#7c3aed]">Status: Active</span>
-                       </div>
-                    </div>
-                </motion.div>
+  return (
+    <section id="about" className="py-24 md:py-32 bg-[var(--bg-main)]">
+      <div className="section-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          <div className="space-y-8">
+            <div className="space-y-4">
+               <h2 className="text-3xl md:text-5xl">About Me</h2>
             </div>
 
-            {/* CONTENT SIDE */}
-            <div className="lg:w-2/3 space-y-12">
-                <TerminalWindow title="~/README.md" className="w-full">
-                    <div className="space-y-6">
-                        <h3 className="text-2xl md:text-3xl font-bold uppercase tracking-tight leading-none text-white font-outfit">
-                            I build <span className="text-[#7c3aed]">robust backend ecosystems</span> that scale with confidence.
-                        </h3>
-                        <p className="text-[#94a3b8] font-medium text-sm leading-relaxed">
-                            &gt; <Typewriter text="As a Backend-focused Software Engineer, I specialize in crafting high-performance Java Spring Boot architectures and cloud-native services. My approach prioritizes system stability, JVM optimization, and the uncompromising pursuit of clean, maintainable codebases." delay={600} speed={20} />
-                        </p>
-                    </div>
-                </TerminalWindow>
-
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {stats.map((item, idx) => (
-                        <TerminalWindow key={idx} title={`stat_${idx}.json`} delay={idx * 0.1}>
-                           <div className="flex flex-col h-full">
-                                <item.icon size={20} className="text-[#7c3aed] mb-4" />
-                                <h4 className="text-sm font-bold uppercase tracking-tight mb-1 text-zinc-200 font-outfit">{item.title}</h4>
-                                <p className="text-[10px] font-mono font-bold text-[#7c3aed] uppercase tracking-widest mb-1">{item.text}</p>
-                                <p className="text-[11px] font-medium text-zinc-500">{item.detail}</p>
-                           </div>
-                        </TerminalWindow>
-                    ))}
-                </div>
-
-                <TerminalWindow title="architecture_principles.md" className="w-full">
-                    <ul className="space-y-4 font-mono text-[11px] text-zinc-500 p-2">
-                        <li className="flex gap-4">
-                            <span className="text-[#7c3aed] font-bold">01_RESILIENCE:</span>
-                            <span>Implementing Circuit Breakers and Retry patterns for high-load stability.</span>
-                        </li>
-                        <li className="flex gap-4">
-                            <span className="text-[#7c3aed] font-bold">02_SCALABILITY:</span>
-                            <span>Architecting stateless microservices that scale horizontally.</span>
-                        </li>
-                        <li className="flex gap-4">
-                            <span className="text-[#7c3aed] font-bold">03_OBSERVABILITY:</span>
-                            <span>Leveraging distributed tracing and JVM metrics for sub-millisecond tuning.</span>
-                        </li>
-                    </ul>
-                </TerminalWindow>
-
-
-                {/* ETHOS GRID */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <TerminalWindow title="latency_optimization.sh" className="bg-zinc-900 border-zinc-800">
-                        <Zap size={24} className="text-orange-500 mb-4" />
-                        <h3 className="text-lg font-mono font-black uppercase tracking-tight mb-2 text-white">Execution_Speed</h3>
-                        <p className="text-zinc-500 font-mono text-xs leading-relaxed">Obsessed with sub-millisecond response times. Specializing in JVM garbage collection tuning and high-concurrency threading models.</p>
-                    </TerminalWindow>
-                    <TerminalWindow title="system_blueprint.dwg" className="bg-zinc-900 border-zinc-800">
-                        <Server size={24} className="text-blue-500 mb-4" />
-                        <h3 className="text-lg font-mono font-black uppercase tracking-tight mb-2 text-white">Distributed_Scale</h3>
-                        <p className="text-zinc-500 font-mono text-xs leading-relaxed">Building cloud-native microservices that handle elastic demand. Engineering stateless security and high-availability persistence layers.</p>
-                    </TerminalWindow>
-                </div>
+            <div className="space-y-6 text-lg text-[var(--text-dim)] leading-relaxed font-medium">
+               <p>
+                  I am a passionate Software Engineer with a focus on building distributed systems and modern web applications. With a strong foundation in Java and the Spring ecosystem, I enjoy tackling complex backend challenges while ensuring a seamless user experience.
+               </p>
+               <p>
+                  My approach combines technical rigor with a user-centric mindset, aiming to create software that is not only functional but also scalable and easy to maintain. Based in Varanasi, India, I am always eager to learn new technologies and contribute to innovative projects.
+               </p>
             </div>
+
+            <div className="flex gap-10 pt-4">
+               <div>
+                  <div className="text-2xl font-bold text-[var(--text-main)]">Varanasi</div>
+                  <div className="text-xs font-semibold text-[var(--text-dim)] uppercase">Location</div>
+               </div>
+               <div>
+                  <div className="text-2xl font-bold text-[var(--text-main)]">India</div>
+                  <div className="text-xs font-semibold text-[var(--text-dim)] uppercase">Region</div>
+               </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+             {highlights.map((item, i) => (
+               <div
+                 key={i}
+                 className="p-8 card-base bg-[var(--surface-main)] space-y-4"
+               >
+                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600">
+                     <item.icon size={20} />
+                  </div>
+                  <div className="space-y-2">
+                     <h3 className="text-xl font-bold">{item.title}</h3>
+                     <p className="text-sm text-[var(--text-dim)] leading-relaxed">{item.desc}</p>
+                  </div>
+               </div>
+             ))}
+          </div>
+
         </div>
+      </div>
     </section>
-    );
+  );
 };
 
 export default About;

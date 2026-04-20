@@ -71,11 +71,11 @@ const CustomCursor = () => {
         <>
             <div 
                 ref={cursorRef} 
-                className="fixed top-0 left-0 w-3 h-3 bg-[var(--accent-color)] rounded-full pointer-events-none z-[9999] mix-blend-difference -translate-x-1/2 -translate-y-1/2 hidden md:block"
+                className="fixed top-0 left-0 w-3 h-3 bg-[var(--brand-color)] rounded-full pointer-events-none z-[9999] mix-blend-difference -translate-x-1/2 -translate-y-1/2 hidden md:block"
             />
             <div 
                 ref={followerRef} 
-                className="fixed top-0 left-0 w-8 h-8 border border-[var(--accent-color)]/30 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 hidden md:block transition-colors duration-300"
+                className="fixed top-0 left-0 w-8 h-8 border border-[var(--brand-color)]/30 rounded-full pointer-events-none z-[9998] -translate-x-1/2 -translate-y-1/2 hidden md:block transition-colors duration-300"
             />
         </>
     );
