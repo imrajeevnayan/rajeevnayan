@@ -10,10 +10,16 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+      // Auto-close mobile menu on scroll for better UX
+      if (window.scrollY > 50 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobileMenuOpen]);
 
   const navItems = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
@@ -35,7 +41,7 @@ const Header = () => {
 
         <div className="flex items-center gap-4">
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8 text-sm font-bold text-[var(--text-dim)] uppercase tracking-widest">
+          <div className="hidden md:flex items-center gap-8 text-xs font-bold text-[var(--text-dim)] uppercase tracking-[0.2em]">
              {navItems.map((item) => (
                <Link 
                  key={item}
@@ -48,7 +54,7 @@ const Header = () => {
              ))}
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button 
               onClick={toggleTheme}
               className="p-2.5 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-xl text-[var(--text-dim)] hover:text-indigo-600 transition-all"
@@ -67,7 +73,7 @@ const Header = () => {
 
             <a 
               href="mailto:imrajeevnayan@gmail.com" 
-              className="hidden lg:block px-6 py-2.5 bg-indigo-600 text-white text-sm font-bold rounded-xl shadow-lg shadow-indigo-500/20 hover:bg-indigo-700 transition-all active:scale-95"
+              className="hidden lg:block px-6 py-2.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow-lg shadow-indigo-500/20 hover:bg-indigo-700 transition-all active:scale-95 uppercase tracking-widest"
             >
               Hire Me
             </a>
@@ -79,24 +85,25 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 top-[72px] bg-[var(--bg-main)] z-[90] md:hidden p-8 flex flex-col space-y-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 top-[76px] bg-[var(--bg-main)]/95 backdrop-blur-xl z-[90] md:hidden p-8 flex flex-col space-y-6"
           >
             {navItems.map((item, idx) => (
               <motion.div
                 key={item}
-                initial={{ opacity: 0, x: 20 }}
+                initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.05 }}
               >
                 <Link
                   to={item.toLowerCase()}
                   smooth={true}
+                  offset={-80}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-3xl font-bold text-[var(--text-main)] hover:text-indigo-600 transition-colors uppercase tracking-tighter"
+                  className="text-xl font-bold text-[var(--text-main)] hover:text-indigo-600 transition-colors uppercase tracking-widest block py-2 border-b border-[var(--border-main)]/50"
                 >
                   {item}
                 </Link>
@@ -107,12 +114,12 @@ const Header = () => {
                initial={{ opacity: 0 }} 
                animate={{ opacity: 1 }} 
                transition={{ delay: 0.3 }}
-               className="pt-8 border-t border-[var(--border-main)]"
+               className="pt-8"
             >
-               <p className="text-xs font-bold text-[var(--text-dim)] uppercase tracking-[0.3em] mb-4">Availability</p>
+               <p className="text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-[0.3em] mb-4">Availability</p>
                <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-medium text-[var(--text-main)]">Looking for new opportunities</span>
+                  <span className="text-xs font-medium text-[var(--text-main)]">Actively seeking opportunities</span>
                </div>
             </motion.div>
           </motion.div>
