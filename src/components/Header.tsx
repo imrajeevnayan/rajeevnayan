@@ -21,7 +21,7 @@ const Header = () => {
     <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
       isScrolled ? 'bg-[var(--bg-main)]/80 backdrop-blur-lg border-b border-[var(--border-main)] py-4' : 'bg-transparent py-6'
     }`}>
-      <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link 
             to="hero" 
             smooth={true} 
