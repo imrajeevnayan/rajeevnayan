@@ -1,36 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --brand-color: #6366f1; /* Indigo 500 */
-  --brand-rgb: 99, 102, 241;
-}
+  /* Airbnb Core Palette */
+  --palette-rausch: #ff385c;
+  --palette-deep-rausch: #e00b41;
+  --palette-near-black: #222222;
+  --palette-focused-gray: #3f3f3f;
+  --palette-secondary-gray: #6a6a6a;
+  --palette-border-gray: #c1c1c1;
+  --palette-light-surface: #f2f2f2;
+  --palette-white: #ffffff;
 
-/* Professional Dark */
-:root, .dark {
-  --bg-main: #0a0a0a;
-  --surface-main: #141414;
-  --text-main: #ffffff;
-  --text-dim: #a3a3a3;
-  --border-main: rgba(255, 255, 255, 0.08);
-  --selection-bg: rgba(99, 102, 241, 0.3);
-}
+  /* Theme Roles */
+  --bg-main: var(--palette-white);
+  --surface-main: var(--palette-white);
+  --text-primary: var(--palette-near-black);
+  --text-secondary: var(--palette-secondary-gray);
+  --brand-accent: var(--palette-rausch);
+  --border-main: var(--palette-border-gray);
 
-/* Professional Light */
-.light {
-  --bg-main: #ffffff;
-  --surface-main: #fafafa;
-  --text-main: #0f172a;
-  --text-dim: #64748b;
-  --border-main: rgba(0, 0, 0, 0.08);
-  --selection-bg: rgba(99, 102, 241, 0.1);
+  /* Elevation */
+  --shadow-card: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px;
+  --shadow-hover: rgba(0,0,0,0.08) 0px 4px 12px;
 }
 
 @layer base {
-html, body {
+  html, body {
     overflow-x: hidden;
     width: 100%;
     margin: 0;
@@ -38,15 +37,17 @@ html, body {
   }
 
   body {
-    @apply bg-[var(--bg-main)] text-[var(--text-main)] antialiased;
-    font-family: 'Inter', sans-serif;
+    @apply bg-[var(--bg-main)] text-[var(--text-primary)] antialiased;
+    font-family: 'Circular', -apple-system, system-ui, Roboto, 'Helvetica Neue', 'Inter', sans-serif;
     transition: background-color 0.5s ease;
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    @apply text-[var(--text-main)] font-extrabold tracking-tight;
+    @apply text-[var(--text-primary)] font-bold tracking-[-0.44px];
   }
+
+  h1 { @apply text-[28px] leading-[1.43] font-bold; }
+  h2 { @apply text-[22px] leading-[1.18] font-semibold; }
 }
 
 @layer components {
@@ -54,26 +55,33 @@ html, body {
     @apply max-w-7xl mx-auto px-6 py-24 md:py-32;
   }
 
-  .card-base {
-    @apply rounded-2xl border transition-all duration-300;
-    background-color: var(--surface-main);
-    border-color: var(--border-main);
+  .card-airbnb {
+    @apply bg-white rounded-[20px] transition-all duration-300;
+    box-shadow: var(--shadow-card);
   }
 
-  .btn-primary {
-    @apply px-6 py-2.5 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/20 active:scale-95;
+  .card-airbnb:hover {
+    box-shadow: var(--shadow-hover);
+  }
+
+  .btn-airbnb-primary {
+    @apply px-6 py-2.5 bg-[var(--brand-accent)] text-white rounded-lg font-semibold hover:bg-[var(--palette-deep-rausch)] transition-all active:scale-95 text-[16px];
+  }
+
+  .btn-airbnb-secondary {
+    @apply px-6 py-2.5 bg-[var(--palette-near-black)] text-white rounded-lg font-semibold hover:bg-black transition-all active:scale-95 text-[16px];
+  }
+
+  .btn-circular {
+    @apply flex items-center justify-center w-10 h-10 rounded-full bg-[var(--palette-light-surface)] text-[var(--palette-near-black)] shadow-sm hover:shadow-md transition-all active:scale-90;
   }
 }
 
-/* Remove 'AI noise' animations and patterns */
-.grid-pattern, .text-shimmer, .radial-glow {
-  display: none !important;
-}
-
-/* Minimal Scrollbar */
-::-webkit-scrollbar { width: 4px; }
+/* Minimal Scrollbar - Airbnb style */
+::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-main);
+  background: var(--palette-border-gray);
   border-radius: 10px;
+  border: 2px solid var(--bg-main);
 }

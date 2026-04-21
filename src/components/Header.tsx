@@ -12,7 +12,6 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      // Auto-close mobile menu on scroll for better UX
       if (window.scrollY > 50 && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
       }
@@ -25,47 +24,53 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-      isScrolled ? 'bg-[var(--bg-main)]/80 backdrop-blur-lg border-b border-[var(--border-main)] py-4' : 'bg-transparent py-6'
+      isScrolled ? 'bg-white border-b border-[var(--border-main)] py-3 shadow-[0_1px_12px_rgba(0,0,0,0.08)]' : 'bg-transparent py-5'
     }`}>
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
         <Link 
             to="hero" 
             smooth={true} 
-            className="text-xl font-bold tracking-tight text-[var(--text-main)] cursor-pointer flex items-center gap-2 group"
+            className="text-xl font-bold tracking-tight text-[var(--brand-accent)] cursor-pointer flex items-center gap-2 group"
         >
-          <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white group-hover:rotate-12 transition-transform">
-            <Rocket size={16} />
-          </div>
-          <span>Rajeev <span className="text-indigo-600">Nayan</span></span>
+          <Rocket size={28} className="fill-[var(--brand-accent)]" />
+          <span className="text-[22px] font-bold tracking-[-0.44px] text-[var(--brand-accent)]">Rajeev</span>
         </Link>
 
+        {/* Dummy Search Bar for Airbnb Aesthetic */}
+        <div className="hidden lg:flex items-center px-4 py-2 border border-[var(--border-main)] rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+          <div className="text-sm font-semibold px-4 border-r border-[var(--border-main)] text-[var(--text-primary)]">Anywhere</div>
+          <div className="text-sm font-semibold px-4 border-r border-[var(--border-main)] text-[var(--text-primary)]">Any Week</div>
+          <div className="text-sm font-medium px-4 text-[var(--text-secondary)]">Add guests</div>
+          <div className="w-8 h-8 bg-[var(--brand-accent)] rounded-full flex items-center justify-center text-white ml-2">
+            <X size={14} className="rotate-45" /> {/* Mock search icon */}
+          </div>
+        </div>
+
         <div className="flex items-center gap-4">
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8 text-xs font-bold text-[var(--text-dim)] uppercase tracking-[0.2em]">
+          <div className="hidden md:flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
              {navItems.map((item) => (
-               <Link 
-                 key={item}
-                 to={item.toLowerCase()} 
-                 smooth={true} 
-                 className="hover:text-indigo-600 transition-colors cursor-pointer"
-               >
-                 {item}
-               </Link>
+                <Link 
+                  key={item}
+                  to={item.toLowerCase()} 
+                  smooth={true} 
+                  className="hover:bg-[var(--palette-light-surface)] px-4 py-2 rounded-full transition-colors cursor-pointer"
+                >
+                  {item}
+                </Link>
              ))}
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-3">
             <button 
               onClick={toggleTheme}
-              className="p-2.5 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-xl text-[var(--text-dim)] hover:text-indigo-600 transition-all"
+              className="p-2.5 rounded-full hover:bg-[var(--palette-light-surface)] text-[var(--text-primary)] transition-all"
               aria-label="Toggle Theme"
             >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
 
-            {/* Mobile Menu Toggle */}
             <button 
-              className="md:hidden p-2.5 bg-indigo-600 text-white rounded-xl shadow-lg shadow-indigo-500/20"
+              className="md:hidden p-2 bg-white border border-[var(--border-main)] rounded-full shadow-sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -73,9 +78,9 @@ const Header = () => {
 
             <a 
               href="mailto:imrajeevnayan@gmail.com" 
-              className="hidden lg:block px-6 py-2.5 bg-indigo-600 text-white text-xs font-bold rounded-xl shadow-lg shadow-indigo-500/20 hover:bg-indigo-700 transition-all active:scale-95 uppercase tracking-widest"
+              className="hidden sm:inline-flex px-6 py-2 bg-[var(--brand-accent)] text-white text-sm font-semibold rounded-full hover:bg-[var(--palette-deep-rausch)] transition-all active:scale-95"
             >
-              Hire Me
+              Contact
             </a>
           </div>
         </div>
@@ -85,43 +90,24 @@ const Header = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-[76px] bg-[var(--bg-main)]/95 backdrop-blur-xl z-[90] md:hidden p-8 flex flex-col space-y-6"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            className="absolute top-full left-0 w-full bg-white border-b border-[var(--border-main)] shadow-xl md:hidden py-6 px-6"
           >
-            {navItems.map((item, idx) => (
-              <motion.div
-                key={item}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: idx * 0.05 }}
-              >
+            <div className="flex flex-col space-y-1">
+              {navItems.map((item) => (
                 <Link
+                  key={item}
                   to={item.toLowerCase()}
                   smooth={true}
-                  offset={-80}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-xl font-bold text-[var(--text-main)] hover:text-indigo-600 transition-colors uppercase tracking-widest block py-2 border-b border-[var(--border-main)]/50"
+                  className="text-[18px] font-medium text-[var(--text-primary)] py-3 px-4 hover:bg-[var(--palette-light-surface)] rounded-xl transition-colors"
                 >
                   {item}
                 </Link>
-              </motion.div>
-            ))}
-            
-            <motion.div 
-               initial={{ opacity: 0 }} 
-               animate={{ opacity: 1 }} 
-               transition={{ delay: 0.3 }}
-               className="pt-8"
-            >
-               <p className="text-[10px] font-bold text-[var(--text-dim)] uppercase tracking-[0.3em] mb-4">Availability</p>
-               <div className="flex items-center gap-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-xs font-medium text-[var(--text-main)]">Actively seeking opportunities</span>
-               </div>
-            </motion.div>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -15,10 +15,10 @@ const About = () => {
           
           <div className="space-y-8">
             <div className="space-y-4">
-               <h2 className="text-3xl md:text-5xl">About Me</h2>
+               <h2 className="text-3xl md:text-[32px] font-bold tracking-[-0.44px]">About Me</h2>
             </div>
 
-            <div className="space-y-6 text-lg text-[var(--text-dim)] leading-relaxed font-medium">
+            <div className="space-y-6 text-lg text-[var(--text-secondary)] leading-relaxed font-medium">
                <p>
                   I am a passionate Software Engineer with a focus on building distributed systems and modern web applications. With a strong foundation in Java and the Spring ecosystem, I enjoy tackling complex backend challenges while ensuring a seamless user experience.
                </p>
@@ -29,12 +29,12 @@ const About = () => {
 
             <div className="flex gap-10 pt-4">
                <div>
-                  <div className="text-2xl font-bold text-[var(--text-main)]">Bengaluru</div>
-                  <div className="text-xs font-semibold text-[var(--text-dim)] uppercase">Location</div>
+                  <div className="text-2xl font-bold text-[var(--text-primary)]">Bengaluru</div>
+                  <div className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-widest">Location</div>
                </div>
                <div>
-                  <div className="text-2xl font-bold text-[var(--text-main)]">India</div>
-                  <div className="text-xs font-semibold text-[var(--text-dim)] uppercase">Region</div>
+                  <div className="text-2xl font-bold text-[var(--text-primary)]">India</div>
+                  <div className="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-widest">Region</div>
                </div>
             </div>
           </div>
@@ -43,14 +43,14 @@ const About = () => {
              {highlights.map((item, i) => (
                <div
                  key={i}
-                 className="p-8 card-base bg-[var(--surface-main)] space-y-4"
+                 className="p-8 card-airbnb space-y-4 border border-[var(--border-main)]"
                >
-                  <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--brand-accent)]/10 flex items-center justify-center text-[var(--brand-accent)]">
                      <item.icon size={20} />
                   </div>
                   <div className="space-y-2">
-                     <h3 className="text-xl font-bold">{item.title}</h3>
-                     <p className="text-sm text-[var(--text-dim)] leading-relaxed">{item.desc}</p>
+                     <h3 className="text-xl font-bold tracking-tight">{item.title}</h3>
+                     <p className="text-sm text-[var(--text-secondary)] leading-relaxed">{item.desc}</p>
                   </div>
                </div>
              ))}

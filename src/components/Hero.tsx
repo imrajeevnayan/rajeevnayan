@@ -16,23 +16,23 @@ const Hero = () => {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-indigo-500/10 text-indigo-600 text-xs font-bold tracking-wide">
+              <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[var(--brand-accent)]/10 text-[var(--brand-accent)] text-xs font-bold tracking-wide">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--brand-accent)] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--brand-accent)]"></span>
                 </span>
                 Available for high-impact roles
               </div>
               
-              <h1 className="text-4xl sm:text-5xl md:text-7xl leading-[1.1] font-extrabold uppercase tracking-tighter">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl leading-[1.1] font-bold tracking-[-0.44px]">
                 Hi, I'm Rajeev <br />
                 <Typewriter 
                   words={['Software Engineer', 'Java Architect', 'Systems Designer', 'Full-Stack Dev']} 
-                  className="text-indigo-600"
+                  className="text-[var(--brand-accent)]"
                 />
               </h1>
               
-              <p className="text-base sm:text-lg md:text-xl text-[var(--text-dim)] leading-relaxed max-w-2xl font-medium">
+              <p className="text-base sm:text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl font-medium">
                 I engineer high-performance backend systems and modern full-stack applications. Dedicated to clean code, scalability, and robust software architectures.
               </p>
             </motion.div>
@@ -43,7 +43,7 @@ const Hero = () => {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6"
             >
-              <a href="#projects" className="btn-primary flex items-center gap-2 whitespace-nowrap">
+              <a href="#projects" className="btn-airbnb-primary flex items-center gap-2 whitespace-nowrap">
                 Explore Projects <ArrowRight size={18} />
               </a>
               
@@ -57,7 +57,7 @@ const Hero = () => {
                     key={i}
                     href={link.href}
                     target="_blank"
-                    className="p-3 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-xl text-[var(--text-dim)] hover:text-indigo-600 hover:border-indigo-500/50 transition-all shadow-sm"
+                    className="p-3 bg-[var(--palette-light-surface)] rounded-full text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:shadow-md transition-all active:scale-95 border border-transparent"
                   >
                     <link.Icon size={18} />
                   </a>
@@ -72,16 +72,16 @@ const Hero = () => {
                className="flex justify-center lg:justify-start gap-8 sm:gap-12 pt-8 border-t border-[var(--border-main)]"
             >
                <div>
-                  <div className="text-xl sm:text-2xl font-bold text-[var(--text-main)]">3+</div>
-                  <div className="text-[10px] font-medium text-[var(--text-dim)] uppercase tracking-widest">Years Dev</div>
+                  <div className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">3+</div>
+                  <div className="text-[10px] font-semibold text-[var(--text-secondary)] uppercase tracking-widest">Years Dev</div>
                </div>
                <div>
-                  <div className="text-xl sm:text-2xl font-bold text-[var(--text-main)]">500+</div>
-                  <div className="text-[10px] font-medium text-[var(--text-dim)] uppercase tracking-widest">Commits</div>
+                  <div className="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">500+</div>
+                  <div className="text-[10px] font-semibold text-[var(--text-secondary)] uppercase tracking-widest">Commits</div>
                </div>
                <div>
-                  <div className="text-xl sm:text-2xl font-bold text-indigo-600">20+</div>
-                  <div className="text-[10px] font-medium text-[var(--text-dim)] uppercase tracking-widest">Delivered</div>
+                  <div className="text-xl sm:text-2xl font-bold text-[var(--brand-accent)]">20+</div>
+                  <div className="text-[10px] font-semibold text-[var(--text-secondary)] uppercase tracking-widest">Delivered</div>
                </div>
             </motion.div>
           </div>
@@ -94,11 +94,10 @@ const Hero = () => {
             className="order-1 lg:order-2 relative"
           >
              <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
-                {/* Decorative Elements */}
-                <div className="absolute -inset-4 border-2 border-indigo-500/20 rounded-[2.5rem] animate-[spin_20s_linear_infinite]" />
-                <div className="absolute -inset-4 border-2 border-indigo-500/10 rounded-[3rem] animate-[spin_30s_linear_infinite_reverse]" />
+                {/* Decorative Elements - Airbnb style simplified */}
+                <div className="absolute -inset-4 border-2 border-[var(--brand-accent)]/10 rounded-[32px]" />
                 
-                <div className="w-full h-full rounded-[2rem] overflow-hidden border-4 border-white dark:border-[var(--surface-main)] shadow-2xl relative z-10">
+                <div className="w-full h-full rounded-[32px] overflow-hidden border-4 border-white shadow-2xl relative z-10 box-shadow: var(--shadow-card)">
                    <img 
                     src={profileImg} 
                     alt="Rajeev Nayan" 
@@ -107,9 +106,9 @@ const Hero = () => {
                 </div>
                 
                 {/* Status Badge */}
-                <div className="absolute -bottom-4 -right-4 p-3 sm:p-4 card-base bg-[var(--bg-main)] shadow-xl z-20 flex items-center gap-2 sm:gap-3">
+                <div className="absolute -bottom-4 -right-4 p-3 sm:p-4 rounded-[14px] bg-white shadow-xl z-20 flex items-center gap-2 sm:gap-3 border border-[var(--border-main)]">
                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse" />
-                   <span className="text-[8px] sm:text-[10px] font-bold text-[var(--text-main)] uppercase tracking-widest whitespace-nowrap">Online</span>
+                   <span className="text-[8px] sm:text-[10px] font-bold text-[var(--text-primary)] uppercase tracking-widest whitespace-nowrap">Online</span>
                 </div>
              </div>
           </motion.div>
@@ -119,5 +118,6 @@ const Hero = () => {
     </section>
   );
 };
+
 
 export default Hero;

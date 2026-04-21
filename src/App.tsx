@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 
 import Header from './components/Header';
-import CustomCursor from './components/common/CustomCursor';
 import Hero from './components/Hero';
 import About from './components/About';
 import ScrollToTop from './components/common/ScrollToTop';
@@ -36,9 +35,8 @@ const LoadingSpinner = () => (
 
 function App() {
   return (
-    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-main)] selection:bg-indigo-500/30 transition-colors duration-500">
+    <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[var(--brand-accent)]/20 transition-colors duration-500">
       <CommandPalette />
-      <CustomCursor />
       <ScrollToTop />
       
       <Header />
