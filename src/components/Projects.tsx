@@ -75,7 +75,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="card-airbnb flex flex-col group overflow-hidden bg-white border border-[var(--border-main)]"
+              className="card-airbnb flex flex-col group overflow-hidden bg-[var(--surface-main)] border border-[var(--border-main)]"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <img 

@@ -11,11 +11,11 @@
   --palette-near-black: #222222;
   --palette-focused-gray: #3f3f3f;
   --palette-secondary-gray: #6a6a6a;
-  --palette-border-gray: #c1c1c1;
+  --palette-border-gray: #dddddd;
   --palette-light-surface: #f2f2f2;
   --palette-white: #ffffff;
 
-  /* Theme Roles */
+  /* Theme Roles - Default (Light) */
   --bg-main: var(--palette-white);
   --surface-main: var(--palette-white);
   --text-primary: var(--palette-near-black);
@@ -25,7 +25,20 @@
 
   /* Elevation */
   --shadow-card: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px;
-  --shadow-hover: rgba(0,0,0,0.08) 0px 4px 12px;
+  --shadow-hover: rgba(0,0,0,0.12) 0px 6px 16px;
+}
+
+/* Airbnb Dark Mode Variant */
+.dark {
+  --bg-main: #0a0a0a;
+  --surface-main: #141414;
+  --text-primary: #f2f2f2;
+  --text-secondary: #a3a3a3;
+  --border-main: rgba(255, 255, 255, 0.08);
+  --palette-light-surface: #1a1a1a;
+  
+  --shadow-card: rgba(0,0,0,0.5) 0px 2px 8px;
+  --shadow-hover: rgba(0,0,0,0.7) 0px 4px 12px;
 }
 
 @layer base {
@@ -56,7 +69,7 @@
   }
 
   .card-airbnb {
-    @apply bg-white rounded-[20px] transition-all duration-300;
+    @apply bg-[var(--surface-main)] rounded-[20px] transition-all duration-300;
     box-shadow: var(--shadow-card);
   }
 

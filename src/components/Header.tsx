@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-      isScrolled ? 'bg-white border-b border-[var(--border-main)] py-3 shadow-[0_1px_12px_rgba(0,0,0,0.08)]' : 'bg-transparent py-5'
+      isScrolled ? 'bg-[var(--bg-main)] border-b border-[var(--border-main)] py-3 shadow-[0_1px_12px_rgba(0,0,0,0.08)]' : 'bg-transparent py-5'
     }`}>
       <nav className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
         <Link 
@@ -37,7 +37,7 @@ const Header = () => {
         </Link>
 
         {/* Dummy Search Bar for Airbnb Aesthetic */}
-        <div className="hidden lg:flex items-center px-4 py-2 border border-[var(--border-main)] rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer bg-white">
+        <div className="hidden lg:flex items-center px-4 py-2 border border-[var(--border-main)] rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer bg-[var(--bg-main)]">
           <div className="text-sm font-semibold px-4 border-r border-[var(--border-main)] text-[var(--text-primary)]">Anywhere</div>
           <div className="text-sm font-semibold px-4 border-r border-[var(--border-main)] text-[var(--text-primary)]">Any Week</div>
           <div className="text-sm font-medium px-4 text-[var(--text-secondary)]">Add guests</div>
@@ -70,7 +70,7 @@ const Header = () => {
             </button>
 
             <button 
-              className="md:hidden p-2 bg-white border border-[var(--border-main)] rounded-full shadow-sm"
+              className="md:hidden p-2 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-full shadow-sm"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -93,7 +93,7 @@ const Header = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            className="absolute top-full left-0 w-full bg-white border-b border-[var(--border-main)] shadow-xl md:hidden py-6 px-6"
+            className="absolute top-full left-0 w-full bg-[var(--bg-main)] border-b border-[var(--border-main)] shadow-xl md:hidden py-6 px-6"
           >
             <div className="flex flex-col space-y-1">
               {navItems.map((item) => (
