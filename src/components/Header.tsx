@@ -36,15 +36,7 @@ const Header = () => {
           <span className="text-[22px] font-bold tracking-[-0.44px] text-[var(--brand-accent)]">Rajeev</span>
         </Link>
 
-        {/* Dummy Search Bar for Airbnb Aesthetic */}
-        <div className="hidden lg:flex items-center px-4 py-2 border border-[var(--border-main)] rounded-full shadow-sm hover:shadow-md transition-all cursor-pointer bg-[var(--bg-main)]">
-          <div className="text-sm font-semibold px-4 border-r border-[var(--border-main)] text-[var(--text-primary)]">Anywhere</div>
-          <div className="text-sm font-semibold px-4 border-r border-[var(--border-main)] text-[var(--text-primary)]">Any Week</div>
-          <div className="text-sm font-medium px-4 text-[var(--text-secondary)]">Add guests</div>
-          <div className="w-8 h-8 bg-[var(--brand-accent)] rounded-full flex items-center justify-center text-white ml-2">
-            <X size={14} className="rotate-45" /> {/* Mock search icon */}
-          </div>
-        </div>
+
 
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
