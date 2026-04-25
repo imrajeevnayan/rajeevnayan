@@ -23,20 +23,25 @@ const Header = () => {
   const navItems = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
-      isScrolled ? 'bg-[var(--bg-main)] border-b border-[var(--border-main)] py-3 shadow-[0_1px_12px_rgba(0,0,0,0.08)]' : 'bg-transparent py-5'
+    <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
+      isScrolled ? 'glass-airbnb py-3 shadow-lg border-b border-[var(--border-main)]' : 'bg-transparent py-5'
     }`}>
+      {/* Scroll Progress Bar */}
+      <motion.div 
+        className="absolute top-0 left-0 h-[2px] bg-[var(--brand-accent)] z-[101]"
+        style={{ width: `${Math.min(100, (isScrolled ? 100 : 0))}%` }} // Simplified for now, can use useScroll
+      />
+
       <nav className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
         <Link 
             to="hero" 
             smooth={true} 
+            spy={true}
             className="text-xl font-bold tracking-tight text-[var(--brand-accent)] cursor-pointer flex items-center gap-2 group"
         >
-          <Rocket size={28} className="fill-[var(--brand-accent)]" />
+          <Rocket size={28} className="fill-[var(--brand-accent)] group-hover:animate-bounce transition-all" />
           <span className="text-[22px] font-bold tracking-[-0.44px] text-[var(--brand-accent)]">Rajeev</span>
         </Link>
-
-
 
         <div className="flex items-center gap-4">
           <div className="hidden md:flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
@@ -45,7 +50,10 @@ const Header = () => {
                   key={item}
                   to={item.toLowerCase()} 
                   smooth={true} 
-                  className="hover:bg-[var(--palette-light-surface)] px-4 py-2 rounded-full transition-colors cursor-pointer"
+                  spy={true}
+                  activeClass="nav-link-active"
+                  offset={-80}
+                  className="hover:bg-[var(--palette-light-surface)] px-4 py-2 rounded-full transition-all cursor-pointer relative group"
                 >
                   {item}
                 </Link>
@@ -53,13 +61,15 @@ const Header = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <button 
+            <motion.button 
+              whileHover={{ scale: 1.1 }}
+              whileActive={{ scale: 0.9 }}
               onClick={toggleTheme}
               className="p-2.5 rounded-full hover:bg-[var(--palette-light-surface)] text-[var(--text-primary)] transition-all"
               aria-label="Toggle Theme"
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
+            </motion.button>
 
             <button 
               className="md:hidden p-2 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-full shadow-sm"
@@ -68,12 +78,14 @@ const Header = () => {
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
 
-            <a 
+            <motion.a 
               href="mailto:imrajeevnayan@gmail.com" 
-              className="hidden sm:inline-flex px-6 py-2 bg-[var(--brand-accent)] text-white text-sm font-semibold rounded-full hover:bg-[var(--palette-deep-rausch)] transition-all active:scale-95"
+              whileHover={{ scale: 1.05 }}
+              whileActive={{ scale: 0.95 }}
+              className="hidden sm:inline-flex px-6 py-2 bg-[var(--brand-accent)] text-white text-sm font-semibold rounded-full hover:bg-[var(--palette-deep-rausch)] transition-all shadow-md hover:shadow-lg"
             >
               Contact
-            </a>
+            </motion.a>
           </div>
         </div>
       </nav>

@@ -1,4 +1,5 @@
-import { Database, Shield, Server, Layout, Share2 } from 'lucide-react';
+import { Database, Shield, Server, Layout, Share2, Code2 } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Architecture = () => {
   const components = [
@@ -10,44 +11,65 @@ const Architecture = () => {
   ];
 
   return (
-    <section id="architecture" className="py-24 md:py-32 bg-[var(--surface-main)]">
+    <section id="architecture" className="py-24 md:py-32 bg-[var(--surface-main)] overflow-hidden">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          <div className="lg:col-span-5 space-y-6">
-              <h2 className="text-3xl md:text-5xl">System Design</h2>
-              <p className="text-[var(--text-dim)] font-medium text-lg leading-relaxed">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="lg:col-span-5 space-y-6"
+          >
+              <div className="text-[var(--brand-accent)] font-bold text-xs uppercase tracking-widest flex items-center gap-2">
+                <Code2 size={16} /> Technical Blueprint
+              </div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                System <span className="text-gradient">Design</span>
+              </h2>
+              <p className="text-[var(--text-secondary)] font-medium text-lg leading-relaxed">
                   I architect systems with a focus on high availability, security, and scalability. This is a high-level representation of my standard microservices approach.
               </p>
               <ul className="space-y-4 pt-4">
-                  <li className="flex items-center gap-3 text-sm font-semibold text-[var(--text-dim)]">
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                      Stateless Security Implementation
-                  </li>
-                  <li className="flex items-center gap-3 text-sm font-semibold text-[var(--text-dim)]">
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                      Distributed System Integration
-                  </li>
-                  <li className="flex items-center gap-3 text-sm font-semibold text-[var(--text-dim)]">
-                      <div className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                      Cloud-Native Deployment Flow
-                  </li>
-              </ul>
-          </div>
-
-          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-4">
-              {components.map((node, i) => (
-                  <div 
+                  {[
+                    'Stateless Security Implementation',
+                    'Distributed System Integration',
+                    'Cloud-Native Deployment Flow'
+                  ].map((item, i) => (
+                    <motion.li 
                       key={i}
-                      className="p-6 card-base bg-[var(--bg-main)] flex flex-col items-center gap-4 text-center hover:border-indigo-500/30 transition-all shadow-sm"
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.5 + i * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-center gap-3 text-sm font-bold text-[var(--text-primary)]"
+                    >
+                        <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)]" />
+                        {item}
+                    </motion.li>
+                  ))}
+              </ul>
+          </motion.div>
+
+          <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6">
+              {components.map((node, i) => (
+                  <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: i * 0.1, duration: 0.5 }}
+                      viewport={{ once: true }}
+                      whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+                      className="p-6 card-airbnb bg-[var(--bg-main)] border border-[var(--border-main)] flex flex-col items-center gap-4 text-center hover:border-[var(--brand-accent)]/30 transition-all shadow-sm group"
                   >
-                      <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600">
-                          <node.icon size={24} />
+                      <div className="w-14 h-14 rounded-2xl bg-[var(--brand-accent)]/5 flex items-center justify-center text-[var(--brand-accent)] group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all duration-300 shadow-inner">
+                          <node.icon size={28} />
                       </div>
                       <div className="space-y-1">
-                          <div className="text-xs font-bold text-[var(--text-main)] uppercase tracking-wider">{node.label}</div>
-                          <div className="text-[10px] text-[var(--text-dim)] font-semibold">{node.desc}</div>
+                          <div className="text-[13px] font-bold text-[var(--text-primary)] uppercase tracking-wider">{node.label}</div>
+                          <div className="text-[11px] text-[var(--text-secondary)] font-semibold">{node.desc}</div>
                       </div>
-                  </div>
+                  </motion.div>
               ))}
           </div>
         </div>

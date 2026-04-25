@@ -21,6 +21,7 @@
   --text-primary: var(--palette-near-black);
   --text-secondary: var(--palette-secondary-gray);
   --brand-accent: var(--palette-rausch);
+  --brand-glow: rgba(255, 56, 92, 0.2);
   --border-main: var(--palette-border-gray);
 
   /* Elevation */
@@ -34,6 +35,7 @@
   --surface-main: #141414;
   --text-primary: #f2f2f2;
   --text-secondary: #a3a3a3;
+  --brand-glow: rgba(255, 56, 92, 0.4);
   --border-main: rgba(255, 255, 255, 0.08);
   --palette-light-surface: #1a1a1a;
   
@@ -42,6 +44,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   html, body {
     overflow-x: hidden;
     width: 100%;
@@ -65,20 +71,49 @@
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-6 py-24 md:py-32;
+    @apply max-w-7xl mx-auto px-6 py-12 md:py-16;
   }
 
   .card-airbnb {
     @apply bg-[var(--surface-main)] rounded-[20px] transition-all duration-300;
     box-shadow: var(--shadow-card);
+    backdrop-filter: blur(8px);
+    background-color: var(--surface-main);
   }
 
   .card-airbnb:hover {
     box-shadow: var(--shadow-hover);
+    @apply -translate-y-1;
+  }
+
+  .card-premium-hover:hover {
+    box-shadow: 0 0 30px var(--brand-glow);
+    border-color: color-mix(in srgb, var(--brand-accent), transparent 70%);
+  }
+
+  .glass-airbnb {
+    @apply bg-white/70 dark:bg-black/40 backdrop-blur-md border border-white/20 dark:border-white/10;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-[var(--brand-accent)] to-indigo-500 bg-clip-text text-transparent;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px var(--brand-glow);
+  }
+
+  .nav-link-active {
+    @apply text-[var(--brand-accent)] relative;
+  }
+
+  .nav-link-active::after {
+    content: '';
+    @apply absolute -bottom-1 left-4 right-4 h-0.5 bg-[var(--brand-accent)] rounded-full;
   }
 
   .btn-airbnb-primary {
-    @apply px-6 py-2.5 bg-[var(--brand-accent)] text-white rounded-lg font-semibold hover:bg-[var(--palette-deep-rausch)] transition-all active:scale-95 text-[16px];
+    @apply px-6 py-2.5 bg-[var(--brand-accent)] text-white rounded-lg font-semibold hover:bg-[var(--palette-deep-rausch)] transition-all active:scale-95 text-[16px] shadow-sm hover:shadow-md;
   }
 
   .btn-airbnb-secondary {

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 interface TypewriterProps {
   words: string[];
@@ -46,9 +47,13 @@ const Typewriter = ({
   }, [subIndex, index, reverse, pause, words, typingSpeed, deletingSpeed, pauseTime]);
 
   return (
-    <span className={className}>
+    <span className={`${className} inline-flex items-center`}>
       {words[index].substring(0, subIndex)}
-      <span className="animate-pulse border-r-2 border-indigo-600 ml-1" />
+      <motion.span 
+        animate={{ opacity: [1, 0, 1] }}
+        transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+        className="w-[2px] h-[1em] bg-[var(--brand-accent)] ml-1" 
+      />
     </span>
   );
 };
