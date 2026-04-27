@@ -4,13 +4,15 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        brand: {
+          DEFAULT: '#ff385c',
+          deep: '#e00b41',
+        }
+      },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        display: ['Syne', 'sans-serif'],
-      },
-      container: {
-        center: true,
-        padding: '1rem',
+        display: ['Outfit', 'sans-serif'],
       },
     },
   },

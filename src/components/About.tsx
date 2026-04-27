@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { User, Code, Database, Globe, Layers, ArrowRight } from 'lucide-react';
+import { Layers, Code, Database, Globe, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 
 const About = () => {
   const highlights = [
@@ -19,9 +19,9 @@ const About = () => {
       desc: "Engineering efficient data flows and high-performance storage solutions using PostgreSQL and Redis."
     },
     {
-      icon: Globe,
-      title: "Frontend Execution",
-      desc: "Developing high-fidelity, responsive user interfaces with a focus on performance and accessibility."
+      icon: ShieldCheck,
+      title: "Security & Scale",
+      desc: "Implementing secure-by-design principles and fault-tolerant patterns for mission-critical apps."
     }
   ];
 
@@ -29,15 +29,12 @@ const About = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
     }
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: { 
       opacity: 1, 
       y: 0,
@@ -46,39 +43,36 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-32 md:py-40 bg-[var(--bg-main)]">
+    <section id="about" className="py-32 md:py-48 bg-[var(--bg-main)]">
       <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="space-y-8"
+            className="space-y-12"
           >
             <div className="space-y-4">
-               <div className="text-[var(--brand-accent)] font-bold text-[10px] uppercase tracking-[0.2em] flex items-center gap-3">
-                 <div className="w-8 h-[1px] bg-[var(--brand-accent)]" />
-                 Identity
-               </div>
-               <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--text-primary)]">
-                 The <span className="text-gradient">Engineer</span>
+               <span className="badge-premium">Specialization</span>
+               <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
+                 The <span className="text-gradient">Architect</span>
                </h2>
             </div>
 
-            <div className="space-y-6 text-lg text-[var(--text-secondary)] leading-relaxed font-light">
+            <div className="space-y-6 text-[15px] text-[var(--text-secondary)] leading-relaxed font-medium max-w-xl">
                <p>
-                  I am a Systems Architect and Full-Stack Engineer dedicated to building high-performance, scalable software. My expertise lies in designing resilient microservices and engineering distributed systems that prioritize low latency and security.
+                  I specialize in the design and implementation of high-performance backend systems and scalable distributed architectures. My engineering philosophy is built on three pillars: <span className="text-[var(--text-primary)] font-bold italic">Resilience, Efficiency, and Scale.</span>
                </p>
                <p>
-                  With a deep focus on backend architecture and performance optimization, I transform complex requirements into maintainable, production-ready codebases that drive meaningful business value.
+                  By bridging the gap between complex architectural blueprints and production-ready Java backends, I ensure that systems don't just solve immediate problems but are built for the next 10 million users. I prioritize low-latency communication, secure data flows, and maintainable microservice ecosystems.
                </p>
             </div>
             
-            <div className="pt-4">
-               <a href="#experience" className="text-[var(--brand-accent)] font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all flex items-center gap-2 group">
-                 Professional Journey <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+            <div className="pt-8">
+               <a href="#projects" className="btn-primary inline-flex items-center gap-3">
+                 Explore Case Studies <ArrowRight size={18} />
                </a>
             </div>
           </motion.div>
@@ -88,26 +82,27 @@ const About = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
           >
              {highlights.map((item, i) => (
                 <motion.div
                   key={i}
                   variants={cardVariants}
-                  className="p-8 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-2xl group relative overflow-hidden transition-all duration-300 hover:border-[var(--brand-accent)]/50"
+                  className="premium-card p-8 group relative"
                 >
+                   <div className="w-10 h-10 rounded-lg bg-[var(--brand-accent)]/5 flex items-center justify-center text-[var(--brand-accent)] mb-6 transition-all group-hover:bg-[var(--brand-accent)] group-hover:text-white">
+                      <item.icon size={20} />
+                   </div>
+                   <h3 className="text-lg font-bold mb-3">{item.title}</h3>
+                   <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed">
+                      {item.desc}
+                   </p>
                    
-                   <div className="w-12 h-12 rounded-xl bg-[var(--brand-accent)]/5 flex items-center justify-center text-[var(--brand-accent)] group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-colors duration-300 relative z-10">
-                      <item.icon size={24} />
-                   </div>
-                   <div className="mt-6 space-y-3 relative z-10">
-                      <h3 className="text-xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors">{item.title}</h3>
-                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-medium">{item.desc}</p>
-                   </div>
+                   {/* Hover Subtle Glow */}
+                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-accent)]/0 to-[var(--brand-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.div>
              ))}
           </motion.div>
-
         </div>
       </div>
     </section>

@@ -12,67 +12,55 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      if (window.scrollY > 50 && isMobileMenuOpen) {
-        setIsMobileMenuOpen(false);
-      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobileMenuOpen]);
+  }, []);
 
   const navItems = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
   return (
     <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-      isScrolled ? 'glass-airbnb py-3 shadow-lg border-b border-[var(--border-main)]' : 'bg-transparent py-5'
+      isScrolled ? 'glass-effect py-3 shadow-md' : 'bg-transparent py-6'
     }`}>
-      {/* Scroll Progress Bar */}
-      <motion.div 
-        className="absolute top-0 left-0 h-[2px] bg-[var(--brand-accent)] z-[101]"
-        style={{ width: `${Math.min(100, (isScrolled ? 100 : 0))}%` }} // Simplified for now, can use useScroll
-      />
-
-      <nav className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <Link 
             to="hero" 
             smooth={true} 
-            spy={true}
-            className="text-xl font-bold tracking-tight text-[var(--brand-accent)] cursor-pointer flex items-center gap-2 group"
+            className="flex items-center gap-2 cursor-pointer group"
         >
-          <Rocket size={28} className="fill-[var(--brand-accent)] group-hover:animate-bounce transition-all" />
-          <span className="text-[22px] font-bold tracking-[-0.44px] text-[var(--brand-accent)]">Rajeev</span>
+          <div className="w-8 h-8 rounded-lg bg-[var(--brand-accent)] flex items-center justify-center text-white">
+            <Rocket size={18} />
+          </div>
+          <span className="text-lg font-black tracking-tighter text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors">Rajeev</span>
         </Link>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 text-sm font-semibold text-[var(--text-primary)]">
+        <div className="flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-1">
              {navItems.map((item) => (
                 <Link 
                   key={item}
                   to={item.toLowerCase()} 
                   smooth={true} 
                   spy={true}
-                  activeClass="nav-link-active"
                   offset={-80}
-                  className="hover:bg-[var(--palette-light-surface)] px-4 py-2 rounded-full transition-all cursor-pointer relative group"
+                  className="text-[11px] font-black uppercase tracking-widest text-[var(--text-secondary)] hover:text-[var(--brand-accent)] px-4 py-2 rounded-lg transition-all cursor-pointer"
                 >
                   {item}
                 </Link>
              ))}
           </div>
 
-          <div className="flex items-center gap-3">
-            <motion.button 
-              whileHover={{ scale: 1.1 }}
-              whileActive={{ scale: 0.9 }}
+          <div className="flex items-center gap-4 border-l border-[var(--border-main)] pl-6">
+            <button 
               onClick={toggleTheme}
-              className="p-2.5 rounded-full hover:bg-[var(--palette-light-surface)] text-[var(--text-primary)] transition-all"
-              aria-label="Toggle Theme"
+              className="text-[var(--text-primary)] opacity-60 hover:opacity-100 transition-opacity"
             >
-              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
 
             <button 
-              className="md:hidden p-2 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-full shadow-sm"
+              className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -82,7 +70,7 @@ const Header = () => {
               href="mailto:imrajeevnayan@gmail.com" 
               whileHover={{ scale: 1.05 }}
               whileActive={{ scale: 0.95 }}
-              className="hidden sm:inline-flex px-6 py-2 bg-[var(--brand-accent)] text-white text-sm font-semibold rounded-full hover:bg-[var(--palette-deep-rausch)] transition-all shadow-md hover:shadow-lg"
+              className="hidden sm:inline-flex px-5 py-2 bg-[var(--brand-accent)] text-white text-[11px] font-black uppercase tracking-widest rounded-lg shadow-lg shadow-[var(--brand-accent)]/20"
             >
               Contact
             </motion.a>
@@ -90,27 +78,27 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="absolute top-full left-0 w-full bg-[var(--bg-main)] border-b border-[var(--border-main)] shadow-xl md:hidden py-6 px-6"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 w-full bg-[var(--bg-main)] border-b border-[var(--border-main)] md:hidden py-8 px-6"
           >
-            <div className="flex flex-col space-y-1">
-              {navItems.map((item) => (
-                <Link
-                  key={item}
-                  to={item.toLowerCase()}
-                  smooth={true}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-[18px] font-medium text-[var(--text-primary)] py-3 px-4 hover:bg-[var(--palette-light-surface)] rounded-xl transition-colors"
-                >
-                  {item}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-6">
+               {navItems.map((item) => (
+                  <Link 
+                    key={item}
+                    to={item.toLowerCase()} 
+                    smooth={true} 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-sm font-black uppercase tracking-widest text-[var(--text-secondary)]"
+                  >
+                    {item}
+                  </Link>
+               ))}
             </div>
           </motion.div>
         )}

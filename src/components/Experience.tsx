@@ -30,47 +30,43 @@ const experiences = [
 
 const Experience = () => {
     return (
-    <section id="experience" className="py-24 md:py-32 bg-[var(--surface-main)] overflow-hidden relative">
-      <div className="section-container relative z-10">
+    <section id="experience" className="py-32 md:py-48 bg-[var(--surface-main)]">
+      <div className="section-container">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-4 mb-20"
+          className="space-y-4 mb-24"
         >
-          <div className="text-[var(--brand-accent)] font-bold text-[10px] uppercase tracking-[0.2em] flex items-center gap-3">
-            <div className="w-8 h-[1px] bg-[var(--brand-accent)]" />
-            Professional Path
-          </div>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--text-primary)]">
+          <span className="badge-premium">Professional Path</span>
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
             Work <span className="text-gradient">Experience</span>
           </h2>
         </motion.div>
 
-        <div className="space-y-12">
+        <div className="space-y-8">
           {experiences.map((exp, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.2, duration: 0.8 }}
-              className="p-6 md:p-10 bg-[var(--surface-main)] rounded-2xl border border-[var(--border-main)] hover:border-[var(--brand-accent)]/30 transition-colors duration-300 relative overflow-hidden"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="premium-card p-10 group"
             >
-
-              <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-10 relative z-10">
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-[var(--brand-accent)]">
-                    <div className="p-3 bg-[var(--brand-accent)]/5 rounded-xl transition-colors duration-300">
-                      <Briefcase size={24} />
+                  <div className="flex items-center gap-4 text-[var(--brand-accent)]">
+                    <div className="p-3 bg-[var(--brand-accent)]/5 rounded-xl group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all">
+                      <Briefcase size={22} />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{exp.role}</h3>
+                    <h3 className="text-2xl md:text-3xl font-black tracking-tight">{exp.role}</h3>
                   </div>
-                  <div className="text-[var(--text-secondary)] font-bold text-sm ml-[60px]">{exp.company}</div>
+                  <div className="text-sm font-bold ml-14 text-[var(--text-primary)] opacity-80">{exp.company}</div>
                 </div>
                 
-                <div className="flex flex-wrap items-center gap-6 text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-[0.15em]">
+                <div className="flex flex-wrap items-center gap-6 text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-widest lg:pt-4">
                   <div className="flex items-center gap-2">
                     <MapPin size={14} className="text-[var(--brand-accent)]" />
                     {exp.location}
@@ -82,14 +78,14 @@ const Experience = () => {
                 </div>
               </div>
               
-              <div className="space-y-8 relative z-10">
-                <p className="text-lg text-[var(--text-secondary)] font-light leading-relaxed max-w-4xl border-l-2 border-[var(--brand-accent)]/20 pl-8">
+              <div className="space-y-8 ml-0 lg:ml-14">
+                <p className="text-[15px] text-[var(--text-secondary)] font-medium leading-relaxed max-w-4xl border-l-2 border-[var(--brand-accent)]/20 pl-6">
                   {exp.desc}
                 </p>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
                   {exp.points.map((point, j) => (
-                    <li key={j} className="flex items-start gap-4 text-[15px] font-medium text-[var(--text-secondary)] leading-relaxed group/item">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)] mt-2 shrink-0 group-hover/item:scale-150 transition-transform" />
+                    <li key={j} className="flex items-start gap-3 text-[13px] text-[var(--text-secondary)] leading-relaxed font-medium">
+                      <div className="w-1 h-1 rounded-full bg-[var(--brand-accent)] mt-2 shrink-0" />
                       {point}
                     </li>
                   ))}
@@ -100,7 +96,7 @@ const Experience = () => {
         </div>
       </div>
     </section>
-    );
+  );
 };
 
 export default Experience;
