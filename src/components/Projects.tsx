@@ -27,7 +27,7 @@ const caseStudies: CaseStudy[] = [
     outcome: '30% reduction in memory footprint and 15% increase in throughput in large-scale stress tests.',
     tech: ['Java 21', 'JUnit 5', 'Maven', 'Algorithms'],
     github: 'https://github.com/imrajeevnayan/libstack.java',
-    image: '/libstack_java_mockup_1777307510295.png'
+    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200'
   },
   {
     id: 'microservices',
@@ -39,7 +39,7 @@ const caseStudies: CaseStudy[] = [
     outcome: 'Deployment cycles reduced from 4 hours to 10 minutes; 99.9% system availability achieved through fault-tolerant patterns.',
     tech: ['Spring Boot', 'Spring Cloud', 'Docker', 'Redis', 'RabbitMQ'],
     github: 'https://github.com/imrajeevnayan/springboot-microservices',
-    image: '/microservices_architecture_mockup_1777307531501.png'
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200'
   },
   {
     id: 'portfolio',
@@ -60,7 +60,7 @@ const Projects = () => {
   const [activeTab, setActiveTab] = useState<'problem' | 'solution' | 'outcome'>('problem');
 
   return (
-    <section id="projects" className="py-32 md:py-48 bg-[var(--bg-main)]">
+    <section id="projects" className="py-16 md:py-24 bg-[var(--bg-main)]">
       <div className="section-container">
         <div className="max-w-3xl mb-24">
           <span className="badge-premium mb-4">Case Studies</span>

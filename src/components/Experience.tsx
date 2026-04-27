@@ -30,7 +30,7 @@ const experiences = [
 
 const Experience = () => {
     return (
-    <section id="experience" className="py-32 md:py-48 bg-[var(--surface-main)]">
+    <section id="experience" className="py-16 md:py-24 bg-[var(--surface-main)]">
       <div className="section-container">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

@@ -43,7 +43,7 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="py-32 md:py-48 bg-[var(--bg-main)]">
+    <section id="about" className="py-16 md:py-24 bg-[var(--bg-main)]">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
           
@@ -61,7 +61,7 @@ const About = () => {
                </h2>
             </div>
 
-            <div className="space-y-6 text-[15px] text-[var(--text-secondary)] leading-relaxed font-medium max-w-xl">
+            <div className="space-y-6 text-[15px] text-[var(--text-secondary)] leading-relaxed font-medium max-w-2xl">
                <p>
                   I specialize in the design and implementation of high-performance backend systems and scalable distributed architectures. My engineering philosophy is built on three pillars: <span className="text-[var(--text-primary)] font-bold italic">Resilience, Efficiency, and Scale.</span>
                </p>

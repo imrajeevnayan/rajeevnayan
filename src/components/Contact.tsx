@@ -36,7 +36,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-32 md:py-48 bg-[var(--bg-main)]">
+    <section id="contact" className="py-16 md:py-24 bg-[var(--surface-main)] relative overflow-hidden">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
           
