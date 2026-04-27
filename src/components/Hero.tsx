@@ -26,8 +26,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-[95vh] flex items-center bg-[var(--bg-main)] pt-12 overflow-hidden">
-      {/* 3D Interactive Background */}
-      <GeometricShapes />
+      {/* Clean Background */}
       
       <div className="section-container w-full py-0 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
@@ -51,10 +50,7 @@ const Hero = () => {
             <motion.div variants={itemVariants} className="space-y-4">
               <h1 className="text-5xl sm:text-6xl md:text-8xl leading-[0.9] font-black tracking-tighter text-[var(--text-primary)]">
                 Hi, I'm <span className="text-[var(--brand-accent)]">Rajeev</span> <br />
-                <Typewriter 
-                  words={['Software Architect', 'Backend Engineer', 'Systems Designer', 'Full-Stack Developer']} 
-                  className="text-gradient"
-                />
+                <span className="text-gradient">Backend Systems Engineer</span>
               </h1>
             </motion.div>
             
