@@ -3,27 +3,27 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
   {
-    role: "Software Engineer",
+    role: "Full-Stack Engineer",
     company: "Freelance / Independent",
     location: "Remote",
     period: "2022 - Present",
-    desc: "Architecting and implementing full-stack solutions for international clients, specializing in Spring Boot backends and React frontends.",
+    desc: "Architecting enterprise-grade full-stack solutions with a focus on high-performance Spring Boot backends and modern React architectures.",
     points: [
-      "Designed and deployed 10+ scalable microservices handling secure data processing.",
-      "Optimized database queries in PostgreSQL, reducing load times by 40%.",
-      "Collaborated with cross-functional teams to deliver enterprise-grade software products."
+      "Engineered 10+ scalable microservices, ensuring 99.9% system uptime for international clients.",
+      "Optimized PostgreSQL query performance, achieving a 40% reduction in average API latency.",
+      "Implemented secure OAuth2/JWT authentication flows across distributed system clusters."
     ]
   },
   {
-    role: "Backend Intern",
+    role: "Backend Engineering Intern",
     company: "Tech Solutions Inc.",
     location: "Bengaluru, India",
     period: "2021 - 2022",
-    desc: "Contributed to the development of a internal CRM system using Java and Spring ecosystem.",
+    desc: "Contributed to the core development of an internal CRM ecosystem using Java and the Spring Framework.",
     points: [
-      "Integrated third-party APIs for automated data synchronization.",
-      "Refactored legacy code to improve system performance and maintainability.",
-      "Participated in agile ceremonies and code review processes."
+      "Automated data synchronization by integrating complex third-party RESTful APIs.",
+      "Refactored legacy modules to improve code maintainability and system execution speed.",
+      "Active participant in Agile sprints, driving iterative improvements through code reviews."
     ]
   }
 ];
@@ -36,18 +36,16 @@ const Experience = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           className="space-y-4 mb-20"
         >
-          <div className="text-[var(--brand-accent)] font-bold text-xs uppercase tracking-widest flex items-center gap-2">
-            <Briefcase size={16} /> Professional Path
+          <div className="text-[var(--brand-accent)] font-bold text-[10px] uppercase tracking-[0.2em] flex items-center gap-3">
+            <div className="w-8 h-[1px] bg-[var(--brand-accent)]" />
+            Professional Path
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--text-primary)]">
             Work <span className="text-gradient">Experience</span>
           </h2>
-          <p className="text-[var(--text-secondary)] font-medium max-w-2xl text-lg leading-relaxed">
-            My professional journey in software engineering, focused on technical excellence and business impact.
-          </p>
         </motion.div>
 
         <div className="space-y-12">
@@ -58,44 +56,40 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.2, duration: 0.8 }}
-              whileHover={{ y: -8 }}
-              className="p-6 md:p-10 card-airbnb card-premium-hover bg-[var(--bg-main)] border border-[var(--border-main)] group relative overflow-hidden"
+              className="p-6 md:p-10 bg-[var(--surface-main)] rounded-2xl border border-[var(--border-main)] hover:border-[var(--brand-accent)]/30 transition-colors duration-300 relative overflow-hidden"
             >
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-8 relative z-10">
+              <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-10 relative z-10">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-[var(--brand-accent)]">
-                    <div className="p-3 bg-[var(--brand-accent)]/10 rounded-xl group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all duration-300 shadow-inner">
+                    <div className="p-3 bg-[var(--brand-accent)]/5 rounded-xl transition-colors duration-300">
                       <Briefcase size={24} />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight group-hover:text-[var(--brand-accent)] transition-colors">{exp.role}</h3>
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight">{exp.role}</h3>
                   </div>
-                  <div className="flex flex-wrap items-center gap-6 text-sm font-bold text-[var(--text-secondary)]">
-                    <div className="flex items-center gap-2">
-                      <span className="text-[var(--text-primary)] italic underline decoration-[var(--brand-accent)]/20 decoration-2 underline-offset-4">{exp.company}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin size={16} className="text-[var(--brand-accent)]" />
-                      {exp.location}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Calendar size={16} className="text-[var(--brand-accent)]" />
-                      {exp.period}
-                    </div>
+                  <div className="text-[var(--text-secondary)] font-bold text-sm ml-[60px]">{exp.company}</div>
+                </div>
+                
+                <div className="flex flex-wrap items-center gap-6 text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-[0.15em]">
+                  <div className="flex items-center gap-2">
+                    <MapPin size={14} className="text-[var(--brand-accent)]" />
+                    {exp.location}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Calendar size={14} className="text-[var(--brand-accent)]" />
+                    {exp.period}
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-6 relative z-10">
-                <p className="text-base text-[var(--text-secondary)] font-medium leading-relaxed italic border-l-4 border-[var(--brand-accent)]/20 pl-6 py-1">
-                  "{exp.desc}"
+              <div className="space-y-8 relative z-10">
+                <p className="text-lg text-[var(--text-secondary)] font-light leading-relaxed max-w-4xl border-l-2 border-[var(--brand-accent)]/20 pl-8">
+                  {exp.desc}
                 </p>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
                   {exp.points.map((point, j) => (
-                    <li key={j} className="flex items-start gap-3 text-[15px] font-medium text-[var(--text-secondary)] leading-relaxed group/item">
-                      <div className="w-2 h-2 rounded-full bg-[var(--brand-accent)] mt-1.5 shrink-0 group-hover/item:scale-150 group-hover/item:shadow-[0_0_8px_var(--brand-accent)] transition-all duration-300" />
+                    <li key={j} className="flex items-start gap-4 text-[15px] font-medium text-[var(--text-secondary)] leading-relaxed group/item">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)] mt-2 shrink-0 group-hover/item:scale-150 transition-transform" />
                       {point}
                     </li>
                   ))}

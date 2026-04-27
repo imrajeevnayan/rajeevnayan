@@ -51,7 +51,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 bg-[var(--surface-main)] overflow-hidden relative">
+    <section id="contact" className="py-32 md:py-40 bg-[var(--surface-main)] overflow-hidden relative">
       <div className="section-container relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
@@ -59,44 +59,44 @@ const Contact = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="lg:col-span-5 space-y-8"
+            viewport={{ once: true, margin: "-100px" }}
+            className="lg:col-span-5 space-y-12"
           >
             <div className="space-y-4">
-               <div className="text-[var(--brand-accent)] font-bold text-xs uppercase tracking-widest flex items-center gap-2">
-                 <Mail size={16} /> Contact Me
+               <div className="text-[var(--brand-accent)] font-bold text-[10px] uppercase tracking-[0.2em] flex items-center gap-3">
+                 <div className="w-8 h-[1px] bg-[var(--brand-accent)]" />
+                 Engagement
                </div>
-               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-                 Get in <span className="text-gradient">Touch</span>
+               <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--text-primary)]">
+                 Start a <span className="text-gradient">Dialogue</span>
                </h2>
-               <div className="w-20 h-1.5 bg-[var(--brand-accent)] rounded-full" />
-               <p className="text-[var(--text-secondary)] font-medium text-lg leading-relaxed pt-2">
-                 Have a project in mind or just want to say hi? Feel free to reach out. I'm always open to discussing new opportunities and technical challenges.
+               <p className="text-[var(--text-secondary)] font-light text-xl leading-relaxed pt-4">
+                 Whether you have a complex technical inquiry or a visionary project, I am available for strategic collaboration and high-impact engineering roles.
                </p>
             </div>
             
-            <div className="space-y-6 pt-4">
+            <div className="space-y-6">
                {[
-                 { Icon: Mail, label: 'Email', value: 'imrajeevnayan@gmail.com', href: 'mailto:imrajeevnayan@gmail.com' },
-                 { Icon: Linkedin, label: 'LinkedIn', value: 'in/imrajeevnayan', href: 'https://linkedin.com/in/imrajeevnayan' },
-                 { Icon: Github, label: 'GitHub', value: '@imrajeevnayan', href: 'https://github.com/imrajeevnayan' }
+                 { Icon: Mail, label: 'Professional Inquiry', value: 'imrajeevnayan@gmail.com', href: 'mailto:imrajeevnayan@gmail.com' },
+                 { Icon: Linkedin, label: 'LinkedIn Network', value: 'in/imrajeevnayan', href: 'https://linkedin.com/in/imrajeevnayan' },
+                 { Icon: Github, label: 'Technical Workspace', value: '@imrajeevnayan', href: 'https://github.com/imrajeevnayan' }
                ].map((item, i) => (
                  <motion.a 
                     key={i} 
                     href={item.href} 
                     target="_blank" 
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + i * 0.1 }}
-                    viewport={{ once: true }}
-                    className="flex items-center gap-5 group"
+                    transition={{ delay: 0.2 + i * 0.1, duration: 0.6 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="flex items-center gap-6 group p-4 -ml-4 rounded-3xl hover:bg-white/5 transition-all"
                  >
-                    <div className="w-11 h-11 flex items-center justify-center rounded-xl bg-[var(--bg-main)] border border-[var(--border-main)] text-[var(--brand-accent)] group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all shadow-sm">
-                       <item.Icon size={18} />
+                    <div className="w-14 h-14 flex items-center justify-center rounded-2xl bg-[var(--bg-main)] border border-white/5 text-[var(--brand-accent)] group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all shadow-inner">
+                       <item.Icon size={22} />
                     </div>
                     <div>
-                       <div className="text-xs font-semibold text-[var(--text-secondary)] mb-0.5">{item.label}</div>
-                       <div className="text-sm font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors">{item.value}</div>
+                       <div className="text-[10px] font-black text-[var(--text-dim)] uppercase tracking-widest mb-1">{item.label}</div>
+                       <div className="text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors">{item.value}</div>
                     </div>
                  </motion.a>
                ))}
@@ -110,17 +110,14 @@ const Contact = () => {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-             <form ref={formRef} onSubmit={handleSubmit} className="p-8 md:p-12 card-airbnb card-premium-hover bg-[var(--bg-main)] border border-[var(--border-main)] space-y-8 relative overflow-hidden group">
-                {/* Background Glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
+             <form ref={formRef} onSubmit={handleSubmit} className="p-8 md:p-12 bg-[var(--bg-main)] rounded-3xl border border-[var(--border-main)] space-y-8 relative overflow-hidden group">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
                   <div className="space-y-3">
                     <label className="text-[11px] font-bold text-[var(--text-primary)] uppercase tracking-widest">Your Name</label>
                     <input 
                       name="from_name" 
                       required 
-                      className="w-full bg-[var(--surface-main)] border border-[var(--border-main)] focus:border-[var(--brand-accent)]/60 focus:ring-4 focus:ring-[var(--brand-accent)]/5 rounded-xl px-5 py-4 text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-secondary)]/30 font-semibold" 
+                      className="w-full bg-[var(--surface-main)] border border-[var(--border-main)] focus:border-[var(--brand-accent)] focus:ring-1 focus:ring-[var(--brand-accent)] rounded-xl px-5 py-4 text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-secondary)]/30 font-semibold" 
                       placeholder="e.g. John Doe" 
                     />
                   </div>
@@ -130,7 +127,7 @@ const Contact = () => {
                       type="email"
                       name="from_email" 
                       required 
-                      className="w-full bg-[var(--surface-main)] border border-[var(--border-main)] focus:border-[var(--brand-accent)]/60 focus:ring-4 focus:ring-[var(--brand-accent)]/5 rounded-xl px-5 py-4 text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-secondary)]/30 font-semibold" 
+                      className="w-full bg-[var(--surface-main)] border border-[var(--border-main)] focus:border-[var(--brand-accent)] focus:ring-1 focus:ring-[var(--brand-accent)] rounded-xl px-5 py-4 text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-secondary)]/30 font-semibold" 
                       placeholder="e.g. john@example.com" 
                     />
                   </div>
@@ -146,7 +143,7 @@ const Contact = () => {
                     name="message" 
                     required 
                     rows={5}
-                    className="w-full bg-[var(--surface-main)] border border-[var(--border-main)] focus:border-[var(--brand-accent)]/60 focus:ring-4 focus:ring-[var(--brand-accent)]/5 rounded-xl px-5 py-4 text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-secondary)]/30 resize-none font-semibold" 
+                    className="w-full bg-[var(--surface-main)] border border-[var(--border-main)] focus:border-[var(--brand-accent)] focus:ring-1 focus:ring-[var(--brand-accent)] rounded-xl px-5 py-4 text-[var(--text-primary)] outline-none transition-all placeholder:text-[var(--text-secondary)]/30 resize-none font-semibold" 
                     placeholder="How can I help you? Please describe your project or inquiry..." 
                   />
                 </div>
@@ -155,7 +152,7 @@ const Contact = () => {
                   whileHover={{ scale: 1.02 }}
                   whileActive={{ scale: 0.98 }}
                   disabled={isSubmitting}
-                  className="w-full btn-airbnb-primary flex items-center justify-center gap-3 py-4.5 text-lg shadow-lg hover:shadow-xl relative z-10 overflow-hidden group/btn"
+                  className="w-full btn-airbnb-primary flex items-center justify-center gap-3 py-4 text-lg shadow-sm hover:shadow-md relative z-10 overflow-hidden group/btn"
                 >
                   <span className="relative z-10 flex items-center gap-3">
                     {isSubmitting ? <Loader2 size={22} className="animate-spin" /> : <Send size={22} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />}

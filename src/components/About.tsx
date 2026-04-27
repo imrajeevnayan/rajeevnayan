@@ -1,86 +1,112 @@
 import { motion } from 'framer-motion';
-import { User, Code, Database, Globe, Layers } from 'lucide-react';
+import { User, Code, Database, Globe, Layers, ArrowRight } from 'lucide-react';
 
 const About = () => {
   const highlights = [
     {
-      icon: Code,
-      title: "Clean Architecture",
-      desc: "Strong focus on maintainability, scalability, and performance in every line of code."
+      icon: Layers,
+      title: "System Architecture",
+      desc: "Architecting resilient distributed systems and scalable microservice patterns for enterprise workloads."
     },
     {
-      icon: Layers,
-      title: "System Design",
-      desc: "Designing resilient distributed systems and efficient microservice patterns."
+      icon: Code,
+      title: "Backend Engineering",
+      desc: "Designing high-throughput APIs and robust server-side logic using modern Java and Spring ecosystems."
     },
     {
       icon: Database,
-      title: "Data Engineering",
-      desc: "Optimizing data flow and storage with advanced SQL and NoSQL techniques."
+      title: "Data Optimization",
+      desc: "Engineering efficient data flows and high-performance storage solutions using PostgreSQL and Redis."
     },
     {
       icon: Globe,
-      title: "Web Solutions",
-      desc: "Building high-performance user experiences with React and modern web stacks."
+      title: "Frontend Execution",
+      desc: "Developing high-fidelity, responsive user interfaces with a focus on performance and accessibility."
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" }
+    }
+  };
+
   return (
-    <section id="about" className="py-24 md:py-32 bg-[var(--bg-main)]">
+    <section id="about" className="py-32 md:py-40 bg-[var(--bg-main)]">
       <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             className="space-y-8"
           >
             <div className="space-y-4">
-               <div className="text-[var(--brand-accent)] font-bold text-xs uppercase tracking-widest flex items-center gap-2">
-                 <User size={16} /> Identity
+               <div className="text-[var(--brand-accent)] font-bold text-[10px] uppercase tracking-[0.2em] flex items-center gap-3">
+                 <div className="w-8 h-[1px] bg-[var(--brand-accent)]" />
+                 Identity
                </div>
-               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-                 About <span className="text-gradient">Me</span>
+               <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-[var(--text-primary)]">
+                 The <span className="text-gradient">Engineer</span>
                </h2>
-               <div className="w-20 h-1.5 bg-[var(--brand-accent)] rounded-full" />
             </div>
 
-            <div className="space-y-6 text-lg text-[var(--text-secondary)] leading-relaxed font-medium">
+            <div className="space-y-6 text-lg text-[var(--text-secondary)] leading-relaxed font-light">
                <p>
-                  I am a passionate Software Engineer with a focus on building distributed systems and modern web applications. With a strong foundation in Java and the Spring ecosystem, I enjoy tackling complex backend challenges while ensuring a seamless user experience.
+                  I am a Systems Architect and Full-Stack Engineer dedicated to building high-performance, scalable software. My expertise lies in designing resilient microservices and engineering distributed systems that prioritize low latency and security.
                </p>
                <p>
-                  My approach combines technical rigor with product intuition. I believe that good software isn't just about code—it's about solving real-world problems through elegant architecture and scalable solutions.
+                  With a deep focus on backend architecture and performance optimization, I transform complex requirements into maintainable, production-ready codebases that drive meaningful business value.
                </p>
+            </div>
+            
+            <div className="pt-4">
+               <a href="#experience" className="text-[var(--brand-accent)] font-bold text-sm uppercase tracking-widest hover:gap-4 transition-all flex items-center gap-2 group">
+                 Professional Journey <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
+               </a>
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          >
              {highlights.map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -8 }}
-                  className="p-10 card-airbnb card-premium-hover space-y-5 border border-[var(--border-main)] group relative overflow-hidden"
+                  variants={cardVariants}
+                  className="p-8 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-2xl group relative overflow-hidden transition-all duration-300 hover:border-[var(--brand-accent)]/50"
                 >
-                   {/* Background Glow */}
-                   <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-accent)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                    
-                   <div className="w-14 h-14 rounded-2xl bg-[var(--brand-accent)]/10 flex items-center justify-center text-[var(--brand-accent)] group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all duration-300 relative z-10 shadow-inner">
-                      <item.icon size={28} />
+                   <div className="w-12 h-12 rounded-xl bg-[var(--brand-accent)]/5 flex items-center justify-center text-[var(--brand-accent)] group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-colors duration-300 relative z-10">
+                      <item.icon size={24} />
                    </div>
-                   <div className="space-y-3 relative z-10">
-                      <h3 className="text-2xl font-bold tracking-tight group-hover:text-[var(--brand-accent)] transition-colors">{item.title}</h3>
-                      <p className="text-[15px] text-[var(--text-secondary)] leading-relaxed font-medium">{item.desc}</p>
+                   <div className="mt-6 space-y-3 relative z-10">
+                      <h3 className="text-xl font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors">{item.title}</h3>
+                      <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-medium">{item.desc}</p>
                    </div>
                 </motion.div>
              ))}
-          </div>
+          </motion.div>
 
         </div>
       </div>

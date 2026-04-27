@@ -25,8 +25,8 @@
   --border-main: var(--palette-border-gray);
 
   /* Elevation */
-  --shadow-card: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.04) 0px 2px 6px, rgba(0,0,0,0.1) 0px 4px 8px;
-  --shadow-hover: rgba(0,0,0,0.12) 0px 6px 16px;
+  --shadow-card: rgba(0,0,0,0.02) 0px 0px 0px 1px, rgba(0,0,0,0.02) 0px 2px 4px;
+  --shadow-hover: rgba(0,0,0,0.05) 0px 4px 12px;
 }
 
 /* Airbnb Dark Mode Variant */
@@ -35,12 +35,12 @@
   --surface-main: #141414;
   --text-primary: #f2f2f2;
   --text-secondary: #a3a3a3;
-  --brand-glow: rgba(255, 56, 92, 0.4);
+  --brand-glow: rgba(255, 56, 92, 0.1);
   --border-main: rgba(255, 255, 255, 0.08);
   --palette-light-surface: #1a1a1a;
   
-  --shadow-card: rgba(0,0,0,0.5) 0px 2px 8px;
-  --shadow-hover: rgba(0,0,0,0.7) 0px 4px 12px;
+  --shadow-card: rgba(0,0,0,0.2) 0px 1px 4px;
+  --shadow-hover: rgba(0,0,0,0.4) 0px 2px 8px;
 }
 
 @layer base {
@@ -83,11 +83,10 @@
 
   .card-airbnb:hover {
     box-shadow: var(--shadow-hover);
-    @apply -translate-y-1;
+    @apply -translate-y-[2px];
   }
 
   .card-premium-hover:hover {
-    box-shadow: 0 0 30px var(--brand-glow);
     border-color: color-mix(in srgb, var(--brand-accent), transparent 70%);
   }
 
@@ -100,7 +99,7 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 20px var(--brand-glow);
+    /* Removed for cleaner look */
   }
 
   .nav-link-active {
@@ -113,7 +112,7 @@
   }
 
   .btn-airbnb-primary {
-    @apply px-6 py-2.5 bg-[var(--brand-accent)] text-white rounded-lg font-semibold hover:bg-[var(--palette-deep-rausch)] transition-all active:scale-95 text-[16px] shadow-sm hover:shadow-md;
+    @apply px-6 py-2.5 bg-[var(--brand-accent)] text-white rounded-lg font-semibold hover:bg-[var(--palette-deep-rausch)] transition-all active:scale-[0.98] text-[16px] shadow-sm;
   }
 
   .btn-airbnb-secondary {
@@ -122,6 +121,19 @@
 
   .btn-circular {
     @apply flex items-center justify-center w-10 h-10 rounded-full bg-[var(--palette-light-surface)] text-[var(--palette-near-black)] shadow-sm hover:shadow-md transition-all active:scale-90;
+  }
+
+  .glass-premium {
+    @apply bg-white/5 dark:bg-black/20 backdrop-blur-xl border border-white/10 dark:border-white/5;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
   }
 }
 
