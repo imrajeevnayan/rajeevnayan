@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Code2, ArrowRight, Target, Lightbulb, Cpu, TrendingUp, X } from 'lucide-react';
+import { Github, ExternalLink, Target, Lightbulb, Cpu } from 'lucide-react';
 import { useState } from 'react';
 import hospitalImage from '../assets/hospital_mockup.png';
 import bookmyshowImage from '../assets/movie_booking.png';

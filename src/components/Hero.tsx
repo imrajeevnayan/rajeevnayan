@@ -3,40 +3,40 @@ import { ArrowRight, ChevronRight, Github, ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import profileImg from '../assets/profile.jpg';
 
+const words = ["Systems Architect", "Backend Specialist", "Java Engineer", "Cloud Architect"];
+
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
-  const words = ["Systems Architect", "Backend Specialist", "Java Engineer", "Cloud Architect"];
-
   useEffect(() => {
-    let timer = setTimeout(() => {
+    const handleType = () => {
+      const i = loopNum % words.length;
+      const fullText = words[i];
+
+      setDisplayText(isDeleting 
+        ? fullText.substring(0, displayText.length - 1) 
+        : fullText.substring(0, displayText.length + 1)
+      );
+
+      setTypingSpeed(isDeleting ? 80 : 150);
+
+      if (!isDeleting && displayText === fullText) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && displayText === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+      }
+    };
+
+    const timer = setTimeout(() => {
       handleType();
     }, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, typingSpeed]);
-
-  const handleType = () => {
-    const i = loopNum % words.length;
-    const fullText = words[i];
-
-    setDisplayText(isDeleting 
-      ? fullText.substring(0, displayText.length - 1) 
-      : fullText.substring(0, displayText.length + 1)
-    );
-
-    setTypingSpeed(isDeleting ? 80 : 150);
-
-    if (!isDeleting && displayText === fullText) {
-      setTimeout(() => setIsDeleting(true), 2000);
-    } else if (isDeleting && displayText === '') {
-      setIsDeleting(false);
-      setLoopNum(loopNum + 1);
-    }
-  };
+  }, [displayText, isDeleting, typingSpeed, loopNum]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

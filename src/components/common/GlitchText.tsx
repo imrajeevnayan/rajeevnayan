@@ -18,7 +18,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({ text, className = "" }) => {
         if (isHovering) {
             let iteration = 0;
             interval = setInterval(() => {
-                setDisplayText((prev) =>
+                setDisplayText(() =>
                     text
                         .split("")
                         .map((letter, index) => {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -11,15 +11,15 @@ const ProjectCarousel3D = <T extends { id?: string | number }>({ projects, rende
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % projects.length);
-  };
+  }, [projects.length]);
 
-  const handlePrev = () => {
+  const handlePrev = useCallback(() => {
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
-  };
+  }, [projects.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

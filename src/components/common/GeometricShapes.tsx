@@ -9,6 +9,7 @@ class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boole
         this.state = { hasError: false };
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     static getDerivedStateFromError(_: Error) {
         return { hasError: true };
     }

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Layers, Code, Database, Globe, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
+import { Layers, Code, Database, ArrowRight, ShieldCheck } from 'lucide-react';
 
 const About = () => {
   const highlights = [

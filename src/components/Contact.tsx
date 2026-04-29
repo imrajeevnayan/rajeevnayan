@@ -1,5 +1,5 @@
 import { useState, useRef, FormEvent } from 'react';
-import { Send, Loader2, Mail, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Send, Loader2, Mail, Github, Linkedin } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
@@ -28,7 +28,7 @@ const Contact = () => {
       await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
       setSubmitStatus('success');
       formRef.current.reset();
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
