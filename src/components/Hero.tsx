@@ -141,7 +141,7 @@ const Hero = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
             className="lg:col-span-5 order-1 lg:order-2"
           >
-            <div className="relative aspect-square w-[75%] sm:w-full max-w-[280px] sm:max-w-[400px] lg:max-w-none mx-auto">
+            <div className="relative aspect-square w-[60%] sm:w-full max-w-[240px] sm:max-w-[400px] lg:max-w-none mx-auto">
                {/* Premium Frame */}
                <div className="absolute inset-0 border-2 border-[var(--brand-accent)]/20 rounded-[2.5rem] -rotate-3 transition-transform hover:rotate-0 duration-500" />
                <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-accent)] to-indigo-600 rounded-[2.5rem] rotate-3 opacity-10 transition-transform hover:rotate-0 duration-500" />
