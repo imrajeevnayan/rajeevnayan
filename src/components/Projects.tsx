@@ -1,15 +1,18 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, Code2, ArrowRight, Target, Lightbulb, Cpu, TrendingUp, X } from 'lucide-react';
 import { useState } from 'react';
+import hospitalImage from '../assets/hospital_mockup.png';
+import bookmyshowImage from '../assets/movie_booking.png';
+import aiChatImage from '../assets/ai_chat.png';
+import urlShortenerImage from '../assets/url_shortener.png';
 
 interface CaseStudy {
   id: string;
   title: string;
   subtitle: string;
-  problem: string;
-  solution: string;
+  features: string;
   architecture: string;
-  outcome: string;
+  challenges: string;
   tech: string[];
   github: string;
   demo?: string;
@@ -18,46 +21,53 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
-    id: 'libstack',
-    title: 'Libstack.java',
-    subtitle: 'Low-Latency Data Structures',
-    problem: 'Standard Java collections introduce significant object allocation overhead and GC pauses in high-frequency trading and data processing pipelines.',
-    solution: 'Designed a lightweight primitive-first collection library that bypasses standard object wrappers to minimize memory pressure.',
-    architecture: 'Built on Java 21 primitive arrays and bit-manipulation algorithms. Uses custom memory-pooling patterns to ensure deterministic execution times.',
-    outcome: '30% reduction in memory footprint and 15% increase in throughput in large-scale stress tests.',
-    tech: ['Java 21', 'JUnit 5', 'Maven', 'Algorithms'],
-    github: 'https://github.com/imrajeevnayan/libstack.java',
-    image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=1200'
+    id: 'hospital-system',
+    title: 'Hospital Management',
+    subtitle: 'Secure Backend Operations',
+    features: 'Comprehensive backend system with granular Role-Based Access Control (RBAC), secure patient record storage, and automated appointment scheduling APIs.',
+    architecture: 'Built on Spring Boot 3.x and Spring Security. Uses PostgreSQL for relational data integrity and Docker for containerized deployment.',
+    challenges: 'Solved complex entity relationship mapping issues in JPA to prevent N+1 query problems when fetching patient histories and their associated records.',
+    tech: ['Java 21', 'Spring Boot 3', 'Spring Security', 'PostgreSQL', 'Docker'],
+    github: 'https://github.com/imrajeevnayan/Hospital-Management-System',
+    image: hospitalImage
   },
   {
-    id: 'microservices',
-    title: 'Cloud Core',
-    subtitle: 'Distributed Systems Orchestration',
-    problem: 'Legacy monolithic architecture created scaling bottlenecks and deployment risks, leading to system-wide failures during high traffic.',
-    solution: 'Engineered a resilient microservices ecosystem using the Spring Cloud stack, implementing circuit breakers and centralized discovery.',
-    architecture: 'Spring Boot 3.x, Spring Cloud Gateway, Eureka Service Discovery, and Redis for distributed caching. Docker-orchestrated deployment.',
-    outcome: 'Deployment cycles reduced from 4 hours to 10 minutes; 99.9% system availability achieved through fault-tolerant patterns.',
-    tech: ['Spring Boot', 'Spring Cloud', 'Docker', 'Redis', 'RabbitMQ'],
-    github: 'https://github.com/imrajeevnayan/springboot-microservices',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200'
+    id: 'bookmyshow',
+    title: 'BookMyShow Clone',
+    subtitle: 'Movie Ticketing System',
+    features: 'A full-stack movie booking application featuring real-time seat selection, theatre management, and a responsive React-based user interface.',
+    architecture: 'RESTful API developed with Spring Boot, consuming data from PostgreSQL. The frontend is built with React and styled using Tailwind CSS.',
+    challenges: 'Implemented database-level locking and transaction management to prevent race conditions during concurrent seat bookings.',
+    tech: ['Java', 'Spring Boot', 'React', 'PostgreSQL', 'Tailwind CSS'],
+    github: 'https://github.com/imrajeevnayan/BookMyShow',
+    image: bookmyshowImage
   },
   {
-    id: 'portfolio',
-    title: 'Portfolio 2026',
-    subtitle: 'Premium Identity Platform',
-    problem: 'Traditional resumes fail to showcase the intersection of backend architectural depth and high-fidelity frontend execution.',
-    solution: 'Developed a high-performance, SEO-optimized interactive platform with advanced motion design and glassmorphic UI.',
-    architecture: 'React 18 + Vite + Framer Motion. Implemented a sophisticated theme system and real-time GitHub API integration for live performance metrics.',
-    outcome: '2x increase in recruiter engagement and established a premium engineering brand identity.',
-    tech: ['React', 'Framer Motion', 'Tailwind CSS', 'Vite'],
-    github: 'https://github.com/imrajeevnayan/rajeevnayan',
-    demo: 'https://rajeevnayan.in',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200'
+    id: 'ai-chat',
+    title: 'AI Chat Backend',
+    subtitle: 'LLM Orchestration Layer',
+    features: 'A unified AI orchestration backend that manages multi-model interactions, prompt templates, and persistent conversation history.',
+    architecture: 'Leverages Spring AI for seamless integration with the OpenRouter API. Uses Maven for dependency management and structured logging.',
+    challenges: 'Designed a reliable state management system to maintain chat coherence and context across stateless HTTP requests.',
+    tech: ['Java', 'Spring Boot', 'Spring AI', 'OpenRouter', 'Maven'],
+    github: 'https://github.com/imrajeevnayan/springboot-ai-chat-backend',
+    image: aiChatImage
+  },
+  {
+    id: 'url-shortener',
+    title: 'Scalable URL Shortener',
+    subtitle: 'High-Speed Redirection',
+    features: 'A fast and reliable URL shortening service that converts long URLs into manageable links and handles efficient redirection.',
+    architecture: 'Clean MVC architecture using JPA/Hibernate for persistence. The application is containerized with Docker for easy environment setup.',
+    challenges: 'Developed a custom Base62 encoding algorithm to generate unique, collision-free short URLs efficiently.',
+    tech: ['Java', 'Spring Boot', 'React', 'JPA', 'Docker'],
+    github: 'https://github.com/imrajeevnayan/url-shortener-springboot',
+    image: urlShortenerImage
   }
 ];
 
 const Projects = () => {
-  const [activeTab, setActiveTab] = useState<'problem' | 'solution' | 'outcome'>('problem');
+  const [activeTab, setActiveTab] = useState<'features' | 'architecture' | 'challenges'>('features');
 
   return (
     <section id="projects" className="py-16 md:py-24 bg-[var(--bg-main)]">
@@ -110,7 +120,7 @@ const Projects = () => {
 
                 {/* Case Study Tabs */}
                 <div className="flex gap-4 border-b border-[var(--border-main)] pb-2">
-                  {(['problem', 'solution', 'outcome'] as const).map(tab => (
+                  {(['features', 'architecture', 'challenges'] as const).map(tab => (
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
@@ -137,30 +147,24 @@ const Projects = () => {
                       transition={{ duration: 0.3 }}
                       className="space-y-4"
                     >
-                      {activeTab === 'problem' && (
+                      {activeTab === 'features' && (
                         <div className="flex gap-4">
                           <Target className="text-[var(--brand-accent)] shrink-0" size={20} />
-                          <p className="text-[var(--text-secondary)] leading-relaxed">{project.problem}</p>
+                          <p className="text-[var(--text-secondary)] leading-relaxed">{project.features}</p>
                         </div>
                       )}
-                      {activeTab === 'solution' && (
+                      {activeTab === 'architecture' && (
                         <div className="space-y-4">
                           <div className="flex gap-4">
-                            <Lightbulb className="text-[var(--brand-accent)] shrink-0" size={20} />
-                            <p className="text-[var(--text-secondary)] leading-relaxed">{project.solution}</p>
-                          </div>
-                          <div className="flex gap-4 pt-2 border-t border-[var(--border-main)]/50">
                             <Cpu className="text-[var(--brand-accent)] shrink-0" size={20} />
-                            <div className="text-[11px] font-medium text-[var(--text-secondary)] uppercase tracking-wide italic">
-                              Architectural Core: <span className="text-[var(--text-primary)]">{project.architecture}</span>
-                            </div>
+                            <p className="text-[var(--text-secondary)] leading-relaxed">{project.architecture}</p>
                           </div>
                         </div>
                       )}
-                      {activeTab === 'outcome' && (
+                      {activeTab === 'challenges' && (
                         <div className="flex gap-4">
-                          <TrendingUp className="text-[var(--brand-accent)] shrink-0" size={20} />
-                          <p className="text-[var(--text-secondary)] leading-relaxed font-bold">{project.outcome}</p>
+                          <Lightbulb className="text-[var(--brand-accent)] shrink-0" size={20} />
+                          <p className="text-[var(--text-secondary)] leading-relaxed">{project.challenges}</p>
                         </div>
                       )}
                     </motion.div>

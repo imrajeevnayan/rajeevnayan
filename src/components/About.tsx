@@ -55,18 +55,18 @@ const About = () => {
             className="space-y-12"
           >
             <div className="space-y-4">
-               <span className="badge-premium">Specialization</span>
+               <span className="badge-premium">Backend Specialist</span>
                <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
-                 The <span className="text-gradient">Architect</span>
+                 Java <span className="text-gradient">Engineer</span>
                </h2>
             </div>
 
             <div className="space-y-6 text-[15px] text-[var(--text-secondary)] leading-relaxed font-medium max-w-2xl">
                <p>
-                  I specialize in the design and implementation of high-performance backend systems and scalable distributed architectures. My engineering philosophy is built on three pillars: <span className="text-[var(--text-primary)] font-bold italic">Resilience, Efficiency, and Scale.</span>
+                  I am a Backend Software Engineer specializing in the Java & Spring ecosystem. I focus on building robust RESTful APIs, optimizing database performance, and designing clean microservice architectures. My engineering approach is built on three pillars: <span className="text-[var(--text-primary)] font-bold italic">Clean Code, Reliability, and Performance.</span>
                </p>
                <p>
-                  By bridging the gap between complex architectural blueprints and production-ready Java backends, I ensure that systems don't just solve immediate problems but are built for the next 10 million users. I prioritize low-latency communication, secure data flows, and maintainable microservice ecosystems.
+                  Whether I'm configuring Spring Security, managing data with PostgreSQL, or containerizing applications with Docker, my goal is to write testable, maintainable code that solves real business problems and scales predictably.
                </p>
             </div>
             

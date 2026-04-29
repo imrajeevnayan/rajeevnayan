@@ -3,15 +3,15 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
   {
-    role: "Full-Stack Engineer",
+    role: "Backend Engineer",
     company: "Freelance / Independent",
     location: "Remote",
     period: "2022 - Present",
-    desc: "Architecting enterprise-grade full-stack solutions with a focus on high-performance Spring Boot backends and modern React architectures.",
+    desc: "Developing custom backend solutions and RESTful APIs using the Java and Spring Boot ecosystem.",
     points: [
-      "Engineered 10+ scalable microservices, ensuring 99.9% system uptime for international clients.",
-      "Optimized PostgreSQL query performance, achieving a 40% reduction in average API latency.",
-      "Implemented secure OAuth2/JWT authentication flows across distributed system clusters."
+      "Designed and developed secure REST APIs for various freelance clients, integrating JWT authentication and Role-Based Access Control (RBAC).",
+      "Improved database query performance by refactoring JPA/Hibernate entity relationships and introducing targeted PostgreSQL indexing.",
+      "Containerized applications using Docker, streamlining the deployment process and ensuring environment consistency across environments."
     ]
   },
   {
@@ -19,11 +19,11 @@ const experiences = [
     company: "Tech Solutions Inc.",
     location: "Bengaluru, India",
     period: "2021 - 2022",
-    desc: "Contributed to the core development of an internal CRM ecosystem using Java and the Spring Framework.",
+    desc: "Contributed to the core backend development of an internal CRM system using Java and Spring Boot.",
     points: [
-      "Automated data synchronization by integrating complex third-party RESTful APIs.",
-      "Refactored legacy modules to improve code maintainability and system execution speed.",
-      "Active participant in Agile sprints, driving iterative improvements through code reviews."
+      "Built and documented new REST endpoints to support frontend features, ensuring consistent JSON responses and error handling.",
+      "Integrated third-party APIs and wrote comprehensive unit tests using JUnit and Mockito to ensure reliability.",
+      "Collaborated with senior engineers to resolve performance bottlenecks in legacy data processing modules."
     ]
   }
 ];
