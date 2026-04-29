@@ -91,7 +91,7 @@ const Projects = () => {
               className={`flex flex-col ${idx % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-16 items-center`}
             >
               {/* Project Image & UI Preview */}
-              <div className="w-full lg:w-1/2 group">
+              <div className="w-[90%] sm:w-5/6 lg:w-1/2 mx-auto group">
                 <div className="premium-card aspect-video relative overflow-hidden bg-[var(--surface-main)]">
                   <img 
                     src={project.image} 
