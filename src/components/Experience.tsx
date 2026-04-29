@@ -16,10 +16,10 @@ const experiences = [
   },
   {
     role: "Backend Engineering Intern",
-    company: "Tech Solutions Inc.",
+    company: "Jspider",
     location: "Bengaluru, India",
-    period: "2021 - 2022",
-    desc: "Contributed to the core backend development of an internal CRM system using Java and Spring Boot.",
+    period: "2025 - 2026",
+    desc: "Contributed to the core backend development of various projects using Java and Spring Boot.",
     points: [
       "Built and documented new REST endpoints to support frontend features, ensuring consistent JSON responses and error handling.",
       "Integrated third-party APIs and wrote comprehensive unit tests using JUnit and Mockito to ensure reliability.",
