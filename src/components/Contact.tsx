@@ -1,5 +1,5 @@
 import { useState, useRef, FormEvent } from 'react';
-import { Send, Loader2, Mail, Github, Linkedin } from 'lucide-react';
+import { Send, Loader2, Mail, Github, Linkedin, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
@@ -36,100 +36,102 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-[var(--surface-main)] relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-28 bg-[var(--bg-main)] relative overflow-hidden">
       <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             viewport={{ once: true }}
-            className="lg:col-span-5 space-y-12"
+            className="lg:col-span-5 space-y-8"
           >
-            <div className="space-y-4">
+            <div className="space-y-3">
                <span className="badge-premium">Engagement</span>
-               <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
+               <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading text-[var(--text-primary)]">
                  Scale <span className="text-gradient">Together</span>
                </h2>
-               <p className="text-[15px] text-[var(--text-secondary)] font-medium leading-relaxed pt-4">
+               <p className="text-sm md:text-[15px] text-[var(--text-secondary)] font-light leading-[1.47] pt-2">
                  Available for strategic collaboration on high-performance backend systems and distributed infrastructure. Let's build for the next 10 million users.
                </p>
             </div>
             
-            <div className="space-y-4">
+            <div className="space-y-3">
                {[
-                 { Icon: Mail, label: 'Professional Inquiry', value: 'imrajeevnayan@gmail.com', href: 'mailto:imrajeevnayan@gmail.com' },
+                 { Icon: Mail, label: 'Professional Inquiry', value: 'rajeevnayan709@gmail.com', href: 'mailto:rajeevnayan709@gmail.com' },
+                 { Icon: Phone, label: 'Voice / WhatsApp', value: '+91-6200201018', href: 'tel:+916200201018' },
                  { Icon: Linkedin, label: 'LinkedIn Network', value: 'in/imrajeevnayan', href: 'https://linkedin.com/in/imrajeevnayan' },
                  { Icon: Github, label: 'Technical Workspace', value: '@imrajeevnayan', href: 'https://github.com/imrajeevnayan' }
                ].map((item, i) => (
-                 <motion.a 
+                 <a 
                     key={i} 
                     href={item.href} 
                     target="_blank" 
-                    className="flex items-center gap-6 p-4 rounded-2xl bg-[var(--surface-main)] border border-[var(--border-main)] hover:border-[var(--brand-accent)]/30 transition-all group"
+                    rel="noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-[var(--bg-main)] border border-[var(--border-main)] hover:border-[var(--brand-accent)] transition-all group"
                  >
-                    <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-[var(--bg-main)] text-[var(--brand-accent)] group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all">
-                       <item.Icon size={18} />
+                    <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)] shrink-0">
+                       <item.Icon size={18} strokeWidth={1.5} />
                     </div>
                     <div>
-                       <div className="text-[9px] font-black text-[var(--text-secondary)] uppercase tracking-[0.2em] mb-1">{item.label}</div>
-                       <div className="text-[13px] font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors">{item.value}</div>
+                       <div className="text-[10px] font-medium text-[var(--text-secondary)] uppercase tracking-wider mb-0.5">{item.label}</div>
+                       <div className="text-[13px] font-semibold text-[var(--text-primary)] group-hover:text-[var(--color-deep-link-blue)] transition-colors">{item.value}</div>
                     </div>
-                 </motion.a>
+                 </a>
                ))}
             </div>
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="premium-card p-8 md:p-12 space-y-6">
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-[var(--text-secondary)] ml-1">Full Name</label>
+            <form ref={formRef} onSubmit={handleSubmit} className="premium-card p-6 md:p-8 space-y-4">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <div className="space-y-1">
+                   <label className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] ml-0.5">Full Name</label>
                    <input 
                      type="text" name="user_name" required 
-                     className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-xl px-5 py-4 text-[13px] focus:border-[var(--brand-accent)] outline-none transition-all"
+                     className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-md px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all placeholder:text-[var(--text-muted)]/50"
                      placeholder="John Doe"
                    />
                  </div>
-                 <div className="space-y-2">
-                   <label className="text-[10px] font-black uppercase tracking-widest text-[var(--text-secondary)] ml-1">Email Address</label>
+                 <div className="space-y-1">
+                   <label className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] ml-0.5">Email Address</label>
                    <input 
                      type="email" name="user_email" required 
-                     className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-xl px-5 py-4 text-[13px] focus:border-[var(--brand-accent)] outline-none transition-all"
+                     className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-md px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all placeholder:text-[var(--text-muted)]/50"
                      placeholder="john@example.com"
                    />
                  </div>
                </div>
 
-               <div className="space-y-2">
-                 <label className="text-[10px] font-black uppercase tracking-widest text-[var(--text-secondary)] ml-1">Message</label>
+               <div className="space-y-1">
+                 <label className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] ml-0.5">Message</label>
                  <textarea 
                    name="message" required rows={5}
-                   className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-xl px-5 py-4 text-[13px] focus:border-[var(--brand-accent)] outline-none transition-all resize-none"
+                   className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-md px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all resize-none placeholder:text-[var(--text-muted)]/50"
                    placeholder="How can we build something great together?"
                  />
                </div>
 
                <button 
                  type="submit" disabled={isSubmitting}
-                 className="btn-primary w-full py-4 flex items-center justify-center gap-3 disabled:opacity-50 disabled:scale-100"
+                 className="btn-primary w-full py-3 flex items-center justify-center gap-2 disabled:opacity-50 disabled:scale-100"
                >
-                 {isSubmitting ? <Loader2 className="animate-spin" size={20} /> : <Send size={20} />}
+                 {isSubmitting ? <Loader2 className="animate-spin" size={16} /> : <Send size={16} />}
                  {isSubmitting ? 'Transmitting...' : 'Send Message'}
                </button>
 
                {submitStatus === 'success' && (
-                 <p className="text-[11px] font-bold text-green-500 text-center uppercase tracking-widest">Message Transmitted Successfully</p>
+                 <p className="text-[11px] font-medium text-green-500 text-center uppercase tracking-wider mt-2">Message Transmitted Successfully</p>
                )}
                {submitStatus === 'error' && (
-                 <p className="text-[11px] font-bold text-[var(--brand-accent)] text-center uppercase tracking-widest">Transmission Failed. Please try again.</p>
+                 <p className="text-[11px] font-medium text-[var(--brand-accent)] text-center uppercase tracking-wider mt-2">Transmission Failed. Please try again.</p>
                )}
             </form>
           </motion.div>

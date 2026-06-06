@@ -15,7 +15,7 @@
     <a href="https://www.linkedin.com/in/imrajeevnayan/">
       <img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin" alt="LinkedIn" />
     </a>
-    <a href="mailto:imrajeevnayan@gmail.com">
+    <a href="mailto:rajeevnayan709@gmail.com">
       <img src="https://img.shields.io/badge/Email-Contact%20Me-D14836?style=for-the-badge&logo=gmail" alt="Email" />
     </a>
   </p>
@@ -159,7 +159,7 @@ To deploy this project to production:
 
 I am currently open to **Full Stack Development** roles. Feel free to reach out!
 
-- **Email**: [imrajeevnayan@gmail.com](mailto:imrajeevnayan@gmail.com)
+- **Email**: [rajeevnayan709@gmail.com](mailto:rajeevnayan709@gmail.com)
 - **LinkedIn**: [linkedin.com/in/imrajeevnayan](https://www.linkedin.com/in/imrajeevnayan/)
 - **GitHub**: [github.com/imrajeevnayan](https://github.com/imrajeevnayan)
 

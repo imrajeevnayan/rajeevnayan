@@ -20,60 +20,56 @@ const Header = () => {
   const navItems = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-      isScrolled ? 'glass-effect py-3 shadow-md' : 'bg-transparent py-6'
+    <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
+      isScrolled ? 'glass-effect py-2.5' : 'bg-transparent py-4'
     }`}>
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-7">
         <Link 
             to="hero" 
             smooth={true} 
             className="flex items-center gap-2 cursor-pointer group"
         >
-          <div className="w-8 h-8 rounded-lg bg-[var(--brand-accent)] flex items-center justify-center text-white">
-            <Rocket size={18} />
-          </div>
-          <span className="text-lg font-black tracking-tighter text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors">Rajeev</span>
+          <Rocket size={16} className="text-[var(--brand-accent)]" />
+          <span className="text-sm font-semibold tracking-tight text-[var(--text-primary)]">Rajeev Nayan</span>
         </Link>
 
-        <div className="flex items-center gap-8">
-          <div className="hidden md:flex items-center gap-1">
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-2">
              {navItems.map((item) => (
                 <Link 
                   key={item}
                   to={item.toLowerCase()} 
                   smooth={true} 
                   spy={true}
-                  offset={-80}
-                  className="text-[11px] font-black uppercase tracking-widest text-[var(--text-secondary)] hover:text-[var(--brand-accent)] px-4 py-2 rounded-lg transition-all cursor-pointer"
+                  offset={-60}
+                  className="text-xs font-normal text-[var(--text-primary)] opacity-80 hover:opacity-100 hover:text-[var(--brand-accent)] px-3 py-1 transition-all cursor-pointer"
                 >
                   {item}
                 </Link>
              ))}
           </div>
 
-          <div className="flex items-center gap-4 border-l border-[var(--border-main)] pl-6">
+          <div className="flex items-center gap-4 border-l border-[var(--border-main)] pl-6 h-4">
             <button 
               onClick={toggleTheme}
-              className="text-[var(--text-primary)] opacity-60 hover:opacity-100 transition-opacity"
+              className="text-[var(--text-primary)] opacity-60 hover:opacity-100 transition-opacity flex items-center"
             >
-              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
             </button>
 
             <button 
-              className="md:hidden"
+              className="md:hidden flex items-center text-[var(--text-primary)]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
             </button>
 
-            <motion.a 
-              href="mailto:imrajeevnayan@gmail.com" 
-              whileHover={{ scale: 1.05 }}
-              whileActive={{ scale: 0.95 }}
-              className="hidden sm:inline-flex px-5 py-2 bg-[var(--brand-accent)] text-white text-[11px] font-black uppercase tracking-widest rounded-lg shadow-lg shadow-[var(--brand-accent)]/20"
+            <a 
+              href="mailto:rajeevnayan709@gmail.com" 
+              className="hidden sm:inline-flex px-3.5 py-1 bg-[var(--color-button-blue)] text-white text-[11px] font-medium rounded-full transition-all hover:bg-[var(--color-deep-link-blue)]"
             >
               Contact
-            </motion.a>
+            </a>
           </div>
         </div>
       </nav>

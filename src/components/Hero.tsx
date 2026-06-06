@@ -3,7 +3,7 @@ import { ArrowRight, ChevronRight, Github, ExternalLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import profileImg from '../assets/profile.jpg';
 
-const words = ["Systems Architect", "Backend Specialist", "Java Engineer", "Cloud Architect"];
+const words = ["Java Backend Developer", "Spring Boot Specialist", "MCA Graduate", "AI/RAG Engineer"];
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState('');
@@ -67,14 +67,11 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center bg-[var(--bg-main)] overflow-hidden">
-      {/* Background Subtle Elements */}
-      <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30 dark:opacity-20">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[var(--brand-accent)]/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] rounded-full" />
-      </div>
+    <section id="hero" className="relative min-h-screen flex items-center bg-[var(--bg-main)] overflow-hidden pt-12">
+      {/* Background Canvas */}
+      <div className="absolute inset-0 bg-[var(--bg-main)] pointer-events-none" />
 
-      <div className="section-container relative z-10 w-full py-0">
+      <div className="section-container relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Text Content */}
@@ -82,13 +79,13 @@ const Hero = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-7 order-2 lg:order-1"
+            className="lg:col-span-7 order-2 lg:order-1 text-left lg:text-left"
           >
-            {/* Identity Badge with Typewriter */}
+            {/* Identity Badge */}
             <motion.div variants={itemVariants} className="mb-6 h-8">
-              <span className="badge-premium inline-flex items-center min-w-[200px]">
+              <span className="badge-premium inline-flex items-center">
                 {displayText}
-                <span className="ml-1 w-[2px] h-4 bg-[var(--brand-accent)] animate-pulse" />
+                <span className="ml-1 w-[1.5px] h-3 bg-[var(--brand-accent)] animate-pulse" />
               </span>
             </motion.div>
 
@@ -96,7 +93,7 @@ const Hero = () => {
             <motion.div variants={itemVariants} className="mb-6">
               <motion.h1 
                 variants={maskVariants}
-                className="text-5xl sm:text-7xl md:text-8xl leading-[1] font-black text-[var(--text-primary)]"
+                className="text-4xl sm:text-6xl lg:text-[64px] leading-[1.07] font-bold tracking-appleDisplay text-[var(--text-primary)]"
               >
                 Architecting the <br />
                 <span className="text-gradient">Backbone</span> of Scale
@@ -106,29 +103,28 @@ const Hero = () => {
             {/* Impactful Tagline */}
             <motion.p 
               variants={itemVariants}
-              className="text-lg md:text-xl text-[var(--text-secondary)] leading-relaxed max-w-2xl font-medium mb-10"
+              className="text-base md:text-[17px] text-[var(--text-secondary)] leading-[1.47] tracking-appleBody font-light max-w-2xl mb-10"
             >
-              I engineer the invisible infrastructure that powers modern digital experiences. 
-              Specialized in high-throughput Java backends and performance-critical distributed systems.
+              MCA graduate and Java Backend Developer specializing in production-grade Spring Boot microservices, secure REST APIs, and AI-powered RAG systems.
             </motion.p>
 
             {/* CTA Group */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 items-center">
               <a href="#projects" className="btn-primary flex items-center gap-2 group">
                 View Projects 
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <a href="#contact" className="btn-secondary flex items-center gap-2 group">
                 Get in Touch
-                <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform opacity-50" />
+                <ChevronRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform opacity-50" />
               </a>
               
-              <div className="flex items-center gap-4 ml-0 sm:ml-8 pt-4 sm:pt-0 border-t sm:border-t-0 sm:border-l border-[var(--border-main)] sm:pl-8">
+              <div className="flex items-center gap-4 ml-0 sm:ml-6 pt-4 sm:pt-0 border-t sm:border-t-0 sm:border-l border-[var(--border-main)] sm:pl-6">
                 <a href="https://github.com/imrajeevnayan" target="_blank" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors">
-                  <Github size={20} />
+                  <Github size={18} strokeWidth={1.5} />
                 </a>
-                <a href="https://linkedin.com/in/imrajeevnayan" target="_blank" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors">
-                  <ExternalLink size={20} />
+                <a href="https://linkedin.com/in/imrajeevnayan" target="_blank" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors font-medium text-xs flex items-center gap-1">
+                  LinkedIn <ExternalLink size={12} strokeWidth={1.5} />
                 </a>
               </div>
             </motion.div>
@@ -136,37 +132,33 @@ const Hero = () => {
 
           {/* Display Picture (DP) */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.8 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
             className="lg:col-span-5 order-1 lg:order-2"
           >
-            <div className="relative aspect-square w-[60%] sm:w-3/4 lg:w-[85%] max-w-[240px] sm:max-w-[320px] lg:max-w-[350px] xl:max-w-[380px] mx-auto">
-               {/* Premium Frame */}
-               <div className="absolute inset-0 border-2 border-[var(--brand-accent)]/20 rounded-[2.5rem] -rotate-3 transition-transform hover:rotate-0 duration-500" />
-               <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-accent)] to-indigo-600 rounded-[2.5rem] rotate-3 opacity-10 transition-transform hover:rotate-0 duration-500" />
-               
-               {/* Image Container */}
-               <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden grayscale-[0.1] hover:grayscale-0 transition-all duration-700 shadow-2xl">
+            <div className="relative aspect-square w-[70%] sm:w-3/4 lg:w-[90%] max-w-[280px] sm:max-w-[340px] mx-auto">
+               {/* Border vitrine container */}
+               <div className="relative h-full w-full rounded-lg overflow-hidden bg-white border border-[var(--border-main)] transition-all duration-300">
                   <img 
                     src={profileImg} 
                     alt="Rajeev Nayan" 
-                    className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-1000"
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                   />
                   
-                  {/* Subtle Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-main)]/30 via-transparent to-transparent pointer-events-none" />
+                  {/* Subtle Light Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-graphite)]/10 via-transparent to-transparent pointer-events-none" />
                </div>
 
                {/* Experience Badge */}
                <motion.div 
-                 initial={{ opacity: 0, scale: 0.5 }}
+                 initial={{ opacity: 0, scale: 0.9 }}
                  animate={{ opacity: 1, scale: 1 }}
-                 transition={{ delay: 1.5, type: "spring" }}
-                 className="absolute -bottom-4 -right-4 glass-effect p-5 rounded-2xl shadow-xl hidden sm:block border border-[var(--brand-accent)]/20"
+                 transition={{ delay: 1.2 }}
+                 className="absolute -bottom-4 -right-4 bg-white dark:bg-[var(--surface-card)] px-4 py-3 rounded-lg border border-[var(--border-main)] hidden sm:block"
                >
-                  <div className="text-3xl font-black text-[var(--brand-accent)]">5+</div>
-                  <div className="text-[9px] font-black uppercase tracking-widest text-[var(--text-secondary)]">Years of <br />Engineering</div>
+                  <div className="text-2xl font-bold text-[var(--color-deep-link-blue)]">700+</div>
+                  <div className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-secondary)]">DSA Problems <br />Solved</div>
                </motion.div>
             </div>
           </motion.div>
@@ -178,11 +170,11 @@ const Hero = () => {
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 2.5, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
       >
-        <span className="text-[10px] uppercase tracking-[0.2em] font-black text-[var(--text-secondary)]">Scroll</span>
-        <div className="w-[1px] h-10 bg-gradient-to-b from-[var(--brand-accent)] to-transparent" />
+        <span className="text-[9px] uppercase tracking-[0.25em] font-medium text-[var(--text-secondary)]">Scroll</span>
+        <div className="w-[1px] h-8 bg-gradient-to-b from-[var(--brand-accent)] to-transparent" />
       </motion.div>
     </section>
   );

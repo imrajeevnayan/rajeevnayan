@@ -3,44 +3,33 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
   {
-    role: "Backend Engineer",
-    company: "Freelance / Independent",
-    location: "Remote",
-    period: "2022 - Present",
-    desc: "Developing custom backend solutions and RESTful APIs using the Java and Spring Boot ecosystem.",
-    points: [
-      "Designed and developed secure REST APIs for various freelance clients, integrating JWT authentication and Role-Based Access Control (RBAC).",
-      "Improved database query performance by refactoring JPA/Hibernate entity relationships and introducing targeted PostgreSQL indexing.",
-      "Containerized applications using Docker, streamlining the deployment process and ensuring environment consistency across environments."
-    ]
-  },
-  {
-    role: "Backend Engineering Intern",
-    company: "Jspider",
+    role: "Java Developer Intern",
+    company: "Jspider Private Limited",
     location: "Bengaluru, India",
-    period: "2025 - 2026",
-    desc: "Contributed to the core backend development of various projects using Java and Spring Boot.",
+    period: "Feb 2025 - Aug 2025",
+    desc: "Developed production-grade Spring Boot microservices, secure REST APIs, and automated deployment pipelines.",
     points: [
-      "Built and documented new REST endpoints to support frontend features, ensuring consistent JSON responses and error handling.",
-      "Integrated third-party APIs and wrote comprehensive unit tests using JUnit and Mockito to ensure reliability.",
-      "Collaborated with senior engineers to resolve performance bottlenecks in legacy data processing modules."
+      "Launched and deployed 4 Spring Boot microservices with Docker Compose; reduced API latency by 30% through Redis caching and Hibernate query optimization.",
+      "Engineered 15+ secure REST endpoints using Spring Security, JWT, and OAuth2; sustained 5,000+ daily requests at 99.9% uptime across staging and production environments.",
+      "Automated CI/CD pipeline with Jenkins and GitHub Actions, integrating SonarQube quality gates, cutting release cycle time by 25% and reducing post-deployment defects.",
+      "Maintained 80%+ unit test coverage using JUnit 5 and Mockito in a 6-member Agile Scrum team following 2-week sprints."
     ]
   }
 ];
 
 const Experience = () => {
     return (
-    <section id="experience" className="py-16 md:py-24 bg-[var(--surface-main)]">
+    <section id="experience" className="py-20 md:py-28 bg-[var(--bg-main)]">
       <div className="section-container">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           viewport={{ once: true, margin: "-100px" }}
-          className="space-y-4 mb-24"
+          className="space-y-3 mb-8 md:mb-12"
         >
           <span className="badge-premium">Professional Path</span>
-          <h2 className="text-4xl md:text-6xl font-black tracking-tighter">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading">
             Work <span className="text-gradient">Experience</span>
           </h2>
         </motion.div>
@@ -49,43 +38,43 @@ const Experience = () => {
           {experiences.map((exp, i) => (
             <motion.div 
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="premium-card p-10 group"
+              transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="premium-card p-8 md:p-10 bg-[var(--surface-card)]"
             >
-              <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-12">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4 text-[var(--brand-accent)]">
-                    <div className="p-3 bg-[var(--brand-accent)]/5 rounded-xl group-hover:bg-[var(--brand-accent)] group-hover:text-white transition-all">
-                      <Briefcase size={22} />
-                    </div>
-                    <h3 className="text-2xl md:text-3xl font-black tracking-tight">{exp.role}</h3>
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-8">
+                <div className="flex gap-4 items-start">
+                  <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)] shrink-0">
+                    <Briefcase size={22} strokeWidth={1.5} />
                   </div>
-                  <div className="text-sm font-bold ml-14 text-[var(--text-primary)] opacity-80">{exp.company}</div>
+                  <div className="space-y-1">
+                    <h3 className="text-xl md:text-2xl font-bold tracking-appleHeading text-[var(--text-primary)]">{exp.role}</h3>
+                    <div className="text-sm font-medium text-[var(--text-secondary)]">{exp.company}</div>
+                  </div>
                 </div>
                 
-                <div className="flex flex-wrap items-center gap-6 text-[10px] font-black text-[var(--text-secondary)] uppercase tracking-widest lg:pt-4">
-                  <div className="flex items-center gap-2">
-                    <MapPin size={14} className="text-[var(--brand-accent)]" />
+                <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--text-secondary)] lg:pt-2 lg:pl-14">
+                  <div className="flex items-center gap-1.5">
+                    <MapPin size={13} className="text-[var(--color-button-blue)]" />
                     {exp.location}
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar size={14} className="text-[var(--brand-accent)]" />
+                  <div className="flex items-center gap-1.5">
+                    <Calendar size={13} className="text-[var(--color-button-blue)]" />
                     {exp.period}
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-8 ml-0 lg:ml-14">
-                <p className="text-[15px] text-[var(--text-secondary)] font-medium leading-relaxed max-w-4xl border-l-2 border-[var(--brand-accent)]/20 pl-6">
+              <div className="space-y-6 lg:ml-14">
+                <p className="text-sm md:text-[15px] text-[var(--text-secondary)] font-light leading-[1.47] max-w-4xl border-l border-[var(--border-main)] pl-6">
                   {exp.desc}
                 </p>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3 lg:pl-6">
                   {exp.points.map((point, j) => (
-                    <li key={j} className="flex items-start gap-3 text-[13px] text-[var(--text-secondary)] leading-relaxed font-medium">
-                      <div className="w-1 h-1 rounded-full bg-[var(--brand-accent)] mt-2 shrink-0" />
+                    <li key={j} className="flex items-start gap-2.5 text-[13px] text-[var(--text-secondary)] leading-relaxed font-light">
+                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-button-blue)] mt-2 shrink-0" />
                       {point}
                     </li>
                   ))}

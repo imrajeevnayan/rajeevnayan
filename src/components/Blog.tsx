@@ -81,20 +81,25 @@ const Blog = () => {
   }, []);
 
   return (
-    <section id="blog" className="py-24 md:py-32 bg-[var(--surface-main)]">
+    <section id="blog" className="py-20 md:py-28 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
       <div className="section-container">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-20">
-          <div className="space-y-4">
-            <div className="flex items-center gap-3 text-indigo-600 font-bold text-sm tracking-wide">
-              <Rss size={18} /> Technical Articles
-            </div>
-            <h2 className="text-3xl md:text-5xl">Latest Writings</h2>
-            <p className="text-[var(--text-dim)] font-medium text-lg max-w-xl">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 md:mb-12">
+          <div className="space-y-3">
+            <span className="badge-premium">
+              <Rss size={13} className="mr-1 inline" strokeWidth={1.5} /> Technical Articles
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading text-[var(--text-primary)]">Latest Writings</h2>
+            <p className="text-sm md:text-[15px] text-[var(--text-secondary)] font-light max-w-xl">
               I write about backend engineering, cloud infrastructure, and solving complex algorithmic problems.
             </p>
           </div>
-          <a href="https://imrajeevnayan.hashnode.dev" target="_blank" className="flex items-center gap-2 text-sm font-bold text-[var(--text-main)] hover:text-indigo-600 transition-colors">
-            Subscribe <Mail size={16} />
+          <a 
+            href="https://imrajeevnayan.hashnode.dev" 
+            target="_blank" 
+            rel="noreferrer" 
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-[var(--color-button-blue)] hover:text-[var(--color-deep-link-blue)] hover:underline"
+          >
+            Subscribe <Mail size={15} strokeWidth={1.5} />
           </a>
         </div>
 
@@ -104,24 +109,25 @@ const Blog = () => {
               key={post.id} 
               href={`https://${post.publicationHost}/${post.slug}`}
               target="_blank"
-              className="group p-8 card-base bg-[var(--bg-main)] flex flex-col justify-between space-y-8 hover:border-indigo-500/30 shadow-sm"
+              rel="noreferrer"
+              className="group p-6 md:p-8 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-lg flex flex-col justify-between space-y-6 hover:border-[var(--brand-accent)] transition-all duration-200"
             >
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-xs font-bold text-[var(--text-dim)]/60">
-                  <Calendar size={14} />
+              <div className="space-y-3">
+                <div className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+                  <Calendar size={13} strokeWidth={1.5} />
                   {new Date(post.publishedAt).toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
                 </div>
-                <h3 className="text-xl font-bold group-hover:text-indigo-600 transition-colors line-clamp-2">
+                <h3 className="text-lg font-bold tracking-appleHeading text-[var(--text-primary)] group-hover:text-[var(--color-button-blue)] transition-colors line-clamp-2">
                   {post.title}
                 </h3>
-                <p className="text-sm text-[var(--text-dim)] leading-relaxed line-clamp-3">
+                <p className="text-sm text-[var(--text-secondary)] font-light leading-relaxed line-clamp-3">
                   {post.brief}
                 </p>
               </div>
               
-              <div className="flex items-center justify-between pt-6 border-t border-[var(--border-main)]">
-                <span className="text-xs font-bold text-indigo-600">Read Article</span>
-                <ArrowRight size={16} className="text-indigo-600 group-hover:translate-x-1 transition-transform" />
+              <div className="flex items-center justify-between pt-4 border-t border-[var(--border-main)]">
+                <span className="text-xs font-semibold text-[var(--color-button-blue)]">Read Article</span>
+                <ArrowRight size={14} strokeWidth={1.5} className="text-[var(--color-button-blue)] group-hover:translate-x-0.5 transition-transform" />
               </div>
             </a>
           ))}

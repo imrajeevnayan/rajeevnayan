@@ -9,28 +9,29 @@ const pinnedRepos = [
 
 const GithubStats = () => {
     return (
-        <section id="github" className="py-24 md:py-32 bg-[var(--bg-main)]">
+        <section id="github" className="py-20 md:py-28 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
             <div className="section-container">
-                <div className="flex flex-col lg:flex-row gap-20 items-center">
+                <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
                     <div className="lg:w-5/12 space-y-6">
-                        <h2 className="text-3xl md:text-5xl">Open Source Contributions</h2>
-                        <p className="text-[var(--text-dim)] font-medium text-lg leading-relaxed">
+                        <span className="badge-premium">Open Source</span>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading text-[var(--text-primary)]">Contributions</h2>
+                        <p className="text-sm md:text-[15px] text-[var(--text-secondary)] font-light leading-[1.47] pt-2">
                             I am a regular contributor to the open-source community, focusing on building high-performance Java libraries and system utilities.
                         </p>
                         <div className="flex gap-10 pt-4">
                             <div>
-                                <div className="text-3xl font-bold text-[var(--text-main)]">500+</div>
-                                <div className="text-xs font-semibold text-[var(--text-dim)]">Commits in 2024</div>
+                                <div className="text-2xl md:text-3xl font-bold text-[var(--text-primary)] tracking-appleHeading">500+</div>
+                                <div className="text-xs font-medium text-[var(--text-secondary)]">Commits in 2024</div>
                             </div>
                             <div>
-                                <div className="text-3xl font-bold text-indigo-600">1.2k</div>
-                                <div className="text-xs font-semibold text-[var(--text-dim)]">GitHub Stars</div>
+                                <div className="text-2xl md:text-3xl font-bold text-[var(--color-button-blue)] tracking-appleHeading">1.2k</div>
+                                <div className="text-xs font-medium text-[var(--text-secondary)]">GitHub Stars</div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="lg:w-7/12 w-full space-y-12">
-                        <div className="p-8 card-base bg-[var(--surface-main)] flex flex-col items-center justify-center overflow-x-auto shadow-sm">
+                    <div className="lg:w-7/12 w-full space-y-8">
+                        <div className="p-6 md:p-8 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-lg flex flex-col items-center justify-center overflow-x-auto">
                             <GitHubCalendar 
                                 username="imrajeevnayan" 
                                 blockSize={12} 
@@ -44,24 +45,24 @@ const GithubStats = () => {
                             {pinnedRepos.map((repo, i) => (
                                 <motion.div 
                                     key={i}
-                                    whileHover={{ borderColor: 'rgba(99, 102, 241, 0.3)' }}
-                                    className="p-8 card-base bg-[var(--surface-main)] space-y-6"
+                                    whileHover={{ borderColor: 'var(--brand-accent)' }}
+                                    className="p-6 md:p-8 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-lg space-y-4"
                                 >
                                     <div className="flex items-center justify-between">
-                                        <div className="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600">
-                                            <BookMarked size={20} />
+                                        <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)]">
+                                            <BookMarked size={20} strokeWidth={1.5} />
                                         </div>
-                                        <div className="flex items-center gap-4 text-xs font-bold text-[var(--text-dim)]/60">
-                                            <div className="flex items-center gap-1.5"><Star size={14} /> {repo.stars}</div>
-                                            <div className="flex items-center gap-1.5"><GitFork size={14} /> {repo.forks}</div>
+                                        <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)]">
+                                            <div className="flex items-center gap-1"><Star size={13} strokeWidth={1.5} /> {repo.stars}</div>
+                                            <div className="flex items-center gap-1"><GitFork size={13} strokeWidth={1.5} /> {repo.forks}</div>
                                         </div>
                                     </div>
-                                    <div className="space-y-2">
-                                        <h4 className="text-lg font-bold">{repo.name}</h4>
-                                        <p className="text-sm text-[var(--text-dim)] leading-relaxed">{repo.desc}</p>
+                                    <div className="space-y-1.5">
+                                        <h4 className="text-base font-bold tracking-appleHeading text-[var(--text-primary)]">{repo.name}</h4>
+                                        <p className="text-sm text-[var(--text-secondary)] font-light leading-relaxed">{repo.desc}</p>
                                     </div>
-                                    <div className="pt-4 border-t border-[var(--border-main)]">
-                                        <span className="text-xs font-bold text-indigo-600">{repo.lang}</span>
+                                    <div className="pt-3 border-t border-[var(--border-main)]">
+                                        <span className="text-xs font-semibold text-[var(--color-button-blue)]">{repo.lang}</span>
                                     </div>
                                 </motion.div>
                             ))}

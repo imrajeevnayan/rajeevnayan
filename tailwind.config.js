@@ -6,15 +6,36 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#ff385c',
-          deep: '#e00b41',
+          DEFAULT: '#2997ff',
+          deep: '#0066cc',
+          btn: '#0071e3',
+        },
+        apple: {
+          blue: '#2997ff',
+          deepBlue: '#0066cc',
+          btnBlue: '#0071e3',
+          graphite: '#1d1d1f',
+          slate: '#333333',
+          steel: '#474747',
+          fog: '#707070',
+          ash: '#858585',
+          cloud: '#f5f5f7',
+          bone: '#e2e2e5',
+          paper: '#ffffff',
+          ink: '#000000',
         }
       },
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['Inter', '"SF Pro Text"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
-        display: ['"Plus Jakarta Sans"', 'sans-serif'],
+        display: ['Inter', '"SF Pro Display"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
+      letterSpacing: {
+        appleDisplay: '-0.022em',
+        appleHeading: '-0.015em',
+        appleSubheading: '-0.011em',
+        appleBody: '-0.003em',
+      }
     },
   },
   plugins: [],

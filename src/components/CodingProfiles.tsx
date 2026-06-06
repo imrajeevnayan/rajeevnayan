@@ -9,7 +9,7 @@ const CodingProfiles = () => {
             url: 'https://leetcode.com/u/imrajeevnayan/',
             color: '#FFA116',
             statsImage: 'https://leetcard.jacoblin.cool/imrajeevnayan?theme=dark&font=Outfit&ext=activity',
-            desc: 'Solving complex algorithmic challenges with a focus on optimization and system performance.'
+            desc: 'Competitive Programming - 400+ problems solved on LeetCode with a focus on DSA, optimization, and system performance.'
         },
         {
             name: 'GeeksforGeeks',
@@ -17,67 +17,69 @@ const CodingProfiles = () => {
             url: 'https://www.geeksforgeeks.org/profile/imrajeevnayan',
             color: '#2F8D46',
             statsImage: 'https://gfgstatscard.vercel.app/imrajeevnayan',
-            desc: 'Contributing to computer science discussions and participating in global challenges.'
+            desc: 'Open Source Contributor - 350+ problems solved on GeeksforGeeks, contributing to computer science and data structures.'
         }
     ];
 
     return (
-        <section id="coding-profiles" className="py-32 md:py-48 bg-[var(--bg-main)]">
+        <section id="coding-profiles" className="py-20 md:py-28 bg-[var(--bg-main)]">
             <div className="section-container">
                 <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true }}
-                    className="space-y-4 mb-24"
+                    className="space-y-3 mb-8 md:mb-12"
                 >
                     <span className="badge-premium">Algorithmic Foundation</span>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter">Live <span className="text-gradient">Performance</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading text-[var(--text-primary)]">Live <span className="text-gradient">Performance</span></h2>
                 </motion.div>
-
+ 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {profiles.map((profile, i) => (
                         <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 15 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: i * 0.1, duration: 0.6 }}
-                            className="premium-card p-10 group"
+                            transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                            className="premium-card p-6 md:p-8 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-lg group flex flex-col justify-between"
                         >
-                            <div className="flex items-center justify-between mb-10">
-                                <div className="flex items-center gap-5">
-                                    <div 
-                                        className="w-12 h-12 rounded-xl flex items-center justify-center text-white transition-all group-hover:scale-110"
-                                        style={{ backgroundColor: `${profile.color}15`, border: `1px solid ${profile.color}20`, color: profile.color }}
+                            <div>
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className="flex items-center gap-4">
+                                        <div 
+                                            className="w-10 h-10 rounded-md flex items-center justify-center text-white transition-all group-hover:scale-105"
+                                            style={{ backgroundColor: `${profile.color}15`, border: `1px solid ${profile.color}20`, color: profile.color }}
+                                        >
+                                            {profile.name === 'LeetCode' ? <Trophy size={18} strokeWidth={1.5} /> : <Code2 size={18} strokeWidth={1.5} />}
+                                        </div>
+                                        <div>
+                                            <h3 className="text-lg font-bold tracking-appleHeading text-[var(--text-primary)]">{profile.name}</h3>
+                                            <span className="text-[10px] font-medium text-[var(--text-secondary)] tracking-wider uppercase">@{profile.username}</span>
+                                        </div>
+                                    </div>
+                                    <a 
+                                        href={profile.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--surface-card)] border border-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--color-button-blue)] hover:border-[var(--brand-accent)] transition-all duration-200"
                                     >
-                                        {profile.name === 'LeetCode' ? <Trophy size={22} /> : <Code2 size={22} />}
-                                    </div>
-                                    <div>
-                                        <h3 className="text-2xl font-black tracking-tight">{profile.name}</h3>
-                                        <span className="text-xs font-bold text-[var(--text-secondary)] opacity-70 tracking-widest uppercase">@{profile.username}</span>
-                                    </div>
+                                        <ExternalLink size={16} strokeWidth={1.5} />
+                                    </a>
                                 </div>
-                                <a 
-                                    href={profile.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-3 rounded-xl bg-[var(--bg-main)] border border-[var(--border-main)] hover:text-[var(--brand-accent)] hover:border-[var(--brand-accent)]/50 transition-all"
-                                >
-                                    <ExternalLink size={18} />
-                                </a>
+
+                                <div className="mb-6 overflow-hidden rounded-md border border-[var(--border-main)] bg-[var(--surface-card)] group-hover:border-[var(--brand-accent)] transition-all">
+                                    <img 
+                                        src={profile.statsImage} 
+                                        alt={`${profile.name} Stats`}
+                                        className="w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity"
+                                        loading="lazy"
+                                    />
+                                </div>
                             </div>
 
-                            <div className="mb-10 overflow-hidden rounded-2xl border border-[var(--border-main)] bg-[var(--bg-main)] group-hover:border-[var(--brand-accent)]/20 transition-all">
-                                <img 
-                                    src={profile.statsImage} 
-                                    alt={`${profile.name} Stats`}
-                                    className="w-full h-auto opacity-90 group-hover:opacity-100 transition-opacity"
-                                    loading="lazy"
-                                />
-                            </div>
-
-                            <p className="text-[13px] text-[var(--text-secondary)] leading-relaxed font-medium">
+                            <p className="text-sm text-[var(--text-secondary)] font-light leading-relaxed">
                                 {profile.desc}
                             </p>
                         </motion.div>
