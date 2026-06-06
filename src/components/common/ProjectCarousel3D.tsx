@@ -95,7 +95,7 @@ const ProjectCarousel3D = <T extends { id?: string | number }>({ projects, rende
       </div>
 
       {/* Navigation Buttons */}
-      <div className="absolute top-1/2 -translate-y-1/2 w-full max-w-7xl mx-auto flex justify-between px-4 z-50 pointer-events-none">
+      <div className="absolute top-1/2 -translate-y-1/2 w-full max-w-full mx-auto flex justify-between px-6 md:px-12 lg:px-20 z-50 pointer-events-none">
         <button
           onClick={handlePrev}
           className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-gray-800 dark:text-white transition-all hover:scale-110"

@@ -23,14 +23,14 @@ const Header = () => {
     <header className={`fixed top-0 left-0 w-full z-[100] transition-all duration-300 ${
       isScrolled ? 'glass-effect py-2.5' : 'bg-transparent py-4'
     }`}>
-      <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between h-7">
+      <nav className="max-w-full mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between h-7">
         <Link 
             to="hero" 
             smooth={true} 
             className="flex items-center gap-2 cursor-pointer group"
         >
-          <Rocket size={16} className="text-[var(--brand-accent)]" />
-          <span className="text-sm font-semibold tracking-tight text-[var(--text-primary)]">Rajeev Nayan</span>
+          <Rocket size={18} className="text-[var(--brand-accent)]" />
+          <span className="text-[15px] font-semibold tracking-tight text-[var(--text-primary)]">Rajeev Nayan</span>
         </Link>
 
         <div className="flex items-center gap-6">
@@ -42,7 +42,7 @@ const Header = () => {
                   smooth={true} 
                   spy={true}
                   offset={-60}
-                  className="text-xs font-normal text-[var(--text-primary)] opacity-80 hover:opacity-100 hover:text-[var(--brand-accent)] px-3 py-1 transition-all cursor-pointer"
+                  className="text-sm font-medium text-[var(--text-primary)] opacity-80 hover:opacity-100 hover:text-[var(--brand-accent)] px-3 py-1 transition-all cursor-pointer"
                 >
                   {item}
                 </Link>
@@ -54,19 +54,19 @@ const Header = () => {
               onClick={toggleTheme}
               className="text-[var(--text-primary)] opacity-60 hover:opacity-100 transition-opacity flex items-center"
             >
-              {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
             </button>
 
             <button 
               className="md:hidden flex items-center text-[var(--text-primary)]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={16} /> : <Menu size={16} />}
+              {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
 
             <a 
               href="mailto:imrajeevnayan@gmail.com" 
-              className="hidden sm:inline-flex px-3.5 py-1 bg-[var(--color-button-blue)] text-white text-[11px] font-medium rounded-full transition-all hover:bg-[var(--color-deep-link-blue)]"
+              className="hidden sm:inline-flex px-4 py-1.5 bg-[var(--color-button-blue)] text-white text-xs font-medium rounded-full transition-all hover:bg-[var(--color-deep-link-blue)]"
             >
               Contact
             </a>
