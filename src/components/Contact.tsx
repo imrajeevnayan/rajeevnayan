@@ -1,5 +1,5 @@
 import { useState, useRef, FormEvent } from 'react';
-import { Send, Loader2, Mail, Github, Linkedin, Phone } from 'lucide-react';
+import { Send, Loader2, Mail, Github, Linkedin, Phone, Trophy, Code2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 
@@ -36,7 +36,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28 bg-[var(--bg-main)] relative overflow-hidden">
+    <section id="contact" className="py-10 md:py-14 bg-[var(--bg-main)] relative overflow-hidden">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -59,10 +59,12 @@ const Contact = () => {
             
             <div className="space-y-3">
                {[
-                 { Icon: Mail, label: 'Professional Inquiry', value: 'rajeevnayan709@gmail.com', href: 'mailto:rajeevnayan709@gmail.com' },
-                 { Icon: Phone, label: 'Voice / WhatsApp', value: '+91-6200201018', href: 'tel:+916200201018' },
+                 { Icon: Mail, label: 'Professional Inquiry', value: 'imrajeevnayan@gmail.com', href: 'mailto:imrajeevnayan@gmail.com' },
+                 { Icon: Phone, label: 'Voice / WhatsApp', value: '+91-9155028525', href: 'tel:+919155028525' },
                  { Icon: Linkedin, label: 'LinkedIn Network', value: 'in/imrajeevnayan', href: 'https://linkedin.com/in/imrajeevnayan' },
-                 { Icon: Github, label: 'Technical Workspace', value: '@imrajeevnayan', href: 'https://github.com/imrajeevnayan' }
+                 { Icon: Github, label: 'Technical Workspace', value: 'github.com/imrajeevnayan', href: 'https://github.com/imrajeevnayan' },
+                 { Icon: Trophy, label: 'LeetCode Profile', value: 'leetcode.com/imrajeevnayan', href: 'https://leetcode.com/u/imrajeevnayan/' },
+                 { Icon: Code2, label: 'GeeksforGeeks Profile', value: 'geeksforgeeks.org/imrajeevnayan', href: 'https://www.geeksforgeeks.org/profile/imrajeevnayan' }
                ].map((item, i) => (
                  <a 
                     key={i} 

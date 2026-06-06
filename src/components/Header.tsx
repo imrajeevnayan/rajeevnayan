@@ -65,7 +65,7 @@ const Header = () => {
             </button>
 
             <a 
-              href="mailto:rajeevnayan709@gmail.com" 
+              href="mailto:imrajeevnayan@gmail.com" 
               className="hidden sm:inline-flex px-3.5 py-1 bg-[var(--color-button-blue)] text-white text-[11px] font-medium rounded-full transition-all hover:bg-[var(--color-deep-link-blue)]"
             >
               Contact

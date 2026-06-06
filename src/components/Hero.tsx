@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronRight, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, ChevronRight, Github, ExternalLink, Linkedin, Trophy, Code2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import profileImg from '../assets/profile.jpg';
 
@@ -120,11 +120,17 @@ const Hero = () => {
               </a>
               
               <div className="flex items-center gap-4 ml-0 sm:ml-6 pt-4 sm:pt-0 border-t sm:border-t-0 sm:border-l border-[var(--border-main)] sm:pl-6">
-                <a href="https://github.com/imrajeevnayan" target="_blank" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors">
+                <a href="https://github.com/imrajeevnayan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="GitHub">
                   <Github size={18} strokeWidth={1.5} />
                 </a>
-                <a href="https://linkedin.com/in/imrajeevnayan" target="_blank" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors font-medium text-xs flex items-center gap-1">
-                  LinkedIn <ExternalLink size={12} strokeWidth={1.5} />
+                <a href="https://linkedin.com/in/imrajeevnayan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="LinkedIn">
+                  <Linkedin size={18} strokeWidth={1.5} />
+                </a>
+                <a href="https://leetcode.com/u/imrajeevnayan/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="LeetCode">
+                  <Trophy size={18} strokeWidth={1.5} />
+                </a>
+                <a href="https://www.geeksforgeeks.org/profile/imrajeevnayan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="GeeksforGeeks">
+                  <Code2 size={18} strokeWidth={1.5} />
                 </a>
               </div>
             </motion.div>

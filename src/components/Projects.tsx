@@ -66,7 +66,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 md:py-28 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
+    <section id="projects" className="py-10 md:py-14 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
       <div className="section-container">
         <div className="max-w-2xl mb-8 md:mb-12">
           <span className="badge-premium mb-4">Case Studies</span>
@@ -78,7 +78,7 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-24 md:gap-32">
+        <div className="grid grid-cols-1 gap-16 md:gap-20">
           {caseStudies.map((project, idx) => {
             const activeTab = activeTabs[project.id] || 'features';
             return (

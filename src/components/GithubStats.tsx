@@ -9,7 +9,7 @@ const pinnedRepos = [
 
 const GithubStats = () => {
     return (
-        <section id="github" className="py-20 md:py-28 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
+        <section id="github" className="py-10 md:py-14 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
             <div className="section-container">
                 <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
                     <div className="lg:w-5/12 space-y-6">

@@ -53,7 +53,7 @@ const Architecture = () => {
   };
 
   return (
-    <section id="architecture" className="py-20 md:py-28 bg-[var(--surface-card)] border-y border-[var(--border-main)] relative overflow-hidden">
+    <section id="architecture" className="py-10 md:py-14 bg-[var(--surface-card)] border-y border-[var(--border-main)] relative overflow-hidden">
       <div className="section-container relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 15 }}

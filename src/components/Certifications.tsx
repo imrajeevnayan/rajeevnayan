@@ -21,7 +21,7 @@ const certifications = [
 
 const Certifications = () => {
     return (
-        <section id="certifications" className="py-20 md:py-28 bg-[var(--bg-main)] relative overflow-hidden">
+        <section id="certifications" className="py-10 md:py-14 bg-[var(--bg-main)] relative overflow-hidden">
              <div className="section-container relative z-10">
                 <motion.div 
                     initial={{ opacity: 0, y: 15 }}

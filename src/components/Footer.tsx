@@ -1,17 +1,18 @@
-import { Github, Linkedin, Instagram, ArrowUp, Code2, Mail, Rocket } from 'lucide-react';
+import { Github, Linkedin, Instagram, ArrowUp, Code2, Mail, Rocket, Trophy } from 'lucide-react';
 import { Link } from 'react-scroll';
 
 const Footer = () => {
     const socialLinks = [
         { Icon: Github, href: "https://github.com/imrajeevnayan", label: 'GitHub' },
         { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/", label: 'LinkedIn' },
-        { Icon: Mail, href: "mailto:rajeevnayan709@gmail.com", label: 'Email' },
+        { Icon: Mail, href: "mailto:imrajeevnayan@gmail.com", label: 'Email' },
+        { Icon: Trophy, href: "https://leetcode.com/u/imrajeevnayan/", label: 'LeetCode' },
         { Icon: Code2, href: "https://www.geeksforgeeks.org/profile/imrajeevnayan", label: 'GFG' },
         { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/", label: 'Instagram' },
     ];
 
     return (
-        <footer className="bg-[var(--surface-card)] py-20 md:py-24 border-t border-[var(--border-main)] relative overflow-hidden">
+        <footer className="bg-[var(--surface-card)] py-10 md:py-14 border-t border-[var(--border-main)] relative overflow-hidden">
             <div className="section-container relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
                     <div className="max-w-xs space-y-6">
@@ -61,7 +62,7 @@ const Footer = () => {
                             <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] opacity-60">Contact</h4>
                             <ul className="space-y-3">
                                 <li className="text-sm font-light text-[var(--text-secondary)]">Bengaluru, India</li>
-                                <li className="text-sm font-light text-[var(--color-deep-link-blue)] hover:underline cursor-pointer transition-colors break-all">rajeevnayan709@gmail.com</li>
+                                <li className="text-sm font-light text-[var(--color-deep-link-blue)] hover:underline cursor-pointer transition-colors break-all">imrajeevnayan@gmail.com</li>
                             </ul>
                         </div>
                     </div>

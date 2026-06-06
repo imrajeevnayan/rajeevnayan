@@ -19,7 +19,7 @@ const experiences = [
 
 const Experience = () => {
     return (
-    <section id="experience" className="py-20 md:py-28 bg-[var(--bg-main)]">
+    <section id="experience" className="py-10 md:py-14 bg-[var(--bg-main)]">
       <div className="section-container">
         <motion.div 
           initial={{ opacity: 0, y: 15 }}

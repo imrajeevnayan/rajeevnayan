@@ -81,7 +81,7 @@ const Blog = () => {
   }, []);
 
   return (
-    <section id="blog" className="py-20 md:py-28 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
+    <section id="blog" className="py-10 md:py-14 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
       <div className="section-container">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8 md:mb-12">
           <div className="space-y-3">
