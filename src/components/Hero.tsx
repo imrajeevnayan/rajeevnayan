@@ -105,7 +105,7 @@ const Hero = () => {
               variants={itemVariants}
               className="text-base md:text-[17px] text-[var(--text-secondary)] leading-[1.47] tracking-appleBody font-light max-w-2xl mb-10"
             >
-              I am <strong>Rajeev Nayan</strong> (also known as <strong>Rajeevnayan</strong> or <strong>RajeevNayan</strong>), a professional <strong>Java Developer</strong> and <strong>Software Engineer</strong> specializing in production-grade Spring Boot microservices, secure REST APIs, and distributed backend systems.
+              I am <strong>Rajeev Nayan</strong>, a professional <strong>Java Developer</strong> and <strong>Software Engineer</strong> specializing in production-grade Spring Boot microservices, secure REST APIs, and distributed backend systems.
             </motion.p>
 
             {/* CTA Group */}
