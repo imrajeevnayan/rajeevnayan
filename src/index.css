@@ -54,7 +54,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     font-size: 16px;
   }
   
@@ -110,3 +110,45 @@
     border: 1px solid rgba(var(--brand-accent-rgb), 0.2);
   }
 }
+
+/* 3D Background Overlay Support */
+.has-3d-bg {
+  background-color: transparent !important;
+}
+
+.has-3d-bg section,
+.has-3d-bg .absolute.inset-0.bg-\[var\(--bg-main\)\],
+.has-3d-bg [class*="bg-[var(--bg-main)]"],
+.has-3d-bg [class*="bg-main"] {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+.has-3d-bg section {
+  pointer-events: none !important;
+}
+
+.has-3d-bg section a,
+.has-3d-bg section button,
+.has-3d-bg section input,
+.has-3d-bg section textarea,
+.has-3d-bg section select,
+.has-3d-bg section p,
+.has-3d-bg section h1,
+.has-3d-bg section h2,
+.has-3d-bg section h3,
+.has-3d-bg section h4,
+.has-3d-bg section h5,
+.has-3d-bg section h6,
+.has-3d-bg section span,
+.has-3d-bg section img,
+.has-3d-bg section svg,
+.has-3d-bg section .premium-card,
+.has-3d-bg section .card,
+.has-3d-bg section form,
+.has-3d-bg section ul,
+.has-3d-bg section li,
+.has-3d-bg section select {
+  pointer-events: auto !important;
+}
+

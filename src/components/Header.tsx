@@ -3,6 +3,7 @@ import { Link } from 'react-scroll';
 import { Sun, Moon, Menu, X, Rocket } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useTheme from '../hooks/useTheme';
+import MotionToggle from './motion-toggle';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,7 +50,8 @@ const Header = () => {
              ))}
           </div>
 
-          <div className="flex items-center gap-4 border-l border-[var(--border-main)] pl-6 h-4">
+          <div className="flex items-center gap-4 border-l border-[var(--border-main)] pl-6 h-7">
+            <MotionToggle className="mr-2" />
             <button 
               onClick={toggleTheme}
               className="text-[var(--text-primary)] opacity-60 hover:opacity-100 transition-opacity flex items-center"

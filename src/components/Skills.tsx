@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
 import { Cpu, Globe, Database } from 'lucide-react';
+import { usePerfProfile } from '../hooks/use-perf-profile';
 
 const Skills = () => {
+  const { disable3D, ready } = usePerfProfile();
+  const show3D = ready && !disable3D;
+
   const skillGroups = [
     {
       icon: Cpu,
@@ -51,44 +55,72 @@ const Skills = () => {
           className="space-y-3 mb-8 md:mb-12"
         >
           <span className="badge-premium">Capabilities</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading">Tech <span className="text-gradient">Ecosystem</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading text-center md:text-left">Tech <span className="text-gradient">Ecosystem</span></h2>
         </motion.div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8"
-        >
-          {skillGroups.map((group, i) => (
-            <motion.div 
-              key={i}
-              variants={itemVariants}
-              className="premium-card p-8 md:p-10 flex flex-col h-full bg-[var(--surface-card)]"
-            >
-              <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)] mb-6">
-                <group.icon size={22} strokeWidth={1.5} />
-              </div>
+        {show3D ? (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="premium-card p-8 md:p-12 text-center max-w-2xl mx-auto backdrop-blur-md bg-[var(--surface-card)]/40 border border-[var(--border-main)] flex flex-col items-center gap-6"
+          >
+            <div className="w-16 h-16 rounded-full bg-[var(--brand-accent)]/10 flex items-center justify-center text-[var(--brand-accent)] animate-bounce">
+              <Cpu size={32} />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-xl md:text-2xl font-bold tracking-appleHeading text-[var(--text-primary)]">Interactive 3D Skills Keyboard</h3>
+              <p className="text-sm text-[var(--text-secondary)] font-light leading-relaxed max-w-md mx-auto">
+                Hover over or press any keycap on the 3D keyboard below to reveal my experience and capabilities in detail!
+              </p>
+            </div>
+            <div className="flex gap-4 text-xs text-[var(--text-muted)] mt-2">
+              <span className="flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[var(--brand-accent)]"></span> Hover Keycaps
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span> Press Keys
+              </span>
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div 
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+          >
+            {skillGroups.map((group, i) => (
+              <motion.div 
+                key={i}
+                variants={itemVariants}
+                className="premium-card p-8 md:p-10 flex flex-col h-full bg-[var(--surface-card)]"
+              >
+                <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)] mb-6">
+                  <group.icon size={22} strokeWidth={1.5} />
+                </div>
 
-              <div className="mb-8 space-y-2">
-                <h3 className="text-xl font-bold tracking-appleHeading text-[var(--text-primary)]">{group.title}</h3>
-                <p className="text-xs text-[var(--text-secondary)] font-light leading-relaxed">{group.desc}</p>
-              </div>
-              
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {group.skills.map((skill, j) => (
-                  <span 
-                    key={j}
-                    className="px-3 py-1 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-full text-xs font-normal text-[var(--text-secondary)] transition-all cursor-default hover:border-[var(--brand-accent)] hover:text-[var(--color-deep-link-blue)]"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                <div className="mb-8 space-y-2">
+                  <h3 className="text-xl font-bold tracking-appleHeading text-[var(--text-primary)]">{group.title}</h3>
+                  <p className="text-xs text-[var(--text-secondary)] font-light leading-relaxed">{group.desc}</p>
+                </div>
+                
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {group.skills.map((skill, j) => (
+                    <span 
+                      key={j}
+                      className="px-3 py-1 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-full text-xs font-normal text-[var(--text-secondary)] transition-all cursor-default hover:border-[var(--brand-accent)] hover:text-[var(--color-deep-link-blue)]"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );

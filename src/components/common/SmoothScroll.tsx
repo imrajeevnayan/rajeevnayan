@@ -1,27 +1,38 @@
-import { useEffect } from 'react';
+"use client";
 
+import React, { useEffect } from "react";
+import { ReactLenis, useLenis } from "lenis/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const SmoothScroll = () => {
+gsap.registerPlugin(ScrollTrigger);
+
+interface LenisProps {
+  children: React.ReactNode;
+}
+
+function SmoothScroll({ children }: LenisProps) {
+  const lenis = useLenis(() => ScrollTrigger.update());
+
   useEffect(() => {
-    // This is a simplified smooth scroll implementation using GSAP's ticker
-    // Since we couldn't install Lenis, we use this native-like approach 
-    // to ensure animations feel fluid when tied to scroll.
-    
-    // However, modern browsers already have decent smooth scrolling.
-    // We'll focus on syncing GSAP's ScrollTrigger with the native scroll.
-    
-    // If we wanted real interpolation, we'd need a library. 
-    // Given the constraints, we'll ensure all ScrollTriggers are properly updated.
-    
-    const handleScroll = () => {
-      // Manual update if needed
-    };
+    if (!lenis) return;
+    const raf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(raf);
+    gsap.ticker.lagSmoothing(0);
+    return () => gsap.ticker.remove(raf);
+  }, [lenis]);
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  return null;
-};
+  return (
+    <ReactLenis
+      root
+      autoRaf={false}
+      options={{
+        duration: 1.5,
+      }}
+    >
+      {children}
+    </ReactLenis>
+  );
+}
 
 export default SmoothScroll;
