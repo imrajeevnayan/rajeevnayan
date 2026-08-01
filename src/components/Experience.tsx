@@ -9,10 +9,10 @@ const experiences = [
     period: "February 2025 – August 2025",
     desc: "Developed and deployed production-ready Spring Boot microservices, secured RESTful APIs, and integrated dynamic React frontends.",
     points: [
-      "Developed and deployed 4 production-grade Spring Boot microservices with React.js frontends containerized via Docker Compose; reduced API response latency by 30% through Redis caching and Hibernate N+1 query optimization.",
-      "Designed and implemented 15+ secure RESTful API endpoints using Spring Security, JWT authentication, and OAuth2 authorization; sustained 5,000+ daily requests at 99.9% uptime across AWS staging and production environments.",
-      "Automated CI/CD pipelines using Jenkins and GitHub Actions with SonarQube quality gates; accelerated release cycles by 25% and eliminated post-deployment defects through cross-functional team collaboration.",
-      "Maintained 80%+ unit and integration test coverage using JUnit and Mockito; collaborated as core developer and reviewer in a 6-member Agile Scrum team."
+      "Reduced API response latency by 30% via Redis caching and Hibernate N+1 query optimization across 4 production-grade Spring Boot microservices containerized via Docker Compose.",
+      "Secured 15+ RESTful API endpoints using Spring Security, JWT authentication, and OAuth2 authorization; sustained 5,000+ daily requests at 99.9% uptime across AWS staging and production environments.",
+      "Accelerated release cycles by 25% and eliminated post-deployment defects by automating CI/CD pipelines using Jenkins and GitHub Actions with SonarQube quality gates.",
+      "Achieved 80%+ unit and integration test coverage using JUnit and Mockito; collaborated as core developer and reviewer in a 6-member Agile Scrum team."
     ]
   }
 ];
