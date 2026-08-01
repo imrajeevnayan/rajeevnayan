@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Github, Linkedin, FileText, Terminal } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, FileText, Terminal, Play, Check } from 'lucide-react';
 
 const codeLines = [
   '  @Service',
@@ -20,22 +20,44 @@ const codeLines = [
   '  }'
 ];
 
+const compileLogs = [
+  '$ mvn clean package',
+  '[INFO] Scanning for projects...',
+  '[INFO] ----------------------------------------------------',
+  '[INFO] Building rajeev-nayan-backend 1.0.0-SNAPSHOT',
+  '[INFO] ----------------------------------------------------',
+  '[INFO] Compiling 4 source files to target/classes...',
+  '[INFO] Running spring boot unit tests with JUnit 5 & Mockito...',
+  '[INFO] Tests run: 18, Failures: 0, Errors: 0, Skipped: 0',
+  '[INFO] Packaging application jar...',
+  '[INFO] ----------------------------------------------------',
+  '[INFO] BUILD SUCCESS',
+  '[INFO] Total time:  1.820 s',
+  '[INFO] Finished at: 2026-08-01T23:12:00Z',
+  '[INFO] ----------------------------------------------------'
+];
+
 const IntelliJEditor = () => {
   const [typedLines, setTypedLines] = useState<string[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  
+  // Interactive Run States
+  const [isCompiling, setIsCompiling] = useState(false);
+  const [logIndex, setLogIndex] = useState(-1);
+  const [logs, setLogs] = useState<string[]>([]);
+  
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (currentLineIndex >= codeLines.length) return;
+    if (currentLineIndex >= codeLines.length || isCompiling) return;
 
     const line = codeLines[currentLineIndex];
-    let delay = 60; // default typing speed per char
+    let delay = 50;
 
-    // Pause on key elements for realism
-    if (line.trim().startsWith('@') && currentCharIndex === 0) delay = 400; // Annotation pause
-    if (line.trim().startsWith('public') && currentCharIndex === 0) delay = 300;
-    if (currentCharIndex === line.length) delay = 500; // Line end pause
+    if (line.trim().startsWith('@') && currentCharIndex === 0) delay = 350;
+    if (line.trim().startsWith('public') && currentCharIndex === 0) delay = 250;
+    if (currentCharIndex === line.length) delay = 450;
 
     const timer = setTimeout(() => {
       if (currentCharIndex < line.length) {
@@ -47,26 +69,48 @@ const IntelliJEditor = () => {
         });
         setCurrentCharIndex(prev => prev + 1);
       } else {
-        // Move to next line
         setCurrentLineIndex(prev => prev + 1);
         setCurrentCharIndex(0);
       }
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [currentLineIndex, currentCharIndex]);
+  }, [currentLineIndex, currentCharIndex, isCompiling]);
+
+  // Console compile animation logger loop
+  useEffect(() => {
+    if (!isCompiling || logIndex >= compileLogs.length) return;
+
+    const timer = setTimeout(() => {
+      setLogs(prev => [...prev, compileLogs[logIndex]]);
+      setLogIndex(prev => prev + 1);
+    }, logIndex === 0 ? 400 : 250);
+
+    return () => clearTimeout(timer);
+  }, [isCompiling, logIndex]);
 
   // Auto-scroll logic
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
-  }, [typedLines]);
+  }, [typedLines, logs]);
 
-  // Simple Java syntax highlighter helper
+  const handleRunCode = () => {
+    if (isCompiling) return;
+    setIsCompiling(true);
+    setLogs([]);
+    setLogIndex(0);
+  };
+
+  const resetEditor = () => {
+    setIsCompiling(false);
+    setLogs([]);
+    setLogIndex(-1);
+  };
+
   const highlightJava = (text: string) => {
     if (!text) return <span>&nbsp;</span>;
-    
     const parts = text.split(/(\s+)/);
     return parts.map((part, i) => {
       if (part.startsWith('@')) {
@@ -95,39 +139,84 @@ const IntelliJEditor = () => {
           <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
         </div>
         <span className="text-[10px] text-gray-400 font-sans flex items-center gap-1">
-          <Terminal size={10} className="text-orange-400" /> BackendEngineer.java
+          <Terminal size={10} className="text-orange-400" /> {isCompiling ? 'maven-console' : 'BackendEngineer.java'}
         </span>
-        <div className="w-8" />
+        <div className="flex items-center gap-2">
+          {isCompiling ? (
+            <button 
+              onClick={resetEditor}
+              className="text-[9px] font-sans text-gray-400 hover:text-white px-2 py-0.5 rounded border border-white/10 transition-colors"
+            >
+              Editor
+            </button>
+          ) : (
+            <button 
+              onClick={handleRunCode}
+              disabled={currentLineIndex < codeLines.length}
+              className={`flex items-center gap-1 text-[9px] font-sans px-2 py-0.5 rounded transition-all ${
+                currentLineIndex >= codeLines.length 
+                  ? 'bg-green-600/20 text-green-400 hover:bg-green-600/30 border border-green-500/30 cursor-pointer' 
+                  : 'bg-white/5 text-gray-500 border border-white/5 cursor-not-allowed'
+              }`}
+            >
+              <Play size={8} /> Run
+            </button>
+          )}
+        </div>
       </div>
 
-      {/* Editor Content Area */}
+      {/* Editor / Console Content Area */}
       <div ref={containerRef} className="h-64 p-4 overflow-y-auto bg-transparent">
-        {/* Line Numbers and Code Rows */}
-        <div className="flex">
-          {/* Gutter Line Numbers */}
-          <div className="text-right text-gray-600 select-none pr-4 border-r border-white/10 w-8">
-            {Array.from({ length: Math.max(14, typedLines.length + 1) }).map((_, idx) => (
-              <div key={idx}>{idx + 1}</div>
-            ))}
-          </div>
-
-          {/* Actual Code Area */}
-          <div className="pl-4 flex-1 whitespace-pre">
-            {typedLines.map((line, idx) => (
-              <div key={idx} className="flex">
-                {highlightJava(line)}
-                {idx === currentLineIndex && currentCharIndex < codeLines[currentLineIndex].length && (
-                  <span className="w-1.5 h-3 bg-orange-400 ml-0.5 animate-pulse" />
-                )}
+        {isCompiling ? (
+          /* Console logs compilation mode */
+          <div className="space-y-1.5 text-gray-400">
+            {logs.map((log, idx) => {
+              let colorClass = 'text-gray-400';
+              if (log.includes('SUCCESS')) colorClass = 'text-green-400 font-bold';
+              if (log.startsWith('$')) colorClass = 'text-blue-400';
+              return (
+                <div key={idx} className={colorClass}>
+                  {log}
+                </div>
+              );
+            })}
+            {logIndex < compileLogs.length && (
+              <div className="flex items-center gap-1.5 text-[var(--brand-accent)] animate-pulse">
+                <span className="w-1.5 h-3 bg-[var(--brand-accent)]" /> Compiling...
               </div>
-            ))}
-            {currentLineIndex >= codeLines.length && (
-              <div className="flex">
-                <span className="w-1.5 h-3 bg-orange-400 animate-pulse" />
+            )}
+            {logIndex >= compileLogs.length && (
+              <div className="mt-4 flex items-center gap-2 text-green-400 bg-green-500/10 p-2.5 rounded-xl border border-green-500/20 max-w-xs">
+                <Check size={14} /> <span>Application package ready for cloud launch!</span>
               </div>
             )}
           </div>
-        </div>
+        ) : (
+          /* Java source code typing mode */
+          <div className="flex">
+            <div className="text-right text-gray-600 select-none pr-4 border-r border-white/10 w-8">
+              {Array.from({ length: Math.max(14, typedLines.length + 1) }).map((_, idx) => (
+                <div key={idx}>{idx + 1}</div>
+              ))}
+            </div>
+
+            <div className="pl-4 flex-1 whitespace-pre">
+              {typedLines.map((line, idx) => (
+                <div key={idx} className="flex">
+                  {highlightJava(line)}
+                  {idx === currentLineIndex && currentCharIndex < codeLines[currentLineIndex].length && (
+                    <span className="w-1.5 h-3 bg-orange-400 ml-0.5 animate-pulse" />
+                  )}
+                </div>
+              ))}
+              {currentLineIndex >= codeLines.length && (
+                <div className="flex">
+                  <span className="w-1.5 h-3 bg-orange-400 animate-pulse" />
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -158,9 +247,7 @@ const Hero = () => {
       <div className="section-container relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Text & Branding details */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Identity Badge */}
             <span className="badge-premium inline-flex items-center px-4 py-1.5 rounded-full border border-[var(--border-main)] bg-[var(--surface-card)] text-xs text-[var(--color-button-blue)]">
               Java Backend Engineer
             </span>
@@ -173,7 +260,6 @@ const Hero = () => {
               Building scalable backend systems with Java, Spring Boot, Microservices, and Cloud technologies. Enforcing strong design patterns, API isolation, and database optimization workflows.
             </p>
 
-            {/* Live Metrics Showcase */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-lg border-y border-[var(--border-main)] py-4 my-6">
               <div>
                 <span className="text-xl md:text-2xl font-bold block text-[var(--text-primary)]">{stats.repos}</span>
@@ -193,7 +279,6 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Buttons Group */}
             <div className="flex flex-wrap gap-4 items-center">
               <a href="#projects" className="btn-primary flex items-center gap-2 group">
                 View Projects 
@@ -224,9 +309,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right IntelliJ Terminal & Avatar Card */}
           <div className="lg:col-span-5 flex flex-col items-center gap-8 justify-center">
-            {/* Circular Profile Avatar */}
             <div className="relative w-44 h-44 rounded-full p-[3px] bg-gradient-to-tr from-violet-600 via-pink-500 to-blue-500 shadow-xl hover:shadow-violet-500/20 hover:scale-[1.05] transition-all duration-500 group">
               <div className="w-full h-full rounded-full overflow-hidden bg-[var(--surface-card)]">
                 <img 
@@ -238,7 +321,6 @@ const Hero = () => {
               <div className="absolute inset-0 rounded-full bg-violet-600/10 blur-[10px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
             </div>
 
-            {/* IntelliJ Code typing card */}
             <IntelliJEditor />
           </div>
 
