@@ -1,14 +1,28 @@
 import { useState, useEffect } from 'react';
 
+type Theme = 'light' | 'dark';
+let globalTheme: Theme = 'dark';
+const listeners = new Set<(theme: Theme) => void>();
+
+if (typeof window !== 'undefined') {
+  const savedTheme = localStorage.getItem('theme') as Theme;
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    globalTheme = savedTheme;
+  } else {
+    globalTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+}
+
 const useTheme = () => {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) return savedTheme;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
-    return 'dark';
-  });
+  const [theme, setTheme] = useState<Theme>(globalTheme);
+
+  useEffect(() => {
+    const listener = (newTheme: Theme) => setTheme(newTheme);
+    listeners.add(listener);
+    return () => {
+      listeners.delete(listener);
+    };
+  }, []);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -23,7 +37,9 @@ const useTheme = () => {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+    const nextTheme = globalTheme === 'dark' ? 'light' : 'dark';
+    globalTheme = nextTheme;
+    listeners.forEach(listener => listener(nextTheme));
   };
 
   return { theme, toggleTheme };
