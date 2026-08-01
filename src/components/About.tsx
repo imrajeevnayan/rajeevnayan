@@ -1,105 +1,133 @@
 import { motion } from 'framer-motion';
-import { Layers, Code, Database, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Award, GraduationCap, Calendar, Milestone, ArrowRight } from 'lucide-react';
 
 const About = () => {
-  const highlights = [
+  const education = [
     {
-      icon: Layers,
-      title: "System Architecture",
-      desc: "Architecting resilient distributed systems and scalable microservice patterns for enterprise workloads."
+      degree: "Master of Computer Applications (MCA)",
+      institution: "Reva University",
+      period: "2022 - 2024",
+      grade: "CGPA: 8.5"
     },
     {
-      icon: Code,
-      title: "Backend Engineering",
-      desc: "Designing high-throughput APIs and robust server-side logic using modern Java and Spring ecosystems."
-    },
-    {
-      icon: Database,
-      title: "Data Optimization",
-      desc: "Engineering efficient data flows and high-performance storage solutions using PostgreSQL and Redis."
-    },
-    {
-      icon: ShieldCheck,
-      title: "Security & Scale",
-      desc: "Implementing secure-by-design principles and fault-tolerant patterns for mission-critical apps."
+      degree: "Bachelor of Computer Applications (BCA)",
+      institution: "Lalit Narayan Mithila University",
+      period: "2018 - 2021",
+      grade: "Percentage: 73%"
     }
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+  const milestones = [
+    {
+      year: "2024",
+      title: "Backend Engineering Intern",
+      desc: "Engineered scalable backend service APIs and optimized SQL database persistence models at scale."
+    },
+    {
+      year: "2023",
+      title: "Full-Stack Development Focus",
+      desc: "Built reactive web applications integrating React frontends with transactional Spring Boot backends."
+    },
+    {
+      year: "2022",
+      title: "DSA Foundation & Problem Solving",
+      desc: "Mastered data structures and algorithms, solving over 700+ coding problems on platforms like LeetCode and GeeksforGeeks."
     }
-  };
+  ];
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 15 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
-    }
-  };
+  const achievements = [
+    "Solved 700+ DSA problems (LeetCode, GFG)",
+    "Architected production-ready microservices with Spring Cloud",
+    "Designed and optimized DB queries, improving read latency by 40%",
+    "Built and containerized robust AI-driven RAG pipelines"
+  ];
 
   return (
-    <section id="about" className="py-10 md:py-14 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
+    <section id="about" className="py-16 md:py-24 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          <motion.div 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-5 space-y-8"
-          >
+          {/* Left Column: Biography & Achievements */}
+          <div className="lg:col-span-6 space-y-8">
             <div className="space-y-3">
-               <span className="badge-premium">Backend Specialist</span>
-               <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading text-[var(--text-primary)]">
-                 Java <span className="text-gradient">Engineer</span>
-               </h2>
+              <span className="badge-premium">Specialist Profile</span>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+                About <span className="text-gradient">Me</span>
+              </h2>
             </div>
 
-            <div className="space-y-5 text-sm md:text-[15px] text-[var(--text-secondary)] leading-[1.47] font-light max-w-xl">
-               <p>
-                  I am an MCA graduate and Java Backend Developer specializing in the Java & Spring Boot ecosystem. I focus on building production-grade microservices, secure REST APIs, and AI-powered RAG systems. My engineering approach is built on three pillars: <span className="text-[var(--text-primary)] font-medium">Clean Code, Reliability, and Performance.</span>
-               </p>
-               <p>
-                  With a strong DSA foundation of 700+ solved problems, I design clean APIs, optimize database operations using Hibernate and Redis, and automate CI/CD pipelines to build scalable, robust software solutions.
-               </p>
+            <div className="space-y-5 text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-light">
+              <p>
+                I am a dedicated <strong className="text-[var(--text-primary)] font-semibold">Java Backend Developer</strong> and MCA graduate. I specialize in designing and building scalable, secure, and high-performance server-side architectures using the <strong className="text-[var(--text-primary)] font-semibold">Java & Spring Boot ecosystem</strong>.
+              </p>
+              <p>
+                My software engineering philosophy revolves around writing clean, modular code, enforcing strict API security, and optimizing database transactions. Through deep focus on system design and database indexing, I construct resilient systems capable of handling production-grade traffic with ease.
+              </p>
             </div>
-            
-            <div className="pt-4">
-               <a href="#projects" className="btn-primary inline-flex items-center gap-2">
-                 Explore Case Studies <ArrowRight size={16} />
-               </a>
-            </div>
-          </motion.div>
 
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4"
-          >
-             {highlights.map((item, i) => (
-                <motion.div
-                  key={i}
-                  variants={cardVariants}
-                  className="premium-card p-6 md:p-8 bg-[var(--bg-main)] hover:bg-[var(--surface-card)]"
-                >
-                   <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)] mb-6">
-                      <item.icon size={22} strokeWidth={1.5} />
-                   </div>
-                   <h3 className="text-base font-semibold text-[var(--text-primary)] mb-2">{item.title}</h3>
-                   <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-light">
+            {/* Achievements Card list */}
+            <div className="space-y-4 pt-4">
+              <h3 className="text-base font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+                <Award size={18} className="text-[var(--brand-accent)]" /> Key Engineering Highlights
+              </h3>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[var(--text-secondary)] font-light">
+                {achievements.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2 bg-[var(--bg-main)] p-3 rounded-xl border border-[var(--border-main)] hover:border-[var(--brand-accent)] transition-all">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)] shrink-0 mt-1.5" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right Column: Timeline & Education */}
+          <div className="lg:col-span-6 space-y-10">
+            {/* Engineering Journey Timeline */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+                <Milestone size={18} className="text-[var(--brand-accent)]" /> Engineering Journey
+              </h3>
+              <div className="relative border-l border-[var(--border-main)] pl-6 ml-3 space-y-8">
+                {milestones.map((item, i) => (
+                  <div key={i} className="relative group">
+                    {/* Circle Node */}
+                    <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full border-2 border-[var(--brand-accent)] bg-[var(--surface-card)] transition-colors group-hover:bg-[var(--brand-accent)]" />
+                    <span className="text-[10px] font-bold text-[var(--color-button-blue)] uppercase tracking-wider block mb-1">
+                      {item.year}
+                    </span>
+                    <h4 className="font-bold text-sm text-[var(--text-primary)] tracking-tight mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-light">
                       {item.desc}
-                   </p>
-                </motion.div>
-             ))}
-          </motion.div>
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Academic Credentials */}
+            <div className="space-y-6">
+              <h3 className="text-lg font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+                <GraduationCap size={18} className="text-indigo-400" /> Academic Credentials
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {education.map((edu, i) => (
+                  <div key={i} className="p-5 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-2xl flex flex-col gap-2 hover:border-indigo-400 transition-all">
+                    <span className="text-[10px] text-indigo-400 font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Calendar size={12} /> {edu.period}
+                    </span>
+                    <h4 className="font-bold text-xs text-[var(--text-primary)] tracking-tight line-clamp-1">{edu.degree}</h4>
+                    <p className="text-[11px] text-[var(--text-secondary)] font-light leading-relaxed">{edu.institution}</p>
+                    <span className="text-[10px] font-semibold text-[var(--text-muted)] mt-auto pt-2 border-t border-[var(--border-main)]">{edu.grade}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+
         </div>
       </div>
     </section>

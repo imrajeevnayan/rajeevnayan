@@ -9,10 +9,10 @@ import CommandPalette from './components/common/CommandPalette';
 
 import Preloader from './components/preloader';
 import SmoothScroll from './components/common/SmoothScroll';
-import AnimatedBackground from './components/animated-background';
 import EasterEggs from './components/easter-eggs';
-import MotionNudge from './components/motion-nudge';
-import { usePerfProfile } from './hooks/use-perf-profile';
+import SpaceBackground from './components/SpaceBackground';
+
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 // Lazy load components for performance
 const Experience = lazy(() => import('./components/Experience'));
@@ -23,6 +23,7 @@ const Skills = lazy(() => import('./components/Skills'));
 
 const Projects = lazy(() => import('./components/Projects'));
 const Certifications = lazy(() => import('./components/Certifications'));
+const WhyHireMe = lazy(() => import('./components/WhyHireMe'));
 
 const Blog = lazy(() => import('./components/Blog'));
 const Contact = lazy(() => import('./components/Contact'));
@@ -36,16 +37,20 @@ const LoadingSpinner = () => (
 );
 
 function App() {
-  const { disable3D, ready } = usePerfProfile();
-  const show3D = ready && !disable3D;
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   return (
     <Preloader>
       <SmoothScroll>
-        <div className={`min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[var(--brand-accent)]/20 transition-colors duration-500 relative ${show3D ? "has-3d-bg" : ""}`}>
-          <AnimatedBackground />
+        <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[var(--brand-accent)]/20 transition-colors duration-500 relative">
+          <SpaceBackground />
+          <motion.div className="scroll-progress-bar" style={{ scaleX }} />
           <EasterEggs />
-          <MotionNudge />
           <CommandPalette />
           <ScrollToTop />
           
@@ -62,30 +67,39 @@ function App() {
                   <section id="about">
                     <About />
                   </section>
-                  <section id="experience">
-                    <Experience />
-                  </section>
-                  <section id="github">
-                    <GithubStats />
-                  </section>
-                  <section id="coding-profiles">
-                    <CodingProfiles />
-                  </section>
-                  <section id="architecture">
-                    <Architecture />
-                  </section>
 
                   <section id="skills">
                     <Skills />
+                  </section>
+
+                  <section id="experience">
+                    <Experience />
                   </section>
 
                   <section id="projects">
                     <Projects />
                   </section>
 
+                  <section id="architecture">
+                    <Architecture />
+                  </section>
+
+                  <section id="github">
+                    <GithubStats />
+                  </section>
+
+                  <section id="coding-profiles">
+                    <CodingProfiles />
+                  </section>
+
+                  <section id="why-hire-me">
+                    <WhyHireMe />
+                  </section>
+
                   <Suspense fallback={null}>
                     <Certifications />
                   </Suspense>
+
                   <Suspense fallback={null}>
                     <Blog />
                   </Suspense>

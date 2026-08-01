@@ -1,187 +1,249 @@
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronRight, Github, ExternalLink, Linkedin, Trophy, Code2 } from 'lucide-react';
-import { useEffect, useState } from 'react';
-import profileImg from '../assets/profile.jpg';
+import { ArrowRight, Github, Linkedin, FileText, Terminal } from 'lucide-react';
 
-const words = ["Java Backend Developer", "Spring Boot Specialist", "MCA Graduate", "AI/RAG Engineer"];
+const codeLines = [
+  '  @Service',
+  '  public class BackendEngineer {',
+  '  ',
+  '      private final String stack =',
+  '      "Java + Spring Boot + Microservices";',
+  '  ',
+  '      @Transactional',
+  '      public void buildScalableSystems(){',
+  '  ',
+  '          design();',
+  '          optimize();',
+  '          secure();',
+  '  ',
+  '      }',
+  '  }'
+];
 
-const Hero = () => {
-  const [displayText, setDisplayText] = useState('');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [loopNum, setLoopNum] = useState(0);
-  const [typingSpeed, setTypingSpeed] = useState(150);
+const IntelliJEditor = () => {
+  const [typedLines, setTypedLines] = useState<string[]>([]);
+  const [currentLineIndex, setCurrentLineIndex] = useState(0);
+  const [currentCharIndex, setCurrentCharIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleType = () => {
-      const i = loopNum % words.length;
-      const fullText = words[i];
+    if (currentLineIndex >= codeLines.length) return;
 
-      setDisplayText(isDeleting 
-        ? fullText.substring(0, displayText.length - 1) 
-        : fullText.substring(0, displayText.length + 1)
-      );
+    const line = codeLines[currentLineIndex];
+    let delay = 60; // default typing speed per char
 
-      setTypingSpeed(isDeleting ? 80 : 150);
-
-      if (!isDeleting && displayText === fullText) {
-        setTimeout(() => setIsDeleting(true), 2000);
-      } else if (isDeleting && displayText === '') {
-        setIsDeleting(false);
-        setLoopNum(loopNum + 1);
-      }
-    };
+    // Pause on key elements for realism
+    if (line.trim().startsWith('@') && currentCharIndex === 0) delay = 400; // Annotation pause
+    if (line.trim().startsWith('public') && currentCharIndex === 0) delay = 300;
+    if (currentCharIndex === line.length) delay = 500; // Line end pause
 
     const timer = setTimeout(() => {
-      handleType();
-    }, typingSpeed);
+      if (currentCharIndex < line.length) {
+        setTypedLines(prev => {
+          const next = [...prev];
+          if (!next[currentLineIndex]) next[currentLineIndex] = '';
+          next[currentLineIndex] += line[currentCharIndex];
+          return next;
+        });
+        setCurrentCharIndex(prev => prev + 1);
+      } else {
+        // Move to next line
+        setCurrentLineIndex(prev => prev + 1);
+        setCurrentCharIndex(0);
+      }
+    }, delay);
 
     return () => clearTimeout(timer);
-  }, [displayText, isDeleting, typingSpeed, loopNum]);
+  }, [currentLineIndex, currentCharIndex]);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.3
+  // Auto-scroll logic
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight;
+    }
+  }, [typedLines]);
+
+  // Simple Java syntax highlighter helper
+  const highlightJava = (text: string) => {
+    if (!text) return <span>&nbsp;</span>;
+    
+    const parts = text.split(/(\s+)/);
+    return parts.map((part, i) => {
+      if (part.startsWith('@')) {
+        return <span key={i} className="text-yellow-600 font-semibold">{part}</span>;
       }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-    }
-  };
-
-  const maskVariants = {
-    hidden: { clipPath: 'inset(0 100% 0 0)' },
-    visible: { 
-      clipPath: 'inset(0 0% 0 0)',
-      transition: { duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }
-    }
+      if (['public', 'class', 'private', 'final', 'void', 'new'].includes(part.trim())) {
+        return <span key={i} className="text-orange-500 font-semibold">{part}</span>;
+      }
+      if (part.trim().startsWith('"') && part.trim().endsWith('"')) {
+        return <span key={i} className="text-green-500">{part}</span>;
+      }
+      if (['stack', 'buildScalableSystems', 'design', 'optimize', 'secure'].includes(part.trim().replace(/\(\);?/, ''))) {
+        return <span key={i} className="text-purple-400">{part}</span>;
+      }
+      return <span key={i} className="text-gray-300">{part}</span>;
+    });
   };
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center bg-[var(--bg-main)] overflow-hidden pt-12">
-      {/* Background Canvas */}
+    <div className="w-full max-w-[500px] bg-black/60 backdrop-blur-md border border-white/10 rounded-lg shadow-[0_0_30px_rgba(99,102,241,0.15)] overflow-hidden font-mono text-[11px] leading-relaxed text-[#a9b7c6]">
+      {/* IDE Title Bar */}
+      <div className="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5">
+        <div className="flex items-center gap-1.5">
+          <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+          <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+        </div>
+        <span className="text-[10px] text-gray-400 font-sans flex items-center gap-1">
+          <Terminal size={10} className="text-orange-400" /> BackendEngineer.java
+        </span>
+        <div className="w-8" />
+      </div>
+
+      {/* Editor Content Area */}
+      <div ref={containerRef} className="h-64 p-4 overflow-y-auto bg-transparent">
+        {/* Line Numbers and Code Rows */}
+        <div className="flex">
+          {/* Gutter Line Numbers */}
+          <div className="text-right text-gray-600 select-none pr-4 border-r border-white/10 w-8">
+            {Array.from({ length: Math.max(14, typedLines.length + 1) }).map((_, idx) => (
+              <div key={idx}>{idx + 1}</div>
+            ))}
+          </div>
+
+          {/* Actual Code Area */}
+          <div className="pl-4 flex-1 whitespace-pre">
+            {typedLines.map((line, idx) => (
+              <div key={idx} className="flex">
+                {highlightJava(line)}
+                {idx === currentLineIndex && currentCharIndex < codeLines[currentLineIndex].length && (
+                  <span className="w-1.5 h-3 bg-orange-400 ml-0.5 animate-pulse" />
+                )}
+              </div>
+            ))}
+            {currentLineIndex >= codeLines.length && (
+              <div className="flex">
+                <span className="w-1.5 h-3 bg-orange-400 animate-pulse" />
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const Hero = () => {
+  const [stats, setStats] = useState({ repos: 32, followers: 12 });
+
+  useEffect(() => {
+    fetch('https://api.github.com/users/imrajeevnayan')
+      .then(res => {
+        if (!res.ok) throw new Error('API fetch failed');
+        return res.json();
+      })
+      .then(data => {
+        setStats({
+          repos: data.public_repos || 32,
+          followers: data.followers || 12
+        });
+      })
+      .catch(err => console.error(err));
+  }, []);
+
+  return (
+    <section id="hero" className="relative min-h-screen flex items-center bg-[var(--bg-main)] overflow-hidden pt-24 md:pt-32">
       <div className="absolute inset-0 bg-[var(--bg-main)] pointer-events-none" />
 
       <div className="section-container relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Text Content */}
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-7 order-2 lg:order-1 text-left lg:text-left"
-          >
+          {/* Left Text & Branding details */}
+          <div className="lg:col-span-7 space-y-6">
             {/* Identity Badge */}
-            <motion.div variants={itemVariants} className="mb-6 h-8">
-              <span className="badge-premium inline-flex items-center">
-                {displayText}
-                <span className="ml-1 w-[1.5px] h-3 bg-[var(--brand-accent)] animate-pulse" />
-              </span>
-            </motion.div>
+            <span className="badge-premium inline-flex items-center px-4 py-1.5 rounded-full border border-[var(--border-main)] bg-[var(--surface-card)] text-xs text-[var(--color-button-blue)]">
+              Java Backend Engineer
+            </span>
 
-            {/* Headline with Mask Reveal */}
-            <motion.div variants={itemVariants} className="mb-6">
-              <motion.h1 
-                variants={maskVariants}
-                className="text-4xl sm:text-6xl lg:text-[64px] leading-[1.07] font-bold tracking-appleDisplay text-[var(--text-primary)]"
-              >
-                Architecting the <br />
-                <span className="text-gradient">Backbone</span> of Scale
-              </motion.h1>
-            </motion.div>
+            <h1 className="text-4xl sm:text-6xl lg:text-[72px] leading-[1.05] font-extrabold tracking-tight text-[var(--text-primary)]">
+              Rajeev Nayan
+            </h1>
 
-            {/* Impactful Tagline */}
-            <motion.p 
-              variants={itemVariants}
-              className="text-base md:text-[17px] text-[var(--text-secondary)] leading-[1.47] tracking-appleBody font-light max-w-2xl mb-10"
-            >
-              I am <strong>Rajeev Nayan</strong>, a professional <strong>Java Developer</strong> and <strong>Software Engineer</strong> specializing in production-grade Spring Boot microservices, secure REST APIs, and distributed backend systems.
-            </motion.p>
+            <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed font-light max-w-xl">
+              Building scalable backend systems with Java, Spring Boot, Microservices, and Cloud technologies. Enforcing strong design patterns, API isolation, and database optimization workflows.
+            </p>
 
-            {/* CTA Group */}
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-4 items-center">
+            {/* Live Metrics Showcase */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-lg border-y border-[var(--border-main)] py-4 my-6">
+              <div>
+                <span className="text-xl md:text-2xl font-bold block text-[var(--text-primary)]">{stats.repos}</span>
+                <span className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-light">Repositories</span>
+              </div>
+              <div className="border-l border-[var(--border-main)] pl-4">
+                <span className="text-xl md:text-2xl font-bold block text-[var(--text-primary)]">{stats.followers}</span>
+                <span className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-light">Followers</span>
+              </div>
+              <div className="border-l border-[var(--border-main)] pl-4">
+                <span className="text-xl md:text-2xl font-bold block text-[var(--text-primary)]">1,200+</span>
+                <span className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-light">Contributions</span>
+              </div>
+              <div className="border-l border-[var(--border-main)] pl-4">
+                <span className="text-xl md:text-2xl font-bold block text-[var(--text-primary)]">6</span>
+                <span className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-light">Featured Projects</span>
+              </div>
+            </div>
+
+            {/* Buttons Group */}
+            <div className="flex flex-wrap gap-4 items-center">
               <a href="#projects" className="btn-primary flex items-center gap-2 group">
                 View Projects 
                 <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#contact" className="btn-secondary flex items-center gap-2 group">
-                Get in Touch
-                <ChevronRight size={16} strokeWidth={1.5} className="group-hover:translate-x-1 transition-transform opacity-50" />
+              <a 
+                href="https://github.com/imrajeevnayan" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-secondary flex items-center gap-2"
+              >
+                <Github size={16} /> GitHub
               </a>
-              
-              <div className="flex items-center gap-4 ml-0 sm:ml-6 pt-4 sm:pt-0 border-t sm:border-t-0 sm:border-l border-[var(--border-main)] sm:pl-6">
-                <a href="https://github.com/imrajeevnayan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="GitHub">
-                  <Github size={18} strokeWidth={1.5} />
-                </a>
-                <a href="https://linkedin.com/in/imrajeevnayan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="LinkedIn">
-                  <Linkedin size={18} strokeWidth={1.5} />
-                </a>
-                <a href="https://leetcode.com/u/imrajeevnayan/" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="LeetCode">
-                  <Trophy size={18} strokeWidth={1.5} />
-                </a>
-                <a href="https://www.geeksforgeeks.org/profile/imrajeevnayan" target="_blank" rel="noopener noreferrer" className="text-[var(--text-secondary)] hover:text-[var(--brand-accent)] transition-colors" title="GeeksforGeeks">
-                  <Code2 size={18} strokeWidth={1.5} />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Display Picture (DP) */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
-            className="lg:col-span-5 order-1 lg:order-2"
-          >
-            <div className="relative aspect-square w-[70%] sm:w-3/4 lg:w-[90%] max-w-[280px] sm:max-w-[340px] mx-auto">
-               {/* Border vitrine container */}
-               <div className="relative h-full w-full rounded-lg overflow-hidden bg-white border border-[var(--border-main)] transition-all duration-300">
-                  <img 
-                    src={profileImg} 
-                    alt="Rajeev Nayan" 
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                  
-                  {/* Subtle Light Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-graphite)]/10 via-transparent to-transparent pointer-events-none" />
-               </div>
-
-               {/* Experience Badge */}
-               <motion.div 
-                 initial={{ opacity: 0, scale: 0.9 }}
-                 animate={{ opacity: 1, scale: 1 }}
-                 transition={{ delay: 1.2 }}
-                 className="absolute -bottom-4 -right-4 bg-white dark:bg-[var(--surface-card)] px-4 py-3 rounded-lg border border-[var(--border-main)] hidden sm:block"
-               >
-                  <div className="text-2xl font-bold text-[var(--color-deep-link-blue)]">700+</div>
-                  <div className="text-[9px] font-semibold uppercase tracking-wider text-[var(--text-secondary)]">DSA Problems <br />Solved</div>
-               </motion.div>
+              <a 
+                href="https://linkedin.com/in/imrajeevnayan" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-secondary flex items-center gap-2"
+              >
+                <Linkedin size={16} /> LinkedIn
+              </a>
+              <a 
+                href="mailto:imrajeevnayan@gmail.com" 
+                className="btn-secondary flex items-center gap-2 hover:text-[var(--brand-accent)] transition-colors"
+              >
+                <FileText size={16} /> Contact Resume
+              </a>
             </div>
-          </motion.div>
+          </div>
+
+          {/* Right IntelliJ Terminal & Avatar Card */}
+          <div className="lg:col-span-5 flex flex-col items-center gap-8 justify-center">
+            {/* Circular Profile Avatar */}
+            <div className="relative w-32 h-32 rounded-full p-[3px] bg-gradient-to-tr from-violet-600 via-pink-500 to-blue-500 shadow-xl hover:shadow-violet-500/20 hover:scale-[1.05] transition-all duration-500 group">
+              <div className="w-full h-full rounded-full overflow-hidden bg-[var(--surface-card)]">
+                <img 
+                  src="https://github.com/imrajeevnayan.png" 
+                  alt="Rajeev Nayan" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
+              <div className="absolute inset-0 rounded-full bg-violet-600/10 blur-[10px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            </div>
+
+            {/* IntelliJ Code typing card */}
+            <IntelliJEditor />
+          </div>
 
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5"
-      >
-        <span className="text-[9px] uppercase tracking-[0.25em] font-medium text-[var(--text-secondary)]">Scroll</span>
-        <div className="w-[1px] h-8 bg-gradient-to-b from-[var(--brand-accent)] to-transparent" />
-      </motion.div>
     </section>
   );
 };
