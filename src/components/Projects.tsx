@@ -197,13 +197,13 @@ const Projects = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {caseStudies.map((project) => (
+          {caseStudies.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
               onClick={() => {
                 setSelectedProject(project);
                 setActiveTab('overview');
@@ -211,7 +211,7 @@ const Projects = () => {
               }}
               className="group relative rounded-xl overflow-hidden border border-[var(--border-main)] bg-[var(--surface-card)] cursor-pointer hover:border-[var(--brand-accent)] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col h-[280px]"
             >
-              <div className="relative w-full h-full overflow-hidden flex-1">
+              <div className="relative w-full h-full overflow-hidden flex-1 group-hover:scale-105 transition-transform duration-500">
                 <ScrollingPreview
                   src={project.image}
                   alt={project.title}

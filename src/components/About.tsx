@@ -84,10 +84,17 @@ const About = () => {
               </h3>
               <div className="relative border-l border-[var(--border-main)] pl-6 ml-3 space-y-8">
                 {milestones.map((item, i) => (
-                  <div key={i} className="relative group">
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.1 }}
+                    className="relative group"
+                  >
                     {/* Circle Node */}
                     <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full border-2 border-[var(--brand-accent)] bg-[var(--surface-card)] transition-colors group-hover:bg-[var(--brand-accent)]" />
-                    <span className="text-[10px] font-bold text-[var(--color-button-blue)] uppercase tracking-wider block mb-1">
+                    <span className="text-[10px] font-bold text-[#10b981] uppercase tracking-wider block mb-1">
                       {item.year}
                     </span>
                     <h4 className="font-bold text-sm text-[var(--text-primary)] tracking-tight mb-1">
@@ -96,7 +103,7 @@ const About = () => {
                     <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-light">
                       {item.desc}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>

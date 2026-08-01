@@ -102,8 +102,12 @@ const Skills = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               {activeCategory.skills.map((skill, index) => (
-                <div 
+                <motion.div 
                   key={index} 
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
                   className="p-5 bg-white/5 border border-white/5 hover:border-[#10b981]/30 rounded-xl transition-all flex gap-4 items-start group"
                 >
                   <div className="w-2 h-2 rounded-full bg-[#10b981] shrink-0 mt-1.5 animate-pulse" />
@@ -115,7 +119,7 @@ const Skills = () => {
                       {skill.desc}
                     </p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>

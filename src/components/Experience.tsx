@@ -42,7 +42,7 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="premium-card p-8 md:p-10 bg-[var(--surface-card)]"
+              className="premium-card p-8 md:p-10 bg-[var(--surface-card)] hover:-translate-y-1 hover:border-[#10b981]/30 transition-all duration-300"
             >
               <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-8">
                 <div className="flex gap-4 items-start">
