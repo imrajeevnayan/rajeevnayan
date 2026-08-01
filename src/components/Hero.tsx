@@ -10,11 +10,11 @@ const codeLines = [
   '      "Java + Spring Boot + Microservices";',
   '  ',
   '      @Transactional',
-  '      public void buildScalableSystems(){',
+  '      public void buildSystems(){',
   '  ',
-  '          design();',
-  '          optimize();',
   '          secure();',
+  '          optimize();',
+  '          scale();',
   '  ',
   '      }',
   '  }'
@@ -42,7 +42,6 @@ const IntelliJEditor = () => {
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   
-  // Interactive Run States
   const [isCompiling, setIsCompiling] = useState(false);
   const [logIndex, setLogIndex] = useState(-1);
   const [logs, setLogs] = useState<string[]>([]);
@@ -77,7 +76,6 @@ const IntelliJEditor = () => {
     return () => clearTimeout(timer);
   }, [currentLineIndex, currentCharIndex, isCompiling]);
 
-  // Console compile animation logger loop
   useEffect(() => {
     if (!isCompiling || logIndex >= compileLogs.length) return;
 
@@ -89,7 +87,6 @@ const IntelliJEditor = () => {
     return () => clearTimeout(timer);
   }, [isCompiling, logIndex]);
 
-  // Auto-scroll logic
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
@@ -122,7 +119,7 @@ const IntelliJEditor = () => {
       if (part.trim().startsWith('"') && part.trim().endsWith('"')) {
         return <span key={i} className="text-green-500">{part}</span>;
       }
-      if (['stack', 'buildScalableSystems', 'design', 'optimize', 'secure'].includes(part.trim().replace(/\(\);?/, ''))) {
+      if (['stack', 'buildSystems', 'secure', 'optimize', 'scale'].includes(part.trim().replace(/\(\);?/, ''))) {
         return <span key={i} className="text-purple-400">{part}</span>;
       }
       return <span key={i} className="text-gray-300">{part}</span>;
@@ -130,7 +127,7 @@ const IntelliJEditor = () => {
   };
 
   return (
-    <div className="w-full max-w-[500px] bg-black/60 backdrop-blur-md border border-white/10 rounded-lg shadow-[0_0_30px_rgba(99,102,241,0.15)] overflow-hidden font-mono text-[11px] leading-relaxed text-[#a9b7c6]">
+    <div className="w-full bg-black/60 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_0_30px_rgba(99,102,241,0.15)] overflow-hidden font-mono text-[11px] leading-relaxed text-[#a9b7c6] mt-4">
       {/* IDE Title Bar */}
       <div className="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5">
         <div className="flex items-center gap-1.5">
@@ -145,7 +142,7 @@ const IntelliJEditor = () => {
           {isCompiling ? (
             <button 
               onClick={resetEditor}
-              className="text-[9px] font-sans text-gray-400 hover:text-white px-2 py-0.5 rounded border border-white/10 transition-colors"
+              className="text-[9px] font-sans text-gray-400 hover:text-white px-2 py-0.5 rounded border border-white/10 transition-colors cursor-pointer"
             >
               Editor
             </button>
@@ -165,11 +162,10 @@ const IntelliJEditor = () => {
         </div>
       </div>
 
-      {/* Editor / Console Content Area */}
-      <div ref={containerRef} className="h-64 p-4 overflow-y-auto bg-transparent">
+      {/* Editor Content Area */}
+      <div ref={containerRef} className="h-44 p-4 overflow-y-auto bg-transparent">
         {isCompiling ? (
-          /* Console logs compilation mode */
-          <div className="space-y-1.5 text-gray-400">
+          <div className="space-y-1 text-gray-400">
             {logs.map((log, idx) => {
               let colorClass = 'text-gray-400';
               if (log.includes('SUCCESS')) colorClass = 'text-green-400 font-bold';
@@ -185,17 +181,11 @@ const IntelliJEditor = () => {
                 <span className="w-1.5 h-3 bg-[var(--brand-accent)]" /> Compiling...
               </div>
             )}
-            {logIndex >= compileLogs.length && (
-              <div className="mt-4 flex items-center gap-2 text-green-400 bg-green-500/10 p-2.5 rounded-xl border border-green-500/20 max-w-xs">
-                <Check size={14} /> <span>Application package ready for cloud launch!</span>
-              </div>
-            )}
           </div>
         ) : (
-          /* Java source code typing mode */
           <div className="flex">
             <div className="text-right text-gray-600 select-none pr-4 border-r border-white/10 w-8">
-              {Array.from({ length: Math.max(14, typedLines.length + 1) }).map((_, idx) => (
+              {Array.from({ length: Math.max(10, typedLines.length + 1) }).map((_, idx) => (
                 <div key={idx}>{idx + 1}</div>
               ))}
             </div>
@@ -247,19 +237,21 @@ const Hero = () => {
       <div className="section-container relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
+          {/* Left Column: Premium Recruiter Header */}
           <div className="lg:col-span-7 space-y-6">
             <span className="badge-premium inline-flex items-center px-4 py-1.5 rounded-full border border-[var(--border-main)] bg-[var(--surface-card)] text-xs text-[var(--color-button-blue)]">
-              Java Backend Engineer
+              Java Backend Specialist
             </span>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-[72px] leading-[1.05] font-extrabold tracking-tight text-[var(--text-primary)]">
-              Rajeev Nayan
+            <h1 className="text-4xl sm:text-6xl lg:text-[64px] leading-[1.1] font-extrabold tracking-tight text-[var(--text-primary)]">
+              Java Backend Engineer building scalable distributed systems.
             </h1>
 
             <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed font-light max-w-xl">
-              Building scalable backend systems with Java, Spring Boot, Microservices, and Cloud technologies. Enforcing strong design patterns, API isolation, and database optimization workflows.
+              Designing secure, high-performance backend platforms using Java, Spring Boot, Microservices, and Cloud technologies.
             </p>
 
+            {/* Live Metrics */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-lg border-y border-[var(--border-main)] py-4 my-6">
               <div>
                 <span className="text-xl md:text-2xl font-bold block text-[var(--text-primary)]">{stats.repos}</span>
@@ -275,10 +267,11 @@ const Hero = () => {
               </div>
               <div className="border-l border-[var(--border-main)] pl-4">
                 <span className="text-xl md:text-2xl font-bold block text-[var(--text-primary)]">6</span>
-                <span className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-light">Featured Projects</span>
+                <span className="text-[10px] text-[var(--text-secondary)] uppercase tracking-wider font-light">Case Studies</span>
               </div>
             </div>
 
+            {/* CTAs */}
             <div className="flex flex-wrap gap-4 items-center">
               <a href="#projects" className="btn-primary flex items-center gap-2 group">
                 View Projects 
@@ -309,18 +302,40 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex flex-col items-center gap-8 justify-center">
-            <div className="relative w-44 h-44 rounded-full p-[3px] bg-gradient-to-tr from-violet-600 via-pink-500 to-blue-500 shadow-xl hover:shadow-violet-500/20 hover:scale-[1.05] transition-all duration-500 group">
-              <div className="w-full h-full rounded-full overflow-hidden bg-[var(--surface-card)]">
-                <img 
-                  src="https://github.com/imrajeevnayan.png" 
-                  alt="Rajeev Nayan" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
+          {/* Right Column: Identity Card & IntelliJ */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            
+            {/* Developer Identity Card */}
+            <div className="relative p-6 bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl shadow-xl overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-violet-600/10 via-pink-500/10 to-blue-500/10 opacity-50 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10 flex items-center gap-5">
+                <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-tr from-violet-500 to-pink-500 shrink-0">
+                  <img 
+                    src="https://github.com/imrajeevnayan.png" 
+                    alt="Rajeev Nayan" 
+                    className="w-full h-full rounded-full object-cover"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-lg font-bold text-white tracking-tight">Rajeev Nayan</h3>
+                  <p className="text-xs text-[var(--text-secondary)]">Java Backend Engineer</p>
+                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-green-500/10 border border-green-500/20 text-[9px] font-semibold text-green-400 uppercase tracking-wider">
+                    🟢 Open to Backend Opportunities
+                  </span>
+                </div>
               </div>
-              <div className="absolute inset-0 rounded-full bg-violet-600/10 blur-[10px] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+              {/* Technology Badges */}
+              <div className="relative z-10 flex flex-wrap gap-2 mt-5 border-t border-white/5 pt-4">
+                {['Java', 'Spring Boot', 'Microservices', 'Docker', 'PostgreSQL'].map(tech => (
+                  <span key={tech} className="px-2.5 py-0.5 bg-white/5 border border-white/10 text-[9px] font-semibold text-gray-300 rounded-full">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
 
+            {/* IntelliJ Console Window */}
             <IntelliJEditor />
           </div>
 
