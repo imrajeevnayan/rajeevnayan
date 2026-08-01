@@ -32,7 +32,6 @@ const pinnedRepos = [
 
 const GithubStats = () => {
   const [profile, setProfile] = useState<GitHubProfile>(fallbackProfile);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch('https://api.github.com/users/imrajeevnayan')
@@ -50,11 +49,9 @@ const GithubStats = () => {
           html_url: data.html_url,
           bio: data.bio || fallbackProfile.bio
         });
-        setLoading(false);
       })
       .catch(err => {
         console.error(err);
-        setLoading(false);
       });
   }, []);
 
