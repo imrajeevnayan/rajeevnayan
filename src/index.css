@@ -26,8 +26,8 @@
   --text-primary: var(--color-graphite);
   --text-secondary: var(--color-slate);
   --text-muted: var(--color-steel);
-  --brand-accent: var(--color-apple-blue);
-  --brand-accent-rgb: 41, 151, 255;
+  --brand-accent: #10b981;
+  --brand-accent-rgb: 16, 185, 129;
   --border-main: rgba(29, 29, 31, 0.08); /* Graphite with opacity */
 
   --shadow-sm: none;
@@ -45,8 +45,8 @@
   --text-primary: #f5f5f7;
   --text-secondary: #86868b;
   --text-muted: #6e6e73;
-  --brand-accent: var(--color-apple-blue);
-  --brand-accent-rgb: 41, 151, 255;
+  --brand-accent: #10b981;
+  --brand-accent-rgb: 16, 185, 129;
   --border-main: rgba(255, 255, 255, 0.05);
   --glass-bg: rgba(3, 0, 20, 0.7);
   --glass-border: rgba(255, 255, 255, 0.04);
