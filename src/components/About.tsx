@@ -5,15 +5,9 @@ const About = () => {
   const education = [
     {
       degree: "Master of Computer Applications (MCA)",
-      institution: "Reva University",
+      institution: "Dr. A.P.J. Abdul Kalam Technical University",
       period: "2022 - 2024",
-      grade: "CGPA: 8.5"
-    },
-    {
-      degree: "Bachelor of Computer Applications (BCA)",
-      institution: "Lalit Narayan Mithila University",
-      period: "2018 - 2021",
-      grade: "Percentage: 73%"
+      grade: "CGPA: 8.5/10"
     }
   ];
 

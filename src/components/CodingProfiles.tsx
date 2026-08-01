@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Trophy, Code2, CheckCircle2 } from 'lucide-react';
 
 const CodingProfiles = () => {
-    const [lcStats, setLcStats] = useState({ solved: 430, easy: 180, medium: 210, hard: 40, ranking: 85000 });
-    const [gfgStats, setGfgStats] = useState({ solved: 360, score: 1420, accuracy: '82%' });
+    const [lcStats, setLcStats] = useState({ solved: 550, easy: 210, medium: 280, hard: 60, ranking: 45000 });
+    const [gfgStats, setGfgStats] = useState({ solved: 550, score: 1780, accuracy: '84%' });
 
     useEffect(() => {
         // Fetch LeetCode stats dynamically

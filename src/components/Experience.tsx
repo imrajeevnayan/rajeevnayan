@@ -3,16 +3,16 @@ import { Briefcase, Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
   {
-    role: "Java Developer Intern",
-    company: "Jspider Private Limited",
+    role: "Full Stack Java Developer Intern",
+    company: "Role – Full Stack Java Developer",
     location: "Bengaluru, India",
-    period: "Feb 2025 - Aug 2025",
-    desc: "Developed production-grade Spring Boot microservices, secure REST APIs, and automated deployment pipelines.",
+    period: "February 2025 – August 2025",
+    desc: "Developed and deployed production-ready Spring Boot microservices, secured RESTful APIs, and integrated dynamic React frontends.",
     points: [
-      "Launched and deployed 4 Spring Boot microservices with Docker Compose; reduced API latency by 30% through Redis caching and Hibernate query optimization.",
-      "Engineered 15+ secure REST endpoints using Spring Security, JWT, and OAuth2; sustained 5,000+ daily requests at 99.9% uptime across staging and production environments.",
-      "Automated CI/CD pipeline with Jenkins and GitHub Actions, integrating SonarQube quality gates, cutting release cycle time by 25% and reducing post-deployment defects.",
-      "Maintained 80%+ unit test coverage using JUnit 5 and Mockito in a 6-member Agile Scrum team following 2-week sprints."
+      "Developed and deployed 4 production-grade Spring Boot microservices with React.js frontends containerized via Docker Compose; reduced API response latency by 30% through Redis caching and Hibernate N+1 query optimization.",
+      "Designed and implemented 15+ secure RESTful API endpoints using Spring Security, JWT authentication, and OAuth2 authorization; sustained 5,000+ daily requests at 99.9% uptime across AWS staging and production environments.",
+      "Automated CI/CD pipelines using Jenkins and GitHub Actions with SonarQube quality gates; accelerated release cycles by 25% and eliminated post-deployment defects through cross-functional team collaboration.",
+      "Maintained 80%+ unit and integration test coverage using JUnit and Mockito; collaborated as core developer and reviewer in a 6-member Agile Scrum team."
     ]
   }
 ];

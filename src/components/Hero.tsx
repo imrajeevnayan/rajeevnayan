@@ -227,7 +227,7 @@ const Hero = () => {
           {/* Right IntelliJ Terminal & Avatar Card */}
           <div className="lg:col-span-5 flex flex-col items-center gap-8 justify-center">
             {/* Circular Profile Avatar */}
-            <div className="relative w-32 h-32 rounded-full p-[3px] bg-gradient-to-tr from-violet-600 via-pink-500 to-blue-500 shadow-xl hover:shadow-violet-500/20 hover:scale-[1.05] transition-all duration-500 group">
+            <div className="relative w-44 h-44 rounded-full p-[3px] bg-gradient-to-tr from-violet-600 via-pink-500 to-blue-500 shadow-xl hover:shadow-violet-500/20 hover:scale-[1.05] transition-all duration-500 group">
               <div className="w-full h-full rounded-full overflow-hidden bg-[var(--surface-card)]">
                 <img 
                   src="https://github.com/imrajeevnayan.png" 
