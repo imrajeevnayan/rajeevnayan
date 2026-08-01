@@ -94,18 +94,17 @@ const Hero = () => {
                 <Github size={14} /> GitHub
               </a>
               <a 
-                href="https://linkedin.com/in/imrajeevnayan" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="px-5 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs rounded-lg border border-white/10 transition-all flex items-center gap-2 cursor-pointer"
+                href="mailto:imrajeevnayan@gmail.com" 
+                className="px-5 py-2.5 bg-[#10b981]/15 hover:bg-[#10b981]/25 text-[#10b981] font-semibold text-xs rounded-lg border border-[#10b981]/30 transition-all flex items-center gap-2 cursor-pointer"
               >
-                <Linkedin size={14} /> LinkedIn
+                <Activity size={14} /> Book a Call
               </a>
               <a 
-                href="mailto:imrajeevnayan@gmail.com" 
+                href="/Rajeev_Nayan_Resume.pdf" 
+                download
                 className="px-5 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-xs rounded-lg border border-white/10 transition-all flex items-center gap-2 cursor-pointer hover:text-[#10b981]"
               >
-                <FileText size={14} /> Resume
+                <FileText size={14} /> Download Resume (ATS-Friendly)
               </a>
             </div>
           </div>
@@ -196,10 +195,10 @@ const Hero = () => {
             {/* Animated Live Stats */}
             <div className="grid grid-cols-2 gap-4">
               <div className="p-4 bg-black/45 border border-white/10 rounded-xl text-center">
-                <StatCounter value={stats.repos} label="Repositories" />
+                <StatCounter value={72} label="p95 Latency % Saved" />
               </div>
               <div className="p-4 bg-black/45 border border-white/10 rounded-xl text-center">
-                <StatCounter value={1200} label="Contributions" />
+                <StatCounter value={5000} label="Peak rps Handled" />
               </div>
             </div>
 

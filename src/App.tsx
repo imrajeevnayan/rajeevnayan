@@ -64,8 +64,8 @@ function App() {
             <div className="space-y-0 pointer-events-auto">
               <ErrorBoundary>
                 <Suspense fallback={<LoadingSpinner />}>
-                  <section id="about">
-                    <About />
+                   <section id="projects">
+                    <Projects />
                   </section>
 
                   <section id="skills">
@@ -76,16 +76,16 @@ function App() {
                     <Experience />
                   </section>
 
-                  <section id="projects">
-                    <Projects />
-                  </section>
-
                   <section id="architecture">
                     <Architecture />
                   </section>
 
                   <section id="github">
                     <GithubStats />
+                  </section>
+
+                  <section id="about">
+                    <About />
                   </section>
 
                   <section id="coding-profiles">
