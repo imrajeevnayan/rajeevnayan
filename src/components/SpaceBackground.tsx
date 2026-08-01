@@ -72,7 +72,7 @@ const SpaceBackground = () => {
       });
 
       // Draw constellation connections to the mouse pointer
-      ctx.strokeStyle = 'rgba(99, 102, 241, 0.08)'; // Indigo flow line
+      ctx.strokeStyle = 'rgba(16, 185, 129, 0.08)'; // Emerald green flow line
       ctx.lineWidth = 0.5;
 
       for (let i = 0; i < stars.length; i++) {
@@ -94,7 +94,7 @@ const SpaceBackground = () => {
         const mouseDist = Math.hypot(s1.x - mouseRef.current.x, s1.y - mouseRef.current.y);
         if (mouseDist < 120) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(99, 102, 241, ${(1 - mouseDist / 120) * 0.15})`;
+          ctx.strokeStyle = `rgba(16, 185, 129, ${(1 - mouseDist / 120) * 0.2})`;
           ctx.moveTo(s1.x, s1.y);
           ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
           ctx.stroke();
