@@ -15,17 +15,8 @@ export default defineConfig({
     strictPort: true,
   },
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          animations: ['framer-motion', 'gsap'],
-          icons: ['lucide-react']
-        }
-      },
-    },
     minify: 'esbuild',
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 800,
   },
   esbuild: {
     drop: ['console', 'debugger'],
