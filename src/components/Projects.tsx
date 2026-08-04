@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, X, Target, Cpu, HelpCircle, Key, Server, Globe, Play, Check } from 'lucide-react';
+import { Github, X, Target, Cpu, HelpCircle, Key, Play } from 'lucide-react';
 import ScrollingPreview from './scrolling-preview';
 
-import hospitalImage from '../assets/hospital_mockup.png';
-import aiChatImage from '../assets/ai_chat.png';
 import urlShortenerImage from '../assets/url_shortener.png';
-import bookmyshowImage from '../assets/movie_booking.png';
+import aiChatImage from '../assets/ai_chat.png';
+import hospitalImage from '../assets/hospital_mockup.png';
 
 interface CaseStudy {
   id: string;
@@ -14,12 +13,11 @@ interface CaseStudy {
   subtitle: string;
   problem: string;
   solution: string;
-  features: string;
-  architecture: string;
-  workflow: string;
+  constraint: string;
+  decision: string;
+  result: string;
   tech: string[];
   github: string;
-  demo?: string;
   image: string;
   endpoint: string;
   mockResponse: object;
@@ -30,12 +28,12 @@ const caseStudies: CaseStudy[] = [
     id: 'rag-system',
     title: 'RAG Document Q&A System',
     subtitle: 'AI-Powered Document Intelligence',
-    problem: 'PDF parsing caused high latency (1,200ms) and LLM hallucinations on corporate document lookups.',
+    problem: 'PDF parsing caused high latency (1,200ms) and LLM hallucinations on corporate document searches.',
     solution: 'Implemented semantic layout-aware chunking pipeline and indexed vectors to Qdrant Vector DB with strict grounding prompt boundaries.',
-    features: 'Constraint: Limit system memory footprint under 500MB on single-node containers. Decision: Chunk dynamically based on PDF headers. Result: p95 retrieval latency dropped from 1,200ms to 180ms with 0 validated hallucinations.',
-    architecture: 'Spring Boot REST backend communicating with Qdrant Vector DB for vector similarity matching and OpenRouter API for LLM reasoning.',
-    workflow: 'Document upload -> text parsing -> vector embedding mapping -> search indexing. Query -> vector lookup -> prompt generation -> LLM response.',
-    tech: ['Java 21', 'Spring Boot', 'Qdrant', 'OpenRouter API', 'Docker', 'REST APIs'],
+    constraint: 'Limit system memory footprint under 500MB on single-node containers.',
+    decision: 'Chunk dynamically based on PDF headers and leverage sparse vector indexing.',
+    result: 'p95 retrieval latency dropped from 1,200ms to 180ms with 0 validated hallucinations.',
+    tech: ['Java 21', 'Spring Boot', 'Qdrant Vector DB', 'OpenRouter API', 'Docker'],
     github: 'https://github.com/imrajeevnayan/rag-document-qa',
     image: urlShortenerImage,
     endpoint: 'POST /api/v1/rag/ask',
@@ -55,10 +53,10 @@ const caseStudies: CaseStudy[] = [
     subtitle: 'High-Performance LLM Proxy',
     problem: 'Direct frontend integration with multiple LLM endpoints led to key exposures, lack of rate-limiting, and 850ms routing overhead.',
     solution: 'Designed stateless Spring Boot gateway proxy managing request routing, caching, error retry logic, and sub-200ms API routing latency.',
-    features: 'Constraint: Support 1,000 concurrent LLM streams. Decision: Built custom Token Bucket rate limiter filters and stateless routing. Result: Average routing overhead dropped to under 12ms.',
-    architecture: 'Stateless Spring Boot gateway communicating with external LLM proxies via OpenRouter API with automated Swagger schema specifications.',
-    workflow: 'Client request -> API key authentication -> rate limit evaluation -> payload forwarding -> LLM stream mapping -> response.',
-    tech: ['Java 17', 'Spring Boot', 'OpenRouter API', 'REST APIs', 'Docker', 'Swagger'],
+    constraint: 'Support 1,000 concurrent LLM streams.',
+    decision: 'Built custom Token Bucket rate limiter filters and stateless routing.',
+    result: 'Secured all key exposures, and average routing overhead dropped to under 12ms.',
+    tech: ['Java 17', 'Spring Boot', 'OpenRouter API', 'REST APIs', 'Docker'],
     github: 'https://github.com/imrajeevnayan/springboot-ai-chat-backend',
     image: aiChatImage,
     endpoint: 'POST /api/v1/chat/completions',
@@ -78,12 +76,12 @@ const caseStudies: CaseStudy[] = [
     subtitle: 'High-Throughput Link Redirection',
     problem: 'Generating and redirection lookup DB calls caused N+1 database queries under load, spiking redirection latency to 800ms.',
     solution: 'Built high-performance link redirection engine with collision resolution algorithms and Redis-based cache lookup to route links in sub-5ms.',
-    features: 'Constraint: DB write capacity capped at 100 write operations/sec. Decision: Cache redirect mappings in Redis memory layer. Result: Redirection latency reduced from 800ms to sub-5ms (99.3% latency reduction).',
-    architecture: 'Spring Boot REST backend, persistent PostgreSQL schema, and fast-read caching store powered by Redis.',
-    workflow: 'Alias generation -> unique database write -> Redis cache population. Short Link click -> Redis cache match -> 302 redirect.',
-    tech: ['Java 17', 'Spring Boot', 'PostgreSQL', 'Redis', 'REST APIs', 'Docker'],
+    constraint: 'DB write capacity capped at 100 write operations/sec.',
+    decision: 'Cache redirect mappings in Redis memory layer.',
+    result: 'Redirection latency reduced from 800ms to sub-5ms (99.3% latency reduction).',
+    tech: ['Java 17', 'Spring Boot', 'PostgreSQL', 'Redis', 'Docker'],
     github: 'https://github.com/imrajeevnayan/url-shortener-springboot',
-    image: urlShortenerImage,
+    image: hospitalImage,
     endpoint: 'GET /api/v1/links/redirect/vl-3902',
     mockResponse: {
       originalUrl: "https://github.com/imrajeevnayan/url-shortener-springboot",
@@ -92,87 +90,14 @@ const caseStudies: CaseStudy[] = [
       clicks: 840,
       cacheHit: true
     }
-  },
-  {
-    id: 'hospital-system',
-    title: 'Hospital Management System',
-    subtitle: 'Secure Enterprise Backend Operations',
-    problem: 'Healthcare portals require ironclad role isolation (doctors, staff, patients), fast record lookups, and standardized interfaces to manage sensitive patient files securely.',
-    solution: 'Developed an enterprise management portal securing 20+ routes with JWT-based Spring Security and caching database query results to cut response lag.',
-    features: 'Multi-role JWT auth controllers, CRUD pathways for records, and Redis caching layers for optimized queries.',
-    architecture: 'Spring Boot, Spring Security JWT, JPA/Hibernate persistence, Redis cache store, and normalized MySQL relational schema.',
-    workflow: 'User login -> JWT token validation -> role-based routing check -> query cache interception -> database persistence return.',
-    tech: ['Spring Boot', 'MySQL', 'Spring Security', 'Redis', 'Docker', 'Swagger'],
-    github: 'https://github.com/imrajeevnayan/Hospital-Management-System',
-    image: hospitalImage,
-    endpoint: 'GET /api/v1/hospital/doctors?specialty=cardiology',
-    mockResponse: {
-      specialty: "cardiology",
-      activeDoctors: [
-        { id: 102, name: "Dr. John Watson", status: "AVAILABLE", room: "302-B" }
-      ],
-      cacheHit: true,
-      executionTimeMs: 4
-    }
-  },
-  {
-    id: 'employee-system',
-    title: 'Company & Employee Manager',
-    subtitle: 'Enterprise Operations Hub',
-    problem: 'Legacy employee tracking structures fail to handle complex department hierarchies dynamically, leading to data drift and slow report calculations.',
-    solution: 'Developed a staff operations tracker enforcing hierarchical constraint rules and caching organization statistics for rapid UI renders.',
-    features: 'Hierarchical node tracking, bulk records update, dynamic department filters, and automated statistics generation.',
-    architecture: 'React user dashboard matching Spring Boot REST service. Persistent entity mappings handled via JPA Hibernate.',
-    workflow: 'Admin action -> payload validation -> relational constraint verification -> JPA mapping cache update -> persistent storage write.',
-    tech: ['Java 17', 'Spring Boot', 'React.js', 'TypeScript', 'MySQL', 'Hibernate'],
-    github: 'https://github.com/imrajeevnayan/Company-Employee-Management-System',
-    image: hospitalImage,
-    endpoint: 'GET /api/v1/departments/stats',
-    mockResponse: {
-      departmentsCount: 5,
-      totalEmployees: 140,
-      averageTenureYears: 3.4,
-      updatedTimestamp: "2026-08-01T23:12:00Z"
-    }
-  },
-  {
-    id: 'food-fiesta',
-    title: 'Food Fiesta Delivery',
-    subtitle: 'E-Commerce Ordering Portal',
-    problem: 'Food ordering platforms face transaction concurrency issues, cart synchronization errors, and poor catalog indexing, lowering checkout conversion speeds.',
-    solution: 'Engineered a transactional delivery catalog using normalized MySQL queries, isolated Spring JDBC transaction states, and modular React state controllers.',
-    features: 'Category item mapping, shopping cart tracking, atomic checkout validation, and user profile profiles.',
-    architecture: 'Spring Boot server framework, client Bootstrap view components, and MySQL persistence mapping storage.',
-    workflow: 'Catalog filter lookup -> cart assembly state -> checkout call -> inventory transaction check -> complete order generation.',
-    tech: ['Java', 'Spring Boot', 'MySQL', 'React.js', 'Bootstrap'],
-    github: 'https://github.com/imrajeevnayan/Food-Fiesta',
-    image: bookmyshowImage,
-    endpoint: 'POST /api/v1/orders/checkout',
-    mockResponse: {
-      orderId: "ord-88392",
-      status: "CONFIRMED",
-      itemsCount: 3,
-      totalAmount: 42.50,
-      transactionStatus: "SUCCESS"
-    }
   }
 ];
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<CaseStudy | null>(null);
-  const [activeTab, setActiveTab] = useState<'overview' | 'problem' | 'workflow' | 'playground'>('overview');
-  
-  // Swagger simulator states
+  const [activeTab, setActiveTab] = useState<'overview' | 'audit' | 'sandbox'>('overview');
   const [isSending, setIsSending] = useState(false);
   const [showResponse, setShowResponse] = useState(false);
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedProject(null);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
 
   const handleSendRequest = () => {
     setIsSending(true);
@@ -184,45 +109,47 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-[var(--surface-card)]/40 border-y border-[var(--border-main)] backdrop-blur-sm">
+    <section id="projects" className="py-16 md:py-24 bg-[#08080a] border-b border-white/5">
       <div className="section-container">
-        <div className="max-w-2xl mb-8 md:mb-14">
-          <span className="badge-premium mb-4">Case Studies</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
-            Engineering <span className="text-gradient">Solutions</span> at Scale
+        
+        <div className="max-w-2xl mb-12">
+          <span className="text-xs font-mono tracking-widest text-[#10b981] uppercase block mb-3">// PRODUCTION CASE STUDIES</span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+            Engineering Solutions at Scale
           </h2>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base font-light leading-relaxed">
-            Detailed breakdowns of how I solve complex architectural problems through performance-first engineering and modern design.
+          <p className="text-gray-400 text-sm md:text-base font-light leading-relaxed font-mono">
+            Detailed breakdowns of backend performance tuning, resource optimization, and clean systems architecture decisions.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {caseStudies.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               onClick={() => {
                 setSelectedProject(project);
                 setActiveTab('overview');
                 setShowResponse(false);
               }}
-              className="group relative rounded-xl overflow-hidden border border-[var(--border-main)] bg-[var(--surface-card)] cursor-pointer hover:border-[var(--brand-accent)] transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1 flex flex-col h-[280px]"
+              className="group relative rounded-xl overflow-hidden border border-white/10 bg-[#121215] cursor-pointer hover:border-[#10b981]/50 transition-all duration-300 flex flex-col h-[280px]"
             >
-              <div className="relative w-full h-full overflow-hidden flex-1 group-hover:scale-105 transition-transform duration-500">
+              <div className="relative w-full h-full overflow-hidden flex-1 group-hover:scale-[1.03] transition-transform duration-500">
                 <ScrollingPreview
                   src={project.image}
                   alt={project.title}
                 />
               </div>
 
-              <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-[var(--surface-card)] via-[var(--surface-card)]/90 to-transparent pointer-events-none z-10 flex flex-col justify-end p-5">
-                <span className="text-[10px] text-[var(--color-button-blue)] uppercase tracking-wider font-semibold mb-0.5">
+              <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-[#121215] via-[#121215]/90 to-transparent pointer-events-none z-10 flex flex-col justify-end p-5">
+                <span className="text-[9px] text-[#10b981] font-mono uppercase tracking-widest mb-0.5">
                   {project.subtitle}
                 </span>
-                <h3 className="text-base font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors line-clamp-1">
+                <h3 className="text-base font-bold text-white group-hover:text-[#10b981] transition-colors">
                   {project.title}
                 </h3>
               </div>
@@ -230,6 +157,7 @@ const Projects = () => {
           ))}
         </div>
 
+        {/* Case Study Detail Modal */}
         <AnimatePresence>
           {selectedProject && (
             <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
@@ -238,173 +166,133 @@ const Projects = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedProject(null)}
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
               />
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative bg-[var(--surface-card)] border border-[var(--border-main)] rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                className="relative bg-[#121215] border border-white/10 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
               >
+                {/* Close Button */}
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute right-4 top-4 p-2 rounded-full bg-[var(--surface-main)] hover:bg-[var(--border-main)] text-[var(--text-secondary)] transition-all z-20"
+                  className="absolute right-4 top-4 p-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all z-20 cursor-pointer"
                 >
-                  <X size={18} />
+                  <X size={16} />
                 </button>
 
-                <div className="relative w-full h-44 md:h-56 overflow-hidden border-b border-[var(--border-main)] bg-[var(--bg-main)]">
-                  <img
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--surface-card)] via-transparent to-black/20" />
-                </div>
-
-                <div className="p-6 md:p-8 overflow-y-auto space-y-6 flex-1">
+                <div className="p-6 md:p-8 overflow-y-auto space-y-6 flex-1 text-left">
                   <div className="space-y-1">
-                    <span className="text-xs text-[var(--color-button-blue)] font-semibold tracking-wider uppercase">
+                    <span className="text-xs text-[#10b981] font-mono uppercase tracking-wider">
                       {selectedProject.subtitle}
                     </span>
-                    <h3 className="text-2xl font-bold tracking-tight text-[var(--text-primary)]">
+                    <h3 className="text-2xl font-bold tracking-tight text-white font-mono">
                       {selectedProject.title}
                     </h3>
                   </div>
 
-                  {/* Tab Controls */}
-                  <div className="inline-flex gap-1 bg-[var(--surface-main)] p-1 rounded-full border border-[var(--border-main)]">
-                    {(['overview', 'problem', 'workflow', 'playground'] as const).map((tab) => (
+                  {/* Minimal Tab Selectors */}
+                  <div className="flex gap-2 border-b border-white/5 pb-2">
+                    {(['overview', 'audit', 'sandbox'] as const).map((tab) => (
                       <button
                         key={tab}
                         onClick={() => {
                           setActiveTab(tab);
                           setShowResponse(false);
                         }}
-                        className={`px-4 py-1.5 rounded-full text-xs font-semibold capitalize transition-all ${
+                        className={`px-3 py-1.5 rounded text-xs font-mono font-semibold transition-all cursor-pointer ${
                           activeTab === tab
-                            ? 'bg-white dark:bg-[var(--surface-card)] text-[var(--color-button-blue)] shadow-sm'
-                            : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
+                            ? 'bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/25'
+                            : 'text-gray-400 hover:text-white'
                         }`}
                       >
-                        {tab === 'overview' 
-                          ? 'Overview' 
-                          : tab === 'problem' 
-                            ? 'Problem & Solution' 
-                            : tab === 'workflow' 
-                              ? 'Architecture' 
-                              : 'API Swagger Playground'}
+                        {tab === 'overview' ? 'Overview' : tab === 'audit' ? 'System Audit' : 'API Sandbox'}
                       </button>
                     ))}
                   </div>
 
-                  {/* Tab Content */}
-                  <div className="min-h-[100px] text-sm text-[var(--text-secondary)] leading-relaxed font-light font-sans">
+                  {/* Tab Display Panel */}
+                  <div className="min-h-[150px] font-mono text-xs text-gray-400 leading-relaxed space-y-4">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeTab}
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -5 }}
-                        transition={{ duration: 0.2 }}
+                        transition={{ duration: 0.15 }}
                         className="space-y-4"
                       >
                         {activeTab === 'overview' && (
                           <div className="space-y-3">
-                            <div className="flex gap-3 items-start">
-                              <Target className="text-[var(--color-button-blue)] shrink-0 mt-0.5" size={18} />
-                              <p><strong className="text-[var(--text-primary)] font-semibold">Key Features:</strong> {selectedProject.features}</p>
+                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg">
+                              <span className="text-[#10b981] block mb-1 font-bold uppercase tracking-wider">// System Description</span>
+                              <p className="font-sans text-gray-300 font-light">{selectedProject.solution}</p>
                             </div>
-                            <div className="flex gap-3 items-start">
-                              <Cpu className="text-[var(--color-button-blue)] shrink-0 mt-0.5" size={18} />
-                              <p><strong className="text-[var(--text-primary)] font-semibold">Architecture Setup:</strong> {selectedProject.architecture}</p>
-                            </div>
-                          </div>
-                        )}
-                        
-                        {activeTab === 'problem' && (
-                          <div className="space-y-3">
-                            <div className="flex gap-3 items-start">
-                              <HelpCircle className="text-red-400 shrink-0 mt-0.5" size={18} />
-                              <p><strong className="text-[var(--text-primary)] font-semibold">The Problem:</strong> {selectedProject.problem}</p>
-                            </div>
-                            <div className="flex gap-3 items-start">
-                              <Key className="text-green-400 shrink-0 mt-0.5" size={18} />
-                              <p><strong className="text-[var(--text-primary)] font-semibold">The Solution:</strong> {selectedProject.solution}</p>
-                            </div>
-                          </div>
-                        )}
-                        
-                        {activeTab === 'workflow' && (
-                          <div className="space-y-6 font-sans">
-                            <div className="flex gap-3 items-start">
-                              <Cpu className="text-[var(--color-button-blue)] shrink-0 mt-0.5" size={18} />
-                              <p><strong className="text-[var(--text-primary)] font-semibold">Execution Workflow:</strong> {selectedProject.workflow}</p>
-                            </div>
-                            
-                            <div className="p-5 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-2xl space-y-4">
-                              <span className="text-[9px] uppercase tracking-widest font-bold text-[var(--brand-accent)] block mb-1">Architecture Diagram Blueprint</span>
-                              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[9px] font-mono text-center">
-                                <div className="px-2.5 py-1.5 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-lg w-full sm:w-20 flex flex-col items-center gap-1">
-                                  <Globe size={12} className="text-gray-400" />
-                                  <span>Client</span>
-                                </div>
-                                <div className="text-gray-500 sm:rotate-0 rotate-90">➔</div>
-                                <div className="px-2.5 py-1.5 bg-[var(--brand-accent)]/10 text-[var(--brand-accent)] border border-[var(--brand-accent)]/20 rounded-lg w-full sm:w-24 flex flex-col items-center gap-1">
-                                  <Server size={12} />
-                                  <span>API Gateway</span>
-                                </div>
-                                <div className="text-gray-500 sm:rotate-0 rotate-90">➔</div>
-                                <div className="px-2.5 py-1.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-lg w-full sm:w-24 flex flex-col items-center gap-1">
-                                  <Cpu size={12} />
-                                  <span>Services</span>
-                                </div>
-                                <div className="text-gray-500 sm:rotate-0 rotate-90">➔</div>
-                                <div className="px-2.5 py-1.5 bg-pink-500/10 text-pink-400 border border-pink-500/20 rounded-lg w-full sm:w-20 flex flex-col items-center gap-1">
-                                  <Cpu size={12} />
-                                  <span>Redis Cache</span>
-                                </div>
-                                <div className="text-gray-500 sm:rotate-0 rotate-90">➔</div>
-                                <div className="px-2.5 py-1.5 bg-green-500/10 text-green-400 border border-green-500/20 rounded-lg w-full sm:w-24 flex flex-col items-center gap-1">
-                                  <Cpu size={12} />
-                                  <span>Database</span>
-                                </div>
-                                <div className="text-gray-500 sm:rotate-0 rotate-90">➔</div>
-                                <div className="px-2.5 py-1.5 bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-lg w-full sm:w-20 flex flex-col items-center gap-1">
-                                  <Globe size={12} />
-                                  <span>Cloud</span>
-                                </div>
+                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-2">
+                              <span className="text-white block font-bold uppercase tracking-wider">// Technology Stack</span>
+                              <div className="flex flex-wrap gap-2 pt-1">
+                                {selectedProject.tech.map(t => (
+                                  <span key={t} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded text-gray-300 text-[10px]">
+                                    {t}
+                                  </span>
+                                ))}
                               </div>
                             </div>
                           </div>
                         )}
 
-                        {activeTab === 'playground' && (
-                          <div className="space-y-4 font-mono text-xs">
-                            <div className="flex items-center justify-between p-3 bg-black/40 border border-white/10 rounded-xl">
-                              <span className="text-[var(--brand-accent)] font-semibold select-all">{selectedProject.endpoint}</span>
+                        {activeTab === 'audit' && (
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-1">
+                              <span className="text-red-400 block font-bold uppercase tracking-wider">// Problem</span>
+                              <p className="text-gray-300 font-sans font-light">{selectedProject.problem}</p>
+                            </div>
+                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-1">
+                              <span className="text-yellow-500 block font-bold uppercase tracking-wider">// Constraint</span>
+                              <p className="text-gray-300 font-sans font-light">{selectedProject.constraint}</p>
+                            </div>
+                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-1">
+                              <span className="text-indigo-400 block font-bold uppercase tracking-wider">// Decision</span>
+                              <p className="text-gray-300 font-sans font-light">{selectedProject.decision}</p>
+                            </div>
+                            <div className="p-4 bg-[#10b981]/5 border border-[#10b981]/10 rounded-lg space-y-1">
+                              <span className="text-[#10b981] block font-bold uppercase tracking-wider">// Result</span>
+                              <p className="text-gray-200 font-sans font-semibold">{selectedProject.result}</p>
+                            </div>
+                          </div>
+                        )}
+
+                        {activeTab === 'sandbox' && (
+                          <div className="space-y-4">
+                            <div className="p-4 bg-[#08080a] border border-white/5 rounded-lg flex items-center justify-between">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[#10b981] font-bold">POST</span>
+                                <span className="text-gray-300 text-[11px]">{selectedProject.endpoint}</span>
+                              </div>
                               <button 
                                 onClick={handleSendRequest}
                                 disabled={isSending}
-                                className="flex items-center gap-1 px-3 py-1 bg-[var(--color-button-blue)] text-white font-sans font-semibold rounded-lg hover:bg-[var(--color-deep-link-blue)] cursor-pointer disabled:opacity-50 transition-colors"
+                                className="px-3 py-1 bg-[#10b981] text-black font-bold rounded hover:bg-[#059669] transition-all flex items-center gap-1.5 cursor-pointer text-[10px]"
                               >
-                                {isSending ? 'Sending...' : 'Send Request'}
+                                <Play size={10} /> Send Request
                               </button>
                             </div>
 
-                            {/* Simulated response logs */}
                             {isSending && (
-                              <div className="p-4 bg-black/20 border border-white/5 rounded-xl text-center flex flex-col items-center justify-center gap-2 text-gray-400 font-sans h-32">
-                                <div className="w-5 h-5 border-2 border-[var(--brand-accent)] border-t-transparent rounded-full animate-spin"></div>
-                                <span>Awaiting Server Response...</span>
+                              <div className="text-center py-4 text-emerald-400 animate-pulse uppercase font-bold tracking-widest">
+                                // EXECUTION TRANSACTION PATHWAY ACTIVE...
                               </div>
                             )}
 
                             {showResponse && (
-                              <div className="p-4 bg-black/60 border border-white/10 rounded-xl overflow-x-auto text-[#a9b7c6] leading-relaxed max-h-48">
-                                <pre>{JSON.stringify(selectedProject.mockResponse, null, 2)}</pre>
+                              <div className="p-4 bg-[#08080a] border border-white/10 rounded-lg overflow-x-auto text-[10px]">
+                                <span className="text-gray-500 block mb-2">// Response payload status code: 200 OK</span>
+                                <pre className="text-green-400 leading-normal">
+                                  {JSON.stringify(selectedProject.mockResponse, null, 2)}
+                                </pre>
                               </div>
                             )}
                           </div>
@@ -413,42 +301,23 @@ const Projects = () => {
                     </AnimatePresence>
                   </div>
 
-                  <div className="space-y-2 border-t border-[var(--border-main)] pt-4">
-                    <span className="text-xs font-semibold text-[var(--text-primary)] block">Technologies Stack</span>
-                    <div className="flex flex-wrap gap-2">
-                      {selectedProject.tech.map((t) => (
-                        <span key={t} className="px-2.5 py-0.5 bg-[var(--surface-main)] border border-[var(--border-main)] text-[var(--text-secondary)] text-[10px] font-medium rounded-full">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                  <div className="flex justify-between items-center pt-4 border-t border-white/5 font-mono">
+                    <a 
+                      href={selectedProject.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-xs text-[#10b981] hover:underline flex items-center gap-1"
+                    >
+                      <Github size={12} /> View Codebase
+                    </a>
                   </div>
                 </div>
 
-                <div className="px-6 py-4 md:px-8 bg-[var(--surface-main)] border-t border-[var(--border-main)] flex gap-4 justify-end">
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 border border-[var(--border-main)] text-[var(--text-primary)] text-xs font-semibold rounded-full hover:bg-[var(--surface-card)] transition-all"
-                  >
-                    <Github size={14} /> Source Code
-                  </a>
-                  {selectedProject.demo && (
-                    <a
-                      href={selectedProject.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-[var(--color-button-blue)] text-white text-xs font-semibold rounded-full hover:bg-[var(--color-deep-link-blue)] transition-all"
-                    >
-                      <ExternalLink size={14} /> Live Demo
-                    </a>
-                  )}
-                </div>
               </motion.div>
             </div>
           )}
         </AnimatePresence>
+
       </div>
     </section>
   );

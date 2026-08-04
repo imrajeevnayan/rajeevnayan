@@ -9,30 +9,26 @@ import CommandPalette from './components/common/CommandPalette';
 
 import Preloader from './components/preloader';
 import SmoothScroll from './components/common/SmoothScroll';
-import EasterEggs from './components/easter-eggs';
 import SpaceBackground from './components/SpaceBackground';
 
 import { motion, useScroll, useSpring } from 'framer-motion';
 
-// Lazy load components for performance
+// Lazy load elements for fast loading and split chunks
 const Experience = lazy(() => import('./components/Experience'));
 const GithubStats = lazy(() => import('./components/GithubStats'));
 const CodingProfiles = lazy(() => import('./components/CodingProfiles'));
 const Architecture = lazy(() => import('./components/Architecture'));
 const Skills = lazy(() => import('./components/Skills'));
-
 const Projects = lazy(() => import('./components/Projects'));
 const Certifications = lazy(() => import('./components/Certifications'));
-const WhyHireMe = lazy(() => import('./components/WhyHireMe'));
-
 const Blog = lazy(() => import('./components/Blog'));
 const Contact = lazy(() => import('./components/Contact'));
-
 const Footer = lazy(() => import('./components/Footer'));
 
 const LoadingSpinner = () => (
-  <div className="flex items-center justify-center min-h-[200px]">
-    <div className="w-10 h-10 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
+  <div className="flex items-center justify-center min-h-[150px] font-mono text-xs text-[#10b981]">
+    <div className="w-6 h-6 border-2 border-[#10b981] border-t-transparent rounded-full animate-spin mr-2"></div>
+    Loading pipeline components...
   </div>
 );
 
@@ -47,76 +43,76 @@ function App() {
   return (
     <Preloader>
       <SmoothScroll>
-        <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[var(--brand-accent)]/20 transition-colors duration-500 relative">
+        <div className="min-h-screen bg-[#08080a] text-white selection:bg-[#10b981]/20 transition-colors duration-500 relative">
+          
+          {/* Constellation line canvas */}
           <SpaceBackground />
-          <motion.div className="scroll-progress-bar" style={{ scaleX }} />
-          <EasterEggs />
-          <CommandPalette />
+          
+          {/* Scroll indicators */}
+          <motion.div 
+            className="fixed top-0 left-0 right-0 h-1 bg-[#10b981] origin-left z-[9999]"
+            style={{ scaleX }}
+          />
+
           <ScrollToTop />
           
           <Header />
           
-          <main className="relative overflow-hidden z-10 pointer-events-none">
-            <div className="pointer-events-auto">
-              <Hero />
-            </div>
-            
-            <div className="space-y-0 pointer-events-auto">
-              <ErrorBoundary>
-                <Suspense fallback={<LoadingSpinner />}>
-                   <section id="projects">
-                    <Projects />
-                  </section>
+          <main className="relative overflow-hidden z-10">
+            <ErrorBoundary>
+              <Suspense fallback={<LoadingSpinner />}>
+                
+                {/* Hero */}
+                <Hero />
 
-                  <section id="skills">
-                    <Skills />
-                  </section>
+                {/* Case Studies */}
+                <Projects />
 
-                  <section id="experience">
-                    <Experience />
-                  </section>
+                {/* Skills */}
+                <Skills />
 
-                  <section id="architecture">
-                    <Architecture />
-                  </section>
+                {/* Experience */}
+                <Experience />
 
-                  <section id="github">
-                    <GithubStats />
-                  </section>
+                {/* Architecture Visualizer */}
+                <section id="architecture">
+                  <Architecture />
+                </section>
 
-                  <section id="about">
-                    <About />
-                  </section>
+                {/* Git Stats */}
+                <section id="github">
+                  <GithubStats />
+                </section>
 
-                  <section id="coding-profiles">
-                    <CodingProfiles />
-                  </section>
+                {/* Supporting Credentials / Biography */}
+                <section id="about">
+                  <About />
+                </section>
 
-                  <section id="why-hire-me">
-                    <WhyHireMe />
-                  </section>
+                {/* Coding challenge statistics */}
+                <section id="coding-profiles">
+                  <CodingProfiles />
+                </section>
 
-                  <Suspense fallback={null}>
-                    <Certifications />
-                  </Suspense>
+                {/* Certifications and achievements */}
+                <Certifications />
 
-                  <Suspense fallback={null}>
-                    <Blog />
-                  </Suspense>
+                {/* Technical Blog */}
+                <Blog />
 
-                  <section id="contact">
-                    <Contact />
-                  </section>
-                </Suspense>
-              </ErrorBoundary>
-            </div>
+                {/* Direct contact info */}
+                <section id="contact">
+                  <Contact />
+                </section>
 
-            <div className="pointer-events-auto">
-              <Suspense fallback={null}>
+                {/* Footer */}
                 <Footer />
+
               </Suspense>
-            </div>
+            </ErrorBoundary>
           </main>
+
+          <CommandPalette />
         </div>
       </SmoothScroll>
     </Preloader>

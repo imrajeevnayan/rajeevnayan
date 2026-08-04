@@ -7,7 +7,7 @@ const experiences = [
     company: "Role – Full Stack Java Developer",
     location: "Bengaluru, India",
     period: "February 2025 – August 2025",
-    desc: "Developed and deployed production-ready Spring Boot microservices, secured RESTful APIs, and integrated dynamic React frontends.",
+    desc: "Worked as a core backend intern building high-throughput REST APIs, implementing microservice integration filters, and tuning database latency.",
     points: [
       "Reduced API response latency by 30% via Redis caching and Hibernate N+1 query optimization across 4 production-grade Spring Boot microservices containerized via Docker Compose.",
       "Secured 15+ RESTful API endpoints using Spring Security, JWT authentication, and OAuth2 authorization; sustained 5,000+ daily requests at 99.9% uptime across AWS staging and production environments.",
@@ -18,21 +18,16 @@ const experiences = [
 ];
 
 const Experience = () => {
-    return (
-    <section id="experience" className="py-10 md:py-14 bg-[var(--bg-main)]">
+  return (
+    <section id="experience" className="py-16 md:py-24 bg-[#08080a] border-b border-white/5">
       <div className="section-container">
-        <motion.div 
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="space-y-3 mb-8 md:mb-12"
-        >
-          <span className="badge-premium">Professional Path</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading">
-            Work <span className="text-gradient">Experience</span>
+        
+        <div className="max-w-2xl mb-12">
+          <span className="text-xs font-mono tracking-widest text-[#10b981] uppercase block mb-3">// WORK EXPERIENCE</span>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+            Professional History
           </h2>
-        </motion.div>
+        </div>
 
         <div className="space-y-8">
           {experiences.map((exp, i) => (
@@ -41,41 +36,41 @@ const Experience = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="premium-card p-8 md:p-10 bg-[var(--surface-card)] hover:-translate-y-1 hover:border-[#10b981]/30 transition-all duration-300"
+              transition={{ delay: i * 0.1, duration: 0.6 }}
+              className="p-6 md:p-8 bg-[#121215] border border-white/10 rounded-xl hover:-translate-y-1 hover:border-[#10b981]/30 transition-all duration-300 flex flex-col gap-6 text-left"
             >
-              <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-8">
-                <div className="flex gap-4 items-start">
-                  <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)] shrink-0">
-                    <Briefcase size={22} strokeWidth={1.5} />
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-4 pb-4 border-b border-white/5">
+                <div className="flex gap-3 items-center">
+                  <div className="w-8 h-8 rounded-lg bg-[#10b981]/10 flex items-center justify-center text-[#10b981] shrink-0">
+                    <Briefcase size={16} />
                   </div>
-                  <div className="space-y-1">
-                    <h3 className="text-xl md:text-2xl font-bold tracking-appleHeading text-[var(--text-primary)]">{exp.role}</h3>
-                    <div className="text-sm font-medium text-[var(--text-secondary)]">{exp.company}</div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white font-mono">{exp.role}</h3>
+                    <div className="text-xs text-gray-400 font-mono">{exp.company}</div>
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap items-center gap-4 text-xs text-[var(--text-secondary)] lg:pt-2 lg:pl-14">
-                  <div className="flex items-center gap-1.5">
-                    <MapPin size={13} className="text-[var(--color-button-blue)]" />
+                <div className="flex flex-wrap gap-4 text-xs text-gray-500 font-mono">
+                  <div className="flex items-center gap-1">
+                    <MapPin size={12} className="text-[#10b981]" />
                     {exp.location}
                   </div>
-                  <div className="flex items-center gap-1.5">
-                    <Calendar size={13} className="text-[var(--color-button-blue)]" />
+                  <div className="flex items-center gap-1">
+                    <Calendar size={12} className="text-[#10b981]" />
                     {exp.period}
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-6 lg:ml-14">
-                <p className="text-sm md:text-[15px] text-[var(--text-secondary)] font-light leading-[1.47] max-w-4xl border-l border-[var(--border-main)] pl-6">
+              <div className="space-y-4">
+                <p className="text-xs md:text-sm text-gray-400 font-light leading-relaxed font-sans border-l-2 border-white/5 pl-4">
                   {exp.desc}
                 </p>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-3 lg:pl-6">
+                <ul className="space-y-2.5 font-mono text-[11px] text-gray-400">
                   {exp.points.map((point, j) => (
-                    <li key={j} className="flex items-start gap-2.5 text-[13px] text-[var(--text-secondary)] leading-relaxed font-light">
-                      <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-button-blue)] mt-2 shrink-0" />
-                      {point}
+                    <li key={j} className="flex items-start gap-2 leading-relaxed">
+                      <span className="text-[#10b981] select-none font-bold">➔</span>
+                      <span>{point}</span>
                     </li>
                   ))}
                 </ul>
@@ -83,6 +78,7 @@ const Experience = () => {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );
