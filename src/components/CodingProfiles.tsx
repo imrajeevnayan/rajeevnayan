@@ -134,7 +134,7 @@ const CodingProfiles = () => {
                                 </div>
 
                                 {/* Live dynamic SVG card */}
-                                <div className="mb-6 overflow-hidden rounded-xl border border-[var(--border-main)] bg-[var(--surface-main)] group-hover:border-[var(--brand-accent)] transition-all">
+                                <div className="mb-6 overflow-hidden rounded-xl border border-[var(--border-main)] bg-[var(--surface-main)] group-hover:border-[var(--brand-accent)] transition-all max-w-[75%] mx-auto">
                                     <img 
                                         src={profile.statsImage} 
                                         alt={`${profile.name} Stats`}
