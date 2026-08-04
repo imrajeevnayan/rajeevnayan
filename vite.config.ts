@@ -5,7 +5,7 @@ export default defineConfig({
   base: '/',
   plugins: [react()],
   optimizeDeps: {
-    include: ['react', 'react-dom', '@react-three/fiber', '@react-three/drei', 'three', 'react-scroll', 'framer-motion'],
+    include: ['react', 'react-dom', 'react-scroll', 'framer-motion'],
   },
   server: {
     port: 5173,
@@ -17,14 +17,18 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        // Remove manualChunks to let Vite handle it automatically
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          animations: ['framer-motion', 'gsap'],
+          icons: ['lucide-react']
+        }
       },
     },
     minify: 'esbuild',
     chunkSizeWarningLimit: 600,
   },
   esbuild: {
-    // drop: ['console', 'debugger'],
+    drop: ['console', 'debugger'],
   },
   cacheDir: 'node_modules/.vite',
 });

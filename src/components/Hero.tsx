@@ -178,7 +178,7 @@ const Hero = () => {
               <img 
                 src="https://github.com/imrajeevnayan.png" 
                 alt="Rajeev Nayan" 
-                className="w-12 h-12 rounded-full border border-white/10 object-cover"
+                className="w-20 h-20 rounded-full border border-white/10 object-cover"
               />
               <div className="space-y-1 font-mono text-left w-full">
                 <h4 className="font-bold text-white text-sm">Rajeev Nayan</h4>
