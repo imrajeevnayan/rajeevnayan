@@ -19,12 +19,12 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-16 md:py-24 bg-[#08080a] border-b border-white/5">
+    <section id="experience" className="py-16 md:py-24 bg-[var(--bg-main)] border-b border-[var(--border-main)]">
       <div className="section-container">
         
         <div className="max-w-2xl mb-12">
           <span className="text-xs font-mono tracking-widest text-[#10b981] uppercase block mb-3">// WORK EXPERIENCE</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4">
             Professional History
           </h2>
         </div>
@@ -37,20 +37,20 @@ const Experience = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="p-6 md:p-8 bg-[#121215] border border-white/10 rounded-xl hover:-translate-y-1 hover:border-[#10b981]/30 transition-all duration-300 flex flex-col gap-6 text-left"
+              className="p-6 md:p-8 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-xl hover:-translate-y-1 hover:border-[#10b981]/30 transition-all duration-300 flex flex-col gap-6 text-left"
             >
-              <div className="flex flex-col lg:flex-row justify-between items-start gap-4 pb-4 border-b border-white/5">
+              <div className="flex flex-col lg:flex-row justify-between items-start gap-4 pb-4 border-b border-[var(--border-main)]">
                 <div className="flex gap-3 items-center">
                   <div className="w-8 h-8 rounded-lg bg-[#10b981]/10 flex items-center justify-center text-[#10b981] shrink-0">
                     <Briefcase size={16} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white font-mono">{exp.role}</h3>
-                    <div className="text-xs text-gray-400 font-mono">{exp.company}</div>
+                    <h3 className="text-lg font-bold text-[var(--text-primary)] font-mono">{exp.role}</h3>
+                    <div className="text-xs text-[var(--text-secondary)] font-mono">{exp.company}</div>
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap gap-4 text-xs text-gray-500 font-mono">
+                <div className="flex flex-wrap gap-4 text-xs text-[var(--text-muted)] font-mono">
                   <div className="flex items-center gap-1">
                     <MapPin size={12} className="text-[#10b981]" />
                     {exp.location}
@@ -63,10 +63,10 @@ const Experience = () => {
               </div>
               
               <div className="space-y-4">
-                <p className="text-xs md:text-sm text-gray-400 font-light leading-relaxed font-sans border-l-2 border-white/5 pl-4">
+                <p className="text-xs md:text-sm text-[var(--text-secondary)] font-light leading-relaxed font-sans border-l-2 border-[var(--border-main)] pl-4">
                   {exp.desc}
                 </p>
-                <ul className="space-y-2.5 font-mono text-[11px] text-gray-400">
+                <ul className="space-y-2.5 font-mono text-[11px] text-[var(--text-secondary)]">
                   {exp.points.map((point, j) => (
                     <li key={j} className="flex items-start gap-2 leading-relaxed">
                       <span className="text-[#10b981] select-none font-bold">➔</span>

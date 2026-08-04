@@ -30,14 +30,14 @@ const StatCounter = ({ value, label, suffix = '' }: { value: number; label: stri
       <span className="text-2xl md:text-3xl font-extrabold text-[#10b981] block">
         {count.toLocaleString()}{suffix}
       </span>
-      <span className="text-[10px] text-gray-500 uppercase tracking-widest block mt-1">{label}</span>
+      <span className="text-[10px] text-[var(--text-muted)] uppercase tracking-widest block mt-1">{label}</span>
     </div>
   );
 };
 
 const Hero = () => {
   return (
-    <section id="hero" className="relative min-h-[90vh] flex items-center bg-[#08080a] py-16 md:py-24 border-b border-white/5">
+    <section id="hero" className="relative min-h-[90vh] flex items-center bg-[var(--bg-main)] py-16 md:py-24 border-b border-[var(--border-main)]">
       <div className="section-container relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
@@ -45,11 +45,11 @@ const Hero = () => {
           <div className="lg:col-span-7 space-y-6">
             <span className="text-xs font-mono tracking-widest text-[#10b981] uppercase block">// SYSTEM ARCHITECT</span>
             
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-[1.1]">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-[var(--text-primary)] leading-[1.1]">
               Java Backend Engineer building scalable distributed systems.
             </h1>
 
-            <p className="text-base md:text-lg text-gray-400 leading-relaxed font-light max-w-xl font-mono">
+            <p className="text-base md:text-lg text-[var(--text-secondary)] leading-relaxed font-light max-w-xl font-mono">
               Designing secure, high-performance API platforms using Java, Spring Boot, Microservices, and Cloud infrastructure. Focused on reducing p95 latency.
             </p>
 
@@ -64,25 +64,45 @@ const Hero = () => {
               <a 
                 href="/Rajeev_Nayan_Resume.pdf" 
                 download
-                className="px-5 py-2.5 bg-white/5 hover:bg-white/10 text-white font-bold text-xs rounded border border-white/10 transition-all flex items-center gap-2 cursor-pointer"
+                className="px-5 py-2.5 bg-[var(--surface-main)] hover:bg-[var(--border-main)] text-[var(--text-primary)] font-bold text-xs rounded border border-[var(--border-main)] transition-all flex items-center gap-2 cursor-pointer"
               >
                 <FileText size={14} /> Download Resume
               </a>
             </div>
 
             {/* Metric counters */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/5 max-w-lg">
+            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[var(--border-main)] max-w-lg">
               <StatCounter value={72} label="p95 Latency % Saved" suffix="%" />
               <StatCounter value={5000} label="Peak rps Handled" suffix="+" />
               <StatCounter value={99} label="System Uptime" suffix=".98%" />
             </div>
           </div>
 
-          {/* Right Column: Clean Architecture Diagram */}
+          {/* Right Column: Profile Card & Architecture Diagram */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-6 bg-[#121215] border border-white/10 rounded-xl relative overflow-hidden">
-              <div className="flex items-center justify-between border-b border-white/5 pb-3 mb-6 font-mono">
-                <span className="text-[10px] text-gray-400 uppercase tracking-widest">Active Request Pipeline</span>
+            
+            {/* Profile Identity Card */}
+            <div className="p-5 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-xl flex items-center gap-4">
+              <img 
+                src="https://github.com/imrajeevnayan.png" 
+                alt="Rajeev Nayan" 
+                className="w-20 h-20 rounded-full border border-[var(--border-main)] object-cover shrink-0"
+              />
+              <div className="space-y-1 font-mono text-left w-full">
+                <h4 className="font-bold text-[var(--text-primary)] text-sm">Rajeev Nayan</h4>
+                <p className="text-[10px] text-[var(--text-secondary)]">Java Backend Engineer</p>
+                <div className="flex items-center gap-2 pt-1 border-t border-[var(--border-main)]">
+                  <span className="flex items-center gap-1.5 text-[9px] text-[#10b981] font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-ping shrink-0" />
+                    <span>Open to Backend Opportunities</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-xl relative overflow-hidden">
+              <div className="flex items-center justify-between border-b border-[var(--border-main)] pb-3 mb-6 font-mono">
+                <span className="text-[10px] text-[var(--text-secondary)] uppercase tracking-widest">Active Request Pipeline</span>
                 <span className="flex items-center gap-1.5 text-[9px] text-[#10b981] font-semibold bg-[#10b981]/10 px-2 py-0.5 rounded">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-ping" />
                   LIVE MONITOR
@@ -92,18 +112,18 @@ const Hero = () => {
               {/* SVG Architecture Nodes */}
               <div className="space-y-6 relative">
                 {/* Connector Line with animated flow dot */}
-                <div className="absolute left-[19px] top-6 bottom-6 w-[2px] bg-white/5 z-0">
+                <div className="absolute left-[19px] top-6 bottom-6 w-[2px] bg-[var(--border-main)] z-0">
                   <div className="absolute top-0 w-full h-8 bg-gradient-to-b from-[#10b981] to-transparent animate-[flow-vertical_2s_infinite_linear]" />
                 </div>
 
                 {/* Node 1: Client */}
                 <div className="flex items-center gap-4 relative z-10">
-                  <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-[var(--surface-main)] border border-[var(--border-main)] flex items-center justify-center text-[var(--text-secondary)] shrink-0">
                     <Globe size={18} />
                   </div>
                   <div className="font-mono text-left">
-                    <h4 className="text-xs font-bold text-white uppercase">Client Gateway Request</h4>
-                    <p className="text-[9px] text-gray-500">Public HTTP/REST Traffic</p>
+                    <h4 className="text-xs font-bold text-[var(--text-primary)] uppercase">Client Gateway Request</h4>
+                    <p className="text-[9px] text-[var(--text-muted)]">Public HTTP/REST Traffic</p>
                   </div>
                 </div>
 
@@ -114,7 +134,7 @@ const Hero = () => {
                   </div>
                   <div className="font-mono text-left">
                     <h4 className="text-xs font-bold text-[#10b981] uppercase">Filter Chain Security</h4>
-                    <p className="text-[9px] text-gray-500">JWT Authentication & Rate Limiting</p>
+                    <p className="text-[9px] text-[var(--text-muted)]">JWT Authentication & Rate Limiting</p>
                   </div>
                 </div>
 
@@ -124,8 +144,8 @@ const Hero = () => {
                     <Server size={18} />
                   </div>
                   <div className="font-mono text-left">
-                    <h4 className="text-xs font-bold text-white uppercase">Spring Boot Controller</h4>
-                    <p className="text-[9px] text-gray-500">Business Logic & Transaction Management</p>
+                    <h4 className="text-xs font-bold text-[var(--text-primary)] uppercase">Spring Boot Controller</h4>
+                    <p className="text-[9px] text-[var(--text-muted)]">Business Logic & Transaction Management</p>
                   </div>
                 </div>
 
@@ -135,8 +155,8 @@ const Hero = () => {
                     <Database size={18} />
                   </div>
                   <div className="font-mono text-left">
-                    <h4 className="text-xs font-bold text-white uppercase">MySQL DB Persistence</h4>
-                    <p className="text-[9px] text-gray-500">Transaction write & key index lookup</p>
+                    <h4 className="text-xs font-bold text-[var(--text-primary)] uppercase">MySQL DB Persistence</h4>
+                    <p className="text-[9px] text-[var(--text-muted)]">Transaction write & key index lookup</p>
                   </div>
                 </div>
               </div>

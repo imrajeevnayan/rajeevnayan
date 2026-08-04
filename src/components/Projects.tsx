@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, X, Target, Cpu, HelpCircle, Key, Play } from 'lucide-react';
+import { Github, X, Play } from 'lucide-react';
 import ScrollingPreview from './scrolling-preview';
 
 import urlShortenerImage from '../assets/url_shortener.png';
@@ -109,15 +109,15 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-[#08080a] border-b border-white/5">
+    <section id="projects" className="py-16 md:py-24 bg-[var(--bg-main)] border-b border-[var(--border-main)]">
       <div className="section-container">
         
         <div className="max-w-2xl mb-12">
           <span className="text-xs font-mono tracking-widest text-[#10b981] uppercase block mb-3">// PRODUCTION CASE STUDIES</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4">
             Engineering Solutions at Scale
           </h2>
-          <p className="text-gray-400 text-sm md:text-base font-light leading-relaxed font-mono">
+          <p className="text-[var(--text-secondary)] text-sm md:text-base font-light leading-relaxed font-mono">
             Detailed breakdowns of backend performance tuning, resource optimization, and clean systems architecture decisions.
           </p>
         </div>
@@ -136,7 +136,7 @@ const Projects = () => {
                 setActiveTab('overview');
                 setShowResponse(false);
               }}
-              className="group relative rounded-xl overflow-hidden border border-white/10 bg-[#121215] cursor-pointer hover:border-[#10b981]/50 transition-all duration-300 flex flex-col h-[280px]"
+              className="group relative rounded-xl overflow-hidden border border-[var(--border-main)] bg-[var(--surface-card)] cursor-pointer hover:border-[#10b981]/50 transition-all duration-300 flex flex-col h-[280px]"
             >
               <div className="relative w-full h-full overflow-hidden flex-1 group-hover:scale-[1.03] transition-transform duration-500">
                 <ScrollingPreview
@@ -145,11 +145,11 @@ const Projects = () => {
                 />
               </div>
 
-              <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-[#121215] via-[#121215]/90 to-transparent pointer-events-none z-10 flex flex-col justify-end p-5">
+              <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-[var(--surface-card)] via-[var(--surface-card)]/90 to-transparent pointer-events-none z-10 flex flex-col justify-end p-5">
                 <span className="text-[9px] text-[#10b981] font-mono uppercase tracking-widest mb-0.5">
                   {project.subtitle}
                 </span>
-                <h3 className="text-base font-bold text-white group-hover:text-[#10b981] transition-colors">
+                <h3 className="text-base font-bold text-[var(--text-primary)] group-hover:text-[#10b981] transition-colors">
                   {project.title}
                 </h3>
               </div>
@@ -174,12 +174,12 @@ const Projects = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="relative bg-[#121215] border border-white/10 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
+                className="relative bg-[var(--surface-card)] border border-[var(--border-main)] rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
               >
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute right-4 top-4 p-2 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white transition-all z-20 cursor-pointer"
+                  className="absolute right-4 top-4 p-2 rounded-full bg-[var(--surface-main)] hover:bg-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all z-20 cursor-pointer"
                 >
                   <X size={16} />
                 </button>
@@ -189,13 +189,13 @@ const Projects = () => {
                     <span className="text-xs text-[#10b981] font-mono uppercase tracking-wider">
                       {selectedProject.subtitle}
                     </span>
-                    <h3 className="text-2xl font-bold tracking-tight text-white font-mono">
+                    <h3 className="text-2xl font-bold tracking-tight text-[var(--text-primary)] font-mono">
                       {selectedProject.title}
                     </h3>
                   </div>
 
                   {/* Minimal Tab Selectors */}
-                  <div className="flex gap-2 border-b border-white/5 pb-2">
+                  <div className="flex gap-2 border-b border-[var(--border-main)] pb-2">
                     {(['overview', 'audit', 'sandbox'] as const).map((tab) => (
                       <button
                         key={tab}
@@ -206,7 +206,7 @@ const Projects = () => {
                         className={`px-3 py-1.5 rounded text-xs font-mono font-semibold transition-all cursor-pointer ${
                           activeTab === tab
                             ? 'bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/25'
-                            : 'text-gray-400 hover:text-white'
+                            : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                         }`}
                       >
                         {tab === 'overview' ? 'Overview' : tab === 'audit' ? 'System Audit' : 'API Sandbox'}
@@ -215,7 +215,7 @@ const Projects = () => {
                   </div>
 
                   {/* Tab Display Panel */}
-                  <div className="min-h-[150px] font-mono text-xs text-gray-400 leading-relaxed space-y-4">
+                  <div className="min-h-[150px] font-mono text-xs text-[var(--text-secondary)] leading-relaxed space-y-4">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeTab}
@@ -227,15 +227,15 @@ const Projects = () => {
                       >
                         {activeTab === 'overview' && (
                           <div className="space-y-3">
-                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg">
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg">
                               <span className="text-[#10b981] block mb-1 font-bold uppercase tracking-wider">// System Description</span>
-                              <p className="font-sans text-gray-300 font-light">{selectedProject.solution}</p>
+                              <p className="font-sans text-[var(--text-secondary)] font-light">{selectedProject.solution}</p>
                             </div>
-                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-2">
-                              <span className="text-white block font-bold uppercase tracking-wider">// Technology Stack</span>
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-2">
+                              <span className="text-[var(--text-primary)] block font-bold uppercase tracking-wider">// Technology Stack</span>
                               <div className="flex flex-wrap gap-2 pt-1">
                                 {selectedProject.tech.map(t => (
-                                  <span key={t} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded text-gray-300 text-[10px]">
+                                  <span key={t} className="px-2 py-0.5 bg-[var(--surface-main)] border border-[var(--border-main)] rounded text-[var(--text-secondary)] text-[10px]">
                                     {t}
                                   </span>
                                 ))}
@@ -246,31 +246,31 @@ const Projects = () => {
 
                         {activeTab === 'audit' && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-1">
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-1">
                               <span className="text-red-400 block font-bold uppercase tracking-wider">// Problem</span>
-                              <p className="text-gray-300 font-sans font-light">{selectedProject.problem}</p>
+                              <p className="text-[var(--text-secondary)] font-sans font-light">{selectedProject.problem}</p>
                             </div>
-                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-1">
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-1">
                               <span className="text-yellow-500 block font-bold uppercase tracking-wider">// Constraint</span>
-                              <p className="text-gray-300 font-sans font-light">{selectedProject.constraint}</p>
+                              <p className="text-[var(--text-secondary)] font-sans font-light">{selectedProject.constraint}</p>
                             </div>
-                            <div className="p-4 bg-white/5 border border-white/5 rounded-lg space-y-1">
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-1">
                               <span className="text-indigo-400 block font-bold uppercase tracking-wider">// Decision</span>
-                              <p className="text-gray-300 font-sans font-light">{selectedProject.decision}</p>
+                              <p className="text-[var(--text-secondary)] font-sans font-light">{selectedProject.decision}</p>
                             </div>
                             <div className="p-4 bg-[#10b981]/5 border border-[#10b981]/10 rounded-lg space-y-1">
                               <span className="text-[#10b981] block font-bold uppercase tracking-wider">// Result</span>
-                              <p className="text-gray-200 font-sans font-semibold">{selectedProject.result}</p>
+                              <p className="text-[var(--text-primary)] font-sans font-semibold">{selectedProject.result}</p>
                             </div>
                           </div>
                         )}
 
                         {activeTab === 'sandbox' && (
                           <div className="space-y-4">
-                            <div className="p-4 bg-[#08080a] border border-white/5 rounded-lg flex items-center justify-between">
+                            <div className="p-4 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-lg flex items-center justify-between">
                               <div className="flex items-center gap-2">
                                 <span className="text-[#10b981] font-bold">POST</span>
-                                <span className="text-gray-300 text-[11px]">{selectedProject.endpoint}</span>
+                                <span className="text-[var(--text-secondary)] text-[11px]">{selectedProject.endpoint}</span>
                               </div>
                               <button 
                                 onClick={handleSendRequest}
@@ -288,8 +288,8 @@ const Projects = () => {
                             )}
 
                             {showResponse && (
-                              <div className="p-4 bg-[#08080a] border border-white/10 rounded-lg overflow-x-auto text-[10px]">
-                                <span className="text-gray-500 block mb-2">// Response payload status code: 200 OK</span>
+                              <div className="p-4 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-lg overflow-x-auto text-[10px]">
+                                <span className="text-[var(--text-muted)] block mb-2">// Response payload status code: 200 OK</span>
                                 <pre className="text-green-400 leading-normal">
                                   {JSON.stringify(selectedProject.mockResponse, null, 2)}
                                 </pre>
@@ -301,7 +301,7 @@ const Projects = () => {
                     </AnimatePresence>
                   </div>
 
-                  <div className="flex justify-between items-center pt-4 border-t border-white/5 font-mono">
+                  <div className="flex justify-between items-center pt-4 border-t border-[var(--border-main)] font-mono">
                     <a 
                       href={selectedProject.github} 
                       target="_blank" 
