@@ -37,7 +37,7 @@ export const usePreloader = () => {
   }
   return context;
 };
-const LOADING_TIME = 2.5;
+const LOADING_TIME = 0.4;
 function Preloader({ children, disabled = false }: PreloaderProps) {
   const skip = disabled || (typeof window !== "undefined" && window.location.pathname.startsWith("/resume"));
 
