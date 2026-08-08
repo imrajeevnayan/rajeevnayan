@@ -56,55 +56,55 @@ const GithubStats = () => {
   }, []);
 
   return (
-    <section id="github" className="py-16 md:py-24 bg-[var(--bg-main)] border-y border-[var(--border-main)]">
+    <section id="github" className="py-20 md:py-32 bg-[var(--bg-main)]">
       <div className="section-container">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           
           {/* Identity Info Card */}
-          <div className="lg:w-5/12 space-y-6">
-            <span className="badge-premium">Open Source</span>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)]">GitHub Profile</h2>
-            <p className="text-sm md:text-base text-[var(--text-secondary)] font-light leading-relaxed">
+          <div className="lg:w-5/12 w-full space-y-6">
+            <span className="text-[12px] font-semibold text-[var(--color-ember)] uppercase block mb-2">Comunidad</span>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-display">GitHub Profile</h2>
+            <p className="text-[17px] text-[var(--text-secondary)] font-normal leading-relaxed">
               Active open source engineer contributing modular tools, enterprise templates, and highly-optimized backend architectures.
             </p>
 
             {/* Profile Identity Card */}
-            <div className="p-6 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-2xl flex flex-col gap-4 relative overflow-hidden group">
+            <div className="p-6 bg-[var(--bg-alternate)] border border-[var(--border-main)] rounded-[28px] flex flex-col gap-4 relative overflow-hidden group">
               <div className="flex items-center gap-4">
                 <img 
                   src={profile.avatar_url} 
                   alt={profile.name} 
                   className="w-14 h-14 rounded-full border border-[var(--border-main)] object-cover"
                 />
-                <div>
-                  <h4 className="font-bold text-[var(--text-primary)] text-base">{profile.name}</h4>
+                <div className="text-left">
+                  <h4 className="font-semibold text-[var(--text-primary)] text-base font-display">{profile.name}</h4>
                   <a 
                     href={profile.html_url} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-xs text-[var(--color-button-blue)] flex items-center gap-1 hover:underline"
+                    className="text-xs text-[var(--color-link-blue)] flex items-center gap-1 hover:underline"
                   >
                     @{profile.login} <ExternalLink size={12} />
                   </a>
                 </div>
               </div>
-              <p className="text-xs text-[var(--text-secondary)] font-light leading-relaxed">
+              <p className="text-xs text-[var(--text-secondary)] font-normal leading-relaxed text-left">
                 {profile.bio}
               </p>
               
               <div className="grid grid-cols-2 gap-4 border-t border-[var(--border-main)] pt-4 mt-2">
-                <div className="flex items-center gap-2 text-xs">
+                <div className="flex items-center gap-2 text-xs text-left">
                   <Users size={16} className="text-[var(--brand-accent)]" />
                   <div>
                     <span className="font-bold block text-[var(--text-primary)]">{profile.followers}</span>
-                    <span className="text-[var(--text-muted)] font-light">Followers</span>
+                    <span className="text-[var(--text-secondary)] font-normal">Followers</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 text-xs border-l border-[var(--border-main)] pl-4">
-                  <FolderGit2 size={16} className="text-indigo-400" />
+                <div className="flex items-center gap-2 text-xs text-left border-l border-[var(--border-main)] pl-4">
+                  <FolderGit2 size={16} className="text-[var(--color-electric-blue)]" />
                   <div>
                     <span className="font-bold block text-[var(--text-primary)]">{profile.public_repos}</span>
-                    <span className="text-[var(--text-muted)] font-light">Repositories</span>
+                    <span className="text-[var(--text-secondary)] font-normal">Repositories</span>
                   </div>
                 </div>
               </div>
@@ -112,19 +112,21 @@ const GithubStats = () => {
           </div>
 
           {/* Cal & Repository showcase */}
-          <div className="lg:w-7/12 w-full space-y-8">
-            <h3 className="text-lg font-bold tracking-tight text-[var(--text-primary)] flex items-center gap-2">
+          <div className="lg:w-7/12 w-full space-y-8 text-left">
+            <h3 className="text-lg font-semibold tracking-tight text-[var(--text-primary)] flex items-center gap-2 font-display">
               <CalendarRange size={18} className="text-[var(--brand-accent)]" />
               Contributions Calendar
             </h3>
-            <div className="p-6 md:p-8 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-2xl flex flex-col items-center justify-center overflow-x-auto">
-              <GitHubCalendar 
-                username="imrajeevnayan" 
-                blockSize={12} 
-                blockMargin={4} 
-                fontSize={12} 
-                colorScheme={document.documentElement.classList.contains('dark') ? 'dark' : 'light'}
-              />
+            <div className="p-6 md:p-8 bg-[var(--bg-alternate)] border border-[var(--border-main)] rounded-[28px] overflow-x-auto w-full">
+              <div className="min-w-[640px] w-full flex justify-center">
+                <GitHubCalendar 
+                  username="imrajeevnayan" 
+                  blockSize={12} 
+                  blockMargin={4} 
+                  fontSize={12} 
+                  colorScheme={document.documentElement.classList.contains('dark') ? 'dark' : 'light'}
+                />
+              </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -135,10 +137,10 @@ const GithubStats = () => {
                   rel="noopener noreferrer"
                   key={i}
                   whileHover={{ borderColor: 'var(--brand-accent)' }}
-                  className="p-6 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-2xl space-y-4 block group cursor-pointer"
+                  className="p-6 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-[28px] space-y-4 block group cursor-pointer"
                 >
                   <div className="flex items-center justify-between">
-                    <div className="w-8 h-8 rounded-lg bg-[var(--brand-accent)]/10 text-[var(--brand-accent)] flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-[10px] bg-[var(--color-cool-wash)] flex items-center justify-center text-[var(--brand-accent)]">
                       <BookMarked size={16} strokeWidth={1.5} />
                     </div>
                     <div className="flex items-center gap-3 text-xs text-[var(--text-secondary)]">
@@ -150,17 +152,17 @@ const GithubStats = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="space-y-1.5">
-                    <h4 className="text-base font-bold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors tracking-tight">
+                  <div className="space-y-1.5 text-left">
+                    <h4 className="text-base font-semibold text-[var(--text-primary)] group-hover:text-[var(--brand-accent)] transition-colors tracking-tight font-display">
                       {repo.name}
                     </h4>
-                    <p className="text-xs text-[var(--text-secondary)] font-light leading-relaxed line-clamp-2">
+                    <p className="text-xs text-[var(--text-secondary)] font-normal leading-relaxed line-clamp-2">
                       {repo.desc}
                     </p>
                   </div>
                   <div className="pt-3 border-t border-[var(--border-main)] flex justify-between items-center">
-                    <span className="text-[10px] font-semibold text-[var(--color-button-blue)] uppercase tracking-wider">{repo.lang}</span>
-                    <span className="text-[10px] text-[var(--text-muted)] flex items-center gap-0.5 group-hover:text-[var(--brand-accent)] transition-colors">
+                    <span className="text-[10px] font-semibold text-[var(--color-link-blue)] uppercase tracking-wider">{repo.lang}</span>
+                    <span className="text-[10px] text-[var(--text-secondary)] flex items-center gap-0.5 group-hover:text-[var(--brand-accent)] transition-colors">
                       Repo <ExternalLink size={10} />
                     </span>
                   </div>

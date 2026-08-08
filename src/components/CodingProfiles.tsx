@@ -74,18 +74,18 @@ const CodingProfiles = () => {
     ];
 
     return (
-        <section id="coding-profiles" className="py-16 md:py-24 bg-[var(--bg-main)]">
+        <section id="coding-profiles" className="py-20 md:py-32 bg-[var(--bg-main)]">
             <div className="section-container">
                 <motion.div 
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     viewport={{ once: true }}
-                    className="space-y-3 mb-8 md:mb-12"
+                    className="space-y-3 mb-12 text-left"
                 >
-                    <span className="badge-premium">Algorithmic Foundation</span>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
-                        Live <span className="text-gradient">Performance</span>
+                    <span className="text-[12px] font-semibold text-[var(--color-ember)] uppercase block mb-3">Algoritmos</span>
+                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-display">
+                        Live Performance
                     </h2>
                 </motion.div>
  
@@ -97,7 +97,7 @@ const CodingProfiles = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                            className="premium-card p-6 md:p-8 bg-[var(--surface-card)] border border-[var(--border-main)] rounded-2xl group flex flex-col justify-between"
+                            className="premium-card p-6 md:p-8 bg-[var(--bg-alternate)] border border-[var(--border-main)] rounded-[28px] group flex flex-col justify-between"
                         >
                             <div>
                                 <div className="flex items-center justify-between mb-8">
@@ -126,15 +126,15 @@ const CodingProfiles = () => {
                                 {/* Live numerical metrics grids */}
                                 <div className="grid grid-cols-3 gap-3 mb-6">
                                     {profile.data.map((stat, idx) => (
-                                        <div key={idx} className="p-3 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-xl text-center">
+                                        <div key={idx} className="p-3 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-[14px] text-center">
                                             <span className="text-base font-bold text-[var(--text-primary)] block">{stat.value}</span>
-                                            <span className="text-[9px] text-[var(--text-secondary)] uppercase tracking-wider font-light">{stat.label}</span>
+                                            <span className="text-[9px] text-[var(--text-secondary)] uppercase tracking-wider font-normal">{stat.label}</span>
                                         </div>
                                     ))}
                                 </div>
 
                                 {/* Live dynamic SVG card */}
-                                <div className="mb-6 overflow-hidden rounded-xl border border-[var(--border-main)] bg-[var(--surface-main)] group-hover:border-[var(--brand-accent)] transition-all max-w-[75%] mx-auto">
+                                <div className="mb-6 overflow-hidden rounded-[20px] border border-[var(--border-main)] bg-[var(--surface-main)] group-hover:border-[var(--brand-accent)] transition-all max-w-full sm:max-w-[85%] lg:max-w-[75%] mx-auto">
                                     <img 
                                         src={profile.statsImage} 
                                         alt={`${profile.name} Stats`}
