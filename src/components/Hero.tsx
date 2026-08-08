@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowRight, FileText, Activity, Shield, Server, Database, Globe } from 'lucide-react';
+import { FileText, Activity, Shield, Server, Database, Globe } from 'lucide-react';
 
 const StatCounter = ({ value, label, suffix = '' }: { value: number; label: string; suffix?: string }) => {
   const [count, setCount] = useState(0);

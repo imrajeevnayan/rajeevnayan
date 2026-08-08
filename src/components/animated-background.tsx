@@ -329,13 +329,17 @@ const KeyboardScene = ({ maxDpr }: { maxDpr: number }) => {
     if (activeSection !== "skills") {
       setVisibility(false, false, false, false);
     } else if (theme === "dark") {
-      isMobile
-        ? setVisibility(false, false, false, true)
-        : setVisibility(false, true, false, false);
+      if (isMobile) {
+        setVisibility(false, false, false, true);
+      } else {
+        setVisibility(false, true, false, false);
+      }
     } else {
-      isMobile
-        ? setVisibility(false, false, true, false)
-        : setVisibility(true, false, false, false);
+      if (isMobile) {
+        setVisibility(false, false, true, false);
+      } else {
+        setVisibility(true, false, false, false);
+      }
     }
   }, [theme, splineApp, isMobile, activeSection]);
 

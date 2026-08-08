@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Award, GraduationCap, Calendar, Milestone, ArrowRight } from 'lucide-react';
+import { Award, GraduationCap, Calendar, Milestone } from 'lucide-react';
 
 const About = () => {
   const education = [

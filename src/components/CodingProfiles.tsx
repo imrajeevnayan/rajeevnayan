@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Trophy, Code2, CheckCircle2 } from 'lucide-react';
+import { ExternalLink, Trophy, Code2 } from 'lucide-react';
 
 const CodingProfiles = () => {
     const [lcStats, setLcStats] = useState({ solved: 634, easy: 325, medium: 271, hard: 38, ranking: 121847 });
-    const [gfgStats, setGfgStats] = useState({ solved: 636, score: 1633, accuracy: '84%' });
+    const gfgStats = { solved: 636, score: 1633, accuracy: '84%' };
 
     useEffect(() => {
         // Fetch LeetCode stats dynamically
