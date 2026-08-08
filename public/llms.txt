@@ -1,0 +1,27 @@
+# Rajeev Nayan — Full Stack AI & Java Engineer
+
+Rajeev Nayan is a Full Stack AI & Java Engineer specializing in building secure, high-performance distributed backend architectures combined with cutting-edge AI capabilities, autonomous agent pipelines, and RAG architectures.
+
+## Core Technical Stack
+* **Languages**: Java (17/21), SQL (MySQL, PostgreSQL), TypeScript, JavaScript
+* **Backend Systems**: Spring Boot, Spring Security, JWT, OAuth2, RESTful APIs, Hibernate/JPA, Microservices
+* **AI & Agentic Systems**: Agentic Systems, RAG Pipelines, LLM API Integrations, LangChain, Qdrant
+* **DevOps & Cloud**: Docker, Jenkins, GitHub Actions, AWS (EC2, S3, RDS), Redis Caching
+
+## Verified Coding Statistics
+* **LeetCode**: 634 Problems Solved (Easy: 325 | Medium: 271 | Hard: 38)
+* **GeeksforGeeks**: 636 Problems Solved | Coding Score: 1633 | Accuracy: 84%
+* **GitHub**: 70 public repositories, 11 followers
+
+## High-Performance Case Studies
+* **RAG Document Q&A System**: Secure cloud-native PDF ingestion and RAG AI System. Minimizes query latency dynamically via semantic layout chunking and Qdrant DB vector calculations.
+* **AI Chat Gateway**: High-throughput LLM gateway built using Spring Boot. Built custom Token Bucket rate limiter filters and stateless proxy routing. Average routing overhead dropped to under 12ms.
+* **VeloLink URL Shortener**: High-performance link redirection engine with collision resolution algorithms and Redis-based cache lookup to route links in sub-5ms.
+
+## Contact & Links
+* **Domain**: https://rajeevnayan.in/
+* **Email**: imrajeevnayan@gmail.com
+* **GitHub**: https://github.com/imrajeevnayan
+* **LinkedIn**: https://linkedin.com/in/imrajeevnayan
+* **LeetCode**: https://leetcode.com/u/imrajeevnayan/
+* **GeeksforGeeks**: https://www.geeksforgeeks.org/profile/imrajeevnayan?tab=activity
