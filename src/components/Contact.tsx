@@ -28,7 +28,8 @@ const Contact = () => {
       await emailjs.sendForm(serviceId, templateId, formRef.current, publicKey);
       setSubmitStatus('success');
       formRef.current.reset();
-    } catch {
+    } catch (error) {
+      console.error('EmailJS Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -132,9 +133,14 @@ const Contact = () => {
                {submitStatus === 'success' && (
                  <p className="text-[11px] font-medium text-green-500 text-center uppercase tracking-wider mt-2">Message Transmitted Successfully</p>
                )}
-               {submitStatus === 'error' && (
-                 <p className="text-[11px] font-medium text-[var(--brand-accent)] text-center uppercase tracking-wider mt-2">Transmission Failed. Please try again.</p>
-               )}
+                {submitStatus === 'error' && (
+                  <p className="text-[11px] font-medium text-[var(--brand-accent)] text-center uppercase tracking-wider mt-2">
+                    Transmission Failed. You can also email directly to:{' '}
+                    <a href="mailto:imrajeevnayan@gmail.com" className="underline hover:text-[var(--text-primary)] transition-colors lowercase">
+                      imrajeevnayan@gmail.com
+                    </a>
+                  </p>
+                )}
             </form>
           </motion.div>
         </div>
