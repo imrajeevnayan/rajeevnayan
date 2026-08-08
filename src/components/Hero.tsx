@@ -66,7 +66,7 @@ const Hero = () => {
             />
           </div>
 
-          <span className="text-[14px] font-semibold tracking-normal text-[var(--color-ember)] uppercase block">// Full Stack AI & Java Engineer</span>
+          <span className="text-[14px] font-semibold tracking-normal text-[var(--color-ember)] uppercase block">// Rajeev Nayan — Full Stack AI & Java Engineer</span>
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-[-1.44px] text-[var(--text-primary)] leading-[1.05] font-display">
             Full Stack AI & Java Engineer.
