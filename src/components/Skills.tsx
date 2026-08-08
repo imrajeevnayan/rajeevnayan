@@ -85,14 +85,22 @@ const Skills = () => {
               <button
                 key={tier.id}
                 onClick={() => setActiveTier(tier.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-[980px] text-xs font-mono font-semibold transition-all border cursor-pointer ${
-                  isActive 
-                    ? 'bg-[var(--color-cool-wash)] text-[var(--color-electric-blue)] border-[var(--color-electric-blue)]/30 shadow-none' 
-                    : 'bg-[var(--bg-main)] text-[var(--text-secondary)] border-[var(--border-main)] hover:border-[var(--text-primary)]'
-                }`}
+                className="relative flex items-center gap-2 px-5 py-2.5 rounded-[980px] text-xs font-mono font-semibold transition-all border cursor-pointer hover:border-[var(--text-primary)]"
+                style={{
+                  color: isActive ? 'var(--color-electric-blue)' : 'var(--text-secondary)',
+                  borderColor: isActive ? 'color-mix(in srgb, var(--color-electric-blue) 30%, transparent)' : 'var(--border-main)',
+                  backgroundColor: 'transparent'
+                }}
               >
-                <tier.icon size={12} />
-                <span>{tier.label}</span>
+                {isActive && (
+                  <motion.div 
+                    layoutId="activeSkillTab"
+                    className="absolute inset-0 bg-[var(--color-cool-wash)] rounded-[980px] z-0"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <tier.icon size={12} className="relative z-10" />
+                <span className="relative z-10">{tier.label}</span>
               </button>
             );
           })}

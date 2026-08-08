@@ -36,8 +36,24 @@ const StatCounter = ({ value, label, suffix = '' }: { value: number; label: stri
 };
 
 const Hero = () => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { currentTarget, clientX, clientY } = e;
+    const { left, top } = currentTarget.getBoundingClientRect();
+    const x = clientX - left;
+    const y = clientY - top;
+    currentTarget.style.setProperty('--x', `${x}px`);
+    currentTarget.style.setProperty('--y', `${y}px`);
+  };
+
   return (
-    <section id="hero" className="relative min-h-[95vh] flex items-center bg-[var(--bg-main)] py-20 md:py-32 overflow-hidden">
+    <section 
+      id="hero" 
+      onMouseMove={handleMouseMove}
+      className="relative min-h-[95vh] flex items-center bg-[var(--bg-main)] py-20 md:py-32 overflow-hidden group/hero"
+    >
+      {/* Dynamic mouse-following spotlight highlight */}
+      <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500 pointer-events-none z-0 spotlight-overlay" />
+
       <div className="section-container relative z-10 w-full">
         {/* Apple style centering or layout */}
         <div className="text-center max-w-4xl mx-auto mb-16 space-y-6">

@@ -217,3 +217,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.spotlight-overlay {
+  background: radial-gradient(
+    600px circle at var(--x, 50%) var(--y, 50%),
+    rgba(var(--brand-accent-rgb), 0.08),
+    transparent 80%
+  );
+}

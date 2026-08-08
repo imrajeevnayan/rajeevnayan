@@ -196,22 +196,34 @@ const Projects = () => {
 
                   {/* Minimal Tab Selectors */}
                   <div className="flex gap-2 border-b border-[var(--border-main)] pb-2">
-                    {(['overview', 'audit', 'sandbox'] as const).map((tab) => (
-                      <button
-                        key={tab}
-                        onClick={() => {
-                          setActiveTab(tab);
-                          setShowResponse(false);
-                        }}
-                        className={`px-3 py-1.5 rounded-[36px] text-xs font-mono font-semibold transition-all cursor-pointer ${
-                          activeTab === tab
-                            ? 'bg-[var(--color-cool-wash)] text-[var(--color-electric-blue)] border border-[var(--border-main)]'
-                            : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
-                        }`}
-                      >
-                        {tab === 'overview' ? 'Overview' : tab === 'audit' ? 'System Audit' : 'API Sandbox'}
-                      </button>
-                    ))}
+                    {(['overview', 'audit', 'sandbox'] as const).map((tab) => {
+                      const isActive = activeTab === tab;
+                      return (
+                        <button
+                          key={tab}
+                          onClick={() => {
+                            setActiveTab(tab);
+                            setShowResponse(false);
+                          }}
+                          className="relative px-3 py-1.5 rounded-[36px] text-xs font-mono font-semibold transition-all cursor-pointer"
+                          style={{
+                            color: isActive ? 'var(--color-electric-blue)' : 'var(--text-secondary)',
+                            backgroundColor: 'transparent'
+                          }}
+                        >
+                          {isActive && (
+                            <motion.div 
+                              layoutId="activeModalTab"
+                              className="absolute inset-0 bg-[var(--color-cool-wash)] rounded-[36px] border border-[var(--border-main)] z-0"
+                              transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                            />
+                          )}
+                          <span className="relative z-10">
+                            {tab === 'overview' ? 'Overview' : tab === 'audit' ? 'System Audit' : 'API Sandbox'}
+                          </span>
+                        </button>
+                      );
+                    })}
                   </div>
 
                   {/* Tab Display Panel */}
