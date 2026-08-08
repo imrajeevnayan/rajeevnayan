@@ -68,7 +68,7 @@ const ScrollingPreview = ({
   // Preload the wallpaper so a missing/404 file falls back to the gradient
   // instead of rendering a broken background.
   useEffect(() => {
-    if (!bg) {
+    if (!bg || bg.startsWith("linear-gradient")) {
       setBgReady(false);
       return;
     }
@@ -107,7 +107,9 @@ const ScrollingPreview = ({
           position: "absolute",
           inset: 0,
           backgroundColor: "#0f172a",
-          backgroundImage: bgReady && bg ? `url("${bg}")` : FALLBACK_BG,
+          backgroundImage: bgReady && bg 
+            ? `url("${bg}")` 
+            : (bg && bg.startsWith("linear-gradient") ? bg : FALLBACK_BG),
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}

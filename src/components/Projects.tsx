@@ -21,6 +21,7 @@ interface CaseStudy {
   image: string;
   endpoint: string;
   mockResponse: object;
+  bg?: string;
 }
 
 const caseStudies: CaseStudy[] = [
@@ -37,6 +38,7 @@ const caseStudies: CaseStudy[] = [
     github: 'https://github.com/imrajeevnayan/rag-document-qa',
     image: urlShortenerImage,
     endpoint: 'POST /api/v1/rag/ask',
+    bg: 'linear-gradient(135deg, #1e1b4b, #3b0764)',
     mockResponse: {
       status: "SUCCESS",
       query: "What are the core microservices in our stack?",
@@ -60,6 +62,7 @@ const caseStudies: CaseStudy[] = [
     github: 'https://github.com/imrajeevnayan/springboot-ai-chat-backend',
     image: aiChatImage,
     endpoint: 'POST /api/v1/chat/completions',
+    bg: 'linear-gradient(135deg, #022c22, #0d5c4b)',
     mockResponse: {
       id: "chat-578129",
       object: "chat.completion",
@@ -83,6 +86,7 @@ const caseStudies: CaseStudy[] = [
     github: 'https://github.com/imrajeevnayan/url-shortener-springboot',
     image: hospitalImage,
     endpoint: 'GET /api/v1/links/redirect/vl-3902',
+    bg: 'linear-gradient(135deg, #1c1917, #451a03)',
     mockResponse: {
       originalUrl: "https://github.com/imrajeevnayan/url-shortener-springboot",
       alias: "vl-3902",
@@ -136,12 +140,19 @@ const Projects = () => {
                 setActiveTab('overview');
                 setShowResponse(false);
               }}
-              className="group relative rounded-[28px] overflow-hidden border border-[var(--border-main)] bg-[var(--surface-card)] cursor-pointer hover:bg-[var(--color-cool-wash)] transition-all duration-300 flex flex-col h-[280px]"
+              className={`group relative rounded-[28px] overflow-hidden border border-[var(--border-main)] bg-[var(--surface-card)] cursor-pointer hover:bg-[var(--color-cool-wash)] transition-all duration-300 flex flex-col ${
+                index === 0 
+                  ? 'md:col-span-2 h-[380px]' 
+                  : index === 1 
+                  ? 'md:col-span-1 h-[380px]' 
+                  : 'md:col-span-3 h-[300px]'
+              }`}
             >
               <div className="relative w-full h-full overflow-hidden flex-1 group-hover:scale-[1.03] transition-transform duration-500">
                 <ScrollingPreview
                   src={project.image}
                   alt={project.title}
+                  bg={project.bg}
                 />
               </div>
 
