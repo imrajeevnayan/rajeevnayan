@@ -6,8 +6,8 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#2997ff',
-          deep: '#0066cc',
+          DEFAULT: '#0071e3', // Electric Blue
+          deep: '#0066cc', // Link Blue
           btn: '#0071e3',
         },
         apple: {
@@ -23,18 +23,30 @@ export default {
           bone: '#e2e2e5',
           paper: '#ffffff',
           ink: '#000000',
+          ember: '#b64400',
+          coolWash: '#e8e8ed',
+          fadedSurface: '#fafafc',
+          quietDot: '#777779',
+          sky: '#c8d8e0',
+          citrus: '#dddc8c',
+          starlight: '#f0e4d3',
+          silver: '#e3e4e5',
+          blush: '#e8d0d0',
+          indigo: '#596680',
+          midnight: '#2e3642',
         }
       },
       fontFamily: {
-        sans: ['Inter', '"SF Pro Text"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['"SF Pro Text"', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
-        display: ['Inter', '"SF Pro Display"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display: ['"SF Pro Display"', 'Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       letterSpacing: {
         appleDisplay: '-0.022em',
         appleHeading: '-0.015em',
         appleSubheading: '-0.011em',
-        appleBody: '-0.003em',
+        appleBody: '-0.022em',
+        appleDisplayHuge: '-1.44px',
       }
     },
   },

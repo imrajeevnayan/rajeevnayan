@@ -46,6 +46,7 @@ const SpaceBackground = () => {
 
     const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const isDark = document.documentElement.classList.contains('dark');
 
       // Draw and update stars
       stars.forEach(star => {
@@ -64,15 +65,22 @@ const SpaceBackground = () => {
 
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-        ctx.shadowBlur = star.size * 2;
-        ctx.shadowColor = '#fff';
+        
+        if (isDark) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * 0.4})`;
+          ctx.shadowBlur = star.size;
+          ctx.shadowColor = '#fff';
+        } else {
+          ctx.fillStyle = `rgba(29, 29, 31, ${star.opacity * 0.08})`;
+          ctx.shadowBlur = 0;
+        }
         ctx.fill();
         ctx.shadowBlur = 0; // reset
       });
 
       // Draw constellation connections to the mouse pointer
-      ctx.strokeStyle = 'rgba(16, 185, 129, 0.08)'; // Emerald green flow line
+      const accentColor = isDark ? '41, 151, 255' : '0, 113, 227';
+      ctx.strokeStyle = `rgba(${accentColor}, 0.04)`;
       ctx.lineWidth = 0.5;
 
       for (let i = 0; i < stars.length; i++) {
@@ -94,7 +102,7 @@ const SpaceBackground = () => {
         const mouseDist = Math.hypot(s1.x - mouseRef.current.x, s1.y - mouseRef.current.y);
         if (mouseDist < 120) {
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(16, 185, 129, ${(1 - mouseDist / 120) * 0.2})`;
+          ctx.strokeStyle = `rgba(${accentColor}, ${(1 - mouseDist / 120) * 0.12})`;
           ctx.moveTo(s1.x, s1.y);
           ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
           ctx.stroke();
@@ -125,7 +133,7 @@ const SpaceBackground = () => {
     <canvas 
       ref={canvasRef} 
       className="fixed inset-0 w-full h-full pointer-events-none z-0" 
-      style={{ mixBlendMode: 'screen' }}
+      style={{ mixBlendMode: 'normal' }}
     />
   );
 };

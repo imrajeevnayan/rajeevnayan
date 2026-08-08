@@ -109,15 +109,15 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-24 bg-[var(--bg-main)] border-b border-[var(--border-main)]">
+    <section id="projects" className="py-20 md:py-32 bg-[var(--bg-alternate)]">
       <div className="section-container">
         
-        <div className="max-w-2xl mb-12">
-          <span className="text-xs font-mono tracking-widest text-[#10b981] uppercase block mb-3">// PRODUCTION CASE STUDIES</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4">
-            Engineering Solutions at Scale
+        <div className="max-w-2xl mb-16">
+          <span className="text-[12px] font-semibold text-[var(--color-ember)] uppercase block mb-3">Nuevo</span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4 font-display">
+            Engineering Solutions
           </h2>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base font-light leading-relaxed font-mono">
+          <p className="text-[var(--text-secondary)] text-[17px] font-normal leading-relaxed">
             Detailed breakdowns of backend performance tuning, resource optimization, and clean systems architecture decisions.
           </p>
         </div>
@@ -136,7 +136,7 @@ const Projects = () => {
                 setActiveTab('overview');
                 setShowResponse(false);
               }}
-              className="group relative rounded-xl overflow-hidden border border-[var(--border-main)] bg-[var(--surface-card)] cursor-pointer hover:border-[#10b981]/50 transition-all duration-300 flex flex-col h-[280px]"
+              className="group relative rounded-[28px] overflow-hidden border border-[var(--border-main)] bg-[var(--surface-card)] cursor-pointer hover:bg-[var(--color-cool-wash)] transition-all duration-300 flex flex-col h-[280px]"
             >
               <div className="relative w-full h-full overflow-hidden flex-1 group-hover:scale-[1.03] transition-transform duration-500">
                 <ScrollingPreview
@@ -145,11 +145,11 @@ const Projects = () => {
                 />
               </div>
 
-              <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-[var(--surface-card)] via-[var(--surface-card)]/90 to-transparent pointer-events-none z-10 flex flex-col justify-end p-5">
-                <span className="text-[9px] text-[#10b981] font-mono uppercase tracking-widest mb-0.5">
+              <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-[var(--surface-card)] via-[var(--surface-card)]/90 to-transparent pointer-events-none z-10 flex flex-col justify-end p-6">
+                <span className="text-[11px] text-[var(--text-secondary)] font-normal uppercase tracking-wider mb-1 font-sans">
                   {project.subtitle}
                 </span>
-                <h3 className="text-base font-bold text-[var(--text-primary)] group-hover:text-[#10b981] transition-colors">
+                <h3 className="text-lg font-semibold text-[var(--text-primary)] group-hover:text-[var(--color-link-blue)] transition-colors font-display">
                   {project.title}
                 </h3>
               </div>
@@ -166,7 +166,7 @@ const Projects = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setSelectedProject(null)}
-                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
               />
 
               <motion.div
@@ -174,22 +174,22 @@ const Projects = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="relative bg-[var(--surface-card)] border border-[var(--border-main)] rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl z-10 flex flex-col max-h-[85vh]"
+                className="relative bg-[var(--surface-card)] border border-[var(--border-main)] rounded-[28px] w-full max-w-2xl overflow-hidden shadow-none z-10 flex flex-col max-h-[85vh]"
               >
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="absolute right-4 top-4 p-2 rounded-full bg-[var(--surface-main)] hover:bg-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all z-20 cursor-pointer"
+                  className="absolute right-4 top-4 p-2 rounded-full bg-[var(--color-cool-wash)] hover:bg-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-all z-20 cursor-pointer"
                 >
                   <X size={16} />
                 </button>
 
                 <div className="p-6 md:p-8 overflow-y-auto space-y-6 flex-1 text-left">
                   <div className="space-y-1">
-                    <span className="text-xs text-[#10b981] font-mono uppercase tracking-wider">
+                    <span className="text-xs text-[var(--color-ember)] font-medium uppercase tracking-wider">
                       {selectedProject.subtitle}
                     </span>
-                    <h3 className="text-2xl font-bold tracking-tight text-[var(--text-primary)] font-mono">
+                    <h3 className="text-2xl font-bold tracking-tight text-[var(--text-primary)] font-display">
                       {selectedProject.title}
                     </h3>
                   </div>
@@ -203,9 +203,9 @@ const Projects = () => {
                           setActiveTab(tab);
                           setShowResponse(false);
                         }}
-                        className={`px-3 py-1.5 rounded text-xs font-mono font-semibold transition-all cursor-pointer ${
+                        className={`px-3 py-1.5 rounded-[36px] text-xs font-mono font-semibold transition-all cursor-pointer ${
                           activeTab === tab
-                            ? 'bg-[#10b981]/15 text-[#10b981] border border-[#10b981]/25'
+                            ? 'bg-[var(--color-cool-wash)] text-[var(--color-electric-blue)] border border-[var(--border-main)]'
                             : 'text-[var(--text-secondary)] hover:text-[var(--text-primary)]'
                         }`}
                       >
@@ -227,15 +227,15 @@ const Projects = () => {
                       >
                         {activeTab === 'overview' && (
                           <div className="space-y-3">
-                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg">
-                              <span className="text-[#10b981] block mb-1 font-bold uppercase tracking-wider">// System Description</span>
-                              <p className="font-sans text-[var(--text-secondary)] font-light">{selectedProject.solution}</p>
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-[14px]">
+                              <span className="text-[var(--color-electric-blue)] block mb-1 font-semibold uppercase tracking-wider">// System Description</span>
+                              <p className="font-sans text-[var(--text-secondary)] font-normal">{selectedProject.solution}</p>
                             </div>
-                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-2">
-                              <span className="text-[var(--text-primary)] block font-bold uppercase tracking-wider">// Technology Stack</span>
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-[14px] space-y-2">
+                              <span className="text-[var(--text-primary)] block font-semibold uppercase tracking-wider">// Technology Stack</span>
                               <div className="flex flex-wrap gap-2 pt-1">
                                 {selectedProject.tech.map(t => (
-                                  <span key={t} className="px-2 py-0.5 bg-[var(--surface-main)] border border-[var(--border-main)] rounded text-[var(--text-secondary)] text-[10px]">
+                                  <span key={t} className="px-2 py-0.5 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-[8px] text-[var(--text-secondary)] text-[10px]">
                                     {t}
                                   </span>
                                 ))}
@@ -246,51 +246,51 @@ const Projects = () => {
 
                         {activeTab === 'audit' && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-1">
-                              <span className="text-red-400 block font-bold uppercase tracking-wider">// Problem</span>
-                              <p className="text-[var(--text-secondary)] font-sans font-light">{selectedProject.problem}</p>
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-[14px] space-y-1">
+                              <span className="text-red-400 block font-semibold uppercase tracking-wider">// Problem</span>
+                              <p className="text-[var(--text-secondary)] font-sans font-normal">{selectedProject.problem}</p>
                             </div>
-                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-1">
-                              <span className="text-yellow-500 block font-bold uppercase tracking-wider">// Constraint</span>
-                              <p className="text-[var(--text-secondary)] font-sans font-light">{selectedProject.constraint}</p>
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-[14px] space-y-1">
+                              <span className="text-yellow-500 block font-semibold uppercase tracking-wider">// Constraint</span>
+                              <p className="text-[var(--text-secondary)] font-sans font-normal">{selectedProject.constraint}</p>
                             </div>
-                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-lg space-y-1">
-                              <span className="text-indigo-400 block font-bold uppercase tracking-wider">// Decision</span>
-                              <p className="text-[var(--text-secondary)] font-sans font-light">{selectedProject.decision}</p>
+                            <div className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] rounded-[14px] space-y-1">
+                              <span className="text-indigo-400 block font-semibold uppercase tracking-wider">// Decision</span>
+                              <p className="text-[var(--text-secondary)] font-sans font-normal">{selectedProject.decision}</p>
                             </div>
-                            <div className="p-4 bg-[#10b981]/5 border border-[#10b981]/10 rounded-lg space-y-1">
-                              <span className="text-[#10b981] block font-bold uppercase tracking-wider">// Result</span>
-                              <p className="text-[var(--text-primary)] font-sans font-semibold">{selectedProject.result}</p>
+                            <div className="p-4 bg-[var(--color-cool-wash)]/40 border border-[var(--border-main)] rounded-[14px] space-y-1">
+                              <span className="text-[var(--color-ember)] block font-semibold uppercase tracking-wider">// Result</span>
+                              <p className="text-[var(--text-primary)] font-sans font-medium">{selectedProject.result}</p>
                             </div>
                           </div>
                         )}
 
                         {activeTab === 'sandbox' && (
                           <div className="space-y-4">
-                            <div className="p-4 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-lg flex items-center justify-between">
+                            <div className="p-4 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-[14px] flex items-center justify-between">
                               <div className="flex items-center gap-2">
-                                <span className="text-[#10b981] font-bold">POST</span>
+                                <span className="text-[var(--color-electric-blue)] font-bold">POST</span>
                                 <span className="text-[var(--text-secondary)] text-[11px]">{selectedProject.endpoint}</span>
                               </div>
                               <button 
                                 onClick={handleSendRequest}
                                 disabled={isSending}
-                                className="px-3 py-1 bg-[#10b981] text-black font-bold rounded hover:bg-[#059669] transition-all flex items-center gap-1.5 cursor-pointer text-[10px]"
+                                className="px-4 py-1.5 bg-[var(--color-electric-blue)] text-white font-normal rounded-[980px] hover:bg-[var(--color-link-blue)] transition-all flex items-center gap-1.5 cursor-pointer text-[11px]"
                               >
                                 <Play size={10} /> Send Request
                               </button>
                             </div>
 
                             {isSending && (
-                              <div className="text-center py-4 text-emerald-400 animate-pulse uppercase font-bold tracking-widest">
+                              <div className="text-center py-4 text-[var(--color-ember)] animate-pulse uppercase font-semibold tracking-wider">
                                 // EXECUTION TRANSACTION PATHWAY ACTIVE...
                               </div>
                             )}
 
                             {showResponse && (
-                              <div className="p-4 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-lg overflow-x-auto text-[10px]">
+                              <div className="p-4 bg-[var(--bg-main)] border border-[var(--border-main)] rounded-[14px] overflow-x-auto text-[10px]">
                                 <span className="text-[var(--text-muted)] block mb-2">// Response payload status code: 200 OK</span>
-                                <pre className="text-green-400 leading-normal">
+                                <pre className="text-[var(--color-electric-blue)] leading-normal">
                                   {JSON.stringify(selectedProject.mockResponse, null, 2)}
                                 </pre>
                               </div>
@@ -306,7 +306,7 @@ const Projects = () => {
                       href={selectedProject.github} 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="text-xs text-[#10b981] hover:underline flex items-center gap-1"
+                      className="text-xs text-[var(--color-link-blue)] hover:underline flex items-center gap-1"
                     >
                       <Github size={12} /> View Codebase
                     </a>

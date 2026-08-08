@@ -53,15 +53,15 @@ const Skills = () => {
   const activeCategory = skillTiers.find(tier => tier.id === activeTier) || skillTiers[0];
 
   return (
-    <section id="skills" className="py-16 md:py-24 bg-[var(--bg-main)] border-b border-[var(--border-main)]">
+    <section id="skills" className="py-20 md:py-32 bg-[var(--bg-main)]">
       <div className="section-container">
         
-        <div className="max-w-2xl mb-12">
-          <span className="text-xs font-mono tracking-widest text-[#10b981] uppercase block mb-3">// TECHNICAL STACK</span>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4">
+        <div className="max-w-2xl mb-16">
+          <span className="text-[12px] font-semibold text-[var(--color-ember)] uppercase block mb-3">Tecnología</span>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4 font-display">
             Technical Ecosystem
           </h2>
-          <p className="text-[var(--text-secondary)] text-sm md:text-base font-light leading-relaxed font-mono">
+          <p className="text-[var(--text-secondary)] text-[17px] font-normal leading-relaxed">
             Tiered engineering capabilities verified through actual project builds and database query normalization.
           </p>
         </div>
@@ -74,10 +74,10 @@ const Skills = () => {
               <button
                 key={tier.id}
                 onClick={() => setActiveTier(tier.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-mono font-semibold transition-all border cursor-pointer ${
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-[980px] text-xs font-mono font-semibold transition-all border cursor-pointer ${
                   isActive 
-                    ? 'bg-[#10b981]/15 text-[#10b981] border-[#10b981]/30' 
-                    : 'bg-[var(--surface-main)] text-[var(--text-secondary)] border-[var(--border-main)] hover:border-white/10'
+                    ? 'bg-[var(--color-cool-wash)] text-[var(--color-electric-blue)] border-[var(--color-electric-blue)]/30 shadow-none' 
+                    : 'bg-[var(--bg-main)] text-[var(--text-secondary)] border-[var(--border-main)] hover:border-[var(--text-primary)]'
                 }`}
               >
                 <tier.icon size={12} />
@@ -88,7 +88,7 @@ const Skills = () => {
         </div>
 
         {/* Display Tiers List */}
-        <div className="bg-[var(--surface-card)] border border-[var(--border-main)] rounded-xl p-6 md:p-8 min-h-[220px]">
+        <div className="bg-[var(--bg-alternate)] border border-[var(--border-main)] rounded-[28px] p-6 md:p-8 min-h-[220px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTier}
@@ -101,14 +101,14 @@ const Skills = () => {
               {activeCategory.skills.map((skill, index) => (
                 <div 
                   key={index} 
-                  className="p-4 bg-[var(--surface-main)] border border-[var(--border-main)] hover:border-[#10b981]/30 rounded-lg transition-all flex gap-3 items-start group"
+                  className="p-5 bg-[var(--surface-card)] border border-[var(--border-main)] hover:border-[var(--color-electric-blue)]/30 rounded-[20px] transition-all flex gap-3 items-start group"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#10b981] shrink-0 mt-1.5 animate-pulse" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-electric-blue)] shrink-0 mt-2 animate-pulse" />
                   <div className="space-y-1">
-                    <h4 className="font-mono text-sm font-bold text-[var(--text-primary)] group-hover:text-[#10b981] transition-colors">
+                    <h4 className="font-display text-base font-semibold text-[var(--text-primary)] group-hover:text-[var(--color-electric-blue)] transition-colors">
                       {skill.name}
                     </h4>
-                    <p className="font-sans text-xs text-[var(--text-secondary)] font-light leading-relaxed">
+                    <p className="font-sans text-xs text-[var(--text-secondary)] font-normal leading-relaxed">
                       {skill.desc}
                     </p>
                   </div>

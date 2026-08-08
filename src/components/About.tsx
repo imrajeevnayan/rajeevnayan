@@ -37,7 +37,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-[var(--surface-card)] border-y border-[var(--border-main)]">
+    <section id="about" className="py-20 md:py-32 bg-[var(--bg-main)]">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -45,14 +45,14 @@ const About = () => {
           <div className="lg:col-span-6 space-y-8">
             <div className="space-y-3">
               <span className="badge-premium">Specialist Profile</span>
-              <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)]">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-display">
                 About <span className="text-gradient">Me</span>
               </h2>
             </div>
 
-            <div className="space-y-5 text-sm md:text-base text-[var(--text-secondary)] leading-relaxed font-light">
+            <div className="space-y-5 text-[17px] text-[var(--text-secondary)] leading-relaxed font-normal">
               <p>
-                I am a dedicated <strong className="text-[var(--text-primary)] font-semibold">Java Backend Developer</strong> and MCA graduate. I specialize in designing and building scalable, secure, and high-performance server-side architectures using the <strong className="text-[var(--text-primary)] font-semibold">Java & Spring Boot ecosystem</strong>.
+                I am a dedicated <strong className="text-[var(--text-primary)] font-semibold font-display">Java Backend Developer</strong> and MCA graduate. I specialize in designing and building scalable, secure, and high-performance server-side architectures using the <strong className="text-[var(--text-primary)] font-semibold font-display">Java & Spring Boot ecosystem</strong>.
               </p>
               <p>
                 My software engineering philosophy revolves around writing clean, modular code, enforcing strict API security, and optimizing database transactions. Through deep focus on system design and database indexing, I construct resilient systems capable of handling production-grade traffic with ease.
@@ -61,12 +61,12 @@ const About = () => {
 
             {/* Achievements Card list */}
             <div className="space-y-4 pt-4">
-              <h3 className="text-base font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight flex items-center gap-2 font-display">
                 <Award size={18} className="text-[var(--brand-accent)]" /> Key Engineering Highlights
               </h3>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[var(--text-secondary)] font-light">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-[var(--text-secondary)] font-normal">
                 {achievements.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 bg-[var(--bg-main)] p-3 rounded-xl border border-[var(--border-main)] hover:border-[var(--brand-accent)] transition-all">
+                  <li key={i} className="flex items-start gap-2 bg-[var(--bg-alternate)] p-4 rounded-[20px] border border-[var(--border-main)] hover:border-[var(--brand-accent)] transition-all">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--brand-accent)] shrink-0 mt-1.5" />
                     <span>{item}</span>
                   </li>
@@ -79,7 +79,7 @@ const About = () => {
           <div className="lg:col-span-6 space-y-10">
             {/* Engineering Journey Timeline */}
             <div className="space-y-6">
-              <h3 className="text-lg font-bold text-[var(--text-primary)] tracking-tight flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-[var(--text-primary)] tracking-tight flex items-center gap-2 font-display">
                 <Milestone size={18} className="text-[var(--brand-accent)]" /> Engineering Journey
               </h3>
               <div className="relative border-l border-[var(--border-main)] pl-6 ml-3 space-y-8">
@@ -94,13 +94,13 @@ const About = () => {
                   >
                     {/* Circle Node */}
                     <div className="absolute -left-[31px] top-1 w-4 h-4 rounded-full border-2 border-[var(--brand-accent)] bg-[var(--surface-card)] transition-colors group-hover:bg-[var(--brand-accent)]" />
-                    <span className="text-[10px] font-bold text-[#10b981] uppercase tracking-wider block mb-1">
+                    <span className="text-[11px] font-semibold text-[var(--color-ember)] uppercase tracking-wider block mb-1">
                       {item.year}
                     </span>
-                    <h4 className="font-bold text-sm text-[var(--text-primary)] tracking-tight mb-1">
+                    <h4 className="font-semibold text-[15px] text-[var(--text-primary)] tracking-tight mb-1 font-display">
                       {item.title}
                     </h4>
-                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-light">
+                    <p className="text-xs text-[var(--text-secondary)] leading-relaxed font-normal">
                       {item.desc}
                     </p>
                   </motion.div>

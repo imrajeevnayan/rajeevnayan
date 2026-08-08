@@ -26,8 +26,8 @@ const Contact = lazy(() => import('./components/Contact'));
 const Footer = lazy(() => import('./components/Footer'));
 
 const LoadingSpinner = () => (
-  <div className="flex items-center justify-center min-h-[150px] font-mono text-xs text-[#10b981]">
-    <div className="w-6 h-6 border-2 border-[#10b981] border-t-transparent rounded-full animate-spin mr-2"></div>
+  <div className="flex items-center justify-center min-h-[150px] font-sans text-xs text-[var(--color-electric-blue)]">
+    <div className="w-6 h-6 border-2 border-[var(--color-electric-blue)] border-t-transparent rounded-full animate-spin mr-2"></div>
     Loading pipeline components...
   </div>
 );
@@ -43,14 +43,14 @@ function App() {
   return (
     <Preloader>
       <SmoothScroll>
-        <div className="min-h-screen bg-[#08080a] text-white selection:bg-[#10b981]/20 transition-colors duration-500 relative">
+        <div className="min-h-screen bg-[var(--bg-main)] text-[var(--text-primary)] selection:bg-[var(--color-electric-blue)]/20 transition-colors duration-500 relative">
           
           {/* Constellation line canvas */}
           <SpaceBackground />
           
           {/* Scroll indicators */}
           <motion.div 
-            className="fixed top-0 left-0 right-0 h-1 bg-[#10b981] origin-left z-[9999]"
+            className="fixed top-0 left-0 right-0 h-1 bg-[var(--color-electric-blue)] origin-left z-[9999]"
             style={{ scaleX }}
           />
 

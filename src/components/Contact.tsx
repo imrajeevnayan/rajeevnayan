@@ -36,7 +36,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-10 md:py-14 bg-[var(--bg-main)] relative overflow-hidden">
+    <section id="contact" className="py-20 md:py-32 bg-[var(--bg-main)] relative overflow-hidden">
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
@@ -48,11 +48,11 @@ const Contact = () => {
             className="lg:col-span-5 space-y-8"
           >
             <div className="space-y-3">
-               <span className="badge-premium">Engagement</span>
-               <h2 className="text-3xl md:text-5xl font-bold tracking-appleHeading text-[var(--text-primary)]">
+               <span className="text-[12px] font-semibold text-[var(--color-ember)] uppercase block mb-2">Contacto</span>
+               <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] font-display">
                  Scale <span className="text-gradient">Together</span>
                </h2>
-               <p className="text-sm md:text-[15px] text-[var(--text-secondary)] font-light leading-[1.47] pt-2">
+               <p className="text-[15px] text-[var(--text-secondary)] font-normal leading-[1.47] pt-2">
                  Available for strategic collaboration on high-performance backend systems and distributed infrastructure. Let's build for the next 10 million users.
                </p>
             </div>
@@ -71,14 +71,14 @@ const Contact = () => {
                     href={item.href} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-lg bg-[var(--bg-main)] border border-[var(--border-main)] hover:border-[var(--brand-accent)] transition-all group"
+                    className="flex items-center gap-4 p-4 rounded-[20px] bg-[var(--bg-alternate)] border border-[var(--border-main)] hover:bg-[var(--color-cool-wash)]/40 hover:border-[var(--brand-accent)] transition-all group"
                  >
-                    <div className="w-10 h-10 flex items-center justify-center text-[var(--color-button-blue)] shrink-0">
+                    <div className="w-10 h-10 flex items-center justify-center text-[var(--color-electric-blue)] shrink-0">
                        <item.Icon size={18} strokeWidth={1.5} />
                     </div>
                     <div>
                        <div className="text-[10px] font-medium text-[var(--text-secondary)] uppercase tracking-wider mb-0.5">{item.label}</div>
-                       <div className="text-[13px] font-semibold text-[var(--text-primary)] group-hover:text-[var(--color-deep-link-blue)] transition-colors">{item.value}</div>
+                       <div className="text-[13px] font-semibold text-[var(--text-primary)] group-hover:text-[var(--color-link-blue)] transition-colors">{item.value}</div>
                     </div>
                  </a>
                ))}
@@ -92,13 +92,13 @@ const Contact = () => {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <form ref={formRef} onSubmit={handleSubmit} className="premium-card p-6 md:p-8 space-y-4">
+            <form ref={formRef} onSubmit={handleSubmit} className="premium-card p-6 md:p-8 space-y-4 rounded-[28px]">
                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                  <div className="space-y-1">
                    <label className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] ml-0.5">Full Name</label>
                    <input 
                      type="text" name="user_name" required 
-                     className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-md px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all placeholder:text-[var(--text-muted)]/50"
+                     className="w-full bg-[var(--bg-alternate)] border border-[var(--border-main)] rounded-[14px] px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all placeholder:text-[var(--text-muted)]/50"
                      placeholder="John Doe"
                    />
                  </div>
@@ -106,7 +106,7 @@ const Contact = () => {
                    <label className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] ml-0.5">Email Address</label>
                    <input 
                      type="email" name="user_email" required 
-                     className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-md px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all placeholder:text-[var(--text-muted)]/50"
+                     className="w-full bg-[var(--bg-alternate)] border border-[var(--border-main)] rounded-[14px] px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all placeholder:text-[var(--text-muted)]/50"
                      placeholder="john@example.com"
                    />
                  </div>
@@ -116,7 +116,7 @@ const Contact = () => {
                  <label className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-secondary)] ml-0.5">Message</label>
                  <textarea 
                    name="message" required rows={5}
-                   className="w-full bg-[var(--bg-main)] border border-[var(--border-main)] rounded-md px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all resize-none placeholder:text-[var(--text-muted)]/50"
+                   className="w-full bg-[var(--bg-alternate)] border border-[var(--border-main)] rounded-[14px] px-4 py-3 text-sm focus:border-[var(--brand-accent)] outline-none transition-all resize-none placeholder:text-[var(--text-muted)]/50"
                    placeholder="How can we build something great together?"
                  />
                </div>

@@ -12,45 +12,45 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-[var(--surface-card)] py-10 md:py-14 border-t border-[var(--border-main)] relative overflow-hidden">
+        <footer className="bg-[var(--bg-alternate)] py-12 md:py-16 border-t border-[var(--border-main)] relative overflow-hidden">
             <div className="section-container relative z-10">
-                <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8 pb-10 border-b border-[var(--border-main)]">
                     <div className="max-w-xs space-y-6">
                         <div className="space-y-3">
-                            <p className="text-xl font-bold tracking-appleHeading text-[var(--text-primary)] flex items-center gap-2">
-                                 <Rocket size={20} className="text-[var(--color-button-blue)]" strokeWidth={1.5} />
-                                 Rajeev
+                            <p className="text-xl font-bold tracking-tight text-[var(--text-primary)] flex items-center gap-2 font-display">
+                                 <Rocket size={18} className="text-[var(--color-electric-blue)]" strokeWidth={1.5} />
+                                 Rajeev Nayan
                             </p>
-                            <p className="text-sm text-[var(--text-secondary)] leading-relaxed font-light">
+                            <p className="text-[14px] text-[var(--text-secondary)] leading-relaxed font-normal font-sans">
                                 Engineering high-performance software and scalable digital systems with a focus on modern architectures.
                             </p>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                             {socialLinks.map(({ Icon, href, label }, idx) => (
                                 <a
                                     key={idx}
                                     href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-[var(--surface-card)] border border-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--color-button-blue)] hover:border-[var(--brand-accent)] transition-all duration-200"
+                                    className="w-9 h-9 flex items-center justify-center rounded-full bg-[var(--surface-card)] border border-[var(--border-main)] text-[var(--text-secondary)] hover:text-[var(--color-electric-blue)] hover:border-[var(--color-electric-blue)] transition-all duration-200"
                                     aria-label={label}
                                 >
-                                    <Icon size={16} strokeWidth={1.5} />
+                                    <Icon size={14} strokeWidth={1.5} />
                                 </a>
                             ))}
                         </div>
                     </div>
                     
                     <div className="grid grid-cols-2 gap-16 md:gap-24 relative z-10">
-                        <div className="space-y-6">
-                            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] opacity-60">Navigation</h4>
-                            <ul className="space-y-3">
+                        <div className="space-y-4">
+                            <h4 className="text-[12px] font-semibold uppercase tracking-wider text-[var(--text-primary)] opacity-80">Navigation</h4>
+                            <ul className="space-y-2.5">
                                 {['About', 'Projects', 'Skills', 'Blog', 'Contact'].map((item) => (
                                     <li key={item}>
                                         <Link 
                                             to={item.toLowerCase()} 
                                             smooth={true} 
-                                            className="text-sm font-light text-[var(--text-secondary)] hover:text-[var(--color-deep-link-blue)] cursor-pointer transition-colors inline-block"
+                                            className="text-[12px] font-normal text-[var(--text-secondary)] hover:text-[var(--color-link-blue)] cursor-pointer transition-colors inline-block"
                                         >
                                             {item}
                                         </Link>
@@ -58,27 +58,27 @@ const Footer = () => {
                                 ))}
                             </ul>
                         </div>
-                        <div className="space-y-6">
-                            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--text-primary)] opacity-60">Contact</h4>
-                            <ul className="space-y-3">
-                                <li className="text-sm font-light text-[var(--text-secondary)]">Bengaluru, India</li>
-                                <li className="text-sm font-light text-[var(--color-deep-link-blue)] hover:underline cursor-pointer transition-colors break-all">imrajeevnayan@gmail.com</li>
+                        <div className="space-y-4">
+                            <h4 className="text-[12px] font-semibold uppercase tracking-wider text-[var(--text-primary)] opacity-80">Contact</h4>
+                            <ul className="space-y-2.5">
+                                <li className="text-[12px] font-normal text-[var(--text-secondary)]">Bengaluru, India</li>
+                                <li className="text-[12px] font-normal text-[var(--color-link-blue)] hover:underline cursor-pointer transition-colors break-all">imrajeevnayan@gmail.com</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 
-                <div className="mt-16 pt-8 border-t border-[var(--border-main)] flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
-                    <p className="text-xs font-light text-[var(--text-secondary)] opacity-60">
-                        © {new Date().getFullYear()} Rajeev Nayan. Designed with passion.
+                <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+                    <p className="text-[12px] font-normal text-[var(--text-secondary)] leading-relaxed max-w-2xl text-left">
+                        Copyright © {new Date().getFullYear()} Rajeev Nayan. Todos los derechos reservados. El uso de este sitio web constituye la aceptación de los términos de diseño de Apple (España).
                     </p>
                     <Link
                         to="hero"
                         smooth={true}
                         duration={800}
-                        className="flex items-center gap-2 group cursor-pointer text-xs font-semibold text-[var(--text-primary)] hover:text-[var(--color-deep-link-blue)] transition-all uppercase tracking-wider bg-[var(--surface-card)] px-5 py-2.5 rounded-full border border-[var(--border-main)]"
+                        className="flex items-center gap-2 group cursor-pointer text-[12px] font-medium text-[var(--text-primary)] hover:text-[var(--color-link-blue)] transition-all uppercase tracking-wider bg-[var(--surface-card)] px-4 py-2 rounded-full border border-[var(--border-main)]"
                     >
-                       Back to top <ArrowUp size={14} className="group-hover:-translate-y-0.5 transition-transform" />
+                       Back to top <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
                     </Link>
                 </div>
             </div>
