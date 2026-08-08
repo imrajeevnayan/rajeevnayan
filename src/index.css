@@ -225,3 +225,8 @@
     transparent 80%
   );
 }
+
+.blueprint-grid {
+  background-image: radial-gradient(var(--border-main) 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}

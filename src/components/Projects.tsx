@@ -109,7 +109,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 md:py-32 bg-[var(--bg-alternate)]">
+    <section id="projects" className="py-20 md:py-32 bg-[var(--bg-alternate)] blueprint-grid border-b border-[var(--border-main)]">
       <div className="section-container">
         
         <div className="max-w-2xl mb-16">

@@ -19,7 +19,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-20 md:py-32 bg-[var(--bg-alternate)]">
+    <section id="experience" className="py-20 md:py-32 bg-[var(--bg-alternate)] blueprint-grid border-b border-[var(--border-main)]">
       <div className="section-container">
         
         <div className="max-w-2xl mb-16">

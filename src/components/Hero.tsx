@@ -49,7 +49,7 @@ const Hero = () => {
     <section 
       id="hero" 
       onMouseMove={handleMouseMove}
-      className="relative min-h-[95vh] flex items-center bg-[var(--bg-main)] py-20 md:py-32 overflow-hidden group/hero"
+      className="relative min-h-[95vh] flex items-center bg-[var(--bg-main)] blueprint-grid py-20 md:py-32 overflow-hidden group/hero"
     >
       {/* Dynamic mouse-following spotlight highlight */}
       <div className="absolute inset-0 opacity-0 group-hover/hero:opacity-100 transition-opacity duration-500 pointer-events-none z-0 spotlight-overlay" />
