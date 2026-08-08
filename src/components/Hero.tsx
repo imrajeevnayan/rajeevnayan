@@ -41,17 +41,31 @@ const Hero = () => {
       <div className="section-container relative z-10 w-full">
         {/* Apple style centering or layout */}
         <div className="text-center max-w-4xl mx-auto mb-16 space-y-6">
-          <span className="text-[14px] font-semibold tracking-normal text-[var(--color-ember)] uppercase block">// SYSTEM ARCHITECT</span>
-          
-          <h1 className="text-5xl md:text-8xl font-bold tracking-[-1.44px] text-[var(--text-primary)] leading-[1.05] font-display">
-            Java Backend Engineer.
-          </h1>
-          <p className="text-2xl md:text-3xl font-semibold text-[var(--text-secondary)] tracking-tight font-display max-w-3xl mx-auto">
-            Building secure, high-performance distributed systems.
-          </p>
+          {/* Centered DP (medium size) */}
+          <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto mb-4">
+            <img 
+              src="https://github.com/imrajeevnayan.png" 
+              alt="Rajeev Nayan Profile" 
+              className="w-full h-full rounded-full border-2 border-[var(--border-main)] object-cover shadow-sm"
+            />
+          </div>
 
-          <p className="text-[17px] text-[var(--text-secondary)] leading-relaxed max-w-xl mx-auto font-sans font-normal">
-            Designing clean, robust API platforms using Java, Spring Boot, Microservices, and cloud infrastructure. Focused on reducing p95 latency.
+          <span className="text-[14px] font-semibold tracking-normal text-[var(--color-ember)] uppercase block">// Full Stack AI & Java Engineer</span>
+          
+          <h1 className="text-5xl md:text-7xl font-bold tracking-[-1.44px] text-[var(--text-primary)] leading-[1.05] font-display">
+            Full Stack AI & Java Engineer.
+          </h1>
+          
+          <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto py-2">
+            {['Java', 'Spring Boot', 'Microservices', 'REST APIs', 'SQL', 'System Design', 'Agentic Systems', 'RAG Pipelines', 'LLM API Integrations', 'LangChain'].map((tech) => (
+              <span key={tech} className="px-3 py-1 bg-[var(--bg-alternate)] text-[var(--text-secondary)] text-[12px] font-medium rounded-full border border-[var(--border-main)]">
+                {tech}
+              </span>
+            ))}
+          </div>
+
+          <p className="text-[17px] text-[var(--text-secondary)] leading-relaxed max-w-2xl mx-auto font-sans font-normal pt-2">
+            Designing secure, high-performance distributed backend architectures combined with cutting-edge AI capabilities. Focused on p95 latency reduction and autonomous agent execution pipelines.
           </p>
 
           {/* CTAs */}

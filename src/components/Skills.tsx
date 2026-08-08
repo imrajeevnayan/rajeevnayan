@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Cpu, ShieldCheck, Database, Cloud } from 'lucide-react';
+import { Cpu, ShieldCheck, Database, Cloud, Brain } from 'lucide-react';
 
 const skillTiers = [
   {
@@ -12,6 +12,17 @@ const skillTiers = [
       { name: 'Spring Boot', desc: 'Bean configuration, dynamic profiles, autowiring, lifecycle hooks' },
       { name: 'RESTful API Design', desc: 'Payload constraint validations, status structures, routing endpoints' },
       { name: 'Spring MVC', desc: 'Request filter mapping, dispatching logic, custom controller routes' }
+    ]
+  },
+  {
+    id: 'ai',
+    label: 'AI & Agentic Systems',
+    icon: Brain,
+    skills: [
+      { name: 'Agentic Systems', desc: 'Designing multi-agent workflows, autonomous tool calling, loop execution patterns' },
+      { name: 'RAG Pipelines', desc: 'Hybrid semantic search, layout-aware PDF chunking, vector database index tuning' },
+      { name: 'LLM API Integrations', desc: 'Stateless proxy gateways, token bucket limiters, context caching controls' },
+      { name: 'LangChain', desc: 'Chain composition, memory state serialization, routing agents with custom tools' }
     ]
   },
   {
