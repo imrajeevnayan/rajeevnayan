@@ -33,7 +33,7 @@ const Header = () => {
         ? 'backdrop-blur-md bg-[var(--glass-bg)] border-b border-[var(--glass-border)] py-2' 
         : 'bg-transparent py-3'
     }`}>
-      <nav className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20 flex items-center justify-between h-7">
+      <nav className="max-w-none w-full px-6 md:px-12 lg:px-20 flex items-center justify-between h-7">
         <Link 
             to="hero" 
             smooth={true} 
