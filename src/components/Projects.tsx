@@ -114,14 +114,14 @@ const Projects = () => {
 
   return (
     <section id="projects" className="py-20 md:py-32 bg-[var(--bg-alternate)] blueprint-grid border-b border-[var(--border-main)]">
-      <div className="section-container">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-20">
         
         <div className="max-w-2xl mb-16">
-          <span className="text-[12px] font-semibold text-[var(--color-ember)] uppercase block mb-3">Nuevo</span>
+          <span className="text-[12px] font-mono tracking-wider font-semibold text-[var(--color-ember)] uppercase block mb-3">Nuevo</span>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-[var(--text-primary)] mb-4 font-display">
             Engineering Solutions
           </h2>
-          <p className="text-[var(--text-secondary)] text-[17px] font-normal leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-[17px] font-normal tracking-[-0.022em] leading-[1.47]">
             Detailed breakdowns of backend performance tuning, resource optimization, and clean systems architecture decisions.
           </p>
         </div>
@@ -298,7 +298,7 @@ const Projects = () => {
                               <button 
                                 onClick={handleSendRequest}
                                 disabled={isSending}
-                                className="px-4 py-1.5 bg-[var(--color-electric-blue)] text-white font-normal rounded-[980px] hover:bg-[var(--color-link-blue)] transition-all flex items-center gap-1.5 cursor-pointer text-[11px]"
+                                className="px-4 py-1.5 bg-[var(--color-electric-blue)] text-white font-normal rounded-[980px] hover:bg-[var(--color-link-blue)] active:scale-[0.98] transition-all flex items-center gap-1.5 cursor-pointer text-xs"
                               >
                                 <Play size={10} /> Send Request
                               </button>
