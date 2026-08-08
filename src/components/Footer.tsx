@@ -62,7 +62,9 @@ const Footer = () => {
                             <h4 className="text-[12px] font-semibold uppercase tracking-wider text-[var(--text-primary)] opacity-80">Contact</h4>
                             <ul className="space-y-2.5">
                                 <li className="text-[12px] font-normal text-[var(--text-secondary)]">Bengaluru, India</li>
-                                <li className="text-[12px] font-normal text-[var(--color-link-blue)] hover:underline cursor-pointer transition-colors break-all">imrajeevnayan@gmail.com</li>
+                                <li className="text-[12px] font-normal text-[var(--color-link-blue)] hover:underline cursor-pointer transition-colors break-all">
+                                    <a href="mailto:imrajeevnayan@gmail.com">imrajeevnayan@gmail.com</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -70,7 +72,7 @@ const Footer = () => {
                 
                 <div className="mt-8 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
                     <p className="text-[12px] font-normal text-[var(--text-secondary)] leading-relaxed max-w-2xl text-left">
-                        Copyright © {new Date().getFullYear()} Rajeev Nayan. Todos los derechos reservados. El uso de este sitio web constituye la aceptación de los términos de diseño de Apple (España).
+                        Copyright © {new Date().getFullYear()} Rajeev Nayan. All rights reserved.
                     </p>
                     <Link
                         to="hero"

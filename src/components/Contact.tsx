@@ -12,9 +12,9 @@ const Contact = () => {
     e.preventDefault();
     if (!formRef.current) return;
     
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_0zb0vvo";
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_8inv6gr";
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "B2adozjh25GaEvrA0";
 
     if (!serviceId || !templateId || !publicKey) {
       setSubmitStatus('error');
