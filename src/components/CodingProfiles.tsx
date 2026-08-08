@@ -61,7 +61,7 @@ const CodingProfiles = () => {
         {
             name: 'GeeksforGeeks',
             username: 'imrajeevnayan',
-            url: 'https://www.geeksforgeeks.org/user/imrajeevnayan/',
+            url: 'https://www.geeksforgeeks.org/profile/imrajeevnayan?tab=activity',
             color: '#2F8D46',
             statsImage: 'https://gfgstatscard.vercel.app/imrajeevnayan',
             desc: 'Algorithmic Solutions - Focus on graph analysis, binary search, heap queues, and tree traversal algorithms.',

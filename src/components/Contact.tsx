@@ -64,7 +64,7 @@ const Contact = () => {
                  { Icon: Linkedin, label: 'LinkedIn Network', value: 'in/imrajeevnayan', href: 'https://linkedin.com/in/imrajeevnayan' },
                  { Icon: Github, label: 'Technical Workspace', value: 'github.com/imrajeevnayan', href: 'https://github.com/imrajeevnayan' },
                  { Icon: Trophy, label: 'LeetCode Profile', value: 'leetcode.com/imrajeevnayan', href: 'https://leetcode.com/u/imrajeevnayan/' },
-                 { Icon: Code2, label: 'GeeksforGeeks Profile', value: 'geeksforgeeks.org/imrajeevnayan', href: 'https://www.geeksforgeeks.org/profile/imrajeevnayan' }
+                 { Icon: Code2, label: 'GeeksforGeeks Profile', value: 'geeksforgeeks.org/imrajeevnayan', href: 'https://www.geeksforgeeks.org/profile/imrajeevnayan?tab=activity' }
                ].map((item, i) => (
                  <a 
                     key={i} 

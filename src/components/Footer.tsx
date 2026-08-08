@@ -7,7 +7,7 @@ const Footer = () => {
         { Icon: Linkedin, href: "https://www.linkedin.com/in/imrajeevnayan/", label: 'LinkedIn' },
         { Icon: Mail, href: "mailto:imrajeevnayan@gmail.com", label: 'Email' },
         { Icon: Trophy, href: "https://leetcode.com/u/imrajeevnayan/", label: 'LeetCode' },
-        { Icon: Code2, href: "https://www.geeksforgeeks.org/profile/imrajeevnayan", label: 'GFG' },
+        { Icon: Code2, href: "https://www.geeksforgeeks.org/profile/imrajeevnayan?tab=activity", label: 'GFG' },
         { Icon: Instagram, href: "https://www.instagram.com/imrajeevnayan/", label: 'Instagram' },
     ];
 
