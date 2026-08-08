@@ -41,8 +41,8 @@ const Hero = () => {
       <div className="section-container relative z-10 w-full">
         {/* Apple style centering or layout */}
         <div className="text-center max-w-4xl mx-auto mb-16 space-y-6">
-          {/* Centered DP (medium size) */}
-          <div className="relative w-28 h-28 md:w-32 md:h-32 mx-auto mb-4">
+          {/* Centered DP (enlarged size) */}
+          <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto mb-4">
             <img 
               src="https://github.com/imrajeevnayan.png" 
               alt="Rajeev Nayan Profile" 
