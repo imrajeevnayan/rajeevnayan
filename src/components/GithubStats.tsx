@@ -17,10 +17,10 @@ const fallbackProfile: GitHubProfile = {
   avatar_url: 'https://github.com/imrajeevnayan.png',
   login: 'imrajeevnayan',
   name: 'Rajeev Nayan',
-  followers: 12,
-  public_repos: 32,
+  followers: 11,
+  public_repos: 70,
   html_url: 'https://github.com/imrajeevnayan',
-  bio: 'Java Backend Developer specializing in Spring Boot, Microservices, and scalable systems.'
+  bio: 'Full Stack AI & Java Engineer | Java, Spring Boot, Microservices, REST APIs, SQL, System Design, Agentic Systems, RAG Pipelines, LLM API Integrations, LangChain'
 };
 
 const pinnedRepos = [

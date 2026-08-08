@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Trophy, Code2, CheckCircle2 } from 'lucide-react';
 
 const CodingProfiles = () => {
-    const [lcStats, setLcStats] = useState({ solved: 550, easy: 210, medium: 280, hard: 60, ranking: 45000 });
-    const [gfgStats, setGfgStats] = useState({ solved: 550, score: 1780, accuracy: '84%' });
+    const [lcStats, setLcStats] = useState({ solved: 634, easy: 325, medium: 271, hard: 38, ranking: 121847 });
+    const [gfgStats, setGfgStats] = useState({ solved: 636, score: 1633, accuracy: '84%' });
 
     useEffect(() => {
         // Fetch LeetCode stats dynamically
@@ -25,23 +25,6 @@ const CodingProfiles = () => {
                 }
             })
             .catch(err => console.warn('Using fallback LeetCode metrics:', err));
-
-        // GeeksforGeeks API or fallback dynamic stats helper
-        fetch('https://gfg-api.vercel.app/profile/imrajeevnayan')
-            .then(res => {
-                if (!res.ok) throw new Error();
-                return res.json();
-            })
-            .then(data => {
-                if (data.solved) {
-                    setGfgStats({
-                        solved: data.solved,
-                        score: data.score || 1420,
-                        accuracy: data.accuracy || '82%'
-                    });
-                }
-            })
-            .catch(() => {});
     }, []);
 
     const profiles = [
