@@ -80,7 +80,7 @@ export function AiChat() {
     setLoading(true);
 
     try {
-      const response = await sendChat({ data: { message: userMsg, history } });
+      const response = await sendChat({ message: userMsg, history });
       const finalBotText = await simulateStreaming(response.text, (text) => setStreamedText(text));
       
       setMessages((prev) => [...prev, { 
