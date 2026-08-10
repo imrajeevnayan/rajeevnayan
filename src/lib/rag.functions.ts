@@ -38,6 +38,7 @@ export const ragChat = createServerFn({ method: "POST" })
   .handler(async ({ data: input }) => {
     const startTime = Date.now();
     const query = input.message.toLowerCase();
+    console.log("[RAG Server] handler called with query:", query);
 
     // 1. INTENT DETECTION (Hybrid Approach)
     // Some answers are better served via live stats (LeetCode, GitHub, etc.)

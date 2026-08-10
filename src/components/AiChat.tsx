@@ -95,6 +95,7 @@ export function AiChat() {
         setUserInterests(prev => [...new Set([...prev, 'projects'])]);
       }
     } catch (err) {
+      console.error("[AiChat Client] submit failed with error:", err);
       setMessages((prev) => [
         ...prev, 
         { 
