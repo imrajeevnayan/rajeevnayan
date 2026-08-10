@@ -1,29 +1,61 @@
-# Welcome to your Lovable project
+# Rajeev Nayan | Senior Java Backend Engineer & System Architect Portfolio
 
-This project was built with [Lovable](https://lovable.dev).
+A modern, high-performance developer portfolio website showcasing expertise in backend development, distributed systems, and system architecture.
 
-## Build with Lovable
+Live at: [rajeevnayan.in](https://rajeevnayan.in)
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+## 🚀 Key Features
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Interactive System Visualizer:** Live interactive diagram explaining backend architecture patterns.
+- **GitHub Integration:** Real-time metrics dashboard populated via GitHub REST API queries.
+- **Problem Solving Tracker:** Highlighting expertise in LeetCode and GeeksforGeeks profiles.
+- **AI-Powered Interactive Chat:** A smart assistant allowing visitors to query Rajeev's professional experience and skills directly.
+- **Interactive Developer Terminal:** Retro-inspired developer terminal supporting customizable commands.
+- **SEO & Accessibility Optimized:** Formatted with structured schema markup, SEO validation workflow, screen-reader accessibility controls, and keyboard navigation.
 
-## Development
+## 🛠️ Technology Stack
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+- **Framework:** [TanStack Start](https://tanstack.com/start) (Full-stack React framework with SSR, streaming, and RPC capabilities)
+- **State & Routing:** TanStack Router & React Query
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Runtime & Deployment:** Nitro Server built for serverless Cloudflare deployments.
+- **Database/Backend integration:** Supabase client integration.
+- **Animations:** Framer Motion
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+## 📦 Getting Started
+
+### Prerequisites
+
+You will need **Node.js** (v18+) and **npm** or **bun** installed.
+
+### Installation
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/imrajeevnayan/rajeevnayan.git
+   cd rajeevnayan
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Configure Environment Variables:
+   Create a `.env` file in the root directory and add the required configurations (such as Supabase credentials).
+
+### Development Server
+
+Run the development server locally:
+```bash
 npm run dev
 ```
 
-## Built with
+### Production Build
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+Build the project for production:
+```bash
+npm run build
+```
+
+The output build will be compiled into the `dist/` directory, optimized for deployment.
