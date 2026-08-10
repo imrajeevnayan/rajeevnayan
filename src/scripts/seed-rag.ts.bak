@@ -1,0 +1,65 @@
+import { createClient } from '@supabase/supabase-js';
+import { profile, featuredProjects, techStack, experience } from "./data/portfolio";
+
+const supabase = createClient(
+  process.env['VITE_SUPABASE_URL']!,
+  process.env['SUPABASE_SERVICE_ROLE_KEY']!
+);
+
+async function generateEmbedding(text: string) {
+  // Simulated vector for demonstration
+  return new Array(1536).fill(0).map(() => Math.random());
+}
+
+async function indexKnowledge() {
+  const documents: { content: string; metadata: any }[] = [];
+
+  // Profile
+  documents.push({
+    content: `Rajeev Nayan is a ${profile.role} based in ${profile.location}. ${profile.summary}`,
+    metadata: { source: "about", section: "profile" }
+  });
+
+  // Tech Stack
+  techStack.forEach(group => {
+    documents.push({
+      content: `Rajeev is proficient in ${group.group} technologies: ${group.items.join(", ")}.`,
+      metadata: { source: "skills", section: group.group }
+    });
+  });
+
+  // Experience
+  experience.forEach(exp => {
+    documents.push({
+      content: `Experience at ${exp.company} as ${exp.role} (${exp.period}): ${exp.desc}. Key achievements: ${exp.points.join(". ")}`,
+      metadata: { source: "experience", company: exp.company }
+    });
+  });
+
+  // Projects
+  featuredProjects.forEach(p => {
+    documents.push({
+      content: `Project "${p.title}": ${p.description}. Stack: ${p.stack.join(", ")}. Architecture: ${p.architecture}. Features: ${p.features.join(". ")}`,
+      metadata: { source: "projects", title: p.title }
+    });
+  });
+
+  console.log(`[RAG Indexer] Preparing to index ${documents.length} documents...`);
+
+  for (const doc of documents) {
+    const embedding = await generateEmbedding(doc.content);
+    const { error } = await supabase
+      .from('portfolio_knowledge')
+      .upsert({
+        content: doc.content,
+        metadata: doc.metadata,
+        embedding
+      }, { onConflict: 'content' });
+
+    if (error) console.error("[RAG Indexer] Error indexing doc:", error);
+  }
+
+  console.log("[RAG Indexer] Indexing process completed.");
+}
+
+indexKnowledge().catch(console.error);

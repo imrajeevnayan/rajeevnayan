@@ -1,0 +1,56 @@
+name: SEO & Performance Validation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build project
+        run: npm run build
+        
+      - name: Start dev server
+        run: npm run dev & sleep 10
+        
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          
+      - name: Install Playwright dependencies
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+          
+      - name: Run SEO Validation Script
+        run: python scripts/validate_seo.py
+
+      - name: Run Responsive UI Tests
+        run: python scripts/tests/responsive_ui.py
+
+      - name: Run Accessibility Audit
+        run: python scripts/tests/a11y_audit.py
+          
+      - name: Lighthouse Check
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:8080/
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          configPath: './lighthouserc.json'
+
