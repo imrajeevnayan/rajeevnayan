@@ -14,6 +14,7 @@ import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 
 import { Toaster } from "@/components/ui/sonner";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -164,6 +165,7 @@ function RootComponent() {
         <Toaster />
         <AccessibilityPanel />
         <SpeedInsights />
+        <Analytics />
       </AccessibilityProvider>
     </QueryClientProvider>
   );
