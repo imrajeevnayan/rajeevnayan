@@ -13,6 +13,7 @@ import { AccessibilityProvider } from "@/hooks/use-accessibility";
 import { AccessibilityPanel } from "@/components/AccessibilityPanel";
 
 import { Toaster } from "@/components/ui/sonner";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -162,6 +163,7 @@ function RootComponent() {
         <Outlet />
         <Toaster />
         <AccessibilityPanel />
+        <SpeedInsights />
       </AccessibilityProvider>
     </QueryClientProvider>
   );
