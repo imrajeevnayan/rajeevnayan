@@ -117,6 +117,12 @@ export const ragChat = createServerFn({ method: "POST" })
         },
         {
           content:
+            "Rajeev has experience as a Java Developer Intern at Jspider Private Limited (Bengaluru), where he built Spring Boot microservices, secure REST APIs, and achieved a 30% latency reduction using Redis caching and Hibernate optimizations.",
+          source: "experience",
+          section: "Experience",
+        },
+        {
+          content:
             "Rajeev has built Food Fiesta, an online food ordering platform using Spring Boot, Spring MVC, Thymeleaf, and multithreading for concurrent order handling.",
           source: "projects",
           section: "Food Fiesta",

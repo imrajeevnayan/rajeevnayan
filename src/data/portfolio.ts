@@ -61,6 +61,19 @@ export const pillars = [
 
 export const experience = [
   {
+    role: "Java Developer Intern",
+    company: "Jspider Private Limited",
+    location: "Bengaluru, India",
+    period: "",
+    desc: "Developed production-grade Spring Boot microservices, secure REST APIs, and automated deployment pipelines.",
+    points: [
+      "Launched and deployed 4 Spring Boot microservices with Docker Compose; reduced API latency by 30% through Redis caching and Hibernate query optimization.",
+      "Engineered 15+ secure REST endpoints using Spring Security, JWT, and OAuth2; sustained 5,000+ daily requests at 99.9% uptime across staging and production.",
+      "Automated CI/CD with Jenkins and GitHub Actions, integrating SonarQube quality gates, cutting release cycle time by 25%.",
+      "Maintained 80%+ unit test coverage using JUnit 5 and Mockito in a 6-member Agile Scrum team on 2-week sprints.",
+    ],
+  },
+  {
     role: "Open Source Backend Projects",
     company: "Independent / GitHub",
     location: "Remote",
